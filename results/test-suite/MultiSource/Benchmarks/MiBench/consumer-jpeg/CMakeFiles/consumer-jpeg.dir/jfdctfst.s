@@ -1,168 +1,268 @@
 	.file	"jfdctfst.c"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function jpeg_fdct_ifast
+	.type	.LCPI0_0,@object
+.LCPI0_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI0_0, 16
+	.type	.LCPI0_1,@object
+.LCPI0_1:
+	.word	3                               # 0x3
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.size	.LCPI0_1, 16
 	.text
-	.globl	jpeg_fdct_ifast                 # -- Begin function jpeg_fdct_ifast
+	.globl	jpeg_fdct_ifast
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	jpeg_fdct_ifast,@function
 jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 # %bb.0:
-	addi.w	$a2, $zero, -8
-	ori	$a1, $zero, 181
-	ori	$a3, $zero, 98
-	ori	$a4, $zero, 139
-	ori	$a5, $zero, 334
-	move	$a6, $a0
+	move	$a1, $zero
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr4, $a2, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	vld	$vr5, $a2, %pc_lo12(.LCPI0_1)
+	vrepli.d	$vr0, 181
+	vrepli.d	$vr3, 98
+	vrepli.d	$vr2, 139
+	vrepli.d	$vr1, 334
+	ori	$a2, $zero, 256
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a7, $a6, 0
-	ld.w	$t0, $a6, 28
-	ld.w	$t1, $a6, 4
-	ld.w	$t2, $a6, 24
-	add.d	$t3, $t0, $a7
-	sub.d	$a7, $a7, $t0
-	add.d	$t0, $t2, $t1
-	ld.w	$t4, $a6, 8
-	ld.w	$t5, $a6, 20
-	ld.w	$t6, $a6, 12
-	ld.w	$t7, $a6, 16
-	sub.d	$t1, $t1, $t2
-	add.d	$t2, $t5, $t4
-	sub.d	$t4, $t4, $t5
-	add.d	$t5, $t7, $t6
-	sub.d	$t6, $t6, $t7
-	add.d	$t7, $t5, $t3
-	sub.d	$t3, $t3, $t5
-	add.d	$t5, $t2, $t0
-	sub.d	$t0, $t0, $t2
-	add.d	$t2, $t7, $t5
-	st.w	$t2, $a6, 0
-	sub.d	$t2, $t7, $t5
-	st.w	$t2, $a6, 16
-	add.w	$t0, $t0, $t3
-	mul.d	$t0, $t0, $a1
-	srli.d	$t0, $t0, 8
-	add.d	$t2, $t3, $t0
-	st.w	$t2, $a6, 8
-	sub.d	$t0, $t3, $t0
-	st.w	$t0, $a6, 24
-	add.w	$t0, $t6, $t4
-	add.w	$t2, $t4, $t1
-	add.w	$t1, $t1, $a7
-	sub.w	$t3, $t0, $t1
-	mul.d	$t3, $t3, $a3
-	srli.d	$t3, $t3, 8
-	mul.d	$t0, $t0, $a4
-	srli.d	$t0, $t0, 8
-	add.d	$t0, $t3, $t0
-	mul.d	$t1, $t1, $a5
-	srli.d	$t1, $t1, 8
-	add.d	$t1, $t3, $t1
-	mul.d	$t2, $t2, $a1
-	srli.d	$t2, $t2, 8
-	add.d	$t3, $a7, $t2
-	sub.d	$a7, $a7, $t2
-	add.d	$t2, $t0, $a7
-	st.w	$t2, $a6, 20
-	sub.d	$a7, $a7, $t0
-	st.w	$a7, $a6, 12
-	add.d	$a7, $t1, $t3
-	st.w	$a7, $a6, 4
-	sub.d	$a7, $t3, $t1
-	st.w	$a7, $a6, 28
-	bstrpick.d	$a2, $a2, 31, 0
-	addi.d	$a2, $a2, 1
-	slli.d	$a7, $a2, 31
-	addi.d	$a6, $a6, 32
-	bgez	$a7, .LBB0_1
-# %bb.2:
-	vld	$vr0, $a0, 0
-	vld	$vr1, $a0, 224
-	vld	$vr2, $a0, 32
-	vld	$vr3, $a0, 192
-	vadd.w	$vr5, $vr1, $vr0
-	vsub.w	$vr4, $vr0, $vr1
-	vadd.w	$vr0, $vr3, $vr2
-	vld	$vr1, $a0, 64
-	vld	$vr6, $a0, 160
-	vld	$vr7, $a0, 96
-	vld	$vr8, $a0, 128
-	vsub.w	$vr2, $vr2, $vr3
-	vadd.w	$vr3, $vr6, $vr1
-	vsub.w	$vr1, $vr1, $vr6
+	add.d	$a3, $a0, $a1
+	vld	$vr6, $a3, 16
+	vld	$vr7, $a3, 48
+	vldx	$vr8, $a0, $a1
+	vld	$vr9, $a3, 64
+	vld	$vr10, $a3, 96
+	vld	$vr11, $a3, 32
+	vld	$vr12, $a3, 80
+	vld	$vr13, $a3, 112
+	vori.b	$vr14, $vr4, 0
+	vshuf.w	$vr14, $vr10, $vr9
+	vpackev.w	$vr15, $vr11, $vr8
+	vpermi.w	$vr14, $vr15, 228
+	vpackod.w	$vr15, $vr11, $vr8
+	vilvl.w	$vr16, $vr10, $vr9
+	vpermi.w	$vr16, $vr15, 228
+	vilvh.w	$vr15, $vr11, $vr8
+	vpackev.w	$vr17, $vr10, $vr9
+	vpermi.w	$vr17, $vr15, 228
+	vori.b	$vr15, $vr5, 0
+	vshuf.w	$vr15, $vr11, $vr8
+	vpackod.w	$vr8, $vr10, $vr9
+	vpermi.w	$vr8, $vr15, 228
+	vori.b	$vr9, $vr4, 0
+	vshuf.w	$vr9, $vr13, $vr12
+	vpackev.w	$vr10, $vr7, $vr6
+	vpermi.w	$vr9, $vr10, 228
+	vpackod.w	$vr10, $vr7, $vr6
+	vilvl.w	$vr11, $vr13, $vr12
+	vpermi.w	$vr11, $vr10, 228
+	vilvh.w	$vr10, $vr7, $vr6
+	vpackev.w	$vr15, $vr13, $vr12
+	vpermi.w	$vr15, $vr10, 228
+	vori.b	$vr10, $vr5, 0
+	vshuf.w	$vr10, $vr7, $vr6
+	vpackod.w	$vr6, $vr13, $vr12
+	vpermi.w	$vr6, $vr10, 228
+	vadd.w	$vr7, $vr6, $vr14
+	vsub.w	$vr10, $vr14, $vr6
+	vadd.w	$vr6, $vr15, $vr16
+	vsub.w	$vr12, $vr16, $vr15
+	vadd.w	$vr13, $vr11, $vr17
+	vsub.w	$vr11, $vr17, $vr11
+	vadd.w	$vr14, $vr9, $vr8
+	vsub.w	$vr15, $vr8, $vr9
+	vadd.w	$vr8, $vr14, $vr7
+	vsub.w	$vr9, $vr7, $vr14
+	vadd.w	$vr7, $vr13, $vr6
+	vsub.w	$vr13, $vr6, $vr13
 	vadd.w	$vr6, $vr8, $vr7
-	vsub.w	$vr7, $vr7, $vr8
-	vadd.w	$vr8, $vr6, $vr5
-	vsub.w	$vr5, $vr5, $vr6
-	vadd.w	$vr6, $vr3, $vr0
-	vsub.w	$vr0, $vr0, $vr3
-	vadd.w	$vr3, $vr8, $vr6
-	vst	$vr3, $a0, 0
-	vsub.w	$vr3, $vr8, $vr6
-	vst	$vr3, $a0, 128
-	vadd.w	$vr0, $vr0, $vr5
-	vslti.w	$vr3, $vr0, 0
-	vilvl.w	$vr6, $vr3, $vr0
-	vilvh.w	$vr3, $vr3, $vr0
-	vrepli.d	$vr0, 181
-	vmul.d	$vr3, $vr3, $vr0
-	vmul.d	$vr6, $vr6, $vr0
-	vsrli.d	$vr6, $vr6, 8
-	vsrli.d	$vr3, $vr3, 8
-	vpickev.w	$vr3, $vr3, $vr6
-	vadd.w	$vr6, $vr5, $vr3
-	vst	$vr6, $a0, 64
-	vsub.w	$vr3, $vr5, $vr3
-	vst	$vr3, $a0, 192
-	vadd.w	$vr3, $vr7, $vr1
-	vadd.w	$vr5, $vr1, $vr2
-	vadd.w	$vr6, $vr2, $vr4
-	vsub.w	$vr1, $vr3, $vr6
-	vslt.w	$vr2, $vr3, $vr6
-	vilvl.w	$vr7, $vr2, $vr1
-	vilvh.w	$vr2, $vr2, $vr1
-	vrepli.d	$vr1, 98
-	vmul.d	$vr2, $vr2, $vr1
-	vmul.d	$vr7, $vr7, $vr1
-	vsrli.d	$vr7, $vr7, 8
-	vsrli.d	$vr2, $vr2, 8
-	vpickev.w	$vr7, $vr2, $vr7
-	vslti.w	$vr2, $vr3, 0
-	vilvl.w	$vr8, $vr2, $vr3
-	vilvh.w	$vr3, $vr2, $vr3
-	vrepli.d	$vr2, 139
-	vmul.d	$vr3, $vr3, $vr2
-	vmul.d	$vr8, $vr8, $vr2
+	vsub.w	$vr7, $vr8, $vr7
+	vadd.w	$vr8, $vr13, $vr9
+	vslti.w	$vr13, $vr8, 0
+	vilvl.w	$vr14, $vr13, $vr8
+	vilvh.w	$vr8, $vr13, $vr8
+	vmul.d	$vr8, $vr8, $vr0
+	vmul.d	$vr13, $vr14, $vr0
+	vsrli.d	$vr13, $vr13, 8
 	vsrli.d	$vr8, $vr8, 8
-	vsrli.d	$vr3, $vr3, 8
-	vpickev.w	$vr3, $vr3, $vr8
-	vadd.w	$vr8, $vr7, $vr3
-	vslti.w	$vr3, $vr6, 0
-	vilvl.w	$vr9, $vr3, $vr6
-	vilvh.w	$vr6, $vr3, $vr6
-	vrepli.d	$vr3, 334
-	vmul.d	$vr6, $vr6, $vr3
-	vmul.d	$vr9, $vr9, $vr3
-	vsrli.d	$vr9, $vr9, 8
-	vsrli.d	$vr6, $vr6, 8
-	vpickev.w	$vr6, $vr6, $vr9
-	vadd.w	$vr6, $vr7, $vr6
+	vpickev.w	$vr13, $vr8, $vr13
+	vadd.w	$vr8, $vr9, $vr13
+	vsub.w	$vr9, $vr9, $vr13
+	vadd.w	$vr13, $vr15, $vr11
+	vadd.w	$vr11, $vr11, $vr12
+	vadd.w	$vr12, $vr12, $vr10
+	vsub.w	$vr14, $vr13, $vr12
+	vslt.w	$vr15, $vr13, $vr12
+	vilvl.w	$vr16, $vr15, $vr14
+	vilvh.w	$vr14, $vr15, $vr14
+	vmul.d	$vr14, $vr14, $vr3
+	vmul.d	$vr15, $vr16, $vr3
+	vsrli.d	$vr15, $vr15, 8
+	vsrli.d	$vr14, $vr14, 8
+	vpickev.w	$vr14, $vr14, $vr15
+	vslti.w	$vr15, $vr13, 0
+	vilvl.w	$vr16, $vr15, $vr13
+	vilvh.w	$vr13, $vr15, $vr13
+	vmul.d	$vr13, $vr13, $vr2
+	vmul.d	$vr15, $vr16, $vr2
+	vsrli.d	$vr15, $vr15, 8
+	vsrli.d	$vr13, $vr13, 8
+	vpickev.w	$vr13, $vr13, $vr15
+	vadd.w	$vr13, $vr14, $vr13
+	vslti.w	$vr15, $vr12, 0
+	vilvl.w	$vr16, $vr15, $vr12
+	vilvh.w	$vr12, $vr15, $vr12
+	vmul.d	$vr12, $vr12, $vr1
+	vmul.d	$vr15, $vr16, $vr1
+	vsrli.d	$vr15, $vr15, 8
+	vsrli.d	$vr12, $vr12, 8
+	vpickev.w	$vr12, $vr12, $vr15
+	vadd.w	$vr12, $vr14, $vr12
+	vslti.w	$vr14, $vr11, 0
+	vilvl.w	$vr15, $vr14, $vr11
+	vilvh.w	$vr11, $vr14, $vr11
+	vmul.d	$vr11, $vr11, $vr0
+	vmul.d	$vr14, $vr15, $vr0
+	vsrli.d	$vr14, $vr14, 8
+	vsrli.d	$vr11, $vr11, 8
+	vpickev.w	$vr11, $vr11, $vr14
+	vadd.w	$vr14, $vr10, $vr11
+	vsub.w	$vr10, $vr10, $vr11
+	vadd.w	$vr11, $vr13, $vr10
+	vsub.w	$vr10, $vr10, $vr13
+	vadd.w	$vr13, $vr12, $vr14
+	vsub.w	$vr12, $vr14, $vr12
+	vori.b	$vr14, $vr4, 0
+	vshuf.w	$vr14, $vr12, $vr9
+	vpackev.w	$vr15, $vr11, $vr7
+	vpermi.w	$vr14, $vr15, 228
+	vilvl.w	$vr15, $vr12, $vr9
+	vpackod.w	$vr16, $vr11, $vr7
+	vpermi.w	$vr15, $vr16, 228
+	vilvl.w	$vr16, $vr10, $vr8
+	vpackod.w	$vr17, $vr13, $vr6
+	vpermi.w	$vr16, $vr17, 228
+	vpackev.w	$vr17, $vr12, $vr9
+	vilvh.w	$vr18, $vr11, $vr7
+	vpermi.w	$vr17, $vr18, 228
+	vpackev.w	$vr18, $vr10, $vr8
+	vilvh.w	$vr19, $vr13, $vr6
+	vpermi.w	$vr18, $vr19, 228
+	vpackod.w	$vr9, $vr12, $vr9
+	vori.b	$vr12, $vr5, 0
+	vshuf.w	$vr12, $vr11, $vr7
+	vpermi.w	$vr9, $vr12, 228
+	vpackod.w	$vr7, $vr10, $vr8
+	vori.b	$vr11, $vr5, 0
+	vshuf.w	$vr11, $vr13, $vr6
+	vpermi.w	$vr7, $vr11, 228
+	vori.b	$vr11, $vr4, 0
+	vshuf.w	$vr11, $vr10, $vr8
+	vpackev.w	$vr6, $vr13, $vr6
+	vpermi.w	$vr11, $vr6, 228
+	vstx	$vr11, $a0, $a1
+	vst	$vr7, $a3, 96
+	vst	$vr9, $a3, 112
+	vst	$vr18, $a3, 64
+	vst	$vr17, $a3, 80
+	vst	$vr16, $a3, 32
+	vst	$vr15, $a3, 48
+	addi.d	$a1, $a1, 128
+	vst	$vr14, $a3, 16
+	bne	$a1, $a2, .LBB0_1
+# %bb.2:
+	vld	$vr4, $a0, 0
+	vld	$vr5, $a0, 224
+	vld	$vr6, $a0, 32
+	vld	$vr7, $a0, 192
+	vadd.w	$vr8, $vr5, $vr4
+	vsub.w	$vr4, $vr4, $vr5
+	vadd.w	$vr5, $vr7, $vr6
+	vld	$vr9, $a0, 64
+	vld	$vr10, $a0, 160
+	vld	$vr11, $a0, 96
+	vld	$vr12, $a0, 128
+	vsub.w	$vr6, $vr6, $vr7
+	vadd.w	$vr7, $vr10, $vr9
+	vsub.w	$vr9, $vr9, $vr10
+	vadd.w	$vr10, $vr12, $vr11
+	vsub.w	$vr11, $vr11, $vr12
+	vadd.w	$vr12, $vr10, $vr8
+	vsub.w	$vr8, $vr8, $vr10
+	vadd.w	$vr10, $vr7, $vr5
+	vsub.w	$vr5, $vr5, $vr7
+	vadd.w	$vr7, $vr12, $vr10
+	vst	$vr7, $a0, 0
+	vsub.w	$vr7, $vr12, $vr10
+	vst	$vr7, $a0, 128
+	vadd.w	$vr5, $vr5, $vr8
 	vslti.w	$vr7, $vr5, 0
-	vilvl.w	$vr9, $vr7, $vr5
+	vilvl.w	$vr10, $vr7, $vr5
 	vilvh.w	$vr5, $vr7, $vr5
 	vmul.d	$vr5, $vr5, $vr0
-	vmul.d	$vr7, $vr9, $vr0
+	vmul.d	$vr7, $vr10, $vr0
 	vsrli.d	$vr7, $vr7, 8
 	vsrli.d	$vr5, $vr5, 8
 	vpickev.w	$vr5, $vr5, $vr7
-	vadd.w	$vr7, $vr4, $vr5
+	vadd.w	$vr7, $vr8, $vr5
+	vst	$vr7, $a0, 64
+	vsub.w	$vr5, $vr8, $vr5
+	vst	$vr5, $a0, 192
+	vadd.w	$vr5, $vr11, $vr9
+	vadd.w	$vr7, $vr9, $vr6
+	vadd.w	$vr6, $vr6, $vr4
+	vsub.w	$vr8, $vr5, $vr6
+	vslt.w	$vr9, $vr5, $vr6
+	vilvl.w	$vr10, $vr9, $vr8
+	vilvh.w	$vr8, $vr9, $vr8
+	vmul.d	$vr8, $vr8, $vr3
+	vmul.d	$vr9, $vr10, $vr3
+	vsrli.d	$vr9, $vr9, 8
+	vsrli.d	$vr8, $vr8, 8
+	vpickev.w	$vr8, $vr8, $vr9
+	vslti.w	$vr9, $vr5, 0
+	vilvl.w	$vr10, $vr9, $vr5
+	vilvh.w	$vr5, $vr9, $vr5
+	vmul.d	$vr5, $vr5, $vr2
+	vmul.d	$vr9, $vr10, $vr2
+	vsrli.d	$vr9, $vr9, 8
+	vsrli.d	$vr5, $vr5, 8
+	vpickev.w	$vr5, $vr5, $vr9
+	vadd.w	$vr5, $vr8, $vr5
+	vslti.w	$vr9, $vr6, 0
+	vilvl.w	$vr10, $vr9, $vr6
+	vilvh.w	$vr6, $vr9, $vr6
+	vmul.d	$vr6, $vr6, $vr1
+	vmul.d	$vr9, $vr10, $vr1
+	vsrli.d	$vr9, $vr9, 8
+	vsrli.d	$vr6, $vr6, 8
+	vpickev.w	$vr6, $vr6, $vr9
+	vadd.w	$vr6, $vr8, $vr6
+	vslti.w	$vr8, $vr7, 0
+	vilvl.w	$vr9, $vr8, $vr7
+	vilvh.w	$vr7, $vr8, $vr7
+	vmul.d	$vr7, $vr7, $vr0
+	vmul.d	$vr8, $vr9, $vr0
+	vsrli.d	$vr8, $vr8, 8
+	vsrli.d	$vr7, $vr7, 8
+	vpickev.w	$vr7, $vr7, $vr8
+	vadd.w	$vr8, $vr4, $vr7
+	vsub.w	$vr4, $vr4, $vr7
+	vadd.w	$vr7, $vr5, $vr4
+	vst	$vr7, $a0, 160
 	vsub.w	$vr4, $vr4, $vr5
-	vadd.w	$vr5, $vr8, $vr4
-	vst	$vr5, $a0, 160
-	vsub.w	$vr4, $vr4, $vr8
 	vst	$vr4, $a0, 96
-	vadd.w	$vr4, $vr6, $vr7
+	vadd.w	$vr4, $vr6, $vr8
 	vst	$vr4, $a0, 32
-	vsub.w	$vr4, $vr7, $vr6
+	vsub.w	$vr4, $vr8, $vr6
 	vld	$vr5, $a0, 16
 	vld	$vr6, $a0, 240
 	vld	$vr7, $a0, 48
@@ -208,11 +308,11 @@ jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 	vslt.w	$vr9, $vr5, $vr7
 	vilvl.w	$vr10, $vr9, $vr8
 	vilvh.w	$vr8, $vr9, $vr8
-	vmul.d	$vr8, $vr8, $vr1
-	vmul.d	$vr1, $vr10, $vr1
-	vsrli.d	$vr1, $vr1, 8
+	vmul.d	$vr8, $vr8, $vr3
+	vmul.d	$vr3, $vr10, $vr3
+	vsrli.d	$vr3, $vr3, 8
 	vsrli.d	$vr8, $vr8, 8
-	vpickev.w	$vr1, $vr8, $vr1
+	vpickev.w	$vr3, $vr8, $vr3
 	vslti.w	$vr8, $vr5, 0
 	vilvl.w	$vr9, $vr8, $vr5
 	vilvh.w	$vr5, $vr8, $vr5
@@ -221,16 +321,16 @@ jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 	vsrli.d	$vr2, $vr2, 8
 	vsrli.d	$vr5, $vr5, 8
 	vpickev.w	$vr2, $vr5, $vr2
-	vadd.w	$vr2, $vr1, $vr2
+	vadd.w	$vr2, $vr3, $vr2
 	vslti.w	$vr5, $vr7, 0
 	vilvl.w	$vr8, $vr5, $vr7
 	vilvh.w	$vr5, $vr5, $vr7
-	vmul.d	$vr5, $vr5, $vr3
-	vmul.d	$vr3, $vr8, $vr3
-	vsrli.d	$vr3, $vr3, 8
+	vmul.d	$vr5, $vr5, $vr1
+	vmul.d	$vr1, $vr8, $vr1
+	vsrli.d	$vr1, $vr1, 8
 	vsrli.d	$vr5, $vr5, 8
-	vpickev.w	$vr3, $vr5, $vr3
-	vadd.w	$vr1, $vr1, $vr3
+	vpickev.w	$vr1, $vr5, $vr1
+	vadd.w	$vr1, $vr3, $vr1
 	vslti.w	$vr3, $vr6, 0
 	vilvl.w	$vr5, $vr3, $vr6
 	vilvh.w	$vr3, $vr3, $vr6

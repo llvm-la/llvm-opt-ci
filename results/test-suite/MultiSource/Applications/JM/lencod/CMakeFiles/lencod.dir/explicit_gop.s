@@ -6,13 +6,8 @@
 	.type	create_hierarchy,@function
 create_hierarchy:                       # @create_hierarchy
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(input)
 	ld.d	$a0, $a0, %got_pc_lo12(input)
 	ld.d	$a1, $a0, 0
@@ -102,7 +97,7 @@ create_hierarchy:                       # @create_hierarchy
 	ld.d	$a0, $a0, 0
 	ori	$a1, $zero, 2
 	stptr.w	$a1, $a0, 15612
-	b	.LBB0_45
+	b	.LBB0_35
 .LBB0_15:
 	move	$t1, $zero
 	bstrpick.d	$a5, $a0, 30, 1
@@ -129,10 +124,10 @@ create_hierarchy:                       # @create_hierarchy
 # %bb.17:
 	beq	$a5, $a0, .LBB0_20
 .LBB0_18:
-	st.w	$t0, $sp, 28
-	st.w	$zero, $sp, 24
-	st.w	$a7, $sp, 16
-	vld	$vr0, $sp, 16
+	st.w	$t0, $sp, 12
+	st.w	$zero, $sp, 8
+	st.w	$a7, $sp, 0
+	vld	$vr0, $sp, 0
 	slli.d	$a7, $a5, 4
 	alsl.d	$a7, $a5, $a7, 3
 	add.d	$a6, $a7, $a6
@@ -150,7 +145,7 @@ create_hierarchy:                       # @create_hierarchy
 	bnez	$a7, .LBB0_19
 .LBB0_20:
 	ori	$a5, $zero, 2
-	bltu	$a3, $a5, .LBB0_39
+	bltu	$a3, $a5, .LBB0_29
 # %bb.21:
 	ld.d	$a6, $a2, %pc_lo12(gop_structure)
 	addi.d	$a6, $a6, 16
@@ -163,155 +158,72 @@ create_hierarchy:                       # @create_hierarchy
 	.p2align	4, , 16
 .LBB0_22:                               #   in Loop: Header=BB0_23 Depth=1
 	addi.w	$t3, $t3, 1
-	beq	$a3, $t3, .LBB0_39
+	beq	$a3, $t3, .LBB0_29
 .LBB0_23:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_30 Depth 2
-                                        #     Child Loop BB0_33 Depth 2
-                                        #     Child Loop BB0_35 Depth 2
-                                        #     Child Loop BB0_38 Depth 2
+                                        #     Child Loop BB0_26 Depth 2
+                                        #     Child Loop BB0_28 Depth 2
 	sll.w	$t4, $a7, $t3
 	sub.w	$t5, $a4, $t4
 	blt	$t5, $t4, .LBB0_22
 # %bb.24:                               #   in Loop: Header=BB0_23 Depth=1
-	ldptr.w	$t8, $a1, 2972
-	ldx.w	$t6, $a1, $t0
-	addi.w	$t7, $t4, -1
-	beqz	$t8, .LBB0_27
+	ldptr.w	$t7, $a1, 2972
+	ldx.w	$fp, $a1, $t0
+	addi.w	$t8, $t4, -1
+	mul.d	$t6, $t4, $t2
+	beqz	$t7, .LBB0_27
 # %bb.25:                               #   in Loop: Header=BB0_23 Depth=1
-	bstrpick.d	$s1, $t7, 31, 0
-	sub.w	$t6, $t6, $t3
-	srai.d	$t7, $t6, 63
-	andn	$t6, $t6, $t7
-	add.d	$t7, $t4, $s1
-	slt	$t8, $t7, $t5
-	masknez	$fp, $t7, $t8
-	maskeqz	$s0, $t5, $t8
-	or	$fp, $s0, $fp
-	add.d	$t7, $t7, $t8
-	sub.d	$t7, $fp, $t7
-	div.du	$t7, $t7, $t4
-	add.d	$t7, $t7, $t8
-	addi.d	$fp, $t7, 1
-	mul.d	$t7, $t4, $t2
-	bgeu	$fp, $a5, .LBB0_29
-# %bb.26:                               #   in Loop: Header=BB0_23 Depth=1
-	move	$t8, $s1
-	b	.LBB0_32
+	bstrpick.d	$t7, $t8, 31, 0
+	sub.w	$t8, $fp, $t3
+	srai.d	$fp, $t8, 63
+	andn	$t8, $t8, $fp
+	mul.d	$fp, $t7, $t2
+	add.d	$fp, $a6, $fp
+	.p2align	4, , 16
+.LBB0_26:                               #   Parent Loop BB0_23 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	st.w	$t3, $fp, 0
+	st.w	$a5, $fp, -8
+	st.w	$t8, $fp, -4
+	add.d	$t7, $t7, $t4
+	add.d	$fp, $fp, $t6
+	blt	$t7, $t5, .LBB0_26
+	b	.LBB0_22
 .LBB0_27:                               #   in Loop: Header=BB0_23 Depth=1
-	ldx.w	$t8, $a1, $t1
-	add.w	$t6, $t8, $t6
-	srai.d	$t8, $t6, 63
-	andn	$t6, $t6, $t8
-	bstrpick.d	$s1, $t7, 31, 0
-	add.d	$t7, $t4, $s1
-	slt	$t8, $t7, $t5
-	masknez	$fp, $t7, $t8
-	maskeqz	$s0, $t5, $t8
-	or	$fp, $s0, $fp
-	add.d	$t7, $t7, $t8
-	sub.d	$t7, $fp, $t7
-	div.du	$t7, $t7, $t4
-	add.d	$t7, $t7, $t8
-	addi.d	$fp, $t7, 1
-	mul.d	$t7, $t4, $t2
-	bgeu	$fp, $a5, .LBB0_34
-# %bb.28:                               #   in Loop: Header=BB0_23 Depth=1
-	move	$t8, $s1
-	b	.LBB0_37
-.LBB0_29:                               #   in Loop: Header=BB0_23 Depth=1
-	move	$s0, $fp
-	bstrins.d	$s0, $zero, 0, 0
-	mul.d	$t8, $s0, $t4
-	add.d	$t8, $t8, $s1
-	mul.d	$s1, $s1, $t2
-	add.d	$s1, $a6, $s1
-	slli.d	$s2, $t4, 5
-	alsl.d	$s2, $t4, $s2, 4
-	move	$s3, $s0
-	.p2align	4, , 16
-.LBB0_30:                               #   Parent Loop BB0_23 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	add.d	$s4, $s1, $t7
-	st.w	$t3, $s1, 0
-	stx.w	$t3, $s1, $t7
-	st.w	$a5, $s1, -8
-	st.w	$a5, $s4, -8
-	st.w	$t6, $s1, -4
-	st.w	$t6, $s4, -4
-	addi.d	$s3, $s3, -2
-	add.d	$s1, $s1, $s2
-	bnez	$s3, .LBB0_30
-# %bb.31:                               #   in Loop: Header=BB0_23 Depth=1
-	beq	$fp, $s0, .LBB0_22
-.LBB0_32:                               #   in Loop: Header=BB0_23 Depth=1
+	ldx.w	$t7, $a1, $t1
+	add.w	$t7, $t7, $fp
+	srai.d	$fp, $t7, 63
+	andn	$t7, $t7, $fp
+	bstrpick.d	$t8, $t8, 31, 0
 	mul.d	$fp, $t8, $t2
 	add.d	$fp, $a6, $fp
 	.p2align	4, , 16
-.LBB0_33:                               #   Parent Loop BB0_23 Depth=1
+.LBB0_28:                               #   Parent Loop BB0_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	st.w	$t3, $fp, 0
 	st.w	$a5, $fp, -8
-	st.w	$t6, $fp, -4
+	st.w	$t7, $fp, -4
 	add.d	$t8, $t8, $t4
-	add.d	$fp, $fp, $t7
-	blt	$t8, $t5, .LBB0_33
+	add.d	$fp, $fp, $t6
+	blt	$t8, $t5, .LBB0_28
 	b	.LBB0_22
-.LBB0_34:                               #   in Loop: Header=BB0_23 Depth=1
-	move	$s0, $fp
-	bstrins.d	$s0, $zero, 0, 0
-	mul.d	$t8, $s0, $t4
-	add.d	$t8, $t8, $s1
-	mul.d	$s1, $s1, $t2
-	add.d	$s1, $a6, $s1
-	slli.d	$s2, $t4, 5
-	alsl.d	$s2, $t4, $s2, 4
-	move	$s3, $s0
-	.p2align	4, , 16
-.LBB0_35:                               #   Parent Loop BB0_23 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	add.d	$s4, $s1, $t7
-	st.w	$t3, $s1, 0
-	stx.w	$t3, $s1, $t7
-	st.w	$a5, $s1, -8
-	st.w	$a5, $s4, -8
-	st.w	$t6, $s1, -4
-	st.w	$t6, $s4, -4
-	addi.d	$s3, $s3, -2
-	add.d	$s1, $s1, $s2
-	bnez	$s3, .LBB0_35
-# %bb.36:                               #   in Loop: Header=BB0_23 Depth=1
-	beq	$fp, $s0, .LBB0_22
-.LBB0_37:                               #   in Loop: Header=BB0_23 Depth=1
-	mul.d	$fp, $t8, $t2
-	add.d	$fp, $a6, $fp
-	.p2align	4, , 16
-.LBB0_38:                               #   Parent Loop BB0_23 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	st.w	$t3, $fp, 0
-	st.w	$a5, $fp, -8
-	st.w	$t6, $fp, -4
-	add.d	$t8, $t8, $t4
-	add.d	$fp, $fp, $t7
-	blt	$t8, $t5, .LBB0_38
-	b	.LBB0_22
-.LBB0_39:
-	blt	$a0, $a5, .LBB0_45
-# %bb.40:
+.LBB0_29:
+	blt	$a0, $a5, .LBB0_35
+# %bb.30:
 	ori	$a1, $zero, 1
 	ori	$a3, $zero, 2
 	ori	$a4, $zero, 24
 	ori	$a5, $zero, 1
-	b	.LBB0_42
+	b	.LBB0_32
 	.p2align	4, , 16
-.LBB0_41:                               #   in Loop: Header=BB0_42 Depth=1
+.LBB0_31:                               #   in Loop: Header=BB0_32 Depth=1
 	addi.w	$a5, $a5, 1
 	addi.d	$a3, $a3, 1
-	beq	$a5, $a0, .LBB0_45
-.LBB0_42:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_43 Depth 2
+	beq	$a5, $a0, .LBB0_35
+.LBB0_32:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_33 Depth 2
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB0_43:                               #   Parent Loop BB0_42 Depth=1
+.LBB0_33:                               #   Parent Loop BB0_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a7, $a2, %pc_lo12(gop_structure)
 	addi.w	$t1, $a6, -2
@@ -322,8 +234,8 @@ create_hierarchy:                       # @create_hierarchy
 	mul.d	$t1, $t1, $a4
 	add.d	$a7, $a7, $t1
 	ld.w	$t1, $a7, 16
-	bge	$t1, $t2, .LBB0_41
-# %bb.44:                               #   in Loop: Header=BB0_43 Depth=2
+	bge	$t1, $t2, .LBB0_31
+# %bb.34:                               #   in Loop: Header=BB0_33 Depth=2
 	vld	$vr0, $t0, 0
 	ld.d	$t0, $t0, 16
 	ld.d	$t1, $a7, 16
@@ -336,16 +248,11 @@ create_hierarchy:                       # @create_hierarchy
 	add.d	$t2, $a7, $t0
 	vstx	$vr1, $a7, $t0
 	st.d	$t1, $t2, 16
-	blt	$a1, $a6, .LBB0_43
-	b	.LBB0_41
-.LBB0_45:
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	blt	$a1, $a6, .LBB0_33
+	b	.LBB0_31
+.LBB0_35:
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end0:
 	.size	create_hierarchy, .Lfunc_end0-create_hierarchy

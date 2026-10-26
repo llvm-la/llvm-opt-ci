@@ -15,17 +15,17 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a4
-	move	$s3, $a3
+	move	$s2, $a3
 	move	$fp, $a1
-	move	$s2, $a0
+	move	$s0, $a0
 	bstrpick.d	$a0, $a1, 31, 31
 	add.w	$a0, $a1, $a0
-	srai.d	$s0, $a0, 1
+	srai.d	$s3, $a0, 1
 	ori	$a1, $zero, 8
-	move	$a0, $s0
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, 0
+	st.d	$a0, $s2, 0
 	bnez	$a0, .LBB0_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -44,7 +44,7 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	jirl	$ra, $ra, 0
 .LBB0_2:
 	ori	$a1, $zero, 8
-	move	$a0, $s0
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 0
@@ -52,7 +52,7 @@ init_top_bot_planes:                    # @init_top_bot_planes
 # %bb.3:
 	ori	$a0, $zero, 2
 	bge	$fp, $a0, .LBB0_5
-	b	.LBB0_7
+	b	.LBB0_9
 .LBB0_4:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s4, $a0, %pc_lo12(errortext)
@@ -69,23 +69,33 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2
-	blt	$fp, $a0, .LBB0_7
+	blt	$fp, $a0, .LBB0_9
 .LBB0_5:
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	ld.d	$a1, $s1, 0
-	addi.d	$a2, $s2, 8
-	.p2align	4, , 16
-.LBB0_6:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a2, -8
-	st.d	$a3, $a0, 0
-	ld.d	$a3, $a2, 0
-	st.d	$a3, $a1, 0
-	addi.d	$a2, $a2, 16
-	addi.d	$a1, $a1, 8
-	addi.d	$s0, $s0, -1
-	addi.d	$a0, $a0, 8
-	bnez	$s0, .LBB0_6
+	ori	$a3, $zero, 32
+	bstrpick.d	$a2, $s3, 31, 0
+	bgeu	$fp, $a3, .LBB0_10
+# %bb.6:
+	move	$a3, $zero
 .LBB0_7:
+	alsl.d	$a4, $a3, $s0, 4
+	addi.d	$a4, $a4, 8
+	alsl.d	$a1, $a3, $a1, 3
+	alsl.d	$a0, $a3, $a0, 3
+	sub.d	$a2, $a2, $a3
+	.p2align	4, , 16
+.LBB0_8:                                # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a4, -8
+	st.d	$a3, $a0, 0
+	ld.d	$a3, $a4, 0
+	st.d	$a3, $a1, 0
+	addi.d	$a4, $a4, 16
+	addi.d	$a1, $a1, 8
+	addi.d	$a2, $a2, -1
+	addi.d	$a0, $a0, 8
+	bnez	$a2, .LBB0_8
+.LBB0_9:
 	slli.w	$a0, $fp, 3
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -96,6 +106,48 @@ init_top_bot_planes:                    # @init_top_bot_planes
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
+.LBB0_10:
+	alsl.d	$a5, $a2, $a0, 3
+	alsl.d	$a4, $a2, $a1, 3
+	sltu	$a3, $a0, $a4
+	sltu	$a6, $a1, $a5
+	and	$a6, $a3, $a6
+	move	$a3, $zero
+	bnez	$a6, .LBB0_7
+# %bb.11:
+	alsl.d	$a6, $a2, $s0, 4
+	sltu	$a7, $a0, $a6
+	sltu	$a5, $s0, $a5
+	and	$a5, $a7, $a5
+	bnez	$a5, .LBB0_7
+# %bb.12:
+	sltu	$a5, $a1, $a6
+	sltu	$a4, $s0, $a4
+	and	$a4, $a5, $a4
+	bnez	$a4, .LBB0_7
+# %bb.13:
+	bstrpick.d	$a3, $a2, 29, 1
+	slli.d	$a3, $a3, 1
+	move	$a4, $s0
+	move	$a5, $a0
+	move	$a6, $a1
+	move	$a7, $a3
+	.p2align	4, , 16
+.LBB0_14:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, 0
+	vld	$vr1, $a4, 16
+	vpackev.d	$vr2, $vr1, $vr0
+	vpackod.d	$vr0, $vr1, $vr0
+	vst	$vr2, $a5, 0
+	vst	$vr0, $a6, 0
+	addi.d	$a7, $a7, -2
+	addi.d	$a6, $a6, 16
+	addi.d	$a5, $a5, 16
+	addi.d	$a4, $a4, 32
+	bnez	$a7, .LBB0_14
+# %bb.15:
+	bne	$a3, $a2, .LBB0_7
+	b	.LBB0_9
 .Lfunc_end0:
 	.size	init_top_bot_planes, .Lfunc_end0-init_top_bot_planes
                                         # -- End function

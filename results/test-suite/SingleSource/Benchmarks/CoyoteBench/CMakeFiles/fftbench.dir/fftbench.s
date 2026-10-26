@@ -829,68 +829,46 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 # %bb.65:
 	ld.d	$a0, $sp, 48
 	st.d	$a1, $fp, 8
-	beqz	$s1, .LBB1_73
+	beqz	$s1, .LBB1_70
 # %bb.66:
-	ori	$a2, $zero, 16
-	bltu	$s1, $a2, .LBB1_69
+	ori	$a2, $zero, 14
+	bgeu	$a2, $s1, .LBB1_69
 # %bb.67:
 	alsl.d	$a2, $s4, $a0, 4
 	addi.d	$a2, $a2, -24
-	bgeu	$a1, $a2, .LBB1_82
+	bgeu	$a1, $a2, .LBB1_78
 # %bb.68:
 	alsl.d	$a2, $s4, $a1, 3
 	addi.d	$a2, $a2, -8
-	bgeu	$a0, $a2, .LBB1_82
+	bgeu	$a0, $a2, .LBB1_78
 .LBB1_69:
 	move	$a2, $zero
+	b	.LBB1_80
 .LBB1_70:
-	nor	$a3, $a2, $zero
-	add.d	$a3, $a3, $s4
-	alsl.d	$a4, $a2, $a0, 4
-	alsl.d	$a1, $a2, $a1, 3
-	.p2align	4, , 16
-.LBB1_71:                               # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a4, 0
-	fst.d	$fa0, $a1, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 16
-	addi.d	$a1, $a1, 8
-	bnez	$a3, .LBB1_71
+	st.d	$s0, $sp, 40
+	bnez	$a0, .LBB1_83
+# %bb.71:
+	ld.d	$a0, $sp, 72
+	st.d	$s0, $sp, 64
+	beqz	$a0, .LBB1_73
 .LBB1_72:
-	st.d	$s0, $sp, 40
-	b	.LBB1_74
-.LBB1_73:
-	st.d	$s0, $sp, 40
-	beqz	$a0, .LBB1_75
-.LBB1_74:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 72
-	st.d	$s0, $sp, 64
-	bnez	$a0, .LBB1_76
-	b	.LBB1_77
+.LBB1_73:
+	ld.d	$a0, $sp, 96
+	st.d	$s2, $sp, 88
+	beqz	$a0, .LBB1_75
+# %bb.74:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
 .LBB1_75:
-	ld.d	$a0, $sp, 72
-	st.d	$s0, $sp, 64
+	ld.d	$a0, $sp, 120
+	st.d	$s2, $sp, 112
 	beqz	$a0, .LBB1_77
-.LBB1_76:
+# %bb.76:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB1_77:
-	ld.d	$a0, $sp, 96
-	st.d	$s2, $sp, 88
-	beqz	$a0, .LBB1_79
-# %bb.78:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-.LBB1_79:
-	ld.d	$a0, $sp, 120
-	st.d	$s2, $sp, 112
-	beqz	$a0, .LBB1_81
-# %bb.80:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-.LBB1_81:
 	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
@@ -902,14 +880,19 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 208
 	ret
-.LBB1_82:
-	move	$a2, $s1
-	bstrins.d	$a2, $zero, 1, 0
+.LBB1_78:
+	andi	$a2, $s1, 3
+	sltui	$a3, $a2, 1
+	masknez	$a2, $a2, $a3
+	ori	$a4, $zero, 4
+	maskeqz	$a3, $a4, $a3
+	or	$a2, $a3, $a2
+	sub.d	$a2, $s1, $a2
 	addi.d	$a3, $a0, 32
 	addi.d	$a4, $a1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB1_83:                               # =>This Inner Loop Header: Depth=1
+.LBB1_79:                               # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a3, -32
 	fld.d	$fa1, $a3, -16
 	fld.d	$fa2, $a3, 0
@@ -921,99 +904,118 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	addi.d	$a3, $a3, 64
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB1_83
-# %bb.84:
-	beq	$s1, $a2, .LBB1_72
-	b	.LBB1_70
-.LBB1_85:
+	bnez	$a5, .LBB1_79
+.LBB1_80:
+	nor	$a3, $a2, $zero
+	add.d	$a3, $a3, $s4
+	alsl.d	$a4, $a2, $a0, 4
+	alsl.d	$a1, $a2, $a1, 3
+	.p2align	4, , 16
+.LBB1_81:                               # =>This Inner Loop Header: Depth=1
+	fld.d	$fa0, $a4, 0
+	fst.d	$fa0, $a1, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
+	addi.d	$a1, $a1, 8
+	bnez	$a3, .LBB1_81
+# %bb.82:
+	st.d	$s0, $sp, 40
+.LBB1_83:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 72
+	st.d	$s0, $sp, 64
+	bnez	$a0, .LBB1_72
+	b	.LBB1_73
+.LBB1_84:
 .Ltmp46:                                # EH_LABEL
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a1, $a0, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	ld.d	$a0, $sp, 24
 	st.d	$a1, $sp, 16
-	beqz	$a0, .LBB1_90
-# %bb.86:
+	beqz	$a0, .LBB1_89
+# %bb.85:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB1_90
-.LBB1_87:
-.Ltmp49:                                # EH_LABEL
 	b	.LBB1_89
-.LBB1_88:
+.LBB1_86:
+.Ltmp49:                                # EH_LABEL
+	b	.LBB1_88
+.LBB1_87:
 .Ltmp43:                                # EH_LABEL
-.LBB1_89:
+.LBB1_88:
 	move	$fp, $a0
-.LBB1_90:
+.LBB1_89:
 	pcalau12i	$a0, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a1, $a0, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	ld.d	$a0, $sp, 48
 	st.d	$a1, $sp, 40
-	beqz	$a0, .LBB1_93
-# %bb.91:
+	beqz	$a0, .LBB1_92
+# %bb.90:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB1_93
-.LBB1_92:
+	b	.LBB1_92
+.LBB1_91:
 .Ltmp40:                                # EH_LABEL
 	move	$fp, $a0
-.LBB1_93:
+.LBB1_92:
 	pcalau12i	$a0, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a1, $a0, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	ld.d	$a0, $sp, 72
 	st.d	$a1, $sp, 64
-	bnez	$a0, .LBB1_97
-# %bb.94:
+	bnez	$a0, .LBB1_96
+# %bb.93:
 	ld.d	$a0, $sp, 96
 	st.d	$s2, $sp, 88
-	bnez	$a0, .LBB1_98
-.LBB1_95:
+	bnez	$a0, .LBB1_97
+.LBB1_94:
 	ld.d	$a0, $sp, 120
 	st.d	$s2, $sp, 112
-	bnez	$a0, .LBB1_99
-.LBB1_96:
+	bnez	$a0, .LBB1_98
+.LBB1_95:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB1_97:
+.LBB1_96:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 96
 	st.d	$s2, $sp, 88
+	beqz	$a0, .LBB1_94
+.LBB1_97:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 120
+	st.d	$s2, $sp, 112
 	beqz	$a0, .LBB1_95
 .LBB1_98:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 120
-	st.d	$s2, $sp, 112
-	beqz	$a0, .LBB1_96
-.LBB1_99:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB1_100:
+.LBB1_99:
 .Ltmp37:                                # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 96
 	st.d	$s2, $sp, 88
-	beqz	$a0, .LBB1_95
-	b	.LBB1_98
-.LBB1_101:
+	beqz	$a0, .LBB1_94
+	b	.LBB1_97
+.LBB1_100:
 .Ltmp25:                                # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 120
 	st.d	$s2, $sp, 112
-	beqz	$a0, .LBB1_96
-	b	.LBB1_99
-.LBB1_102:
+	beqz	$a0, .LBB1_95
+	b	.LBB1_98
+.LBB1_101:
 .Ltmp34:                                # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 96
 	st.d	$s2, $sp, 88
-	beqz	$a0, .LBB1_95
-	b	.LBB1_98
+	beqz	$a0, .LBB1_94
+	b	.LBB1_97
 .Lfunc_end1:
 	.size	_ZNK10polynomialIdEmlERKS0_, .Lfunc_end1-_ZNK10polynomialIdEmlERKS0_
 	.cfi_endproc
@@ -1996,31 +1998,31 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN10polynomialIdE4log2Em)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $s0, 16
+	ld.d	$s5, $s0, 16
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	st.d	$a0, $s2, 0
-	st.d	$fp, $s2, 16
-	srli.d	$a0, $fp, 60
+	st.d	$s5, $s2, 16
+	srli.d	$a0, $s5, 60
 	sltu	$a0, $zero, $a0
-	slli.d	$s4, $fp, 4
+	slli.d	$s4, $s5, 4
 	masknez	$a1, $s4, $a0
 	addi.w	$a2, $zero, -1
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	beqz	$fp, .LBB6_7
+	move	$fp, $a0
+	beqz	$s5, .LBB6_7
 # %bb.1:
-	move	$a0, $s1
+	move	$a0, $fp
 	move	$a1, $zero
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	st.d	$s1, $s2, 8
+	st.d	$fp, $s2, 8
 	ld.d	$a1, $s0, 8
 	addi.d	$a2, $s3, -1
 	ori	$a3, $zero, 1
@@ -2046,16 +2048,16 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 # %bb.4:                                #   in Loop: Header=BB6_2 Depth=1
 	slli.d	$a3, $a3, 4
 	addi.d	$a0, $a0, 1
-	vstx	$vr0, $s1, $a3
-	bne	$a0, $fp, .LBB6_2
+	vstx	$vr0, $fp, $a3
+	bne	$a0, $s5, .LBB6_2
 # %bb.5:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a0, .LBB6_8
 .LBB6_6:
-	bnez	$fp, .LBB6_22
-	b	.LBB6_24
+	bnez	$s5, .LBB6_22
+	b	.LBB6_29
 .LBB6_7:
-	st.d	$s1, $s2, 8
+	st.d	$fp, $s2, 8
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB6_6
 .LBB6_8:
@@ -2063,19 +2065,19 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	ori	$s3, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI6_0)
-	ori	$fp, $zero, 1
+	ori	$s1, $zero, 1
 	movgr2fr.d	$fs1, $zero
 	fneg.d	$fs2, $fs1
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB6_10
 	.p2align	4, , 16
 .LBB6_9:                                #   in Loop: Header=BB6_10 Depth=1
 	slli.d	$s3, $s3, 1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	slli.d	$fp, $fp, 1
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	slli.d	$s1, $s1, 1
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB6_21
 .LBB6_10:                               # =>This Loop Header: Depth=1
@@ -2094,11 +2096,12 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
 	move	$s2, $zero
-	addi.d	$s6, $fp, -1
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
-	slli.d	$s7, $fp, 4
+	addi.d	$s6, $s1, -1
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	slli.d	$s7, $s1, 4
 	slli.d	$s8, $s3, 4
 	vldi	$vr8, -912
+	move	$s1, $fp
 	fmov.d	$fs3, $fs1
 	.p2align	4, , 16
 .LBB6_11:                               #   Parent Loop BB6_10 Depth=1
@@ -2194,23 +2197,48 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	fmov.d	$fa1, $fs4
 	b	.LBB6_13
 .LBB6_21:
-	ld.d	$fp, $s0, 16
-	beqz	$fp, .LBB6_24
+	ld.d	$s5, $s0, 16
+	beqz	$s5, .LBB6_29
 .LBB6_22:
-	move	$a0, $zero
-	vinsgr2vr.d	$vr0, $fp, 0
+	vinsgr2vr.d	$vr0, $s5, 0
 	vffint.d.lu	$vr0, $vr0
+	ori	$a0, $zero, 4
 	vreplvei.d	$vr0, $vr0, 0
-	vreplvei.d	$vr0, $vr0, 0
-	.p2align	4, , 16
-.LBB6_23:                               # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $s1, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vst	$vr1, $s1, 0
-	addi.d	$a0, $a0, 1
-	addi.d	$s1, $s1, 16
-	bltu	$a0, $fp, .LBB6_23
+	bgeu	$s5, $a0, .LBB6_24
+# %bb.23:
+	move	$a0, $zero
+	b	.LBB6_27
 .LBB6_24:
+	move	$a0, $s5
+	bstrins.d	$a0, $zero, 0, 0
+	vreplvei.d	$vr1, $vr0, 0
+	addi.d	$a1, $fp, 16
+	move	$a2, $a0
+	.p2align	4, , 16
+.LBB6_25:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr2, $a1, -16
+	vld	$vr3, $a1, 0
+	vfdiv.d	$vr2, $vr2, $vr1
+	vfdiv.d	$vr3, $vr3, $vr1
+	vst	$vr2, $a1, -16
+	vst	$vr3, $a1, 0
+	addi.d	$a2, $a2, -2
+	addi.d	$a1, $a1, 32
+	bnez	$a2, .LBB6_25
+# %bb.26:
+	beq	$s5, $a0, .LBB6_29
+.LBB6_27:
+	vreplvei.d	$vr0, $vr0, 0
+	alsl.d	$a1, $a0, $fp, 4
+	.p2align	4, , 16
+.LBB6_28:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a1, 0
+	vfdiv.d	$vr1, $vr1, $vr0
+	vst	$vr1, $a1, 0
+	addi.d	$a0, $a0, 1
+	addi.d	$a1, $a1, 16
+	bltu	$a0, $s5, .LBB6_28
+.LBB6_29:
 	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
 	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$fs3, $sp, 88                   # 8-byte Folded Reload

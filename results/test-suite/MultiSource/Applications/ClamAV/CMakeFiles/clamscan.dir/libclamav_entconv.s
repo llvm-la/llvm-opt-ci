@@ -498,13 +498,13 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	beqz	$a0, .LBB4_14
 # %bb.1:
-	move	$s7, $a3
+	move	$s8, $a3
 	move	$s0, $a0
 	ld.d	$a3, $a0, 120
 	beqz	$a3, .LBB4_14
 # %bb.2:
 	ori	$a0, $zero, 2
-	bltu	$s7, $a0, .LBB4_14
+	bltu	$s8, $a0, .LBB4_14
 # %bb.3:
 	ld.d	$s3, $s0, 96
 	beqz	$s3, .LBB4_14
@@ -516,7 +516,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	sub.d	$s2, $a3, $a0
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
 	sub.d	$a4, $a4, $s2
-	sltu	$a5, $s7, $a4
+	sltu	$a5, $s8, $a4
 	masknez	$fp, $a4, $a5
 	ld.d	$a7, $s0, 128
 	ld.d	$a6, $s0, 136
@@ -524,25 +524,25 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	st.d	$a4, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a4, $s0, 160
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
-	maskeqz	$s1, $s7, $a5
+	maskeqz	$s1, $s8, $a5
 	slt	$s4, $a7, $a6
-	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 8                     # 8-byte Folded Spill
 	sub.d	$s5, $a7, $a6
 	beq	$a3, $a0, .LBB4_6
 # %bb.5:
 	add.d	$a3, $s3, $a0
 	move	$a0, $s3
-	move	$s8, $a1
+	move	$s7, $a1
 	move	$a1, $a3
-	move	$s6, $s7
-	move	$s7, $a2
+	move	$s6, $s8
+	move	$s8, $a2
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
-	move	$a1, $s8
-	move	$a2, $s7
-	move	$s7, $s6
+	move	$a1, $s7
+	move	$a2, $s8
+	move	$s8, $s6
 .LBB4_6:
 	masknez	$s6, $s5, $s4
 	or	$a0, $s1, $fp
@@ -759,7 +759,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ori	$a4, $zero, 253
 	blt	$a4, $a3, .LBB4_176
 # %bb.46:
-	beqz	$a3, .LBB4_186
+	beqz	$a3, .LBB4_191
 # %bb.47:
 	ori	$a4, $zero, 60
 	bne	$a3, $a4, .LBB4_69
@@ -844,7 +844,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 .LBB4_61:
 	bnez	$a3, .LBB4_69
 # %bb.62:
-	beqz	$a2, .LBB4_194
+	beqz	$a2, .LBB4_206
 # %bb.63:
 	ori	$a3, $zero, 63
 	bne	$a2, $a3, .LBB4_69
@@ -919,10 +919,10 @@ encoding_norm_readline:                 # @encoding_norm_readline
 .LBB4_80:
 	move	$s3, $s5
 	bstrins.d	$s3, $zero, 1, 0
-	andi	$s8, $s5, 3
+	andi	$s7, $s5, 3
 	bnez	$s3, .LBB4_83
 # %bb.81:
-	beqz	$s8, .LBB4_83
+	beqz	$s7, .LBB4_83
 # %bb.82:
 	add.d	$a0, $s2, $s5
 	ori	$s3, $zero, 4
@@ -930,7 +930,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$s8, $zero, 252
+	ori	$s7, $zero, 252
 .LBB4_83:
 	ld.d	$a0, $s0, 0
 	sltui	$a1, $a0, 1
@@ -964,7 +964,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 .LBB4_85:
 	ld.d	$t3, $sp, 64                    # 8-byte Folded Reload
 	add.d	$s4, $t3, $s6
-	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
 	beqz	$s3, .LBB4_95
 # %bb.86:
@@ -983,7 +983,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	sub.d	$a0, $zero, $a0
 	ori	$a3, $zero, 10
 	and	$s5, $a2, $a0
-	bltu	$a3, $a1, .LBB4_151
+	bltu	$a3, $a1, .LBB4_198
 # %bb.88:
 	slli.d	$a0, $a1, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI4_0)
@@ -992,7 +992,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB4_89:
-	beqz	$s5, .LBB4_151
+	beqz	$s5, .LBB4_198
 # %bb.90:
 	pcalau12i	$a0, %pc_hi20(.L.str.1694)
 	addi.d	$s6, $a0, %pc_lo12(.L.str.1694)
@@ -1008,7 +1008,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	add.d	$a1, $s4, $s1
 	addi.d	$fp, $fp, 4
 	st.b	$a0, $a1, 1
-	bgeu	$fp, $s5, .LBB4_151
+	bgeu	$fp, $s5, .LBB4_198
 .LBB4_92:                               # =>This Inner Loop Header: Depth=1
 	add.d	$a0, $s2, $fp
 	ld.bu	$a1, $a0, 2
@@ -1025,15 +1025,15 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	addi.d	$fp, $fp, 4
 	st.b	$a0, $a1, 1
 	bltu	$fp, $s5, .LBB4_92
-	b	.LBB4_151
+	b	.LBB4_198
 .LBB4_95:
 	move	$s3, $zero
 .LBB4_96:
-	move	$s7, $s2
+	move	$s8, $s2
 .LBB4_97:
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
-	ext.w.b	$s5, $s8
+	ext.w.b	$s5, $s7
 	srai.d	$a0, $s5, 63
 	ld.d	$s6, $s0, 120
 	andn	$a0, $s5, $a0
@@ -1043,7 +1043,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	add.d	$a1, $a1, $s6
 	sub.d	$a1, $s4, $a1
 	st.d	$a1, $s0, 128
-	sub.d	$a2, $s7, $a2
+	sub.d	$a2, $s8, $a2
 	st.d	$a2, $s0, 112
 	add.d	$a0, $a2, $a0
 	st.d	$a0, $s0, 104
@@ -1173,9 +1173,9 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	st.d	$s7, $s0, 136
 	sub.d	$a0, $s1, $a0
 	st.d	$a0, $s0, 152
-	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 .LBB4_121:
-	addi.w	$a2, $s7, 0
+	addi.w	$a2, $s8, 0
 	move	$a0, $zero
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
@@ -1200,159 +1200,168 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	move	$a1, $fp
 	b	.LBB4_121
 .LBB4_123:
-	beqz	$s5, .LBB4_151
+	beqz	$s5, .LBB4_198
 # %bb.124:
+	ori	$a0, $zero, 15
+	bltu	$s5, $a0, .LBB4_127
+# %bb.125:
+	addi.d	$a0, $s5, -1
+	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	slt	$a1, $a5, $a3
+	masknez	$a2, $a5, $a1
+	maskeqz	$a3, $a3, $a1
+	move	$a1, $a0
+	bstrins.d	$a1, $zero, 0, 0
+	add.d	$a4, $s2, $a1
+	addi.d	$a4, $a4, 2
+	or	$a2, $a3, $a2
+	bgeu	$s4, $a4, .LBB4_181
+# %bb.126:
+	add.d	$a1, $a2, $a1
+	sub.d	$a1, $a1, $a5
+	add.d	$a1, $a1, $t3
+	addi.d	$a1, $a1, 2
+	bgeu	$s2, $a1, .LBB4_181
+.LBB4_127:
 	move	$a0, $zero
-.LBB4_125:                              # =>This Inner Loop Header: Depth=1
-	add.d	$a1, $s2, $a0
-	ld.b	$a1, $a1, 1
-	stx.b	$a1, $s4, $a0
-	ldx.b	$a1, $s2, $a0
-	add.d	$a2, $s4, $a0
+.LBB4_128:
+	addi.d	$a1, $s2, 1
+.LBB4_129:                              # =>This Inner Loop Header: Depth=1
+	ldx.b	$a2, $a1, $a0
+	stx.b	$a2, $s4, $a0
+	ldx.b	$a2, $s2, $a0
+	add.d	$a3, $s4, $a0
 	addi.d	$a0, $a0, 2
-	st.b	$a1, $a2, 1
-	bltu	$a0, $s5, .LBB4_125
-	b	.LBB4_151
-.LBB4_126:
+	st.b	$a2, $a3, 1
+	bltu	$a0, $s5, .LBB4_129
+	b	.LBB4_198
+.LBB4_130:
 	srli.d	$a1, $s1, 1
 	sltu	$a0, $s3, $a1
 	masknez	$a2, $a1, $a0
 	maskeqz	$a0, $s3, $a0
 	or	$a0, $a0, $a2
-	add.d	$s7, $s2, $a0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	add.d	$s8, $s2, $a0
 	ld.d	$t4, $sp, 16                    # 8-byte Folded Reload
-	beqz	$a1, .LBB4_133
-# %bb.127:
+	ld.d	$t5, $sp, 8                     # 8-byte Folded Reload
+	beqz	$a1, .LBB4_137
+# %bb.131:
 	ori	$a2, $zero, 8
-	slt	$a1, $s6, $t4
-	bltu	$a0, $a2, .LBB4_130
-# %bb.128:
-	bgeu	$s4, $s7, .LBB4_181
-# %bb.129:
-	masknez	$a2, $s6, $a1
-	maskeqz	$a3, $t4, $a1
+	slt	$a1, $t4, $t5
+	bltu	$a0, $a2, .LBB4_134
+# %bb.132:
+	bgeu	$s4, $s8, .LBB4_186
+# %bb.133:
+	masknez	$a2, $t4, $a1
+	maskeqz	$a3, $t5, $a1
 	or	$a2, $a3, $a2
 	alsl.d	$a2, $a0, $a2, 1
-	sub.d	$a2, $a2, $s6
+	sub.d	$a2, $a2, $t4
 	add.d	$a2, $t3, $a2
-	bgeu	$s2, $a2, .LBB4_181
-.LBB4_130:
+	bgeu	$s2, $a2, .LBB4_186
+.LBB4_134:
 	move	$a2, $zero
-.LBB4_131:
+.LBB4_135:
 	sub.d	$a3, $a2, $a0
 	add.d	$a4, $s2, $a2
-	masknez	$a5, $s6, $a1
-	maskeqz	$a1, $t4, $a1
+	masknez	$a5, $t4, $a1
+	maskeqz	$a1, $t5, $a1
 	or	$a1, $a1, $a5
 	alsl.d	$a1, $a2, $a1, 1
-	sub.d	$a1, $a1, $s6
+	sub.d	$a1, $a1, $t4
 	add.d	$a1, $a1, $t3
 	addi.d	$a1, $a1, 1
-.LBB4_132:                              # =>This Inner Loop Header: Depth=1
+.LBB4_136:                              # =>This Inner Loop Header: Depth=1
 	st.b	$zero, $a1, -1
 	ld.b	$a2, $a4, 0
 	st.b	$a2, $a1, 0
 	addi.d	$a3, $a3, 1
 	addi.d	$a4, $a4, 1
 	addi.d	$a1, $a1, 2
-	bnez	$a3, .LBB4_132
-.LBB4_133:
+	bnez	$a3, .LBB4_136
+.LBB4_137:
 	sub.d	$s3, $s3, $a0
 	alsl.d	$s4, $a0, $s4, 1
 	b	.LBB4_97
-.LBB4_134:
+.LBB4_138:
 	srli.d	$a0, $s5, 1
-	beqz	$a0, .LBB4_151
-# %bb.135:
+	beqz	$a0, .LBB4_198
+# %bb.139:
 	move	$a1, $zero
 	addi.d	$a2, $s2, 2
 	lu12i.w	$a3, 15
 	ori	$a3, $a3, 4095
-	b	.LBB4_137
-.LBB4_136:                              #   in Loop: Header=BB4_137 Depth=1
+	b	.LBB4_141
+.LBB4_140:                              #   in Loop: Header=BB4_141 Depth=1
 	stx.h	$a4, $s4, $a1
 	addi.d	$a1, $a1, 2
 	addi.d	$a2, $a2, 4
-	bgeu	$a1, $a0, .LBB4_151
-.LBB4_137:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$a1, $a0, .LBB4_198
+.LBB4_141:                              # =>This Inner Loop Header: Depth=1
 	ld.hu	$a5, $a2, -2
 	move	$a4, $a3
-	bnez	$a5, .LBB4_136
-# %bb.138:                              #   in Loop: Header=BB4_137 Depth=1
+	bnez	$a5, .LBB4_140
+# %bb.142:                              #   in Loop: Header=BB4_141 Depth=1
 	ld.hu	$a4, $a2, 0
-	b	.LBB4_136
-.LBB4_139:
+	b	.LBB4_140
+.LBB4_143:
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	b	.LBB4_151
-.LBB4_140:
+	b	.LBB4_198
+.LBB4_144:
 	srli.d	$a0, $s5, 1
-	beqz	$a0, .LBB4_151
-# %bb.141:
+	beqz	$a0, .LBB4_198
+# %bb.145:
 	move	$a1, $zero
 	addi.d	$a2, $s2, 2
 	lu12i.w	$a3, 15
 	ori	$a3, $a3, 4095
-	b	.LBB4_143
-.LBB4_142:                              #   in Loop: Header=BB4_143 Depth=1
+	b	.LBB4_147
+.LBB4_146:                              #   in Loop: Header=BB4_147 Depth=1
 	stx.h	$a4, $s4, $a1
 	addi.d	$a1, $a1, 2
 	addi.d	$a2, $a2, 4
-	bgeu	$a1, $a0, .LBB4_151
-.LBB4_143:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$a1, $a0, .LBB4_198
+.LBB4_147:                              # =>This Inner Loop Header: Depth=1
 	ld.hu	$a5, $a2, 0
 	move	$a4, $a3
-	bnez	$a5, .LBB4_142
-# %bb.144:                              #   in Loop: Header=BB4_143 Depth=1
+	bnez	$a5, .LBB4_146
+# %bb.148:                              #   in Loop: Header=BB4_147 Depth=1
 	ld.hu	$a4, $a2, -2
-	b	.LBB4_142
-.LBB4_145:
-	beqz	$s5, .LBB4_151
-# %bb.146:
+	b	.LBB4_146
+.LBB4_149:
+	beqz	$s5, .LBB4_198
+# %bb.150:
 	move	$a0, $zero
 	move	$a1, $s4
-	b	.LBB4_148
-.LBB4_147:                              #   in Loop: Header=BB4_148 Depth=1
+	b	.LBB4_152
+.LBB4_151:                              #   in Loop: Header=BB4_152 Depth=1
 	ori	$a2, $zero, 255
 	st.b	$a2, $a1, 0
 	st.b	$a2, $a1, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 2
-	bgeu	$a0, $s5, .LBB4_151
-.LBB4_148:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$a0, $s5, .LBB4_198
+.LBB4_152:                              # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a2, $s2, $a0
-	bnez	$a2, .LBB4_147
-# %bb.149:                              #   in Loop: Header=BB4_148 Depth=1
+	bnez	$a2, .LBB4_151
+# %bb.153:                              #   in Loop: Header=BB4_152 Depth=1
 	add.d	$a2, $s2, $a0
 	ld.bu	$a3, $a2, 1
-	bnez	$a3, .LBB4_147
-# %bb.150:                              #   in Loop: Header=BB4_148 Depth=1
+	bnez	$a3, .LBB4_151
+# %bb.154:                              #   in Loop: Header=BB4_152 Depth=1
 	ld.b	$a3, $a2, 3
 	st.b	$a3, $a1, 0
 	ld.bu	$a2, $a2, 2
 	st.b	$a2, $a1, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 2
-	bltu	$a0, $s5, .LBB4_148
-.LBB4_151:
-	add.d	$s7, $s2, $s5
-	add.d	$s4, $s4, $s5
-	bne	$s3, $s5, .LBB4_153
-.LBB4_152:
-	move	$s3, $zero
-	b	.LBB4_97
-.LBB4_153:
-	sub.d	$s3, $s3, $s5
-	pcaddu18i	$ra, %call36(__errno_location)
-	jirl	$ra, $ra, 0
-.LBB4_154:
-	ori	$a1, $zero, 7
-	st.w	$a1, $a0, 0
-	b	.LBB4_97
+	bltu	$a0, $s5, .LBB4_152
+	b	.LBB4_198
 .LBB4_155:
 	ori	$a4, $zero, 126
 	ori	$a5, $zero, 224
@@ -1362,18 +1371,18 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1696)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	move	$s6, $zero
-	move	$s7, $zero
+	move	$s8, $zero
 	lu12i.w	$a0, 15
 	ori	$fp, $a0, 4095
 .LBB4_156:                              # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a1, $s2, $s7
-	add.d	$a0, $s2, $s7
+	ldx.bu	$a1, $s2, $s8
+	add.d	$a0, $s2, $s8
 	bltu	$a4, $a1, .LBB4_158
 # %bb.157:                              #   in Loop: Header=BB4_156 Depth=1
 	stx.b	$zero, $s4, $s6
 	ld.b	$a0, $a0, 0
 	add.d	$a1, $s4, $s6
-	addi.d	$s7, $s7, 1
+	addi.d	$s8, $s8, 1
 	st.b	$a0, $a1, 1
 	b	.LBB4_170
 .LBB4_158:                              #   in Loop: Header=BB4_156 Depth=1
@@ -1392,7 +1401,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	add.d	$a2, $s4, $s6
 	bstrins.d	$a0, $a1, 63, 6
 	st.b	$a0, $a2, 1
-	addi.d	$s7, $s7, 2
+	addi.d	$s8, $s8, 2
 	b	.LBB4_170
 .LBB4_162:                              #   in Loop: Header=BB4_156 Depth=1
 	ld.b	$a2, $a0, 1
@@ -1409,7 +1418,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	add.d	$a2, $s4, $s6
 	bstrins.d	$a0, $a1, 63, 6
 	st.b	$a0, $a2, 1
-	addi.d	$s7, $s7, 3
+	addi.d	$s8, $s8, 3
 	b	.LBB4_170
 .LBB4_165:                              #   in Loop: Header=BB4_156 Depth=1
 	andi	$a1, $a1, 248
@@ -1432,10 +1441,10 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ori	$a5, $zero, 224
 	ori	$a4, $zero, 126
 	stx.h	$fp, $s4, $s6
-	addi.d	$s7, $s7, 4
+	addi.d	$s8, $s8, 4
 .LBB4_170:                              #   in Loop: Header=BB4_156 Depth=1
 	addi.d	$s6, $s6, 2
-	bgeu	$s7, $s3, .LBB4_173
+	bgeu	$s8, $s3, .LBB4_173
 # %bb.171:                              #   in Loop: Header=BB4_156 Depth=1
 	bltu	$s6, $s1, .LBB4_156
 	b	.LBB4_173
@@ -1445,14 +1454,14 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 .LBB4_173:
-	sub.d	$s3, $s3, $s7
-	add.d	$s7, $s2, $s7
+	sub.d	$s3, $s3, $s8
+	add.d	$s8, $s2, $s8
 	add.d	$s4, $s4, $s6
-	beqz	$s3, .LBB4_152
+	beqz	$s3, .LBB4_199
 # %bb.174:
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
-	beq	$s1, $s6, .LBB4_154
+	beq	$s1, $s6, .LBB4_201
 # %bb.175:
 	sub.d	$s2, $s1, $s6
 	ori	$a1, $zero, 84
@@ -1464,7 +1473,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ld.d	$a3, $s0, 96
 	move	$a1, $a0
 	sub.d	$a2, $s4, $a2
-	sub.d	$a3, $s7, $a3
+	sub.d	$a3, $s8, $a3
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	move	$a4, $s3
@@ -1472,15 +1481,15 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	st.b	$zero, $s4, 0
-	ld.b	$a0, $s7, 0
-	addi.d	$s7, $s7, 1
+	ld.b	$a0, $s8, 0
+	addi.d	$s8, $s8, 1
 	st.b	$a0, $s4, 1
 	addi.d	$s4, $s4, 2
 	addi.d	$s3, $s3, -1
 	b	.LBB4_97
 .LBB4_176:
 	ori	$a4, $zero, 255
-	beq	$a3, $a4, .LBB4_188
+	beq	$a3, $a4, .LBB4_193
 # %bb.177:
 	ori	$a4, $zero, 254
 	bne	$a3, $a4, .LBB4_69
@@ -1506,15 +1515,43 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ori	$a3, $zero, 2
 	b	.LBB4_68
 .LBB4_181:
+	srli.d	$a0, $a0, 1
+	ori	$a3, $zero, 31
+	addi.d	$a1, $a0, 1
+	bgeu	$s5, $a3, .LBB4_195
+# %bb.182:
+	move	$a3, $zero
+.LBB4_183:
+	move	$a4, $a1
+	bstrins.d	$a4, $zero, 2, 0
+	slli.d	$a0, $a4, 1
+	sub.d	$a5, $a3, $a4
+	alsl.d	$a6, $a3, $s2, 1
+	alsl.d	$a2, $a3, $a2, 1
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	sub.d	$a2, $a2, $a3
+	add.d	$a2, $t3, $a2
+.LBB4_184:                              # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, 0
+	vshuf4i.b	$vr0, $vr0, 177
+	vst	$vr0, $a2, 0
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, 16
+	addi.d	$a2, $a2, 16
+	bnez	$a5, .LBB4_184
+# %bb.185:
+	bne	$a1, $a4, .LBB4_128
+	b	.LBB4_198
+.LBB4_186:
 	ori	$a2, $zero, 16
 	pcalau12i	$a6, %pc_hi20(.LCPI4_4)
 	pcalau12i	$a5, %pc_hi20(.LCPI4_5)
 	pcalau12i	$a4, %pc_hi20(.LCPI4_6)
 	pcalau12i	$a3, %pc_hi20(.LCPI4_7)
-	bgeu	$a0, $a2, .LBB4_190
-# %bb.182:
+	bgeu	$a0, $a2, .LBB4_202
+# %bb.187:
 	move	$a2, $zero
-.LBB4_183:
+.LBB4_188:
 	move	$a7, $a2
 	bstrpick.d	$a2, $a0, 62, 3
 	slli.d	$a2, $a2, 3
@@ -1529,7 +1566,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	vor.v	$vr3, $vr3, $vr4
 	sub.d	$a3, $a7, $a2
 	add.d	$a4, $s2, $a7
-.LBB4_184:                              # =>This Inner Loop Header: Depth=1
+.LBB4_189:                              # =>This Inner Loop Header: Depth=1
 	vslli.d	$vr4, $vr0, 1
 	vslli.d	$vr5, $vr1, 1
 	vslli.d	$vr6, $vr2, 1
@@ -1574,28 +1611,65 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	vaddi.du	$vr0, $vr0, 8
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 8
-	bnez	$a3, .LBB4_184
-# %bb.185:
+	bnez	$a3, .LBB4_189
+# %bb.190:
 	ld.d	$t3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$t4, $sp, 16                    # 8-byte Folded Reload
-	bne	$a0, $a2, .LBB4_131
-	b	.LBB4_133
-.LBB4_186:
+	ld.d	$t5, $sp, 8                     # 8-byte Folded Reload
+	bne	$a0, $a2, .LBB4_135
+	b	.LBB4_137
+.LBB4_191:
 	ori	$a3, $zero, 60
 	bne	$a2, $a3, .LBB4_69
-# %bb.187:
+# %bb.192:
 	pcalau12i	$a1, %pc_hi20(.L.str.1665)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1665)
 	b	.LBB4_69
-.LBB4_188:
+.LBB4_193:
 	ori	$a3, $zero, 254
 	bne	$a2, $a3, .LBB4_69
-# %bb.189:
+# %bb.194:
 	ori	$a0, $zero, 4
 	pcalau12i	$a1, %pc_hi20(.L.str.1682)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1682)
 	b	.LBB4_60
-.LBB4_190:
+.LBB4_195:
+	andi	$a4, $a1, 8
+	move	$a3, $a1
+	bstrins.d	$a3, $zero, 3, 0
+	slli.d	$a0, $a3, 1
+	move	$a5, $s4
+	move	$a6, $s2
+	move	$a7, $a3
+.LBB4_196:                              # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a6, 0
+	vld	$vr1, $a6, 16
+	vshuf4i.b	$vr0, $vr0, 177
+	vshuf4i.b	$vr1, $vr1, 177
+	vst	$vr1, $a5, 16
+	vst	$vr0, $a5, 0
+	addi.d	$a7, $a7, -16
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
+	bnez	$a7, .LBB4_196
+# %bb.197:
+	bne	$a1, $a3, .LBB4_207
+.LBB4_198:
+	add.d	$s8, $s2, $s5
+	add.d	$s4, $s4, $s5
+	bne	$s3, $s5, .LBB4_200
+.LBB4_199:
+	move	$s3, $zero
+	b	.LBB4_97
+.LBB4_200:
+	sub.d	$s3, $s3, $s5
+	pcaddu18i	$ra, %call36(__errno_location)
+	jirl	$ra, $ra, 0
+.LBB4_201:
+	ori	$a1, $zero, 7
+	st.w	$a1, $a0, 0
+	b	.LBB4_97
+.LBB4_202:
 	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
 	vld	$vr0, $a2, %pc_lo12(.LCPI4_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI4_1)
@@ -1613,7 +1687,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	andi	$a7, $a0, 8
 	move	$t0, $s2
 	move	$t1, $a2
-.LBB4_191:                              # =>This Inner Loop Header: Depth=1
+.LBB4_203:                              # =>This Inner Loop Header: Depth=1
 	vslli.d	$vr8, $vr0, 1
 	vslli.d	$vr9, $vr1, 1
 	vslli.d	$vr10, $vr2, 1
@@ -1697,16 +1771,19 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	vaddi.du	$vr0, $vr0, 16
 	addi.d	$t1, $t1, -16
 	addi.d	$t0, $t0, 16
-	bnez	$t1, .LBB4_191
-# %bb.192:
-	beq	$a0, $a2, .LBB4_133
-# %bb.193:
-	bnez	$a7, .LBB4_183
-	b	.LBB4_131
-.LBB4_194:
+	bnez	$t1, .LBB4_203
+# %bb.204:
+	beq	$a0, $a2, .LBB4_137
+# %bb.205:
+	bnez	$a7, .LBB4_188
+	b	.LBB4_135
+.LBB4_206:
 	pcalau12i	$a1, %pc_hi20(.L.str.1666)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1666)
 	b	.LBB4_69
+.LBB4_207:
+	bnez	$a4, .LBB4_183
+	b	.LBB4_128
 .Lfunc_end4:
 	.size	encoding_norm_readline, .Lfunc_end4-encoding_norm_readline
 	.section	.rodata,"a",@progbits
@@ -1716,14 +1793,14 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	.word	.LBB4_89-.LJTI4_0
 	.word	.LBB4_123-.LJTI4_0
 	.word	.LBB4_89-.LJTI4_0
-	.word	.LBB4_134-.LJTI4_0
-	.word	.LBB4_140-.LJTI4_0
-	.word	.LBB4_145-.LJTI4_0
-	.word	.LBB4_139-.LJTI4_0
+	.word	.LBB4_138-.LJTI4_0
+	.word	.LBB4_144-.LJTI4_0
+	.word	.LBB4_149-.LJTI4_0
+	.word	.LBB4_143-.LJTI4_0
 	.word	.LBB4_123-.LJTI4_0
 	.word	.LBB4_155-.LJTI4_0
-	.word	.LBB4_126-.LJTI4_0
-	.word	.LBB4_126-.LJTI4_0
+	.word	.LBB4_130-.LJTI4_0
+	.word	.LBB4_130-.LJTI4_0
 	.size	.LJTI4_0, 44
                                         # -- End function
 	.text

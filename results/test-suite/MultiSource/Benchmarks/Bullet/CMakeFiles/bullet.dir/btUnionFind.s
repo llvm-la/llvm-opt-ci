@@ -281,7 +281,17 @@ _ZN11btUnionFind8allocateEi:            # @_ZN11btUnionFind8allocateEi
 	.size	_ZN11btUnionFind8allocateEi, .Lfunc_end4-_ZN11btUnionFind8allocateEi
 	.cfi_endproc
                                         # -- End function
-	.globl	_ZN11btUnionFind5resetEi        # -- Begin function _ZN11btUnionFind5resetEi
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN11btUnionFind5resetEi
+	.type	.LCPI5_0,@object
+.LCPI5_0:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.size	.LCPI5_0, 16
+	.text
+	.globl	_ZN11btUnionFind5resetEi
 	.p2align	2
 	.prefalign	5, .Lfunc_end5, nop
 	.type	_ZN11btUnionFind5resetEi,@function
@@ -390,28 +400,29 @@ _ZN11btUnionFind5resetEi:               # @_ZN11btUnionFind5resetEi
 	blez	$fp, .LBB5_26
 # %bb.19:
 	ld.d	$a1, $s0, 16
-	ori	$a2, $zero, 1
-	bne	$fp, $a2, .LBB5_21
+	ori	$a0, $zero, 4
+	bgeu	$fp, $a0, .LBB5_21
 # %bb.20:
 	move	$a0, $zero
 	b	.LBB5_24
 .LBB5_21:
-	bstrpick.d	$a0, $fp, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a3, $a1, 8
-	ori	$a4, $zero, 1
-	move	$a5, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI5_0)
+	bstrpick.d	$a0, $fp, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.w	$vr1, 1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB5_22:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a6, $a4, -1
-	st.w	$a6, $a3, -8
-	st.w	$a4, $a3, 0
-	st.w	$a2, $a3, -4
-	st.w	$a2, $a3, 4
-	addi.d	$a3, $a3, 16
-	addi.d	$a5, $a5, -2
-	addi.d	$a4, $a4, 2
-	bnez	$a5, .LBB5_22
+	vilvl.w	$vr2, $vr1, $vr0
+	vilvh.w	$vr3, $vr1, $vr0
+	vst	$vr3, $a2, 16
+	vst	$vr2, $a2, 0
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB5_22
 # %bb.23:
 	beq	$a0, $fp, .LBB5_26
 .LBB5_24:

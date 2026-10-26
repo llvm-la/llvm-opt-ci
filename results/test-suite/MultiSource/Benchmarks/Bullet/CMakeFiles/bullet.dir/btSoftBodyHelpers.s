@@ -4169,12 +4169,12 @@ _ZN17btSoftBodyHelpers10CreateRopeER19btSoftBodyWorldInfoRK9btVector3S4_ii: # @_
 	vextrins.w	$vr12, $vr2, 16
 	vori.b	$vr13, $vr6, 0
 	vextrins.w	$vr13, $vr6, 16
-	addi.d	$a2, $s2, 16
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 1
-	vreplgr2vr.d	$vr14, $a3
+	ori	$a2, $zero, 0
+	lu32i.d	$a2, 1
+	vreplgr2vr.d	$vr14, $a2
 	vrepli.b	$vr15, 0
 	vldi	$vr16, -1424
+	move	$a2, $s2
 	move	$a3, $s3
 	move	$a4, $a0
 	.p2align	4, , 16
@@ -4188,18 +4188,16 @@ _ZN17btSoftBodyHelpers10CreateRopeER19btSoftBodyWorldInfoRK9btVector3S4_ii: # @_
 	vslli.d	$vr19, $vr19, 32
 	vilvl.w	$vr18, $vr15, $vr18
 	vor.v	$vr18, $vr19, $vr18
-	vpickve2gr.d	$a5, $vr17, 0
-	srli.d	$a6, $a5, 32
-	bstrpick.d	$a5, $a5, 31, 0
-	vstelm.d	$vr18, $a2, -16, 0
-	vstelm.d	$vr18, $a2, 0, 1
-	st.d	$a5, $a2, -8
-	st.d	$a6, $a2, 8
+	vilvl.w	$vr17, $vr15, $vr17
+	vpackev.d	$vr19, $vr17, $vr18
+	vpackod.d	$vr17, $vr17, $vr18
+	vst	$vr17, $a2, 16
+	vst	$vr19, $a2, 0
 	vstelm.d	$vr16, $a3, 0, 0
 	vaddi.wu	$vr14, $vr14, 2
-	addi.d	$a2, $a2, 32
 	addi.d	$a4, $a4, -2
 	addi.d	$a3, $a3, 8
+	addi.d	$a2, $a2, 32
 	bnez	$a4, .LBB11_4
 # %bb.5:
 	beq	$a0, $a1, .LBB11_8
@@ -4364,15 +4362,8 @@ GCC_except_table11:
 .Lttbase3:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiib
-	.type	.LCPI12_0,@object
-.LCPI12_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI12_0, 16
 	.text
-	.globl	_ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiib
+	.globl	_ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiib # -- Begin function _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiib
 	.p2align	2
 	.prefalign	5, .Lfunc_end12, nop
 	.type	_ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiib,@function
@@ -4382,27 +4373,27 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception4
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 120                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 72                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	.cfi_def_cfa_offset 208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 56                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4429,21 +4420,21 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	move	$fp, $a6
 	blt	$a6, $t0, .LBB12_31
 # %bb.2:
-	move	$s7, $a7
+	move	$s1, $a7
 	move	$s0, $a5
-	move	$s1, $a4
+	move	$s2, $a4
 	move	$s4, $a3
 	move	$s8, $a2
 	move	$s5, $a1
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 224
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 208
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	mul.w	$s3, $fp, $a5
 	slli.d	$a0, $s3, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	move	$s7, $a0
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	slli.d	$a0, $s3, 2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -4452,91 +4443,88 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	addi.d	$a1, $fp, -1
 	bstrpick.d	$a1, $a1, 31, 0
 	fld.s	$fa0, $s5, 0
-	fld.s	$fa2, $s4, 0
+	fld.s	$fa3, $s4, 0
 	fld.s	$fa1, $s5, 4
-	fld.s	$fa3, $s4, 4
-	movgr2fr.d	$fa4, $a1
-	ffint.s.l	$fa4, $fa4
-	fst.s	$fa4, $sp, 48                   # 4-byte Folded Spill
-	fst.s	$fa0, $sp, 56                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa2, $fa0
-	fst.s	$fa0, $sp, 44                   # 4-byte Folded Spill
-	fst.s	$fa1, $sp, 52                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa3, $fa1
-	fst.s	$fa0, $sp, 40                   # 4-byte Folded Spill
+	fld.s	$fa4, $s4, 4
+	movgr2fr.d	$fa2, $a1
+	ffint.s.l	$fa2, $fa2
+	fst.s	$fa2, $sp, 40                   # 4-byte Folded Spill
+	fsub.s	$fa2, $fa3, $fa0
+	fst.s	$fa2, $sp, 36                   # 4-byte Folded Spill
+	fsub.s	$fa4, $fa4, $fa1
 	fld.s	$fa5, $s5, 8
-	fld.s	$fa2, $s4, 8
+	fld.s	$ft1, $s4, 8
 	fld.s	$fa6, $s8, 0
-	fld.s	$fa3, $s1, 0
+	fld.s	$ft2, $s2, 0
 	fld.s	$fa7, $s8, 4
-	fld.s	$ft3, $s1, 4
+	fld.s	$ft3, $s2, 4
 	fld.s	$ft0, $s8, 8
-	fld.s	$ft4, $s1, 8
-	fsub.s	$ft1, $fa2, $fa5
-	fsub.s	$ft2, $fa3, $fa6
+	fld.s	$ft4, $s2, 8
+	fsub.s	$ft1, $ft1, $fa5
+	fsub.s	$ft2, $ft2, $fa6
 	fsub.s	$ft3, $ft3, $fa7
 	fsub.s	$ft4, $ft4, $ft0
-	addi.d	$s1, $s0, -1
-	bstrpick.d	$a1, $s1, 31, 0
-	movgr2fr.d	$fa2, $a1
-	ffint.s.l	$ft5, $fa2
-	bstrpick.d	$a4, $s0, 30, 1
-	slli.d	$a1, $a4, 1
+	addi.d	$s2, $s0, -1
+	bstrpick.d	$a1, $s2, 31, 0
+	movgr2fr.d	$ft5, $a1
+	ffint.s.l	$ft5, $ft5
+	bstrpick.d	$a5, $s0, 30, 1
+	slli.d	$a1, $a5, 1
 	vori.b	$vr14, $vr13, 0
 	vextrins.w	$vr14, $vr13, 16
-	alsl.d	$a2, $a4, $s3, 3
-	slli.d	$a3, $s0, 2
-	slli.d	$a4, $a4, 5
-	add.d	$a4, $a4, $s2
-	addi.d	$a4, $a4, 8
-	slli.d	$a5, $s0, 4
+	slli.d	$a2, $s0, 2
+	slli.d	$a3, $s0, 4
+	alsl.d	$a4, $a5, $s3, 3
+	slli.d	$a5, $a5, 5
+	add.d	$a5, $a5, $s7
+	addi.d	$a5, $a5, 8
 	move	$a6, $s0
 	bstrins.d	$a6, $zero, 30, 1
-	pcalau12i	$a7, %pc_hi20(.LCPI12_0)
-	vld	$vr2, $a7, %pc_lo12(.LCPI12_0)
 	ori	$a7, $zero, 0
 	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr3, $a7
-	vrepli.b	$vr17, 0
-	vldi	$vr18, -1424
+	vreplgr2vr.d	$vr15, $a7
+	vrepli.b	$vr16, 0
+	vldi	$vr17, -1424
 	lu12i.w	$a7, 260096
+	move	$t0, $s7
+	move	$t1, $s3
 	b	.LBB12_4
 	.p2align	4, , 16
 .LBB12_3:                               #   in Loop: Header=BB12_4 Depth=1
 	addi.d	$a0, $a0, 1
-	add.d	$a2, $a2, $a3
-	add.d	$a4, $a4, $a5
+	add.d	$t1, $t1, $a2
+	add.d	$t0, $t0, $a3
+	add.d	$a4, $a4, $a2
+	add.d	$a5, $a5, $a3
 	beq	$a0, $fp, .LBB12_8
 .LBB12_4:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_5 Depth 2
                                         #     Child Loop BB12_7 Depth 2
-	srli.d	$t0, $a0, 1
-	andi	$t1, $a0, 1
-	or	$t0, $t1, $t0
-	movgr2fr.d	$ft7, $t0
-	ffint.s.l	$ft7, $ft7
-	fadd.s	$ft7, $ft7, $ft7
-	slti	$t0, $a0, 0
-	movgr2fr.d	$ft8, $a0
-	ffint.s.l	$ft8, $ft8
-	movgr2cf	$fcc0, $t0
-	fsel	$ft7, $ft8, $ft7, $fcc0
-	fld.s	$fa0, $sp, 48                   # 4-byte Folded Reload
-	fdiv.s	$ft7, $ft7, $fa0
-	fld.s	$fa0, $sp, 56                   # 4-byte Folded Reload
-	fld.s	$fa1, $sp, 44                   # 4-byte Folded Reload
-	fmadd.s	$ft11, $fa1, $ft7, $fa0
-	fld.s	$fa0, $sp, 52                   # 4-byte Folded Reload
-	fld.s	$fa1, $sp, 40                   # 4-byte Folded Reload
-	fmadd.s	$ft12, $fa1, $ft7, $fa0
-	fmadd.s	$ft13, $ft1, $ft7, $fa5
-	fmadd.s	$ft8, $ft2, $ft7, $fa6
-	fmadd.s	$ft15, $ft3, $ft7, $fa7
-	fmadd.s	$ft7, $ft4, $ft7, $ft0
-	fsub.s	$ft14, $ft8, $ft11
-	fsub.s	$ft15, $ft15, $ft12
-	fsub.s	$fs0, $ft7, $ft13
-	mul.d	$t0, $a0, $s0
+	srli.d	$t2, $a0, 1
+	andi	$t3, $a0, 1
+	or	$t2, $t3, $t2
+	movgr2fr.d	$ft10, $t2
+	ffint.s.l	$ft10, $ft10
+	fadd.s	$ft10, $ft10, $ft10
+	slti	$t2, $a0, 0
+	movgr2fr.d	$ft11, $a0
+	ffint.s.l	$ft11, $ft11
+	movgr2cf	$fcc0, $t2
+	fsel	$ft10, $ft11, $ft10, $fcc0
+	fld.s	$fa2, $sp, 40                   # 4-byte Folded Reload
+	fdiv.s	$ft13, $ft10, $fa2
+	fld.s	$fa2, $sp, 36                   # 4-byte Folded Reload
+	fmadd.s	$ft10, $fa2, $ft13, $fa0
+	fmadd.s	$ft11, $fa4, $ft13, $fa1
+	fmadd.s	$ft12, $ft1, $ft13, $fa5
+	fmadd.s	$ft14, $ft2, $ft13, $fa6
+	fmadd.s	$ft15, $ft3, $ft13, $fa7
+	fmadd.s	$fs0, $ft4, $ft13, $ft0
+	fsub.s	$ft13, $ft14, $ft10
+	fsub.s	$ft14, $ft15, $ft11
+	fsub.s	$ft15, $fs0, $ft12
+	vori.b	$vr24, $vr18, 0
+	vextrins.w	$vr24, $vr18, 16
 	vori.b	$vr25, $vr19, 0
 	vextrins.w	$vr25, $vr19, 16
 	vori.b	$vr26, $vr20, 0
@@ -4547,71 +4535,62 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	vextrins.w	$vr28, $vr22, 16
 	vori.b	$vr29, $vr23, 0
 	vextrins.w	$vr29, $vr23, 16
-	vori.b	$vr30, $vr24, 0
-	vextrins.w	$vr30, $vr24, 16
-	vreplgr2vr.d	$vr31, $t0
-	move	$t0, $a1
-	vori.b	$vr15, $vr2, 0
-	vori.b	$vr16, $vr3, 0
+	move	$t2, $t0
+	move	$t3, $t1
+	move	$t4, $a1
+	vori.b	$vr30, $vr15, 0
 	.p2align	4, , 16
 .LBB12_5:                               #   Parent Loop BB12_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vffint.s.wu	$vr0, $vr16
-	vfdiv.s	$vr0, $vr0, $vr14
-	vfmadd.s	$vr4, $vr28, $vr0, $vr25
-	vfmadd.s	$vr1, $vr29, $vr0, $vr26
-	vfmadd.s	$vr0, $vr30, $vr0, $vr27
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vilvl.w	$vr4, $vr17, $vr4
-	vor.v	$vr1, $vr1, $vr4
-	vpickve2gr.d	$t1, $vr0, 0
-	srli.d	$t2, $t1, 32
-	bstrpick.d	$t1, $t1, 31, 0
-	vadd.d	$vr0, $vr15, $vr31
-	vpickve2gr.d	$t3, $vr0, 0
-	alsl.d	$t4, $t3, $s2, 4
-	vpickve2gr.d	$t5, $vr0, 1
-	alsl.d	$t5, $t5, $s2, 4
-	vstelm.d	$vr1, $t4, 0, 0
-	vstelm.d	$vr1, $t5, 0, 1
-	st.d	$t1, $t4, 8
-	st.d	$t2, $t5, 8
-	alsl.d	$t1, $t3, $s3, 2
-	vstelm.d	$vr18, $t1, 0, 0
-	vaddi.du	$vr15, $vr15, 2
-	addi.d	$t0, $t0, -2
-	vaddi.wu	$vr16, $vr16, 2
-	bnez	$t0, .LBB12_5
+	vffint.s.wu	$vr31, $vr30
+	vfdiv.s	$vr31, $vr31, $vr14
+	vfmadd.s	$vr2, $vr27, $vr31, $vr24
+	vfmadd.s	$vr3, $vr28, $vr31, $vr25
+	vfmadd.s	$vr31, $vr29, $vr31, $vr26
+	vshuf4i.w	$vr3, $vr3, 16
+	vslli.d	$vr3, $vr3, 32
+	vilvl.w	$vr2, $vr16, $vr2
+	vor.v	$vr2, $vr3, $vr2
+	vilvl.w	$vr3, $vr16, $vr31
+	vpackev.d	$vr31, $vr3, $vr2
+	vpackod.d	$vr2, $vr3, $vr2
+	vst	$vr2, $t2, 16
+	vst	$vr31, $t2, 0
+	vstelm.d	$vr17, $t3, 0, 0
+	vaddi.wu	$vr30, $vr30, 2
+	addi.d	$t4, $t4, -2
+	addi.d	$t3, $t3, 8
+	addi.d	$t2, $t2, 32
+	bnez	$t4, .LBB12_5
 # %bb.6:                                #   in Loop: Header=BB12_4 Depth=1
-	move	$t0, $a6
-	move	$t1, $a1
-	move	$t2, $a4
-	move	$t3, $a2
+	move	$t2, $a6
+	move	$t3, $a1
+	move	$t4, $a5
+	move	$t5, $a4
 	beq	$s0, $a1, .LBB12_3
 	.p2align	4, , 16
 .LBB12_7:                               #   Parent Loop BB12_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$t4, $t1, 31, 0
-	movgr2fr.d	$fa0, $t4
-	ffint.s.l	$fa0, $fa0
-	fdiv.s	$fa0, $fa0, $ft5
-	fmadd.s	$fa1, $ft14, $fa0, $ft11
-	fmadd.s	$fa4, $ft15, $fa0, $ft12
-	fmadd.s	$fa0, $fs0, $fa0, $ft13
-	movfr2gr.s	$t4, $fa1
-	movfr2gr.s	$t5, $fa4
-	bstrins.d	$t4, $t5, 63, 32
-	movfr2gr.s	$t5, $fa0
-	bstrpick.d	$t5, $t5, 31, 0
-	st.d	$t4, $t2, -8
-	st.d	$t5, $t2, 0
-	st.w	$a7, $t3, 0
-	addi.d	$t3, $t3, 4
-	addi.d	$t2, $t2, 16
-	addi.d	$t0, $t0, -1
-	addi.w	$t1, $t1, 1
-	bnez	$t0, .LBB12_7
+	bstrpick.d	$t6, $t3, 31, 0
+	movgr2fr.d	$fa2, $t6
+	ffint.s.l	$fa2, $fa2
+	fdiv.s	$fa2, $fa2, $ft5
+	fmadd.s	$fa3, $ft13, $fa2, $ft10
+	fmadd.s	$fs0, $ft14, $fa2, $ft11
+	fmadd.s	$fa2, $ft15, $fa2, $ft12
+	movfr2gr.s	$t6, $fa3
+	movfr2gr.s	$t7, $fs0
+	bstrins.d	$t6, $t7, 63, 32
+	movfr2gr.s	$t7, $fa2
+	bstrpick.d	$t7, $t7, 31, 0
+	st.d	$t6, $t4, -8
+	st.d	$t7, $t4, 0
+	st.w	$a7, $t5, 0
+	addi.d	$t5, $t5, 4
+	addi.d	$t4, $t4, 16
+	addi.d	$t2, $t2, -1
+	addi.w	$t3, $t3, 1
+	bnez	$t2, .LBB12_7
 	b	.LBB12_3
 .LBB12_8:
 	ori	$a0, $zero, 1496
@@ -4620,24 +4599,24 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 .Ltmp79:                                # EH_LABEL
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	move	$a3, $s2
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	move	$a3, $s7
 	move	$a4, $s3
 	pcaddu18i	$ra, %call36(_ZN10btSoftBodyC1EP19btSoftBodyWorldInfoiPK9btVector3PKf)
 	jirl	$ra, $ra, 0
 .Ltmp80:                                # EH_LABEL
 # %bb.9:
-	andi	$a0, $s7, 1
+	andi	$a0, $s1, 1
 	bnez	$a0, .LBB12_32
 # %bb.10:
-	andi	$a0, $s7, 2
+	andi	$a0, $s1, 2
 	bnez	$a0, .LBB12_33
 .LBB12_11:
-	andi	$a0, $s7, 4
+	andi	$a0, $s1, 4
 	bnez	$a0, .LBB12_34
 .LBB12_12:
-	andi	$a0, $s7, 8
+	andi	$a0, $s1, 8
 	beqz	$a0, .LBB12_14
 .LBB12_13:
 	addi.d	$a0, $fp, -1
@@ -4649,7 +4628,7 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
 .LBB12_14:
-	move	$a0, $s2
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
@@ -4657,20 +4636,20 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	jirl	$ra, $ra, 0
 	move	$s5, $zero
 	move	$s8, $zero
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB12_16
 	.p2align	4, , 16
 .LBB12_15:                              #   in Loop: Header=BB12_16 Depth=1
 	add.d	$s5, $s5, $s0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$s8, $a0
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	beq	$a0, $fp, .LBB12_31
 .LBB12_16:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_29 Depth 2
                                         #     Child Loop BB12_21 Depth 2
 	addi.w	$a0, $s8, 1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	bge	$a0, $fp, .LBB12_27
 # %bb.17:                               #   in Loop: Header=BB12_16 Depth=1
 	move	$fp, $zero
@@ -4729,7 +4708,7 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody10appendFaceEiiiPNS_8MaterialE)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB12_20
 # %bb.24:                               #   in Loop: Header=BB12_21 Depth=2
 	move	$a0, $s6
@@ -4753,7 +4732,7 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody10appendFaceEiiiPNS_8MaterialE)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB12_20
 # %bb.26:                               #   in Loop: Header=BB12_21 Depth=2
 	move	$a0, $s6
@@ -4783,26 +4762,26 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	b	.LBB12_28
 .LBB12_31:
 	move	$a0, $s6
-	fld.d	$fs7, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 112                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	fld.d	$fs7, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB12_32:
 	movgr2fr.w	$fa0, $zero
@@ -4810,15 +4789,15 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 2
+	andi	$a0, $s1, 2
 	beqz	$a0, .LBB12_11
 .LBB12_33:
-	addi.w	$a1, $s1, 0
+	addi.w	$a1, $s2, 0
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 4
+	andi	$a0, $s1, 4
 	beqz	$a0, .LBB12_12
 .LBB12_34:
 	addi.d	$a0, $fp, -1
@@ -4827,7 +4806,7 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 8
+	andi	$a0, $s1, 8
 	bnez	$a0, .LBB12_13
 	b	.LBB12_14
 .LBB12_35:
@@ -4890,15 +4869,8 @@ GCC_except_table12:
 .Lttbase4:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiibPf
-	.type	.LCPI13_0,@object
-.LCPI13_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI13_0, 16
 	.text
-	.globl	_ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiibPf
+	.globl	_ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiibPf # -- Begin function _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiibPf
 	.p2align	2
 	.prefalign	5, .Lfunc_end13, nop
 	.type	_ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_iiibPf,@function
@@ -4908,27 +4880,27 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception5
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	.cfi_def_cfa_offset 240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 136                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 128                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 120                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 88                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	.cfi_def_cfa_offset 224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 120                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 72                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4950,122 +4922,119 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	.cfi_offset 63, -152
 	ori	$t0, $zero, 2
 	move	$s4, $zero
+	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
 	blt	$a5, $t0, .LBB13_34
 # %bb.1:
 	move	$s0, $a6
 	blt	$a6, $t0, .LBB13_34
 # %bb.2:
-	move	$s7, $a7
-	move	$fp, $a5
+	move	$s1, $a7
+	move	$s3, $a4
 	move	$s5, $a3
-	move	$s1, $a2
-	move	$s6, $a1
+	move	$s8, $a2
+	move	$s2, $a1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 248
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 240
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	mul.w	$s3, $s0, $a5
-	slli.d	$a0, $s3, 4
-	move	$s4, $a4
+	ld.d	$a0, $sp, 232
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 224
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	mul.w	$s4, $s0, $fp
+	slli.d	$a0, $s4, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	slli.d	$a0, $s3, 2
+	move	$s6, $a0
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	slli.d	$a0, $s4, 2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s7, $a0
 	move	$a0, $zero
-	addi.d	$s8, $s0, -1
-	bstrpick.d	$a1, $s8, 31, 0
-	fld.s	$fa0, $s6, 0
-	fld.s	$fa2, $s5, 0
-	fld.s	$fa1, $s6, 4
+	addi.d	$a1, $s0, -1
+	bstrpick.d	$a1, $a1, 31, 0
+	fld.s	$fa0, $s2, 0
+	fld.s	$fa3, $s5, 0
+	fld.s	$fa1, $s2, 4
 	fld.s	$fa4, $s5, 4
-	movgr2fr.d	$fa3, $a1
-	ffint.s.l	$fa3, $fa3
-	fst.s	$fa3, $sp, 32                   # 4-byte Folded Spill
-	fst.s	$fa0, $sp, 40                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa2, $fa0
-	fst.s	$fa0, $sp, 28                   # 4-byte Folded Spill
-	fsub.s	$fa0, $fa4, $fa1
-	fst.s	$fa0, $sp, 24                   # 4-byte Folded Spill
-	fld.s	$fa5, $s6, 8
-	fld.s	$fa2, $s5, 8
-	fld.s	$fa6, $s1, 0
-	fld.s	$ft2, $s4, 0
-	fld.s	$fa7, $s1, 4
-	fld.s	$ft3, $s4, 4
-	fld.s	$ft0, $s1, 8
-	fld.s	$ft4, $s4, 8
-	fsub.s	$ft1, $fa2, $fa5
+	movgr2fr.d	$fa2, $a1
+	ffint.s.l	$fa2, $fa2
+	fst.s	$fa2, $sp, 24                   # 4-byte Folded Spill
+	fsub.s	$fa3, $fa3, $fa0
+	fsub.s	$fa4, $fa4, $fa1
+	fld.s	$fa5, $s2, 8
+	fld.s	$ft1, $s5, 8
+	fld.s	$fa6, $s8, 0
+	fld.s	$ft2, $s3, 0
+	fld.s	$fa7, $s8, 4
+	fld.s	$ft3, $s3, 4
+	fld.s	$ft0, $s8, 8
+	fld.s	$ft4, $s3, 8
+	move	$s3, $fp
+	fsub.s	$ft1, $ft1, $fa5
 	fsub.s	$ft2, $ft2, $fa6
 	fsub.s	$ft3, $ft3, $fa7
 	fsub.s	$ft4, $ft4, $ft0
-	addi.d	$s1, $fp, -1
-	bstrpick.d	$a1, $s1, 31, 0
-	movgr2fr.d	$fa2, $a1
-	ffint.s.l	$fa0, $fa2
-	bstrpick.d	$a4, $fp, 30, 1
-	slli.d	$a1, $a4, 1
-	vori.b	$vr13, $vr0, 0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	vextrins.w	$vr13, $vr0, 16
-	alsl.d	$a2, $a4, $s3, 3
-	slli.d	$a3, $fp, 2
-	slli.d	$a4, $a4, 5
-	add.d	$a4, $a4, $s2
-	addi.d	$a4, $a4, 8
-	slli.d	$a5, $fp, 4
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$s2, $fp, -1
+	bstrpick.d	$a1, $s2, 31, 0
+	movgr2fr.d	$ft5, $a1
+	ffint.s.l	$fa2, $ft5
+	bstrpick.d	$a5, $fp, 30, 1
+	slli.d	$a1, $a5, 1
+	vori.b	$vr13, $vr2, 0
+	vst	$vr2, $sp, 32                   # 16-byte Folded Spill
+	vextrins.w	$vr13, $vr2, 16
+	slli.d	$a2, $fp, 2
+	slli.d	$a3, $fp, 4
+	alsl.d	$a4, $a5, $s7, 3
+	slli.d	$a5, $a5, 5
+	add.d	$a5, $a5, $s6
+	addi.d	$a5, $a5, 8
 	move	$a6, $fp
 	bstrins.d	$a6, $zero, 30, 1
-	pcalau12i	$a7, %pc_hi20(.LCPI13_0)
-	vld	$vr14, $a7, %pc_lo12(.LCPI13_0)
 	ori	$a7, $zero, 0
 	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr2, $a7
-	vrepli.b	$vr16, 0
-	vldi	$vr17, -1424
+	vreplgr2vr.d	$vr14, $a7
+	vrepli.b	$vr15, 0
+	vldi	$vr16, -1424
 	lu12i.w	$a7, 260096
+	move	$t0, $s6
+	move	$t1, $s7
 	b	.LBB13_4
 	.p2align	4, , 16
 .LBB13_3:                               #   in Loop: Header=BB13_4 Depth=1
 	addi.d	$a0, $a0, 1
-	add.d	$a2, $a2, $a3
-	add.d	$a4, $a4, $a5
+	add.d	$t1, $t1, $a2
+	add.d	$t0, $t0, $a3
+	add.d	$a4, $a4, $a2
+	add.d	$a5, $a5, $a3
 	beq	$a0, $s0, .LBB13_8
 .LBB13_4:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB13_5 Depth 2
                                         #     Child Loop BB13_7 Depth 2
-	srli.d	$t0, $a0, 1
-	andi	$t1, $a0, 1
-	or	$t0, $t1, $t0
-	movgr2fr.d	$ft7, $t0
-	ffint.s.l	$ft7, $ft7
-	fadd.s	$ft7, $ft7, $ft7
-	slti	$t0, $a0, 0
+	srli.d	$t2, $a0, 1
+	andi	$t3, $a0, 1
+	or	$t2, $t3, $t2
+	movgr2fr.d	$ft9, $t2
+	ffint.s.l	$ft9, $ft9
+	fadd.s	$ft9, $ft9, $ft9
+	slti	$t2, $a0, 0
 	movgr2fr.d	$ft10, $a0
 	ffint.s.l	$ft10, $ft10
-	movgr2cf	$fcc0, $t0
-	fsel	$ft7, $ft10, $ft7, $fcc0
-	fld.s	$fa0, $sp, 32                   # 4-byte Folded Reload
-	fdiv.s	$ft7, $ft7, $fa0
-	fld.s	$fa0, $sp, 40                   # 4-byte Folded Reload
-	fld.s	$fa3, $sp, 28                   # 4-byte Folded Reload
-	fmadd.s	$ft10, $fa3, $ft7, $fa0
-	fld.s	$fa0, $sp, 24                   # 4-byte Folded Reload
-	fmadd.s	$ft11, $fa0, $ft7, $fa1
-	fmadd.s	$ft12, $ft1, $ft7, $fa5
-	fmadd.s	$ft13, $ft2, $ft7, $fa6
-	fmadd.s	$ft14, $ft3, $ft7, $fa7
-	fmadd.s	$ft7, $ft4, $ft7, $ft0
-	fsub.s	$ft13, $ft13, $ft10
-	fsub.s	$ft14, $ft14, $ft11
-	fsub.s	$ft15, $ft7, $ft12
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$t0, $a0, $t0
+	movgr2cf	$fcc0, $t2
+	fsel	$ft9, $ft10, $ft9, $fcc0
+	fld.s	$fa2, $sp, 24                   # 4-byte Folded Reload
+	fdiv.s	$ft12, $ft9, $fa2
+	fmadd.s	$ft9, $fa3, $ft12, $fa0
+	fmadd.s	$ft10, $fa4, $ft12, $fa1
+	fmadd.s	$ft11, $ft1, $ft12, $fa5
+	fmadd.s	$ft13, $ft2, $ft12, $fa6
+	fmadd.s	$ft14, $ft3, $ft12, $fa7
+	fmadd.s	$ft15, $ft4, $ft12, $ft0
+	fsub.s	$ft12, $ft13, $ft9
+	fsub.s	$ft13, $ft14, $ft10
+	fsub.s	$ft14, $ft15, $ft11
+	vori.b	$vr23, $vr17, 0
+	vextrins.w	$vr23, $vr17, 16
 	vori.b	$vr24, $vr18, 0
 	vextrins.w	$vr24, $vr18, 16
 	vori.b	$vr25, $vr19, 0
@@ -5076,73 +5045,63 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	vextrins.w	$vr27, $vr21, 16
 	vori.b	$vr28, $vr22, 0
 	vextrins.w	$vr28, $vr22, 16
-	vori.b	$vr29, $vr23, 0
-	vextrins.w	$vr29, $vr23, 16
-	vreplgr2vr.d	$vr30, $t0
-	move	$t0, $a1
-	vori.b	$vr31, $vr14, 0
-	vori.b	$vr15, $vr2, 0
+	move	$t2, $t0
+	move	$t3, $t1
+	move	$t4, $a1
+	vori.b	$vr29, $vr14, 0
 	.p2align	4, , 16
 .LBB13_5:                               #   Parent Loop BB13_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vffint.s.wu	$vr3, $vr15
-	vfdiv.s	$vr3, $vr3, $vr13
-	vfmadd.s	$vr0, $vr27, $vr3, $vr24
-	vfmadd.s	$vr4, $vr28, $vr3, $vr25
-	vfmadd.s	$vr3, $vr29, $vr3, $vr26
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vilvl.w	$vr0, $vr16, $vr0
-	vor.v	$vr0, $vr4, $vr0
-	vpickve2gr.d	$t1, $vr3, 0
-	srli.d	$t2, $t1, 32
-	bstrpick.d	$t1, $t1, 31, 0
-	vadd.d	$vr3, $vr31, $vr30
-	vpickve2gr.d	$t3, $vr3, 0
-	alsl.d	$t4, $t3, $s2, 4
-	vpickve2gr.d	$t5, $vr3, 1
-	alsl.d	$t5, $t5, $s2, 4
-	vstelm.d	$vr0, $t4, 0, 0
-	vstelm.d	$vr0, $t5, 0, 1
-	st.d	$t1, $t4, 8
-	st.d	$t2, $t5, 8
-	alsl.d	$t1, $t3, $s3, 2
-	vstelm.d	$vr17, $t1, 0, 0
-	vaddi.du	$vr31, $vr31, 2
-	addi.d	$t0, $t0, -2
-	vaddi.wu	$vr15, $vr15, 2
-	bnez	$t0, .LBB13_5
+	vffint.s.wu	$vr30, $vr29
+	vfdiv.s	$vr30, $vr30, $vr13
+	vfmadd.s	$vr31, $vr26, $vr30, $vr23
+	vfmadd.s	$vr2, $vr27, $vr30, $vr24
+	vfmadd.s	$vr30, $vr28, $vr30, $vr25
+	vshuf4i.w	$vr2, $vr2, 16
+	vslli.d	$vr2, $vr2, 32
+	vilvl.w	$vr31, $vr15, $vr31
+	vor.v	$vr2, $vr2, $vr31
+	vilvl.w	$vr30, $vr15, $vr30
+	vpackev.d	$vr31, $vr30, $vr2
+	vpackod.d	$vr2, $vr30, $vr2
+	vst	$vr2, $t2, 16
+	vst	$vr31, $t2, 0
+	vstelm.d	$vr16, $t3, 0, 0
+	vaddi.wu	$vr29, $vr29, 2
+	addi.d	$t4, $t4, -2
+	addi.d	$t3, $t3, 8
+	addi.d	$t2, $t2, 32
+	bnez	$t4, .LBB13_5
 # %bb.6:                                #   in Loop: Header=BB13_4 Depth=1
-	move	$t0, $a6
-	move	$t1, $a1
-	move	$t2, $a4
-	move	$t3, $a2
-	ld.d	$t4, $sp, 80                    # 8-byte Folded Reload
-	vld	$vr15, $sp, 48                  # 16-byte Folded Reload
-	beq	$t4, $a1, .LBB13_3
+	move	$t2, $a6
+	move	$t3, $a1
+	move	$t4, $a5
+	move	$t5, $a4
+	vld	$vr25, $sp, 32                  # 16-byte Folded Reload
+	beq	$s3, $a1, .LBB13_3
 	.p2align	4, , 16
 .LBB13_7:                               #   Parent Loop BB13_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$t4, $t1, 31, 0
-	movgr2fr.d	$fa0, $t4
-	ffint.s.l	$fa0, $fa0
-	fdiv.s	$fa0, $fa0, $ft7
-	fmadd.s	$fa3, $ft13, $fa0, $ft10
-	fmadd.s	$fa4, $ft14, $fa0, $ft11
-	fmadd.s	$fa0, $ft15, $fa0, $ft12
-	movfr2gr.s	$t4, $fa3
-	movfr2gr.s	$t5, $fa4
-	bstrins.d	$t4, $t5, 63, 32
-	movfr2gr.s	$t5, $fa0
-	bstrpick.d	$t5, $t5, 31, 0
-	st.d	$t4, $t2, -8
-	st.d	$t5, $t2, 0
-	st.w	$a7, $t3, 0
-	addi.d	$t3, $t3, 4
-	addi.d	$t2, $t2, 16
-	addi.d	$t0, $t0, -1
-	addi.w	$t1, $t1, 1
-	bnez	$t0, .LBB13_7
+	bstrpick.d	$t6, $t3, 31, 0
+	movgr2fr.d	$fa2, $t6
+	ffint.s.l	$fa2, $fa2
+	fdiv.s	$fa2, $fa2, $fs1
+	fmadd.s	$ft15, $ft12, $fa2, $ft9
+	fmadd.s	$fs0, $ft13, $fa2, $ft10
+	fmadd.s	$fa2, $ft14, $fa2, $ft11
+	movfr2gr.s	$t6, $ft15
+	movfr2gr.s	$t7, $fs0
+	bstrins.d	$t6, $t7, 63, 32
+	movfr2gr.s	$t7, $fa2
+	bstrpick.d	$t7, $t7, 31, 0
+	st.d	$t6, $t4, -8
+	st.d	$t7, $t4, 0
+	st.w	$a7, $t5, 0
+	addi.d	$t5, $t5, 4
+	addi.d	$t4, $t4, 16
+	addi.d	$t2, $t2, -1
+	addi.w	$t3, $t3, 1
+	bnez	$t2, .LBB13_7
 	b	.LBB13_3
 .LBB13_8:
 	ori	$a0, $zero, 1496
@@ -5153,85 +5112,84 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 .Ltmp85:                                # EH_LABEL
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	move	$a3, $s2
-	move	$a4, $s3
+	move	$a3, $s6
+	move	$a4, $s7
 	pcaddu18i	$ra, %call36(_ZN10btSoftBodyC1EP19btSoftBodyWorldInfoiPK9btVector3PKf)
 	jirl	$ra, $ra, 0
 .Ltmp86:                                # EH_LABEL
 # %bb.9:
-	andi	$a0, $s7, 1
+	andi	$a0, $s1, 1
+	addi.d	$s5, $s0, -1
 	bnez	$a0, .LBB13_35
 # %bb.10:
-	andi	$a0, $s7, 2
+	andi	$a0, $s1, 2
 	bnez	$a0, .LBB13_36
 .LBB13_11:
-	andi	$a0, $s7, 4
+	andi	$a0, $s1, 4
 	bnez	$a0, .LBB13_37
 .LBB13_12:
-	andi	$a0, $s7, 8
+	andi	$a0, $s1, 8
 	bnez	$a0, .LBB13_38
 .LBB13_13:
-	andi	$a0, $s7, 16
+	andi	$a0, $s1, 16
 	bnez	$a0, .LBB13_39
 .LBB13_14:
-	andi	$a0, $s7, 32
+	andi	$a0, $s1, 32
 	bnez	$a0, .LBB13_40
 .LBB13_15:
-	andi	$a0, $s7, 64
+	andi	$a0, $s1, 64
 	bnez	$a0, .LBB13_41
 .LBB13_16:
-	andi	$a0, $s7, 128
+	andi	$a0, $s1, 128
 	bnez	$a0, .LBB13_42
 .LBB13_17:
-	andi	$a0, $s7, 256
+	andi	$a0, $s1, 256
 	beqz	$a0, .LBB13_19
 .LBB13_18:
-	bstrpick.d	$a0, $s8, 31, 1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $s1, 31, 1
+	bstrpick.d	$a0, $s5, 31, 1
+	mul.d	$a0, $a0, $s3
+	bstrpick.d	$a1, $s2, 31, 1
 	add.w	$a1, $a0, $a1
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
 .LBB13_19:
-	move	$a0, $s2
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$s6, $zero
+	move	$s8, $zero
 	move	$fp, $zero
 	move	$a0, $zero
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	frecip.s	$fs0, $fa0
-	addi.w	$a1, $s8, 0
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	addi.w	$a1, $s5, 0
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a1, $a1, 31, 0
 	movgr2fr.d	$fa0, $a1
 	ffint.s.l	$fa0, $fa0
 	frecip.s	$fs1, $fa0
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB13_21
 	.p2align	4, , 16
 .LBB13_20:                              #   in Loop: Header=BB13_21 Depth=1
-	add.d	$s6, $s6, $s2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	add.d	$s8, $s8, $s3
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	move	$a0, $a1
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	beq	$a1, $s0, .LBB13_34
 .LBB13_21:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB13_32 Depth 2
                                         #     Child Loop BB13_24 Depth 2
 	addi.w	$a1, $a0, 1
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	bge	$a1, $s0, .LBB13_30
 # %bb.22:                               #   in Loop: Header=BB13_21 Depth=1
-	move	$s7, $zero
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	move	$s6, $zero
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	sub.d	$a1, $a2, $a0
 	bstrpick.d	$a1, $a1, 31, 0
 	movgr2fr.d	$fa0, $a1
@@ -5242,7 +5200,7 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	movgr2fr.w	$fa0, $a0
 	ffint.s.w	$fa0, $fa0
 	fmul.s	$fs3, $fs1, $fa0
-	add.d	$s8, $s2, $s6
+	add.d	$s7, $s3, $s8
 	b	.LBB13_24
 	.p2align	4, , 16
 .LBB13_23:                              #   in Loop: Header=BB13_24 Depth=2
@@ -5253,17 +5211,17 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody10appendLinkEiiPNS_8MaterialEb)
 	jirl	$ra, $ra, 0
-	move	$s7, $s0
-	beq	$s2, $s0, .LBB13_20
+	move	$s6, $s0
+	beq	$s3, $s0, .LBB13_20
 .LBB13_24:                              #   Parent Loop BB13_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$s0, $s7, 1
-	add.w	$s1, $s6, $s7
-	add.w	$s5, $s8, $s7
-	bge	$s0, $s2, .LBB13_23
+	addi.w	$s0, $s6, 1
+	add.w	$s1, $s8, $s6
+	add.w	$s5, $s7, $s6
+	bge	$s0, $s3, .LBB13_23
 # %bb.25:                               #   in Loop: Header=BB13_24 Depth=2
 	addi.w	$s3, $s1, 1
-	add.w	$s2, $s0, $s8
+	add.w	$s2, $s0, $s7
 	move	$a0, $s4
 	move	$a1, $s1
 	move	$a2, $s3
@@ -5285,10 +5243,10 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody10appendFaceEiiiPNS_8MaterialE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	beqz	$a1, .LBB13_29
 # %bb.26:                               #   in Loop: Header=BB13_24 Depth=2
-	bstrpick.d	$a0, $s7, 31, 0
+	bstrpick.d	$a0, $s6, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.s.l	$fa0, $fa0
 	fmul.s	$fs4, $fs0, $fa0
@@ -5317,7 +5275,8 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	fst.s	$fs2, $s5, 36
 	fst.s	$fs4, $s5, 40
 	fst.s	$fs2, $s5, 44
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB13_28
 .LBB13_27:                              #   in Loop: Header=BB13_24 Depth=2
 	move	$a0, $s4
@@ -5329,9 +5288,8 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	jirl	$ra, $ra, 0
 .LBB13_28:                              #   in Loop: Header=BB13_24 Depth=2
 	addi.w	$fp, $fp, 12
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	move	$s7, $s0
-	bne	$s2, $s0, .LBB13_24
+	move	$s6, $s0
+	bne	$s3, $s0, .LBB13_24
 	b	.LBB13_20
 .LBB13_29:                              #   in Loop: Header=BB13_24 Depth=2
 	move	$a0, $s4
@@ -5341,7 +5299,8 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody10appendFaceEiiiPNS_8MaterialE)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a0, .LBB13_27
 	b	.LBB13_28
 	.p2align	4, , 16
@@ -5351,13 +5310,13 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	.p2align	4, , 16
 .LBB13_31:                              #   in Loop: Header=BB13_32 Depth=2
 	move	$a0, $s0
-	beq	$s2, $s0, .LBB13_20
+	beq	$s3, $s0, .LBB13_20
 .LBB13_32:                              #   Parent Loop BB13_21 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$s0, $a0, 1
-	bge	$s0, $s2, .LBB13_31
+	bge	$s0, $s3, .LBB13_31
 # %bb.33:                               #   in Loop: Header=BB13_32 Depth=2
-	add.w	$a1, $s6, $a0
+	add.w	$a1, $s8, $a0
 	addi.w	$a2, $a1, 1
 	move	$a0, $s4
 	move	$a3, $zero
@@ -5367,26 +5326,26 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	b	.LBB13_31
 .LBB13_34:
 	move	$a0, $s4
-	fld.d	$fs7, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 112                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 136                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	fld.d	$fs7, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 104                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 128                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .LBB13_35:
 	movgr2fr.w	$fa0, $zero
@@ -5394,76 +5353,71 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 2
+	andi	$a0, $s1, 2
 	beqz	$a0, .LBB13_11
 .LBB13_36:
-	addi.w	$a1, $s1, 0
+	addi.w	$a1, $s2, 0
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 4
+	andi	$a0, $s1, 4
 	beqz	$a0, .LBB13_12
 .LBB13_37:
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	mul.w	$a1, $s8, $a0
+	mul.w	$a1, $s5, $s3
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 8
+	andi	$a0, $s1, 8
 	beqz	$a0, .LBB13_13
 .LBB13_38:
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$a0, $s8, $a1
-	add.d	$a0, $a1, $a0
+	mul.d	$a0, $s5, $s3
+	add.d	$a0, $s3, $a0
 	addi.w	$a1, $a0, -1
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 16
+	andi	$a0, $s1, 16
 	beqz	$a0, .LBB13_14
 .LBB13_39:
-	bstrpick.d	$a1, $s1, 31, 1
+	bstrpick.d	$a1, $s2, 31, 1
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 32
+	andi	$a0, $s1, 32
 	beqz	$a0, .LBB13_15
 .LBB13_40:
-	bstrpick.d	$a0, $s8, 31, 1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	mul.w	$a1, $a0, $a1
+	bstrpick.d	$a0, $s5, 31, 1
+	mul.w	$a1, $a0, $s3
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 64
+	andi	$a0, $s1, 64
 	beqz	$a0, .LBB13_16
 .LBB13_41:
-	bstrpick.d	$a0, $s8, 31, 1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$a0, $a0, $a1
-	add.d	$a0, $a1, $a0
+	bstrpick.d	$a0, $s5, 31, 1
+	mul.d	$a0, $a0, $s3
+	add.d	$a0, $s3, $a0
 	addi.w	$a1, $a0, -1
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 128
+	andi	$a0, $s1, 128
 	beqz	$a0, .LBB13_17
 .LBB13_42:
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	mul.d	$a0, $s8, $a0
-	bstrpick.d	$a1, $s1, 31, 1
+	mul.d	$a0, $s5, $s3
+	bstrpick.d	$a1, $s2, 31, 1
 	add.w	$a1, $a0, $a1
 	movgr2fr.w	$fa0, $zero
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN10btSoftBody7setMassEif)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s7, 256
+	andi	$a0, $s1, 256
 	bnez	$a0, .LBB13_18
 	b	.LBB13_19
 .LBB13_43:

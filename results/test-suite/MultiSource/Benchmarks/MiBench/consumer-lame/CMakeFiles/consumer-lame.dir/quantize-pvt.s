@@ -1602,17 +1602,24 @@ scale_bitcount:                         # @scale_bitcount
 .Lfunc_end7:
 	.size	scale_bitcount, .Lfunc_end7-scale_bitcount
                                         # -- End function
-	.globl	scale_bitcount_lsf              # -- Begin function scale_bitcount_lsf
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function scale_bitcount_lsf
+	.type	.LCPI8_0,@object
+.LCPI8_0:
+	.word	1                               # 0x1
+	.word	4                               # 0x4
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.size	.LCPI8_0, 16
+	.text
+	.globl	scale_bitcount_lsf
 	.p2align	2
 	.prefalign	5, .Lfunc_end8, nop
 	.type	scale_bitcount_lsf,@function
 scale_bitcount_lsf:                     # @scale_bitcount_lsf
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a2, $a1, 64
 	sltu	$a4, $zero, $a2
 	ld.w	$a5, $a1, 24
@@ -1866,72 +1873,48 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bstrpick.d	$a5, $a5, 31, 0
 	addi.d	$t3, $a5, 1
 	bstrpick.d	$a5, $t3, 32, 3
+	pcalau12i	$t2, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $t2, %pc_lo12(.LCPI8_0)
 	slli.d	$t2, $a5, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a5, $a0, 92
+	vrepli.b	$vr1, 0
+	addi.d	$a5, $a0, 136
 	move	$t4, $t2
-	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB8_43:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t5, $a5, -4
-	ld.w	$t6, $a5, 8
-	ld.w	$t7, $a5, 20
-	ld.w	$t8, $a5, 32
-	vinsgr2vr.w	$vr2, $t5, 0
-	vinsgr2vr.w	$vr2, $t6, 1
-	vinsgr2vr.w	$vr2, $t7, 2
-	vinsgr2vr.w	$vr2, $t8, 3
-	ld.w	$t5, $a5, 44
-	ld.w	$t6, $a5, 56
-	ld.w	$t7, $a5, 68
-	ld.w	$t8, $a5, 80
-	vinsgr2vr.w	$vr3, $t5, 0
-	vinsgr2vr.w	$vr3, $t6, 1
-	vinsgr2vr.w	$vr3, $t7, 2
-	vinsgr2vr.w	$vr3, $t8, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$t5, $a5, 0
-	ld.w	$t6, $a5, 12
-	ld.w	$t7, $a5, 24
-	ld.w	$t8, $a5, 36
-	vinsgr2vr.w	$vr2, $t5, 0
-	vinsgr2vr.w	$vr2, $t6, 1
-	vinsgr2vr.w	$vr2, $t7, 2
-	vinsgr2vr.w	$vr2, $t8, 3
-	ld.w	$t5, $a5, 48
-	ld.w	$t6, $a5, 60
-	ld.w	$t7, $a5, 72
-	ld.w	$t8, $a5, 84
-	vinsgr2vr.w	$vr3, $t5, 0
-	vinsgr2vr.w	$vr3, $t6, 1
-	vinsgr2vr.w	$vr3, $t7, 2
-	vinsgr2vr.w	$vr3, $t8, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$t5, $a5, 4
-	ld.w	$t6, $a5, 16
-	ld.w	$t7, $a5, 28
-	ld.w	$t8, $a5, 40
-	vinsgr2vr.w	$vr2, $t5, 0
-	vinsgr2vr.w	$vr2, $t6, 1
-	vinsgr2vr.w	$vr2, $t7, 2
-	vinsgr2vr.w	$vr2, $t8, 3
-	ld.w	$t5, $a5, 52
-	ld.w	$t6, $a5, 64
-	ld.w	$t7, $a5, 76
-	ld.w	$t8, $a5, 88
-	vinsgr2vr.w	$vr3, $t5, 0
-	vinsgr2vr.w	$vr3, $t6, 1
-	vinsgr2vr.w	$vr3, $t7, 2
-	vinsgr2vr.w	$vr3, $t8, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vld	$vr3, $a5, -32
+	vld	$vr4, $a5, -48
+	vld	$vr5, $a5, -16
+	vori.b	$vr6, $vr3, 0
+	vpermi.w	$vr6, $vr4, 44
+	vextrins.w	$vr6, $vr5, 49
+	vori.b	$vr7, $vr0, 0
+	vshuf.w	$vr7, $vr3, $vr4
+	vextrins.w	$vr7, $vr5, 50
+	vld	$vr8, $a5, 16
+	vld	$vr9, $a5, 0
+	vld	$vr10, $a5, 32
+	vextrins.w	$vr3, $vr4, 2
+	vpermi.w	$vr5, $vr3, 196
+	vori.b	$vr3, $vr8, 0
+	vpermi.w	$vr3, $vr9, 44
+	vextrins.w	$vr3, $vr10, 49
+	vori.b	$vr4, $vr0, 0
+	vshuf.w	$vr4, $vr8, $vr9
+	vextrins.w	$vr4, $vr10, 50
+	vextrins.w	$vr8, $vr9, 2
+	vpermi.w	$vr10, $vr8, 196
+	vmax.w	$vr1, $vr6, $vr1
+	vmax.w	$vr2, $vr3, $vr2
+	vmax.w	$vr1, $vr7, $vr1
+	vmax.w	$vr2, $vr4, $vr2
+	vmax.w	$vr1, $vr5, $vr1
+	vmax.w	$vr2, $vr10, $vr2
 	addi.d	$t4, $t4, -8
 	addi.d	$a5, $a5, 96
 	bnez	$t4, .LBB8_43
 # %bb.44:
-	vmax.w	$vr0, $vr0, $vr1
+	vmax.w	$vr0, $vr1, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -2002,72 +1985,48 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	alsl.d	$t6, $t2, $t0, 3
 	slli.d	$t2, $t0, 3
 	alsl.d	$t2, $t0, $t2, 2
+	pcalau12i	$t8, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $t8, %pc_lo12(.LCPI8_0)
 	add.d	$t2, $t2, $a0
-	vrepli.b	$vr0, 0
-	addi.d	$t2, $t2, 92
+	vrepli.b	$vr1, 0
+	addi.d	$t2, $t2, 136
 	move	$t8, $t5
-	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB8_54:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$fp, $t2, -4
-	ld.w	$s0, $t2, 8
-	ld.w	$s1, $t2, 20
-	ld.w	$s2, $t2, 32
-	vinsgr2vr.w	$vr2, $fp, 0
-	vinsgr2vr.w	$vr2, $s0, 1
-	vinsgr2vr.w	$vr2, $s1, 2
-	vinsgr2vr.w	$vr2, $s2, 3
-	ld.w	$fp, $t2, 44
-	ld.w	$s0, $t2, 56
-	ld.w	$s1, $t2, 68
-	ld.w	$s2, $t2, 80
-	vinsgr2vr.w	$vr3, $fp, 0
-	vinsgr2vr.w	$vr3, $s0, 1
-	vinsgr2vr.w	$vr3, $s1, 2
-	vinsgr2vr.w	$vr3, $s2, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$fp, $t2, 0
-	ld.w	$s0, $t2, 12
-	ld.w	$s1, $t2, 24
-	ld.w	$s2, $t2, 36
-	vinsgr2vr.w	$vr2, $fp, 0
-	vinsgr2vr.w	$vr2, $s0, 1
-	vinsgr2vr.w	$vr2, $s1, 2
-	vinsgr2vr.w	$vr2, $s2, 3
-	ld.w	$fp, $t2, 48
-	ld.w	$s0, $t2, 60
-	ld.w	$s1, $t2, 72
-	ld.w	$s2, $t2, 84
-	vinsgr2vr.w	$vr3, $fp, 0
-	vinsgr2vr.w	$vr3, $s0, 1
-	vinsgr2vr.w	$vr3, $s1, 2
-	vinsgr2vr.w	$vr3, $s2, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$fp, $t2, 4
-	ld.w	$s0, $t2, 16
-	ld.w	$s1, $t2, 28
-	ld.w	$s2, $t2, 40
-	vinsgr2vr.w	$vr2, $fp, 0
-	vinsgr2vr.w	$vr2, $s0, 1
-	vinsgr2vr.w	$vr2, $s1, 2
-	vinsgr2vr.w	$vr2, $s2, 3
-	ld.w	$fp, $t2, 52
-	ld.w	$s0, $t2, 64
-	ld.w	$s1, $t2, 76
-	ld.w	$s2, $t2, 88
-	vinsgr2vr.w	$vr3, $fp, 0
-	vinsgr2vr.w	$vr3, $s0, 1
-	vinsgr2vr.w	$vr3, $s1, 2
-	vinsgr2vr.w	$vr3, $s2, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vld	$vr3, $t2, -32
+	vld	$vr4, $t2, -48
+	vld	$vr5, $t2, -16
+	vori.b	$vr6, $vr3, 0
+	vpermi.w	$vr6, $vr4, 44
+	vextrins.w	$vr6, $vr5, 49
+	vori.b	$vr7, $vr0, 0
+	vshuf.w	$vr7, $vr3, $vr4
+	vextrins.w	$vr7, $vr5, 50
+	vld	$vr8, $t2, 16
+	vld	$vr9, $t2, 0
+	vld	$vr10, $t2, 32
+	vextrins.w	$vr3, $vr4, 2
+	vpermi.w	$vr5, $vr3, 196
+	vori.b	$vr3, $vr8, 0
+	vpermi.w	$vr3, $vr9, 44
+	vextrins.w	$vr3, $vr10, 49
+	vori.b	$vr4, $vr0, 0
+	vshuf.w	$vr4, $vr8, $vr9
+	vextrins.w	$vr4, $vr10, 50
+	vextrins.w	$vr8, $vr9, 2
+	vpermi.w	$vr10, $vr8, 196
+	vmax.w	$vr1, $vr6, $vr1
+	vmax.w	$vr2, $vr3, $vr2
+	vmax.w	$vr1, $vr7, $vr1
+	vmax.w	$vr2, $vr4, $vr2
+	vmax.w	$vr1, $vr5, $vr1
+	vmax.w	$vr2, $vr10, $vr2
 	addi.d	$t8, $t8, -8
 	addi.d	$t2, $t2, 96
 	bnez	$t8, .LBB8_54
 # %bb.55:
-	vmax.w	$vr0, $vr0, $vr1
+	vmax.w	$vr0, $vr1, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -2124,72 +2083,48 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	alsl.d	$t4, $a7, $t0, 3
 	slli.d	$a7, $t0, 3
 	alsl.d	$a7, $t0, $a7, 2
+	pcalau12i	$t6, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $t6, %pc_lo12(.LCPI8_0)
 	add.d	$a7, $a7, $a0
-	vrepli.b	$vr0, 0
-	addi.d	$a7, $a7, 92
+	vrepli.b	$vr1, 0
+	addi.d	$a7, $a7, 136
 	move	$t6, $t3
-	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB8_62:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t7, $a7, -4
-	ld.w	$t8, $a7, 8
-	ld.w	$fp, $a7, 20
-	ld.w	$s0, $a7, 32
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	ld.w	$t7, $a7, 44
-	ld.w	$t8, $a7, 56
-	ld.w	$fp, $a7, 68
-	ld.w	$s0, $a7, 80
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$t7, $a7, 0
-	ld.w	$t8, $a7, 12
-	ld.w	$fp, $a7, 24
-	ld.w	$s0, $a7, 36
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	ld.w	$t7, $a7, 48
-	ld.w	$t8, $a7, 60
-	ld.w	$fp, $a7, 72
-	ld.w	$s0, $a7, 84
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$t7, $a7, 4
-	ld.w	$t8, $a7, 16
-	ld.w	$fp, $a7, 28
-	ld.w	$s0, $a7, 40
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	ld.w	$t7, $a7, 52
-	ld.w	$t8, $a7, 64
-	ld.w	$fp, $a7, 76
-	ld.w	$s0, $a7, 88
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vld	$vr3, $a7, -32
+	vld	$vr4, $a7, -48
+	vld	$vr5, $a7, -16
+	vori.b	$vr6, $vr3, 0
+	vpermi.w	$vr6, $vr4, 44
+	vextrins.w	$vr6, $vr5, 49
+	vori.b	$vr7, $vr0, 0
+	vshuf.w	$vr7, $vr3, $vr4
+	vextrins.w	$vr7, $vr5, 50
+	vld	$vr8, $a7, 16
+	vld	$vr9, $a7, 0
+	vld	$vr10, $a7, 32
+	vextrins.w	$vr3, $vr4, 2
+	vpermi.w	$vr5, $vr3, 196
+	vori.b	$vr3, $vr8, 0
+	vpermi.w	$vr3, $vr9, 44
+	vextrins.w	$vr3, $vr10, 49
+	vori.b	$vr4, $vr0, 0
+	vshuf.w	$vr4, $vr8, $vr9
+	vextrins.w	$vr4, $vr10, 50
+	vextrins.w	$vr8, $vr9, 2
+	vpermi.w	$vr10, $vr8, 196
+	vmax.w	$vr1, $vr6, $vr1
+	vmax.w	$vr2, $vr3, $vr2
+	vmax.w	$vr1, $vr7, $vr1
+	vmax.w	$vr2, $vr4, $vr2
+	vmax.w	$vr1, $vr5, $vr1
+	vmax.w	$vr2, $vr10, $vr2
 	addi.d	$t6, $t6, -8
 	addi.d	$a7, $a7, 96
 	bnez	$t6, .LBB8_62
 # %bb.63:
-	vmax.w	$vr0, $vr0, $vr1
+	vmax.w	$vr0, $vr1, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -2243,72 +2178,48 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	alsl.d	$t5, $t1, $t0, 3
 	slli.d	$t1, $t0, 3
 	alsl.d	$t0, $t0, $t1, 2
+	pcalau12i	$t1, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $t1, %pc_lo12(.LCPI8_0)
 	add.d	$t0, $t0, $a0
-	vrepli.b	$vr0, 0
-	addi.d	$t0, $t0, 92
+	vrepli.b	$vr1, 0
+	addi.d	$t0, $t0, 136
 	move	$t1, $t4
-	vori.b	$vr1, $vr0, 0
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB8_70:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t7, $t0, -4
-	ld.w	$t8, $t0, 8
-	ld.w	$fp, $t0, 20
-	ld.w	$s0, $t0, 32
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	ld.w	$t7, $t0, 44
-	ld.w	$t8, $t0, 56
-	ld.w	$fp, $t0, 68
-	ld.w	$s0, $t0, 80
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$t7, $t0, 0
-	ld.w	$t8, $t0, 12
-	ld.w	$fp, $t0, 24
-	ld.w	$s0, $t0, 36
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	ld.w	$t7, $t0, 48
-	ld.w	$t8, $t0, 60
-	ld.w	$fp, $t0, 72
-	ld.w	$s0, $t0, 84
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
-	ld.w	$t7, $t0, 4
-	ld.w	$t8, $t0, 16
-	ld.w	$fp, $t0, 28
-	ld.w	$s0, $t0, 40
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $t8, 1
-	vinsgr2vr.w	$vr2, $fp, 2
-	vinsgr2vr.w	$vr2, $s0, 3
-	ld.w	$t7, $t0, 52
-	ld.w	$t8, $t0, 64
-	ld.w	$fp, $t0, 76
-	ld.w	$s0, $t0, 88
-	vinsgr2vr.w	$vr3, $t7, 0
-	vinsgr2vr.w	$vr3, $t8, 1
-	vinsgr2vr.w	$vr3, $fp, 2
-	vinsgr2vr.w	$vr3, $s0, 3
-	vmax.w	$vr0, $vr2, $vr0
-	vmax.w	$vr1, $vr3, $vr1
+	vld	$vr3, $t0, -32
+	vld	$vr4, $t0, -48
+	vld	$vr5, $t0, -16
+	vori.b	$vr6, $vr3, 0
+	vpermi.w	$vr6, $vr4, 44
+	vextrins.w	$vr6, $vr5, 49
+	vori.b	$vr7, $vr0, 0
+	vshuf.w	$vr7, $vr3, $vr4
+	vextrins.w	$vr7, $vr5, 50
+	vld	$vr8, $t0, 16
+	vld	$vr9, $t0, 0
+	vld	$vr10, $t0, 32
+	vextrins.w	$vr3, $vr4, 2
+	vpermi.w	$vr5, $vr3, 196
+	vori.b	$vr3, $vr8, 0
+	vpermi.w	$vr3, $vr9, 44
+	vextrins.w	$vr3, $vr10, 49
+	vori.b	$vr4, $vr0, 0
+	vshuf.w	$vr4, $vr8, $vr9
+	vextrins.w	$vr4, $vr10, 50
+	vextrins.w	$vr8, $vr9, 2
+	vpermi.w	$vr10, $vr8, 196
+	vmax.w	$vr1, $vr6, $vr1
+	vmax.w	$vr2, $vr3, $vr2
+	vmax.w	$vr1, $vr7, $vr1
+	vmax.w	$vr2, $vr4, $vr2
+	vmax.w	$vr1, $vr5, $vr1
+	vmax.w	$vr2, $vr10, $vr2
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 96
 	bnez	$t1, .LBB8_70
 # %bb.71:
-	vmax.w	$vr0, $vr0, $vr1
+	vmax.w	$vr0, $vr1, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -2409,11 +2320,8 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	vreplgr2vr.d	$vr0, $a0
 	vpcnt.d	$vr0, $vr0
 	vpickve2gr.d	$a0, $vr0, 0
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end8:
 	.size	scale_bitcount_lsf, .Lfunc_end8-scale_bitcount_lsf

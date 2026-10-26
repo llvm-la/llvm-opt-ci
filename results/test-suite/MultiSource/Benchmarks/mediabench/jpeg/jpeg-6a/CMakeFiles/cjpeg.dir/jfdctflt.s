@@ -3,11 +3,18 @@
 	.p2align	4, 0x0                          # -- Begin function jpeg_fdct_float
 	.type	.LCPI0_0,@object
 .LCPI0_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI0_0, 16
+	.type	.LCPI0_1,@object
+.LCPI0_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI0_0, 16
+	.size	.LCPI0_1, 16
 	.text
 	.globl	jpeg_fdct_float
 	.p2align	2
@@ -16,146 +23,131 @@
 jpeg_fdct_float:                        # @jpeg_fdct_float
 # %bb.0:
 	move	$a1, $zero
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr4, $a2, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	vld	$vr5, $a2, %pc_lo12(.LCPI0_1)
 	lu12i.w	$a2, 258896
 	ori	$a2, $a2, 1267
 	vreplgr2vr.w	$vr0, $a2
 	lu12i.w	$a2, 257086
 	ori	$a2, $a2, 3861
 	vreplgr2vr.w	$vr1, $a2
-	lu12i.w	$a2, 260723
-	ori	$a2, $a2, 3445
-	vreplgr2vr.w	$vr2, $a2
-	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	vld	$vr4, $a2, %pc_lo12(.LCPI0_0)
 	lu12i.w	$a2, 258216
 	ori	$a2, $a2, 3028
+	vreplgr2vr.w	$vr2, $a2
+	lu12i.w	$a2, 260723
+	ori	$a2, $a2, 3445
 	vreplgr2vr.w	$vr3, $a2
 	ori	$a2, $zero, 256
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a0, $a1
-	fldx.s	$fa5, $a0, $a1
-	fld.s	$fa6, $a3, 32
-	fld.s	$fa7, $a3, 64
-	fld.s	$ft0, $a3, 96
-	vextrins.w	$vr5, $vr6, 16
-	vextrins.w	$vr5, $vr7, 32
-	fld.s	$fa7, $a3, 28
-	fld.s	$fa6, $a3, 60
-	fld.s	$ft1, $a3, 92
-	fld.s	$ft2, $a3, 124
-	vextrins.w	$vr5, $vr8, 48
-	vextrins.w	$vr7, $vr6, 16
-	vextrins.w	$vr7, $vr9, 32
-	vextrins.w	$vr7, $vr10, 48
-	vfadd.s	$vr6, $vr5, $vr7
-	fld.s	$ft0, $a3, 4
-	fld.s	$ft1, $a3, 36
-	fld.s	$ft2, $a3, 68
-	vfsub.s	$vr5, $vr5, $vr7
-	fld.s	$fa7, $a3, 100
-	vextrins.w	$vr8, $vr9, 16
-	vextrins.w	$vr8, $vr10, 32
-	fld.s	$ft1, $a3, 24
-	fld.s	$ft2, $a3, 56
-	fld.s	$ft3, $a3, 88
-	fld.s	$ft4, $a3, 120
-	vextrins.w	$vr8, $vr7, 48
-	vextrins.w	$vr9, $vr10, 16
-	vextrins.w	$vr9, $vr11, 32
-	vextrins.w	$vr9, $vr12, 48
-	vfadd.s	$vr7, $vr8, $vr9
-	fld.s	$ft2, $a3, 8
-	fld.s	$ft3, $a3, 40
-	fld.s	$ft4, $a3, 72
-	vfsub.s	$vr8, $vr8, $vr9
-	fld.s	$ft1, $a3, 104
-	vextrins.w	$vr10, $vr11, 16
-	vextrins.w	$vr10, $vr12, 32
-	fld.s	$ft3, $a3, 20
-	fld.s	$ft4, $a3, 52
-	fld.s	$ft5, $a3, 84
-	fld.s	$ft6, $a3, 116
-	vextrins.w	$vr10, $vr9, 48
-	vextrins.w	$vr11, $vr12, 16
-	vextrins.w	$vr11, $vr13, 32
-	vextrins.w	$vr11, $vr14, 48
-	vfadd.s	$vr9, $vr10, $vr11
-	fld.s	$ft4, $a3, 12
-	fld.s	$ft5, $a3, 44
-	fld.s	$ft6, $a3, 76
-	vfsub.s	$vr10, $vr10, $vr11
-	fld.s	$ft3, $a3, 108
-	vextrins.w	$vr12, $vr13, 16
-	vextrins.w	$vr12, $vr14, 32
-	fld.s	$ft5, $a3, 16
-	fld.s	$ft6, $a3, 48
-	fld.s	$ft7, $a3, 80
-	fld.s	$ft8, $a3, 112
-	vextrins.w	$vr12, $vr11, 48
-	vextrins.w	$vr13, $vr14, 16
-	vextrins.w	$vr13, $vr15, 32
-	vextrins.w	$vr13, $vr16, 48
-	vfadd.s	$vr11, $vr12, $vr13
-	vfsub.s	$vr12, $vr12, $vr13
-	vfadd.s	$vr13, $vr6, $vr11
-	vfsub.s	$vr11, $vr6, $vr11
-	vfadd.s	$vr14, $vr7, $vr9
-	vfsub.s	$vr9, $vr7, $vr9
-	vfadd.s	$vr6, $vr14, $vr13
-	vfadd.s	$vr12, $vr10, $vr12
-	vfadd.s	$vr7, $vr8, $vr10
-	vfadd.s	$vr8, $vr5, $vr8
-	vfsub.s	$vr10, $vr12, $vr8
-	vfmul.s	$vr10, $vr10, $vr1
-	vfmadd.s	$vr8, $vr8, $vr2, $vr10
-	vfmul.s	$vr15, $vr7, $vr0
-	vfadd.s	$vr16, $vr5, $vr15
-	vfadd.s	$vr7, $vr16, $vr8
-	vpackod.w	$vr17, $vr7, $vr6
-	vfadd.s	$vr9, $vr9, $vr11
-	vfmul.s	$vr9, $vr9, $vr0
-	vfadd.s	$vr18, $vr11, $vr9
-	vfmadd.s	$vr10, $vr12, $vr3, $vr10
-	vfsub.s	$vr5, $vr5, $vr15
-	vfsub.s	$vr12, $vr5, $vr10
-	vilvl.w	$vr15, $vr12, $vr18
-	vpermi.w	$vr15, $vr17, 228
-	vst	$vr15, $a3, 32
-	vstelm.w	$vr6, $a3, 64, 2
-	vfsub.s	$vr13, $vr13, $vr14
-	vfadd.s	$vr5, $vr5, $vr10
-	vpackod.w	$vr10, $vr5, $vr13
-	vfsub.s	$vr9, $vr11, $vr9
-	vfsub.s	$vr8, $vr16, $vr8
-	vilvl.w	$vr11, $vr8, $vr9
+	vld	$vr6, $a3, 16
+	vld	$vr7, $a3, 48
+	vldx	$vr8, $a0, $a1
+	vld	$vr9, $a3, 64
+	vld	$vr10, $a3, 96
+	vld	$vr11, $a3, 32
+	vld	$vr12, $a3, 80
+	vld	$vr13, $a3, 112
+	vori.b	$vr14, $vr4, 0
+	vshuf.w	$vr14, $vr10, $vr9
+	vpackev.w	$vr15, $vr11, $vr8
+	vpermi.w	$vr14, $vr15, 228
+	vpackod.w	$vr15, $vr11, $vr8
+	vilvl.w	$vr16, $vr10, $vr9
+	vpermi.w	$vr16, $vr15, 228
+	vilvh.w	$vr15, $vr11, $vr8
+	vpackev.w	$vr17, $vr10, $vr9
+	vpermi.w	$vr17, $vr15, 228
+	vori.b	$vr15, $vr5, 0
+	vshuf.w	$vr15, $vr11, $vr8
+	vpackod.w	$vr8, $vr10, $vr9
+	vpermi.w	$vr8, $vr15, 228
+	vori.b	$vr9, $vr4, 0
+	vshuf.w	$vr9, $vr13, $vr12
+	vpackev.w	$vr10, $vr7, $vr6
+	vpermi.w	$vr9, $vr10, 228
+	vpackod.w	$vr10, $vr7, $vr6
+	vilvl.w	$vr11, $vr13, $vr12
 	vpermi.w	$vr11, $vr10, 228
-	vst	$vr11, $a3, 48
-	vstelm.w	$vr9, $a3, 120, 3
-	vilvh.w	$vr10, $vr9, $vr5
-	vpackev.w	$vr11, $vr5, $vr13
-	vextrins.w	$vr11, $vr9, 32
-	vextrins.w	$vr11, $vr8, 48
-	vstelm.w	$vr8, $a3, 124, 3
-	vextrins.w	$vr8, $vr6, 51
-	vpermi.w	$vr8, $vr10, 228
-	vst	$vr8, $a3, 84
-	vstelm.w	$vr5, $a3, 116, 3
-	vpackev.w	$vr5, $vr7, $vr6
-	vextrins.w	$vr5, $vr18, 32
-	vextrins.w	$vr5, $vr12, 48
-	vstx	$vr5, $a0, $a1
-	vilvh.w	$vr5, $vr18, $vr7
-	vpackev.w	$vr6, $vr13, $vr12
-	vpermi.w	$vr6, $vr5, 228
-	vst	$vr6, $a3, 68
-	vori.b	$vr5, $vr4, 0
-	vshuf.w	$vr5, $vr18, $vr7
+	vilvh.w	$vr10, $vr7, $vr6
+	vpackev.w	$vr15, $vr13, $vr12
+	vpermi.w	$vr15, $vr10, 228
+	vori.b	$vr10, $vr5, 0
+	vshuf.w	$vr10, $vr7, $vr6
 	vpackod.w	$vr6, $vr13, $vr12
-	vpermi.w	$vr6, $vr5, 228
-	vst	$vr6, $a3, 100
+	vpermi.w	$vr6, $vr10, 228
+	vfadd.s	$vr7, $vr14, $vr6
+	vfsub.s	$vr6, $vr14, $vr6
+	vfadd.s	$vr10, $vr16, $vr15
+	vfsub.s	$vr12, $vr16, $vr15
+	vfadd.s	$vr13, $vr17, $vr11
+	vfsub.s	$vr11, $vr17, $vr11
+	vfadd.s	$vr14, $vr8, $vr9
+	vfsub.s	$vr8, $vr8, $vr9
+	vfadd.s	$vr9, $vr7, $vr14
+	vfsub.s	$vr7, $vr7, $vr14
+	vfadd.s	$vr14, $vr10, $vr13
+	vfsub.s	$vr10, $vr10, $vr13
+	vfadd.s	$vr13, $vr14, $vr9
+	vfsub.s	$vr9, $vr9, $vr14
+	vfadd.s	$vr10, $vr10, $vr7
+	vfmul.s	$vr10, $vr10, $vr0
+	vfadd.s	$vr14, $vr7, $vr10
+	vfsub.s	$vr7, $vr7, $vr10
+	vfadd.s	$vr8, $vr11, $vr8
+	vfadd.s	$vr10, $vr12, $vr11
+	vfadd.s	$vr11, $vr6, $vr12
+	vfsub.s	$vr12, $vr8, $vr11
+	vfmul.s	$vr12, $vr12, $vr1
+	vfmadd.s	$vr8, $vr8, $vr2, $vr12
+	vfmadd.s	$vr11, $vr11, $vr3, $vr12
+	vfmul.s	$vr10, $vr10, $vr0
+	vfadd.s	$vr12, $vr6, $vr10
+	vfsub.s	$vr6, $vr6, $vr10
+	vfadd.s	$vr10, $vr6, $vr8
+	vfsub.s	$vr6, $vr6, $vr8
+	vfadd.s	$vr8, $vr12, $vr11
+	vfsub.s	$vr11, $vr12, $vr11
+	vori.b	$vr12, $vr4, 0
+	vshuf.w	$vr12, $vr11, $vr7
+	vpackev.w	$vr15, $vr10, $vr9
+	vpermi.w	$vr12, $vr15, 228
+	vpackod.w	$vr15, $vr10, $vr9
+	vilvl.w	$vr16, $vr11, $vr7
+	vpermi.w	$vr16, $vr15, 228
+	vpackod.w	$vr15, $vr8, $vr13
+	vilvl.w	$vr17, $vr6, $vr14
+	vpermi.w	$vr17, $vr15, 228
+	vilvh.w	$vr15, $vr10, $vr9
+	vpackev.w	$vr18, $vr11, $vr7
+	vpermi.w	$vr18, $vr15, 228
+	vilvh.w	$vr15, $vr8, $vr13
+	vpackev.w	$vr19, $vr6, $vr14
+	vpermi.w	$vr19, $vr15, 228
+	vori.b	$vr15, $vr5, 0
+	vshuf.w	$vr15, $vr10, $vr9
+	vpackod.w	$vr7, $vr11, $vr7
+	vpermi.w	$vr7, $vr15, 228
+	vori.b	$vr9, $vr5, 0
+	vshuf.w	$vr9, $vr8, $vr13
+	vpackod.w	$vr10, $vr6, $vr14
+	vpermi.w	$vr10, $vr9, 228
+	vori.b	$vr9, $vr4, 0
+	vshuf.w	$vr9, $vr6, $vr14
+	vpackev.w	$vr6, $vr8, $vr13
+	vpermi.w	$vr9, $vr6, 228
+	vstx	$vr9, $a0, $a1
+	vst	$vr10, $a3, 96
+	vst	$vr7, $a3, 112
+	vst	$vr19, $a3, 64
+	vst	$vr18, $a3, 80
+	vst	$vr17, $a3, 32
+	vst	$vr16, $a3, 48
 	addi.d	$a1, $a1, 128
-	vst	$vr11, $a3, 16
+	vst	$vr12, $a3, 16
 	bne	$a1, $a2, .LBB0_1
 # %bb.2:
 	vld	$vr4, $a0, 0
@@ -193,8 +185,8 @@ jpeg_fdct_float:                        # @jpeg_fdct_float
 	vfadd.s	$vr6, $vr4, $vr6
 	vfsub.s	$vr8, $vr5, $vr6
 	vfmul.s	$vr8, $vr8, $vr1
-	vfmadd.s	$vr5, $vr5, $vr3, $vr8
-	vfmadd.s	$vr6, $vr6, $vr2, $vr8
+	vfmadd.s	$vr5, $vr5, $vr2, $vr8
+	vfmadd.s	$vr6, $vr6, $vr3, $vr8
 	vfmul.s	$vr7, $vr7, $vr0
 	vfadd.s	$vr8, $vr4, $vr7
 	vfsub.s	$vr4, $vr4, $vr7
@@ -241,18 +233,18 @@ jpeg_fdct_float:                        # @jpeg_fdct_float
 	vfadd.s	$vr7, $vr5, $vr7
 	vfsub.s	$vr8, $vr4, $vr7
 	vfmul.s	$vr1, $vr8, $vr1
-	vfmadd.s	$vr3, $vr4, $vr3, $vr1
-	vfmadd.s	$vr1, $vr7, $vr2, $vr1
+	vfmadd.s	$vr2, $vr4, $vr2, $vr1
+	vfmadd.s	$vr1, $vr7, $vr3, $vr1
 	vfmul.s	$vr0, $vr6, $vr0
-	vfadd.s	$vr2, $vr5, $vr0
+	vfadd.s	$vr3, $vr5, $vr0
 	vfsub.s	$vr0, $vr5, $vr0
-	vfadd.s	$vr4, $vr0, $vr3
+	vfadd.s	$vr4, $vr0, $vr2
 	vst	$vr4, $a0, 176
-	vfsub.s	$vr0, $vr0, $vr3
+	vfsub.s	$vr0, $vr0, $vr2
 	vst	$vr0, $a0, 112
-	vfadd.s	$vr0, $vr2, $vr1
+	vfadd.s	$vr0, $vr3, $vr1
 	vst	$vr0, $a0, 48
-	vfsub.s	$vr0, $vr2, $vr1
+	vfsub.s	$vr0, $vr3, $vr1
 	vst	$vr0, $a0, 240
 	ret
 .Lfunc_end0:

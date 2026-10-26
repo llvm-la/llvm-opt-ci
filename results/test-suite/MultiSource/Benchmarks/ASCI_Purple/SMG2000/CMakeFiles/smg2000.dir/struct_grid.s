@@ -310,7 +310,38 @@ hypre_StructGridSetHood:                # @hypre_StructGridSetHood
 .Lfunc_end7:
 	.size	hypre_StructGridSetHood, .Lfunc_end7-hypre_StructGridSetHood
                                         # -- End function
-	.globl	hypre_StructGridAssemble        # -- Begin function hypre_StructGridAssemble
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function hypre_StructGridAssemble
+	.type	.LCPI8_0,@object
+.LCPI8_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	6                               # 0x6
+	.size	.LCPI8_0, 16
+	.type	.LCPI8_1,@object
+.LCPI8_1:
+	.word	1                               # 0x1
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.size	.LCPI8_1, 16
+	.type	.LCPI8_2,@object
+.LCPI8_2:
+	.word	2                               # 0x2
+	.word	4                               # 0x4
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.size	.LCPI8_2, 16
+	.type	.LCPI8_3,@object
+.LCPI8_3:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	3                               # 0x3
+	.word	5                               # 0x5
+	.size	.LCPI8_3, 16
+	.text
+	.globl	hypre_StructGridAssemble
 	.p2align	2
 	.prefalign	5, .Lfunc_end8, nop
 	.type	hypre_StructGridAssemble,@function
@@ -325,9 +356,9 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
-	ld.d	$a3, $a0, 24
-	ld.d	$s0, $a0, 8
-	bnez	$a3, .LBB8_30
+	ld.d	$a0, $a0, 24
+	ld.d	$s0, $fp, 8
+	bnez	$a0, .LBB8_30
 # %bb.1:
 	ld.w	$a0, $fp, 0
 	ld.w	$s4, $fp, 4
@@ -349,117 +380,121 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	addi.d	$a3, $a1, 12
 	addi.d	$a4, $s2, 12
 	addi.d	$a5, $a1, 96
-	ori	$a6, $zero, 8
-	move	$a7, $a1
+	ori	$a6, $zero, 9
+	ori	$a7, $zero, 8
+	move	$t0, $a1
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_3:                                #   in Loop: Header=BB8_4 Depth=1
-	stx.w	$t4, $s2, $t0
-	stx.w	$t3, $a4, $t0
+	stx.w	$t5, $s2, $t1
+	stx.w	$t4, $a4, $t1
 	addi.d	$a2, $a2, 1
 	addi.d	$a5, $a5, 4
-	addi.d	$a7, $a7, 4
+	addi.d	$t0, $t0, 4
 	beq	$a2, $s4, .LBB8_12
 .LBB8_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_8 Depth 2
                                         #     Child Loop BB8_11 Depth 2
-	slli.d	$t0, $a2, 2
-	ldx.w	$t4, $a1, $t0
-	ld.w	$t1, $a0, 8
-	ldx.w	$t3, $a3, $t0
-	blez	$t1, .LBB8_3
+	slli.d	$t1, $a2, 2
+	ldx.w	$t5, $a1, $t1
+	ld.w	$t2, $a0, 8
+	ldx.w	$t4, $a3, $t1
+	blez	$t2, .LBB8_3
 # %bb.5:                                #   in Loop: Header=BB8_4 Depth=1
-	bgeu	$t1, $a6, .LBB8_7
+	bgeu	$t2, $a6, .LBB8_7
 # %bb.6:                                #   in Loop: Header=BB8_4 Depth=1
-	move	$t2, $zero
+	move	$t3, $zero
 	b	.LBB8_10
 	.p2align	4, , 16
 .LBB8_7:                                #   in Loop: Header=BB8_4 Depth=1
-	bstrpick.d	$t2, $t1, 30, 3
-	slli.d	$t2, $t2, 3
-	vreplgr2vr.w	$vr1, $t3
-	vreplgr2vr.w	$vr0, $t4
-	move	$t3, $a5
-	move	$t4, $t2
+	andi	$t3, $t2, 7
+	sltui	$t6, $t3, 1
+	masknez	$t3, $t3, $t6
+	maskeqz	$t6, $a7, $t6
+	or	$t3, $t6, $t3
+	sub.d	$t3, $t2, $t3
+	vreplgr2vr.w	$vr1, $t4
+	vreplgr2vr.w	$vr0, $t5
+	move	$t4, $a5
+	move	$t5, $t3
 	vori.b	$vr3, $vr1, 0
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB8_8:                                #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t5, $t3, -96
-	ld.w	$t6, $t3, -72
-	ld.w	$t7, $t3, -48
-	ld.w	$t8, $t3, -24
-	vinsgr2vr.w	$vr4, $t5, 0
-	vinsgr2vr.w	$vr4, $t6, 1
-	vinsgr2vr.w	$vr4, $t7, 2
-	vinsgr2vr.w	$vr4, $t8, 3
-	ld.w	$t5, $t3, 0
-	ld.w	$t6, $t3, 24
-	ld.w	$t7, $t3, 48
-	ld.w	$t8, $t3, 72
-	vinsgr2vr.w	$vr5, $t5, 0
-	vinsgr2vr.w	$vr5, $t6, 1
-	vinsgr2vr.w	$vr5, $t7, 2
-	vinsgr2vr.w	$vr5, $t8, 3
+	ld.w	$t6, $t4, -96
+	ld.w	$t7, $t4, -72
+	ld.w	$t8, $t4, -48
+	ld.w	$s3, $t4, -24
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t7, 1
+	vinsgr2vr.w	$vr4, $t8, 2
+	vinsgr2vr.w	$vr4, $s3, 3
+	ld.w	$t6, $t4, 0
+	ld.w	$t7, $t4, 24
+	ld.w	$t8, $t4, 48
+	ld.w	$s3, $t4, 72
+	vinsgr2vr.w	$vr5, $t6, 0
+	vinsgr2vr.w	$vr5, $t7, 1
+	vinsgr2vr.w	$vr5, $t8, 2
+	vinsgr2vr.w	$vr5, $s3, 3
 	vmin.w	$vr0, $vr0, $vr4
 	vmin.w	$vr2, $vr2, $vr5
-	ld.w	$t5, $t3, -84
-	ld.w	$t6, $t3, -60
-	ld.w	$t7, $t3, -36
-	ld.w	$t8, $t3, -12
-	vinsgr2vr.w	$vr4, $t5, 0
-	vinsgr2vr.w	$vr4, $t6, 1
-	vinsgr2vr.w	$vr4, $t7, 2
-	vinsgr2vr.w	$vr4, $t8, 3
-	ld.w	$t5, $t3, 12
-	ld.w	$t6, $t3, 36
-	ld.w	$t7, $t3, 60
-	ld.w	$t8, $t3, 84
-	vinsgr2vr.w	$vr5, $t5, 0
-	vinsgr2vr.w	$vr5, $t6, 1
-	vinsgr2vr.w	$vr5, $t7, 2
-	vinsgr2vr.w	$vr5, $t8, 3
+	ld.w	$t6, $t4, -84
+	ld.w	$t7, $t4, -60
+	ld.w	$t8, $t4, -36
+	ld.w	$s3, $t4, -12
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr4, $t7, 1
+	vinsgr2vr.w	$vr4, $t8, 2
+	vinsgr2vr.w	$vr4, $s3, 3
+	ld.w	$t6, $t4, 12
+	ld.w	$t7, $t4, 36
+	ld.w	$t8, $t4, 60
+	ld.w	$s3, $t4, 84
+	vinsgr2vr.w	$vr5, $t6, 0
+	vinsgr2vr.w	$vr5, $t7, 1
+	vinsgr2vr.w	$vr5, $t8, 2
+	vinsgr2vr.w	$vr5, $s3, 3
 	vmax.w	$vr1, $vr1, $vr4
 	vmax.w	$vr3, $vr3, $vr5
-	addi.d	$t4, $t4, -8
-	addi.d	$t3, $t3, 192
-	bnez	$t4, .LBB8_8
+	addi.d	$t5, $t5, -8
+	addi.d	$t4, $t4, 192
+	bnez	$t5, .LBB8_8
 # %bb.9:                                #   in Loop: Header=BB8_4 Depth=1
 	vmax.w	$vr1, $vr1, $vr3
 	vbsrl.v	$vr3, $vr1, 8
 	vmax.w	$vr1, $vr3, $vr1
 	vbsrl.v	$vr3, $vr1, 4
 	vmax.w	$vr1, $vr3, $vr1
-	vpickve2gr.w	$t3, $vr1, 0
+	vpickve2gr.w	$t4, $vr1, 0
 	vmin.w	$vr0, $vr0, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmin.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vmin.w	$vr0, $vr1, $vr0
-	vpickve2gr.w	$t4, $vr0, 0
-	beq	$t2, $t1, .LBB8_3
+	vpickve2gr.w	$t5, $vr0, 0
 .LBB8_10:                               #   in Loop: Header=BB8_4 Depth=1
-	slli.d	$t5, $t2, 4
-	alsl.d	$t5, $t2, $t5, 3
-	sub.d	$t1, $t1, $t2
+	slli.d	$t6, $t3, 4
+	alsl.d	$t6, $t3, $t6, 3
+	sub.d	$t2, $t2, $t3
 	.p2align	4, , 16
 .LBB8_11:                               #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.w	$t2, $a7, $t5
-	add.d	$t6, $a7, $t5
-	slt	$t7, $t4, $t2
-	ld.w	$t6, $t6, 12
-	masknez	$t2, $t2, $t7
-	maskeqz	$t4, $t4, $t7
-	or	$t4, $t4, $t2
-	slt	$t2, $t6, $t3
-	masknez	$t6, $t6, $t2
-	maskeqz	$t2, $t3, $t2
-	or	$t3, $t2, $t6
-	addi.d	$t1, $t1, -1
-	addi.d	$t5, $t5, 24
-	bnez	$t1, .LBB8_11
+	ldx.w	$t3, $t0, $t6
+	add.d	$t7, $t0, $t6
+	slt	$t8, $t5, $t3
+	ld.w	$t7, $t7, 12
+	masknez	$t3, $t3, $t8
+	maskeqz	$t5, $t5, $t8
+	or	$t5, $t5, $t3
+	slt	$t3, $t7, $t4
+	masknez	$t7, $t7, $t3
+	maskeqz	$t3, $t4, $t3
+	or	$t4, $t3, $t7
+	addi.d	$t2, $t2, -1
+	addi.d	$t6, $t6, 24
+	bnez	$t2, .LBB8_11
 	b	.LBB8_3
 .LBB8_12:
 	ori	$a0, $zero, 2
@@ -499,142 +534,118 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	b	.LBB8_23
 .LBB8_18:
 	bstrpick.d	$a2, $a0, 30, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	vld	$vr1, $a3, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
+	vld	$vr2, $a3, %pc_lo12(.LCPI8_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_3)
+	vld	$vr3, $a3, %pc_lo12(.LCPI8_3)
 	slli.d	$a2, $a2, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a3, $a1, 96
-	move	$a4, $a2
-	vori.b	$vr1, $vr0, 0
+	vrepli.b	$vr4, 0
+	move	$a3, $a2
+	move	$a4, $a1
+	vori.b	$vr5, $vr4, 0
 	.p2align	4, , 16
 .LBB8_19:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -84
-	ld.w	$a6, $a3, -60
-	ld.w	$a7, $a3, -36
-	ld.w	$t0, $a3, -12
-	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr2, $a7, 2
-	vinsgr2vr.w	$vr2, $t0, 3
-	ld.w	$a5, $a3, 12
-	ld.w	$a6, $a3, 36
-	ld.w	$a7, $a3, 60
-	ld.w	$t0, $a3, 84
-	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
-	ld.w	$a5, $a3, -96
-	ld.w	$a6, $a3, -72
-	ld.w	$a7, $a3, -48
-	ld.w	$t0, $a3, -24
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 0
-	ld.w	$a6, $a3, 24
-	ld.w	$a7, $a3, 48
-	ld.w	$t0, $a3, 72
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	vsub.w	$vr2, $vr2, $vr4
-	vsub.w	$vr3, $vr3, $vr5
-	vmaxi.w	$vr2, $vr2, -1
-	vmaxi.w	$vr3, $vr3, -1
-	vaddi.wu	$vr2, $vr2, 1
-	vaddi.wu	$vr3, $vr3, 1
-	ld.w	$a5, $a3, -80
-	ld.w	$a6, $a3, -56
-	ld.w	$a7, $a3, -32
-	ld.w	$t0, $a3, -8
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 16
-	ld.w	$a6, $a3, 40
-	ld.w	$a7, $a3, 64
-	ld.w	$t0, $a3, 88
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -92
-	ld.w	$a6, $a3, -68
-	ld.w	$a7, $a3, -44
-	ld.w	$t0, $a3, -20
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 4
-	ld.w	$a6, $a3, 28
-	ld.w	$a7, $a3, 52
-	ld.w	$t0, $a3, 76
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vaddi.wu	$vr6, $vr4, 1
-	vaddi.wu	$vr7, $vr5, 1
-	vmul.w	$vr2, $vr6, $vr2
-	vmul.w	$vr3, $vr7, $vr3
-	vsrai.w	$vr4, $vr4, 31
-	vandn.v	$vr2, $vr4, $vr2
-	vsrai.w	$vr4, $vr5, 31
-	vandn.v	$vr3, $vr4, $vr3
-	ld.w	$a5, $a3, -76
-	ld.w	$a6, $a3, -52
-	ld.w	$a7, $a3, -28
-	ld.w	$t0, $a3, -4
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 20
-	ld.w	$a6, $a3, 44
-	ld.w	$a7, $a3, 68
-	ld.w	$t0, $a3, 92
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -88
-	ld.w	$a6, $a3, -64
-	ld.w	$a7, $a3, -40
-	ld.w	$t0, $a3, -16
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 8
-	ld.w	$a6, $a3, 32
-	ld.w	$a7, $a3, 56
-	ld.w	$t0, $a3, 80
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vaddi.wu	$vr6, $vr4, 1
-	vaddi.wu	$vr7, $vr5, 1
-	vmul.w	$vr2, $vr2, $vr6
-	vmul.w	$vr3, $vr3, $vr7
-	vsrai.w	$vr4, $vr4, 31
-	vandn.v	$vr2, $vr4, $vr2
-	vsrai.w	$vr4, $vr5, 31
-	vandn.v	$vr3, $vr4, $vr3
-	vadd.w	$vr0, $vr2, $vr0
-	vadd.w	$vr1, $vr3, $vr1
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 192
-	bnez	$a4, .LBB8_19
+	vld	$vr9, $a4, 16
+	vld	$vr6, $a4, 48
+	vld	$vr10, $a4, 64
+	vld	$vr11, $a4, 0
+	vld	$vr17, $a4, 32
+	vld	$vr7, $a4, 80
+	vori.b	$vr8, $vr0, 0
+	vshuf.w	$vr8, $vr10, $vr6
+	vori.b	$vr13, $vr1, 0
+	vshuf.w	$vr13, $vr9, $vr11
+	vori.b	$vr14, $vr2, 0
+	vshuf.w	$vr14, $vr17, $vr11
+	vori.b	$vr15, $vr9, 0
+	vextrins.w	$vr15, $vr17, 18
+	vori.b	$vr16, $vr1, 0
+	vshuf.w	$vr16, $vr17, $vr9
+	vextrins.w	$vr17, $vr11, 3
+	vextrins.w	$vr11, $vr9, 18
+	vpermi.w	$vr8, $vr11, 228
+	vori.b	$vr9, $vr10, 0
+	vextrins.w	$vr9, $vr6, 33
+	vpermi.w	$vr9, $vr13, 228
+	vori.b	$vr12, $vr3, 0
+	vshuf.w	$vr12, $vr7, $vr6
+	vextrins.w	$vr6, $vr7, 48
+	vpermi.w	$vr6, $vr14, 228
+	vpermi.w	$vr12, $vr17, 228
+	vori.b	$vr11, $vr0, 0
+	vshuf.w	$vr11, $vr7, $vr10
+	vpermi.w	$vr11, $vr15, 228
+	vextrins.w	$vr7, $vr10, 33
+	vpermi.w	$vr7, $vr16, 228
+	vld	$vr10, $a4, 176
+	vld	$vr14, $a4, 112
+	vld	$vr15, $a4, 96
+	vld	$vr16, $a4, 128
+	vld	$vr13, $a4, 144
+	vld	$vr17, $a4, 160
+	vori.b	$vr18, $vr1, 0
+	vshuf.w	$vr18, $vr14, $vr15
+	vori.b	$vr19, $vr2, 0
+	vshuf.w	$vr19, $vr16, $vr15
+	vori.b	$vr20, $vr14, 0
+	vextrins.w	$vr20, $vr16, 18
+	vori.b	$vr21, $vr1, 0
+	vshuf.w	$vr21, $vr16, $vr14
+	vextrins.w	$vr16, $vr15, 3
+	vextrins.w	$vr15, $vr14, 18
+	vori.b	$vr14, $vr0, 0
+	vshuf.w	$vr14, $vr17, $vr13
+	vpermi.w	$vr14, $vr15, 228
+	vori.b	$vr15, $vr17, 0
+	vextrins.w	$vr15, $vr13, 33
+	vpermi.w	$vr15, $vr18, 228
+	vori.b	$vr18, $vr3, 0
+	vshuf.w	$vr18, $vr10, $vr13
+	vextrins.w	$vr13, $vr10, 48
+	vpermi.w	$vr13, $vr19, 228
+	vpermi.w	$vr18, $vr16, 228
+	vori.b	$vr16, $vr0, 0
+	vshuf.w	$vr16, $vr10, $vr17
+	vpermi.w	$vr16, $vr20, 228
+	vextrins.w	$vr10, $vr17, 33
+	vpermi.w	$vr10, $vr21, 228
+	vsub.w	$vr8, $vr12, $vr8
+	vsub.w	$vr12, $vr18, $vr14
+	vmaxi.w	$vr8, $vr8, -1
+	vmaxi.w	$vr12, $vr12, -1
+	vaddi.wu	$vr8, $vr8, 1
+	vaddi.wu	$vr12, $vr12, 1
+	vsub.w	$vr9, $vr11, $vr9
+	vsub.w	$vr11, $vr16, $vr15
+	vaddi.wu	$vr14, $vr9, 1
+	vaddi.wu	$vr15, $vr11, 1
+	vmul.w	$vr8, $vr14, $vr8
+	vmul.w	$vr12, $vr15, $vr12
+	vsrai.w	$vr9, $vr9, 31
+	vandn.v	$vr8, $vr9, $vr8
+	vsrai.w	$vr9, $vr11, 31
+	vandn.v	$vr9, $vr9, $vr12
+	vsub.w	$vr6, $vr7, $vr6
+	vsub.w	$vr7, $vr10, $vr13
+	vaddi.wu	$vr10, $vr6, 1
+	vaddi.wu	$vr11, $vr7, 1
+	vmul.w	$vr8, $vr8, $vr10
+	vmul.w	$vr9, $vr9, $vr11
+	vsrai.w	$vr6, $vr6, 31
+	vandn.v	$vr6, $vr6, $vr8
+	vsrai.w	$vr7, $vr7, 31
+	vandn.v	$vr7, $vr7, $vr9
+	vadd.w	$vr4, $vr6, $vr4
+	vadd.w	$vr5, $vr7, $vr5
+	addi.d	$a3, $a3, -8
+	addi.d	$a4, $a4, 192
+	bnez	$a3, .LBB8_19
 # %bb.20:
-	vadd.w	$vr0, $vr1, $vr0
+	vadd.w	$vr0, $vr5, $vr4
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
@@ -734,12 +745,12 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	addi.d	$a3, $a3, 4
 	blt	$a1, $a4, .LBB8_28
 .LBB8_29:
-	ld.d	$a3, $fp, 24
+	ld.d	$a1, $fp, 24
 	st.d	$a0, $fp, 16
+	move	$a0, $a1
 .LBB8_30:
 	ld.w	$a1, $fp, 32
 	ori	$a2, $zero, 1
-	move	$a0, $a3
 	pcaddu18i	$ra, %call36(hypre_BoxNeighborsAssemble)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 8
@@ -757,142 +768,118 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	b	.LBB8_39
 .LBB8_34:
 	bstrpick.d	$a2, $a0, 30, 3
+	pcalau12i	$a3, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	vld	$vr1, $a3, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_2)
+	vld	$vr2, $a3, %pc_lo12(.LCPI8_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_3)
+	vld	$vr3, $a3, %pc_lo12(.LCPI8_3)
 	slli.d	$a2, $a2, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a3, $a1, 96
-	move	$a4, $a2
-	vori.b	$vr1, $vr0, 0
+	vrepli.b	$vr4, 0
+	move	$a3, $a2
+	move	$a4, $a1
+	vori.b	$vr5, $vr4, 0
 	.p2align	4, , 16
 .LBB8_35:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -84
-	ld.w	$a6, $a3, -60
-	ld.w	$a7, $a3, -36
-	ld.w	$t0, $a3, -12
-	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr2, $a7, 2
-	vinsgr2vr.w	$vr2, $t0, 3
-	ld.w	$a5, $a3, 12
-	ld.w	$a6, $a3, 36
-	ld.w	$a7, $a3, 60
-	ld.w	$t0, $a3, 84
-	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
-	ld.w	$a5, $a3, -96
-	ld.w	$a6, $a3, -72
-	ld.w	$a7, $a3, -48
-	ld.w	$t0, $a3, -24
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 0
-	ld.w	$a6, $a3, 24
-	ld.w	$a7, $a3, 48
-	ld.w	$t0, $a3, 72
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	vsub.w	$vr2, $vr2, $vr4
-	vsub.w	$vr3, $vr3, $vr5
-	vmaxi.w	$vr2, $vr2, -1
-	vmaxi.w	$vr3, $vr3, -1
-	vaddi.wu	$vr2, $vr2, 1
-	vaddi.wu	$vr3, $vr3, 1
-	ld.w	$a5, $a3, -80
-	ld.w	$a6, $a3, -56
-	ld.w	$a7, $a3, -32
-	ld.w	$t0, $a3, -8
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 16
-	ld.w	$a6, $a3, 40
-	ld.w	$a7, $a3, 64
-	ld.w	$t0, $a3, 88
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -92
-	ld.w	$a6, $a3, -68
-	ld.w	$a7, $a3, -44
-	ld.w	$t0, $a3, -20
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 4
-	ld.w	$a6, $a3, 28
-	ld.w	$a7, $a3, 52
-	ld.w	$t0, $a3, 76
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vaddi.wu	$vr6, $vr4, 1
-	vaddi.wu	$vr7, $vr5, 1
-	vmul.w	$vr2, $vr6, $vr2
-	vmul.w	$vr3, $vr7, $vr3
-	vsrai.w	$vr4, $vr4, 31
-	vandn.v	$vr2, $vr4, $vr2
-	vsrai.w	$vr4, $vr5, 31
-	vandn.v	$vr3, $vr4, $vr3
-	ld.w	$a5, $a3, -76
-	ld.w	$a6, $a3, -52
-	ld.w	$a7, $a3, -28
-	ld.w	$t0, $a3, -4
-	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
-	ld.w	$a5, $a3, 20
-	ld.w	$a6, $a3, 44
-	ld.w	$a7, $a3, 68
-	ld.w	$t0, $a3, 92
-	vinsgr2vr.w	$vr5, $a5, 0
-	vinsgr2vr.w	$vr5, $a6, 1
-	vinsgr2vr.w	$vr5, $a7, 2
-	vinsgr2vr.w	$vr5, $t0, 3
-	ld.w	$a5, $a3, -88
-	ld.w	$a6, $a3, -64
-	ld.w	$a7, $a3, -40
-	ld.w	$t0, $a3, -16
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	ld.w	$a5, $a3, 8
-	ld.w	$a6, $a3, 32
-	ld.w	$a7, $a3, 56
-	ld.w	$t0, $a3, 80
-	vinsgr2vr.w	$vr7, $a5, 0
-	vinsgr2vr.w	$vr7, $a6, 1
-	vinsgr2vr.w	$vr7, $a7, 2
-	vinsgr2vr.w	$vr7, $t0, 3
-	vsub.w	$vr4, $vr4, $vr6
-	vsub.w	$vr5, $vr5, $vr7
-	vaddi.wu	$vr6, $vr4, 1
-	vaddi.wu	$vr7, $vr5, 1
-	vmul.w	$vr2, $vr2, $vr6
-	vmul.w	$vr3, $vr3, $vr7
-	vsrai.w	$vr4, $vr4, 31
-	vandn.v	$vr2, $vr4, $vr2
-	vsrai.w	$vr4, $vr5, 31
-	vandn.v	$vr3, $vr4, $vr3
-	vadd.w	$vr0, $vr2, $vr0
-	vadd.w	$vr1, $vr3, $vr1
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 192
-	bnez	$a4, .LBB8_35
+	vld	$vr9, $a4, 16
+	vld	$vr6, $a4, 48
+	vld	$vr10, $a4, 64
+	vld	$vr11, $a4, 0
+	vld	$vr17, $a4, 32
+	vld	$vr7, $a4, 80
+	vori.b	$vr8, $vr0, 0
+	vshuf.w	$vr8, $vr10, $vr6
+	vori.b	$vr13, $vr1, 0
+	vshuf.w	$vr13, $vr9, $vr11
+	vori.b	$vr14, $vr2, 0
+	vshuf.w	$vr14, $vr17, $vr11
+	vori.b	$vr15, $vr9, 0
+	vextrins.w	$vr15, $vr17, 18
+	vori.b	$vr16, $vr1, 0
+	vshuf.w	$vr16, $vr17, $vr9
+	vextrins.w	$vr17, $vr11, 3
+	vextrins.w	$vr11, $vr9, 18
+	vpermi.w	$vr8, $vr11, 228
+	vori.b	$vr9, $vr10, 0
+	vextrins.w	$vr9, $vr6, 33
+	vpermi.w	$vr9, $vr13, 228
+	vori.b	$vr12, $vr3, 0
+	vshuf.w	$vr12, $vr7, $vr6
+	vextrins.w	$vr6, $vr7, 48
+	vpermi.w	$vr6, $vr14, 228
+	vpermi.w	$vr12, $vr17, 228
+	vori.b	$vr11, $vr0, 0
+	vshuf.w	$vr11, $vr7, $vr10
+	vpermi.w	$vr11, $vr15, 228
+	vextrins.w	$vr7, $vr10, 33
+	vpermi.w	$vr7, $vr16, 228
+	vld	$vr10, $a4, 176
+	vld	$vr14, $a4, 112
+	vld	$vr15, $a4, 96
+	vld	$vr16, $a4, 128
+	vld	$vr13, $a4, 144
+	vld	$vr17, $a4, 160
+	vori.b	$vr18, $vr1, 0
+	vshuf.w	$vr18, $vr14, $vr15
+	vori.b	$vr19, $vr2, 0
+	vshuf.w	$vr19, $vr16, $vr15
+	vori.b	$vr20, $vr14, 0
+	vextrins.w	$vr20, $vr16, 18
+	vori.b	$vr21, $vr1, 0
+	vshuf.w	$vr21, $vr16, $vr14
+	vextrins.w	$vr16, $vr15, 3
+	vextrins.w	$vr15, $vr14, 18
+	vori.b	$vr14, $vr0, 0
+	vshuf.w	$vr14, $vr17, $vr13
+	vpermi.w	$vr14, $vr15, 228
+	vori.b	$vr15, $vr17, 0
+	vextrins.w	$vr15, $vr13, 33
+	vpermi.w	$vr15, $vr18, 228
+	vori.b	$vr18, $vr3, 0
+	vshuf.w	$vr18, $vr10, $vr13
+	vextrins.w	$vr13, $vr10, 48
+	vpermi.w	$vr13, $vr19, 228
+	vpermi.w	$vr18, $vr16, 228
+	vori.b	$vr16, $vr0, 0
+	vshuf.w	$vr16, $vr10, $vr17
+	vpermi.w	$vr16, $vr20, 228
+	vextrins.w	$vr10, $vr17, 33
+	vpermi.w	$vr10, $vr21, 228
+	vsub.w	$vr8, $vr12, $vr8
+	vsub.w	$vr12, $vr18, $vr14
+	vmaxi.w	$vr8, $vr8, -1
+	vmaxi.w	$vr12, $vr12, -1
+	vaddi.wu	$vr8, $vr8, 1
+	vaddi.wu	$vr12, $vr12, 1
+	vsub.w	$vr9, $vr11, $vr9
+	vsub.w	$vr11, $vr16, $vr15
+	vaddi.wu	$vr14, $vr9, 1
+	vaddi.wu	$vr15, $vr11, 1
+	vmul.w	$vr8, $vr14, $vr8
+	vmul.w	$vr12, $vr15, $vr12
+	vsrai.w	$vr9, $vr9, 31
+	vandn.v	$vr8, $vr9, $vr8
+	vsrai.w	$vr9, $vr11, 31
+	vandn.v	$vr9, $vr9, $vr12
+	vsub.w	$vr6, $vr7, $vr6
+	vsub.w	$vr7, $vr10, $vr13
+	vaddi.wu	$vr10, $vr6, 1
+	vaddi.wu	$vr11, $vr7, 1
+	vmul.w	$vr8, $vr8, $vr10
+	vmul.w	$vr9, $vr9, $vr11
+	vsrai.w	$vr6, $vr6, 31
+	vandn.v	$vr6, $vr6, $vr8
+	vsrai.w	$vr7, $vr7, 31
+	vandn.v	$vr7, $vr7, $vr9
+	vadd.w	$vr4, $vr6, $vr4
+	vadd.w	$vr5, $vr7, $vr5
+	addi.d	$a3, $a3, -8
+	addi.d	$a4, $a4, 192
+	bnez	$a3, .LBB8_35
 # %bb.36:
-	vadd.w	$vr0, $vr1, $vr0
+	vadd.w	$vr0, $vr5, $vr4
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0

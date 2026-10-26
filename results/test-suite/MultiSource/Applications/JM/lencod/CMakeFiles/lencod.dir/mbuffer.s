@@ -7343,28 +7343,83 @@ dpb_combine_field:                      # @dpb_combine_field
 	pcalau12i	$a0, %pc_hi20(listXsize)
 	addi.d	$a0, $a0, %pc_lo12(listXsize)
 	ld.w	$a5, $a0, 4
-	blez	$a5, .LBB34_5
+	blez	$a5, .LBB34_9
 # %bb.1:
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $fp, 56
 	ld.d	$a3, $fp, 40
 	addi.d	$a4, $a5, 1
-	ori	$a6, $zero, 15
+	ori	$a6, $zero, 16
 	bstrpick.d	$a4, $a4, 31, 1
-	bgeu	$a5, $a6, .LBB34_39
+	bltu	$a6, $a5, .LBB34_3
 # %bb.2:
-	move	$a5, $zero
+	move	$a7, $zero
+	b	.LBB34_7
 .LBB34_3:
-	slli.d	$a6, $a5, 4
-	addi.d	$a6, $a6, 288
-	add.d	$a1, $a1, $a6
-	add.d	$a2, $a2, $a6
-	alsl.d	$a3, $a5, $a3, 3
+	addi.d	$a5, $a1, 288
+	addi.d	$a6, $a3, 288
+	alsl.d	$a7, $a4, $a3, 3
+	addi.d	$t1, $a7, 288
+	slli.d	$a7, $a4, 4
+	addi.d	$t2, $a7, 280
+	add.d	$a7, $a1, $t2
+	sltu	$a7, $a6, $a7
+	sltu	$t0, $a5, $t1
+	and	$t0, $a7, $t0
+	move	$a7, $zero
+	bnez	$t0, .LBB34_7
+# %bb.4:
+	addi.d	$t0, $a2, 288
+	add.d	$t2, $a2, $t2
+	sltu	$t2, $a6, $t2
+	sltu	$t1, $t0, $t1
+	and	$t1, $t2, $t1
+	bnez	$t1, .LBB34_7
+# %bb.5:
+	addi.w	$a7, $zero, -2
+	pcalau12i	$t1, %pc_hi20(.LCPI34_0)
+	vld	$vr0, $t1, %pc_lo12(.LCPI34_0)
+	or	$a7, $a4, $a7
+	add.d	$a7, $a7, $a4
+	move	$t1, $a7
+	.p2align	4, , 16
+.LBB34_6:                               # =>This Inner Loop Header: Depth=1
+	vslli.d	$vr1, $vr0, 1
+	vpickve2gr.d	$t2, $vr1, 0
+	slli.d	$t2, $t2, 3
+	vpickve2gr.d	$t3, $vr1, 1
+	slli.d	$t3, $t3, 3
+	ldx.d	$t4, $a5, $t2
+	ldx.d	$t5, $a5, $t3
+	vinsgr2vr.d	$vr1, $t4, 0
+	vinsgr2vr.d	$vr1, $t5, 1
+	vsrli.d	$vr2, $vr1, 63
+	ldx.d	$t2, $t0, $t2
+	ldx.d	$t3, $t0, $t3
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	vinsgr2vr.d	$vr2, $t2, 0
+	vinsgr2vr.d	$vr2, $t3, 1
+	vsrli.d	$vr3, $vr2, 63
+	vadd.d	$vr2, $vr2, $vr3
+	vbitclri.d	$vr2, $vr2, 0
+	vmin.d	$vr1, $vr1, $vr2
+	vst	$vr1, $a6, 0
+	vaddi.du	$vr0, $vr0, 2
+	addi.d	$t1, $t1, -2
+	addi.d	$a6, $a6, 16
+	bnez	$t1, .LBB34_6
+.LBB34_7:
+	slli.d	$a5, $a7, 4
+	addi.d	$a5, $a5, 288
+	add.d	$a1, $a1, $a5
+	add.d	$a2, $a2, $a5
+	alsl.d	$a3, $a7, $a3, 3
 	addi.d	$a3, $a3, 288
-	sub.d	$a4, $a4, $a5
+	sub.d	$a4, $a4, $a7
 	addi.w	$a5, $zero, -2
 	.p2align	4, , 16
-.LBB34_4:                               # =>This Inner Loop Header: Depth=1
+.LBB34_8:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a1, 0
 	ld.d	$a7, $a2, 0
 	srli.d	$t0, $a6, 63
@@ -7382,72 +7437,127 @@ dpb_combine_field:                      # @dpb_combine_field
 	addi.d	$a2, $a2, 16
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB34_4
-.LBB34_5:
+	bnez	$a4, .LBB34_8
+.LBB34_9:
 	ld.w	$a3, $a0, 0
-	blez	$a3, .LBB34_10
-# %bb.6:
+	blez	$a3, .LBB34_12
+# %bb.10:
 	ld.d	$t1, $fp, 48
 	ld.d	$a0, $fp, 56
 	ld.d	$a1, $fp, 40
 	addi.d	$a2, $a3, 1
-	ori	$a4, $zero, 15
+	ori	$a4, $zero, 16
 	bstrpick.d	$a2, $a2, 31, 1
-	bgeu	$a3, $a4, .LBB34_44
-# %bb.7:
-	move	$a3, $zero
-.LBB34_8:
-	slli.d	$a4, $a3, 4
-	addi.d	$a4, $a4, 24
-	alsl.d	$a1, $a3, $a1, 3
-	addi.d	$a1, $a1, 24
-	sub.d	$a2, $a2, $a3
-	addi.w	$a3, $zero, -2
+	bltu	$a4, $a3, .LBB34_13
+# %bb.11:
+	move	$a5, $zero
+	b	.LBB34_17
+.LBB34_12:
+	ld.d	$t1, $fp, 48
+	b	.LBB34_19
+.LBB34_13:
+	addi.d	$a3, $t1, 24
+	addi.d	$a4, $a1, 24
+	alsl.d	$a5, $a2, $a1, 3
+	addi.d	$a7, $a5, 24
+	slli.d	$a5, $a2, 4
+	addi.d	$t0, $a5, 16
+	add.d	$a5, $t1, $t0
+	sltu	$a5, $a4, $a5
+	sltu	$a6, $a3, $a7
+	and	$a6, $a5, $a6
+	move	$a5, $zero
+	bnez	$a6, .LBB34_17
+# %bb.14:
+	addi.d	$a6, $a0, 24
+	add.d	$t0, $a0, $t0
+	sltu	$t0, $a4, $t0
+	sltu	$a7, $a6, $a7
+	and	$a7, $t0, $a7
+	bnez	$a7, .LBB34_17
+# %bb.15:
+	addi.w	$a5, $zero, -2
+	pcalau12i	$a7, %pc_hi20(.LCPI34_0)
+	vld	$vr0, $a7, %pc_lo12(.LCPI34_0)
+	or	$a5, $a2, $a5
+	add.d	$a5, $a5, $a2
+	move	$a7, $a5
 	.p2align	4, , 16
-.LBB34_9:                               # =>This Inner Loop Header: Depth=1
-	ldx.d	$a5, $t1, $a4
-	ldx.d	$a6, $a0, $a4
+.LBB34_16:                              # =>This Inner Loop Header: Depth=1
+	vslli.d	$vr1, $vr0, 1
+	vpickve2gr.d	$t0, $vr1, 0
+	slli.d	$t0, $t0, 3
+	vpickve2gr.d	$t2, $vr1, 1
+	slli.d	$t2, $t2, 3
+	ldx.d	$t3, $a3, $t0
+	ldx.d	$t4, $a3, $t2
+	vinsgr2vr.d	$vr1, $t3, 0
+	vinsgr2vr.d	$vr1, $t4, 1
+	vsrli.d	$vr2, $vr1, 63
+	ldx.d	$t0, $a6, $t0
+	ldx.d	$t2, $a6, $t2
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t2, 1
+	vsrli.d	$vr3, $vr2, 63
+	vadd.d	$vr2, $vr2, $vr3
+	vbitclri.d	$vr2, $vr2, 0
+	vmin.d	$vr1, $vr1, $vr2
+	vst	$vr1, $a4, 0
+	vaddi.du	$vr0, $vr0, 2
+	addi.d	$a7, $a7, -2
+	addi.d	$a4, $a4, 16
+	bnez	$a7, .LBB34_16
+.LBB34_17:
+	slli.d	$a3, $a5, 4
+	addi.d	$a3, $a3, 24
+	alsl.d	$a1, $a5, $a1, 3
+	addi.d	$a1, $a1, 24
+	sub.d	$a2, $a2, $a5
+	addi.w	$a4, $zero, -2
+	.p2align	4, , 16
+.LBB34_18:                              # =>This Inner Loop Header: Depth=1
+	ldx.d	$a5, $t1, $a3
+	ldx.d	$a6, $a0, $a3
 	srli.d	$a7, $a5, 63
 	add.d	$a5, $a5, $a7
-	and	$a5, $a5, $a3
+	and	$a5, $a5, $a4
 	srli.d	$a7, $a6, 63
 	add.d	$a6, $a6, $a7
-	and	$a6, $a6, $a3
+	and	$a6, $a6, $a4
 	slt	$a7, $a5, $a6
 	masknez	$a6, $a6, $a7
 	maskeqz	$a5, $a5, $a7
 	or	$a5, $a5, $a6
 	st.d	$a5, $a1, 0
-	addi.d	$a4, $a4, 16
+	addi.d	$a3, $a3, 16
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 8
-	bnez	$a2, .LBB34_9
-	b	.LBB34_11
-.LBB34_10:
-	ld.d	$t1, $fp, 48
-.LBB34_11:
+	bnez	$a2, .LBB34_18
+.LBB34_19:
 	ldptr.w	$a1, $t1, 6396
 	ori	$a0, $zero, 4
-	blt	$a1, $a0, .LBB34_38
-# %bb.12:
+	blt	$a1, $a0, .LBB34_46
+# %bb.20:
 	move	$a1, $zero
 	lu12i.w	$a2, 131071
 	ori	$a2, $a2, 4094
 	ori	$a3, $zero, 1
-	b	.LBB34_14
+	b	.LBB34_22
 	.p2align	4, , 16
-.LBB34_13:                              #   in Loop: Header=BB34_14 Depth=1
+.LBB34_21:                              #   in Loop: Header=BB34_22 Depth=1
 	ldptr.w	$a4, $t1, 6396
 	addi.d	$a1, $a1, 1
 	bstrpick.d	$a5, $a4, 62, 61
 	add.w	$a4, $a4, $a5
 	srai.d	$a4, $a4, 2
-	bge	$a1, $a4, .LBB34_38
-.LBB34_14:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB34_17 Depth 2
+	bge	$a1, $a4, .LBB34_46
+.LBB34_22:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB34_25 Depth 2
 	ldptr.w	$a4, $t1, 6392
-	blt	$a4, $a0, .LBB34_13
-# %bb.15:                               #   in Loop: Header=BB34_14 Depth=1
+	blt	$a4, $a0, .LBB34_21
+# %bb.23:                               #   in Loop: Header=BB34_22 Depth=1
 	move	$a4, $zero
 	move	$a5, $zero
 	srli.d	$a6, $a1, 1
@@ -7458,9 +7568,9 @@ dpb_combine_field:                      # @dpb_combine_field
 	slli.d	$a6, $a6, 3
 	slli.d	$a7, $a7, 3
 	slli.d	$t0, $a1, 3
-	b	.LBB34_17
+	b	.LBB34_25
 	.p2align	4, , 16
-.LBB34_16:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_24:                              #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t1, $fp, 48
 	ld.d	$t2, $t2, 8
 	ldptr.d	$t1, $t1, 6528
@@ -7479,8 +7589,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.w	$t2, $t2, $t3
 	srai.d	$t2, $t2, 2
 	addi.d	$a4, $a4, 8
-	bge	$a5, $t2, .LBB34_13
-.LBB34_17:                              #   Parent Loop BB34_14 Depth=1
+	bge	$a5, $t2, .LBB34_21
+.LBB34_25:                              #   Parent Loop BB34_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t1, $fp, 40
 	ldptr.d	$t1, $t1, 6528
@@ -7534,52 +7644,52 @@ dpb_combine_field:                      # @dpb_combine_field
 	stx.b	$t2, $t3, $a5
 	ld.d	$t4, $fp, 48
 	alsl.d	$t3, $t1, $t4, 3
-	bltz	$t1, .LBB34_19
-# %bb.18:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t1, .LBB34_27
+# %bb.26:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t6, $t3, 24
-	b	.LBB34_20
+	b	.LBB34_28
 	.p2align	4, , 16
-.LBB34_19:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_27:                              #   in Loop: Header=BB34_25 Depth=2
 	move	$t6, $zero
-.LBB34_20:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_28:                              #   in Loop: Header=BB34_25 Depth=2
 	ldptr.d	$t5, $t4, 6504
 	ld.d	$t7, $t5, 0
 	ldx.d	$t7, $t7, $t0
 	stx.d	$t6, $t7, $a4
 	alsl.d	$t4, $t2, $t4, 3
-	bltz	$t2, .LBB34_23
-# %bb.21:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t2, .LBB34_31
+# %bb.29:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t6, $t4, 288
 	ld.d	$t5, $t5, 8
 	ldx.d	$t5, $t5, $t0
 	stx.d	$t6, $t5, $a4
-	bltz	$t1, .LBB34_24
-.LBB34_22:                              #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t1, .LBB34_32
+.LBB34_30:                              #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t5, $t3, 1608
-	b	.LBB34_25
+	b	.LBB34_33
 	.p2align	4, , 16
-.LBB34_23:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_31:                              #   in Loop: Header=BB34_25 Depth=2
 	move	$t6, $zero
 	ld.d	$t5, $t5, 8
 	ldx.d	$t5, $t5, $t0
 	stx.d	$t6, $t5, $a4
-	bgez	$t1, .LBB34_22
-.LBB34_24:                              #   in Loop: Header=BB34_17 Depth=2
+	bgez	$t1, .LBB34_30
+.LBB34_32:                              #   in Loop: Header=BB34_25 Depth=2
 	move	$t5, $zero
-.LBB34_25:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_33:                              #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t1, $fp, 40
 	ldptr.d	$t3, $t1, 6504
 	ld.d	$t6, $t3, 0
 	ldx.d	$t6, $t6, $a7
 	stx.d	$t5, $t6, $a4
-	bltz	$t2, .LBB34_27
-# %bb.26:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t2, .LBB34_35
+# %bb.34:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t2, $t4, 1872
-	b	.LBB34_28
+	b	.LBB34_36
 	.p2align	4, , 16
-.LBB34_27:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_35:                              #   in Loop: Header=BB34_25 Depth=2
 	move	$t2, $zero
-.LBB34_28:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_36:                              #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t4, $fp, 56
 	ldptr.d	$t5, $t4, 6512
 	ld.d	$t6, $t5, 0
@@ -7626,163 +7736,51 @@ dpb_combine_field:                      # @dpb_combine_field
 	stx.b	$t1, $t3, $a5
 	ld.d	$t4, $fp, 56
 	alsl.d	$t3, $t2, $t4, 3
-	bltz	$t2, .LBB34_30
-# %bb.29:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t2, .LBB34_38
+# %bb.37:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t6, $t3, 24
-	b	.LBB34_31
+	b	.LBB34_39
 	.p2align	4, , 16
-.LBB34_30:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_38:                              #   in Loop: Header=BB34_25 Depth=2
 	move	$t6, $zero
-.LBB34_31:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_39:                              #   in Loop: Header=BB34_25 Depth=2
 	ldptr.d	$t5, $t4, 6504
 	ld.d	$t7, $t5, 0
 	ldx.d	$t7, $t7, $t0
 	stx.d	$t6, $t7, $a4
 	alsl.d	$t4, $t1, $t4, 3
-	bltz	$t1, .LBB34_33
-# %bb.32:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t1, .LBB34_41
+# %bb.40:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t6, $t4, 288
-	b	.LBB34_34
+	b	.LBB34_42
 	.p2align	4, , 16
-.LBB34_33:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_41:                              #   in Loop: Header=BB34_25 Depth=2
 	move	$t6, $zero
-.LBB34_34:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_42:                              #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t5, $t5, 8
 	ldx.d	$t7, $t5, $t0
 	addi.w	$t5, $zero, -1
 	stx.d	$t6, $t7, $a4
 	move	$t6, $t5
-	bltz	$t2, .LBB34_36
-# %bb.35:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t2, .LBB34_44
+# %bb.43:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t6, $t3, 1608
-.LBB34_36:                              #   in Loop: Header=BB34_17 Depth=2
+.LBB34_44:                              #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t2, $fp, 40
 	ldptr.d	$t2, $t2, 6504
 	ld.d	$t3, $t2, 0
 	ldx.d	$t3, $t3, $a6
 	stx.d	$t6, $t3, $a4
-	bltz	$t1, .LBB34_16
-# %bb.37:                               #   in Loop: Header=BB34_17 Depth=2
+	bltz	$t1, .LBB34_24
+# %bb.45:                               #   in Loop: Header=BB34_25 Depth=2
 	ld.d	$t5, $t4, 1872
-	b	.LBB34_16
-.LBB34_38:
+	b	.LBB34_24
+.LBB34_46:
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB34_39:
-	addi.d	$a6, $a1, 288
-	addi.d	$a7, $a3, 288
-	alsl.d	$a5, $a4, $a3, 3
-	addi.d	$t1, $a5, 288
-	slli.d	$a5, $a4, 4
-	addi.d	$t2, $a5, 280
-	add.d	$a5, $a1, $t2
-	sltu	$a5, $a7, $a5
-	sltu	$t0, $a6, $t1
-	and	$t0, $a5, $t0
-	move	$a5, $zero
-	bnez	$t0, .LBB34_3
-# %bb.40:
-	addi.d	$t0, $a2, 288
-	add.d	$t2, $a2, $t2
-	sltu	$t2, $a7, $t2
-	sltu	$t1, $t0, $t1
-	and	$t1, $t2, $t1
-	bnez	$t1, .LBB34_3
-# %bb.41:
-	pcalau12i	$a5, %pc_hi20(.LCPI34_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI34_0)
-	bstrpick.d	$a5, $a4, 29, 1
-	slli.d	$a5, $a5, 1
-	move	$t1, $a5
-	.p2align	4, , 16
-.LBB34_42:                              # =>This Inner Loop Header: Depth=1
-	vslli.d	$vr1, $vr0, 1
-	vpickve2gr.d	$t2, $vr1, 0
-	slli.d	$t2, $t2, 3
-	vpickve2gr.d	$t3, $vr1, 1
-	slli.d	$t3, $t3, 3
-	ldx.d	$t4, $a6, $t2
-	ldx.d	$t5, $a6, $t3
-	vinsgr2vr.d	$vr1, $t4, 0
-	vinsgr2vr.d	$vr1, $t5, 1
-	vsrli.d	$vr2, $vr1, 63
-	ldx.d	$t2, $t0, $t2
-	ldx.d	$t3, $t0, $t3
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	vinsgr2vr.d	$vr2, $t2, 0
-	vinsgr2vr.d	$vr2, $t3, 1
-	vsrli.d	$vr3, $vr2, 63
-	vadd.d	$vr2, $vr2, $vr3
-	vbitclri.d	$vr2, $vr2, 0
-	vmin.d	$vr1, $vr1, $vr2
-	vst	$vr1, $a7, 0
-	vaddi.du	$vr0, $vr0, 2
-	addi.d	$t1, $t1, -2
-	addi.d	$a7, $a7, 16
-	bnez	$t1, .LBB34_42
-# %bb.43:
-	bne	$a5, $a4, .LBB34_3
-	b	.LBB34_5
-.LBB34_44:
-	addi.d	$a4, $t1, 24
-	addi.d	$a5, $a1, 24
-	alsl.d	$a3, $a2, $a1, 3
-	addi.d	$a7, $a3, 24
-	slli.d	$a3, $a2, 4
-	addi.d	$t0, $a3, 16
-	add.d	$a3, $t1, $t0
-	sltu	$a3, $a5, $a3
-	sltu	$a6, $a4, $a7
-	and	$a6, $a3, $a6
-	move	$a3, $zero
-	bnez	$a6, .LBB34_8
-# %bb.45:
-	addi.d	$a6, $a0, 24
-	add.d	$t0, $a0, $t0
-	sltu	$t0, $a5, $t0
-	sltu	$a7, $a6, $a7
-	and	$a7, $t0, $a7
-	bnez	$a7, .LBB34_8
-# %bb.46:
-	pcalau12i	$a3, %pc_hi20(.LCPI34_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI34_0)
-	bstrpick.d	$a3, $a2, 29, 1
-	slli.d	$a3, $a3, 1
-	move	$a7, $a3
-	.p2align	4, , 16
-.LBB34_47:                              # =>This Inner Loop Header: Depth=1
-	vslli.d	$vr1, $vr0, 1
-	vpickve2gr.d	$t0, $vr1, 0
-	slli.d	$t0, $t0, 3
-	vpickve2gr.d	$t2, $vr1, 1
-	slli.d	$t2, $t2, 3
-	ldx.d	$t3, $a4, $t0
-	ldx.d	$t4, $a4, $t2
-	vinsgr2vr.d	$vr1, $t3, 0
-	vinsgr2vr.d	$vr1, $t4, 1
-	vsrli.d	$vr2, $vr1, 63
-	ldx.d	$t0, $a6, $t0
-	ldx.d	$t2, $a6, $t2
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	vinsgr2vr.d	$vr2, $t0, 0
-	vinsgr2vr.d	$vr2, $t2, 1
-	vsrli.d	$vr3, $vr2, 63
-	vadd.d	$vr2, $vr2, $vr3
-	vbitclri.d	$vr2, $vr2, 0
-	vmin.d	$vr1, $vr1, $vr2
-	vst	$vr1, $a5, 0
-	vaddi.du	$vr0, $vr0, 2
-	addi.d	$a7, $a7, -2
-	addi.d	$a5, $a5, 16
-	bnez	$a7, .LBB34_47
-# %bb.48:
-	bne	$a3, $a2, .LBB34_8
-	b	.LBB34_11
 .Lfunc_end34:
 	.size	dpb_combine_field, .Lfunc_end34-dpb_combine_field
                                         # -- End function

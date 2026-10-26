@@ -37865,11 +37865,18 @@ _ZNSt17_Function_handlerIFvPiS0_EZL29checkVectorWithStoresFunctionIiEvSt8functio
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_65E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI213_0,@object
 .LCPI213_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI213_0, 16
+	.type	.LCPI213_1,@object
+.LCPI213_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI213_0, 16
+	.size	.LCPI213_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end213, nop
@@ -37889,33 +37896,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_65E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB213_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2482:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2483:                              # EH_LABEL
@@ -37936,56 +37943,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_65E9_M_invokeERKSt9_A
 .LBB213_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI213_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI213_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI213_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI213_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB213_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB213_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB213_9
 # %bb.8:
 .Ltmp2484:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2485:                              # EH_LABEL
 .LBB213_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB213_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2487:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -37997,13 +38044,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_65E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB213_13:
 .Ltmp2489:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB213_15
 # %bb.14:
 .Ltmp2490:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2491:                              # EH_LABEL
@@ -38092,11 +38139,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_65E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_66E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI215_0,@object
 .LCPI215_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI215_0, 16
+	.type	.LCPI215_1,@object
+.LCPI215_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI215_0, 16
+	.size	.LCPI215_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end215, nop
@@ -38116,33 +38170,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_66E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB215_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2493:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2494:                              # EH_LABEL
@@ -38163,56 +38217,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_66E9_M_invokeERKSt9_A
 .LBB215_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI215_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI215_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI215_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI215_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB215_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB215_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB215_9
 # %bb.8:
 .Ltmp2495:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2496:                              # EH_LABEL
 .LBB215_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB215_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2498:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -38224,13 +38318,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_66E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB215_13:
 .Ltmp2500:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB215_15
 # %bb.14:
 .Ltmp2501:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2502:                              # EH_LABEL
@@ -38319,11 +38413,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_66E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_67E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI217_0,@object
 .LCPI217_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI217_0, 16
+	.type	.LCPI217_1,@object
+.LCPI217_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI217_0, 16
+	.size	.LCPI217_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end217, nop
@@ -38343,33 +38444,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_67E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB217_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2504:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2505:                              # EH_LABEL
@@ -38390,56 +38491,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_67E9_M_invokeERKSt9_A
 .LBB217_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI217_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI217_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI217_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI217_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB217_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB217_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB217_9
 # %bb.8:
 .Ltmp2506:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2507:                              # EH_LABEL
 .LBB217_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB217_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2509:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -38451,13 +38592,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_67E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB217_13:
 .Ltmp2511:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB217_15
 # %bb.14:
 .Ltmp2512:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2513:                              # EH_LABEL
@@ -38546,11 +38687,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_67E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_68E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI219_0,@object
 .LCPI219_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI219_0, 16
+	.type	.LCPI219_1,@object
+.LCPI219_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI219_0, 16
+	.size	.LCPI219_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end219, nop
@@ -38570,33 +38718,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_68E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB219_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2515:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2516:                              # EH_LABEL
@@ -38617,56 +38765,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_68E9_M_invokeERKSt9_A
 .LBB219_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI219_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI219_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI219_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI219_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB219_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB219_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB219_9
 # %bb.8:
 .Ltmp2517:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2518:                              # EH_LABEL
 .LBB219_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB219_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2520:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -38678,13 +38866,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_68E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB219_13:
 .Ltmp2522:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB219_15
 # %bb.14:
 .Ltmp2523:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2524:                              # EH_LABEL
@@ -38773,11 +38961,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_68E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_69E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI221_0,@object
 .LCPI221_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI221_0, 16
+	.type	.LCPI221_1,@object
+.LCPI221_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI221_0, 16
+	.size	.LCPI221_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end221, nop
@@ -38797,33 +38992,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_69E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB221_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2526:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2527:                              # EH_LABEL
@@ -38844,56 +39039,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_69E9_M_invokeERKSt9_A
 .LBB221_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI221_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI221_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI221_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI221_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB221_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB221_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB221_9
 # %bb.8:
 .Ltmp2528:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2529:                              # EH_LABEL
 .LBB221_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB221_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2531:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -38905,13 +39140,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_69E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB221_13:
 .Ltmp2533:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB221_15
 # %bb.14:
 .Ltmp2534:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2535:                              # EH_LABEL
@@ -39000,11 +39235,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_69E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_70E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI223_0,@object
 .LCPI223_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI223_0, 16
+	.type	.LCPI223_1,@object
+.LCPI223_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI223_0, 16
+	.size	.LCPI223_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end223, nop
@@ -39024,33 +39266,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_70E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB223_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2537:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2538:                              # EH_LABEL
@@ -39070,56 +39312,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_70E9_M_invokeERKSt9_A
 .LBB223_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI223_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI223_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI223_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI223_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB223_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB223_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB223_9
 # %bb.8:
 .Ltmp2539:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2540:                              # EH_LABEL
 .LBB223_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB223_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2542:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -39131,13 +39413,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_70E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB223_13:
 .Ltmp2544:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB223_15
 # %bb.14:
 .Ltmp2545:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2546:                              # EH_LABEL
@@ -39226,11 +39508,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_70E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_71E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI225_0,@object
 .LCPI225_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI225_0, 16
+	.type	.LCPI225_1,@object
+.LCPI225_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI225_0, 16
+	.size	.LCPI225_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end225, nop
@@ -39250,33 +39539,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_71E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB225_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2548:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2549:                              # EH_LABEL
@@ -39296,56 +39585,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_71E9_M_invokeERKSt9_A
 .LBB225_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI225_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI225_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI225_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI225_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB225_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB225_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB225_9
 # %bb.8:
 .Ltmp2550:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2551:                              # EH_LABEL
 .LBB225_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB225_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2553:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -39357,13 +39686,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_71E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB225_13:
 .Ltmp2555:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB225_15
 # %bb.14:
 .Ltmp2556:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2557:                              # EH_LABEL
@@ -39452,11 +39781,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_71E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_72E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI227_0,@object
 .LCPI227_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI227_0, 16
+	.type	.LCPI227_1,@object
+.LCPI227_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI227_0, 16
+	.size	.LCPI227_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end227, nop
@@ -39476,33 +39812,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_72E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB227_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2559:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2560:                              # EH_LABEL
@@ -39522,56 +39858,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_72E9_M_invokeERKSt9_A
 .LBB227_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI227_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI227_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI227_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI227_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB227_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB227_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB227_9
 # %bb.8:
 .Ltmp2561:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2562:                              # EH_LABEL
 .LBB227_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB227_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2564:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -39583,13 +39959,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_72E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB227_13:
 .Ltmp2566:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB227_15
 # %bb.14:
 .Ltmp2567:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2568:                              # EH_LABEL
@@ -39678,11 +40054,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_72E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_73E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI229_0,@object
 .LCPI229_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI229_0, 16
+	.type	.LCPI229_1,@object
+.LCPI229_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI229_0, 16
+	.size	.LCPI229_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end229, nop
@@ -39702,33 +40085,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_73E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB229_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2570:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2571:                              # EH_LABEL
@@ -39748,56 +40131,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_73E9_M_invokeERKSt9_A
 .LBB229_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI229_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI229_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI229_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI229_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB229_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB229_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB229_9
 # %bb.8:
 .Ltmp2572:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2573:                              # EH_LABEL
 .LBB229_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB229_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2575:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -39809,13 +40232,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_73E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB229_13:
 .Ltmp2577:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB229_15
 # %bb.14:
 .Ltmp2578:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2579:                              # EH_LABEL
@@ -39904,11 +40327,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_73E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_74E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI231_0,@object
 .LCPI231_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI231_0, 16
+	.type	.LCPI231_1,@object
+.LCPI231_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI231_0, 16
+	.size	.LCPI231_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end231, nop
@@ -39928,33 +40358,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_74E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB231_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2581:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2582:                              # EH_LABEL
@@ -39974,56 +40404,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_74E9_M_invokeERKSt9_A
 .LBB231_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI231_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI231_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI231_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI231_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB231_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB231_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB231_9
 # %bb.8:
 .Ltmp2583:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2584:                              # EH_LABEL
 .LBB231_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB231_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2586:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -40035,13 +40505,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_74E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB231_13:
 .Ltmp2588:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB231_15
 # %bb.14:
 .Ltmp2589:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2590:                              # EH_LABEL
@@ -40130,11 +40600,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_74E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_75E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI233_0,@object
 .LCPI233_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI233_0, 16
+	.type	.LCPI233_1,@object
+.LCPI233_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI233_0, 16
+	.size	.LCPI233_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end233, nop
@@ -40154,33 +40631,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_75E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB233_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2592:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2593:                              # EH_LABEL
@@ -40202,56 +40679,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_75E9_M_invokeERKSt9_A
 .LBB233_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI233_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI233_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI233_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI233_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB233_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB233_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB233_9
 # %bb.8:
 .Ltmp2594:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2595:                              # EH_LABEL
 .LBB233_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB233_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2597:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -40263,13 +40780,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_75E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB233_13:
 .Ltmp2599:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB233_15
 # %bb.14:
 .Ltmp2600:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2601:                              # EH_LABEL
@@ -40358,11 +40875,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_75E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_76E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI235_0,@object
 .LCPI235_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI235_0, 16
+	.type	.LCPI235_1,@object
+.LCPI235_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI235_0, 16
+	.size	.LCPI235_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end235, nop
@@ -40382,33 +40906,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_76E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB235_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2603:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2604:                              # EH_LABEL
@@ -40430,56 +40954,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_76E9_M_invokeERKSt9_A
 .LBB235_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI235_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI235_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI235_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI235_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB235_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB235_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB235_9
 # %bb.8:
 .Ltmp2605:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2606:                              # EH_LABEL
 .LBB235_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB235_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2608:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -40491,13 +41055,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_76E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB235_13:
 .Ltmp2610:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB235_15
 # %bb.14:
 .Ltmp2611:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2612:                              # EH_LABEL
@@ -40586,11 +41150,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_76E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_77E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI237_0,@object
 .LCPI237_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI237_0, 16
+	.type	.LCPI237_1,@object
+.LCPI237_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI237_0, 16
+	.size	.LCPI237_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end237, nop
@@ -40610,33 +41181,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_77E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB237_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2614:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2615:                              # EH_LABEL
@@ -40658,56 +41229,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_77E9_M_invokeERKSt9_A
 .LBB237_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI237_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI237_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI237_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI237_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB237_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB237_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB237_9
 # %bb.8:
 .Ltmp2616:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2617:                              # EH_LABEL
 .LBB237_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB237_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2619:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -40719,13 +41330,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_77E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB237_13:
 .Ltmp2621:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB237_15
 # %bb.14:
 .Ltmp2622:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2623:                              # EH_LABEL
@@ -40814,11 +41425,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_77E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_78E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI239_0,@object
 .LCPI239_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI239_0, 16
+	.type	.LCPI239_1,@object
+.LCPI239_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI239_0, 16
+	.size	.LCPI239_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end239, nop
@@ -40838,33 +41456,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_78E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB239_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2625:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2626:                              # EH_LABEL
@@ -40886,56 +41504,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_78E9_M_invokeERKSt9_A
 .LBB239_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI239_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI239_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI239_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI239_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB239_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB239_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB239_9
 # %bb.8:
 .Ltmp2627:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2628:                              # EH_LABEL
 .LBB239_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB239_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2630:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -40947,13 +41605,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_78E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB239_13:
 .Ltmp2632:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB239_15
 # %bb.14:
 .Ltmp2633:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2634:                              # EH_LABEL
@@ -41042,11 +41700,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_78E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_79E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI241_0,@object
 .LCPI241_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI241_0, 16
+	.type	.LCPI241_1,@object
+.LCPI241_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI241_0, 16
+	.size	.LCPI241_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end241, nop
@@ -41066,33 +41731,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_79E9_M_invokeERKSt9_A
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 56
+	st.d	$zero, $sp, 72
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 40
-	st.d	$a3, $sp, 64
+	vst	$vr1, $sp, 56
+	st.d	$a3, $sp, 80
 	beqz	$a0, .LBB241_10
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 40
-	st.d	$a0, $sp, 56
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 56
+	st.d	$a0, $sp, 72
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$fp, $sp, $a0
-	stptr.d	$fp, $sp, 4176
-	addi.d	$s0, $sp, 72
-	stptr.d	$s0, $sp, 4168
+	stptr.d	$fp, $sp, 4192
+	addi.d	$s0, $sp, 88
+	stptr.d	$s0, $sp, 4184
 .Ltmp2636:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
+	addi.d	$a0, $sp, 56
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 80
+	ori	$a1, $a1, 96
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 72
+	ori	$a2, $a2, 88
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2637:                              # EH_LABEL
@@ -41114,56 +41779,96 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_79E9_M_invokeERKSt9_A
 .LBB241_5:
 	pcalau12i	$a0, %pc_hi20(.LCPI241_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI241_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI241_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI241_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2120
+	ori	$a1, $zero, 2136
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB241_6:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB241_6
 # %bb.7:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 56
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 72
 	beqz	$a3, .LBB241_9
 # %bb.8:
 .Ltmp2638:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2639:                              # EH_LABEL
 .LBB241_9:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.w	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
+	addi.w	$a0, $a0, 0
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB241_10:
-	ori	$a0, $zero, 2120
+	ori	$a0, $zero, 2136
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4176
-	addi.d	$a0, $sp, 72
-	stptr.d	$a0, $sp, 4168
+	stptr.d	$a0, $sp, 4192
+	addi.d	$a0, $sp, 88
+	stptr.d	$a0, $sp, 4184
 .Ltmp2641:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -41175,13 +41880,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_79E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB241_13:
 .Ltmp2643:                              # EH_LABEL
-	ld.d	$a3, $sp, 56
+	ld.d	$a3, $sp, 72
 	move	$fp, $a0
 	beqz	$a3, .LBB241_15
 # %bb.14:
 .Ltmp2644:                              # EH_LABEL
-	addi.d	$a0, $sp, 40
-	addi.d	$a1, $sp, 40
+	addi.d	$a0, $sp, 56
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2645:                              # EH_LABEL
@@ -41270,11 +41975,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_79E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI243_0,@object
 .LCPI243_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI243_0, 16
+	.type	.LCPI243_1,@object
+.LCPI243_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI243_0, 16
+	.size	.LCPI243_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end243, nop
@@ -41296,33 +42008,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB243_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2647:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2648:                              # EH_LABEL
@@ -41344,46 +42056,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E9_M_invokeERKSt9_A
 .LBB243_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI243_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI243_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI243_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI243_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB243_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB243_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB243_10
 # %bb.9:
 .Ltmp2649:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2650:                              # EH_LABEL
 .LBB243_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -41391,11 +42142,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB243_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2652:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -41407,13 +42158,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB243_14:
 .Ltmp2654:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB243_16
 # %bb.15:
 .Ltmp2655:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2656:                              # EH_LABEL
@@ -41502,11 +42253,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_80E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI245_0,@object
 .LCPI245_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI245_0, 16
+	.type	.LCPI245_1,@object
+.LCPI245_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI245_0, 16
+	.size	.LCPI245_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end245, nop
@@ -41528,33 +42286,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB245_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2658:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2659:                              # EH_LABEL
@@ -41576,46 +42334,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E9_M_invokeERKSt9_A
 .LBB245_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI245_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI245_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI245_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI245_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB245_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB245_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB245_10
 # %bb.9:
 .Ltmp2660:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2661:                              # EH_LABEL
 .LBB245_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -41623,11 +42420,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB245_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2663:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -41639,13 +42436,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB245_14:
 .Ltmp2665:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB245_16
 # %bb.15:
 .Ltmp2666:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2667:                              # EH_LABEL
@@ -41734,11 +42531,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_81E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI247_0,@object
 .LCPI247_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI247_0, 16
+	.type	.LCPI247_1,@object
+.LCPI247_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI247_0, 16
+	.size	.LCPI247_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end247, nop
@@ -41760,33 +42564,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB247_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2669:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2670:                              # EH_LABEL
@@ -41808,46 +42612,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E9_M_invokeERKSt9_A
 .LBB247_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI247_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI247_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI247_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI247_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB247_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB247_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB247_10
 # %bb.9:
 .Ltmp2671:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2672:                              # EH_LABEL
 .LBB247_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -41855,11 +42698,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB247_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2674:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -41871,13 +42714,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB247_14:
 .Ltmp2676:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB247_16
 # %bb.15:
 .Ltmp2677:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2678:                              # EH_LABEL
@@ -41966,11 +42809,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_82E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI249_0,@object
 .LCPI249_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI249_0, 16
+	.type	.LCPI249_1,@object
+.LCPI249_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI249_0, 16
+	.size	.LCPI249_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end249, nop
@@ -41992,33 +42842,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB249_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2680:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2681:                              # EH_LABEL
@@ -42040,46 +42890,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E9_M_invokeERKSt9_A
 .LBB249_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI249_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI249_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI249_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI249_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB249_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB249_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB249_10
 # %bb.9:
 .Ltmp2682:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2683:                              # EH_LABEL
 .LBB249_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -42087,11 +42976,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB249_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2685:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -42103,13 +42992,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB249_14:
 .Ltmp2687:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB249_16
 # %bb.15:
 .Ltmp2688:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2689:                              # EH_LABEL
@@ -42198,11 +43087,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_83E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_84E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI251_0,@object
 .LCPI251_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI251_0, 16
+	.type	.LCPI251_1,@object
+.LCPI251_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI251_0, 16
+	.size	.LCPI251_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end251, nop
@@ -42224,33 +43120,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_84E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB251_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2691:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2692:                              # EH_LABEL
@@ -42272,46 +43168,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_84E9_M_invokeERKSt9_A
 .LBB251_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI251_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI251_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI251_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI251_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB251_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB251_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB251_10
 # %bb.9:
 .Ltmp2693:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2694:                              # EH_LABEL
 .LBB251_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -42319,11 +43254,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_84E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB251_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2696:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -42335,13 +43270,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_84E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB251_14:
 .Ltmp2698:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB251_16
 # %bb.15:
 .Ltmp2699:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2700:                              # EH_LABEL
@@ -44261,11 +45196,18 @@ _ZNSt17_Function_handlerIFfSt8functionIFvPfS1_EEEZ4mainE4$_89E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI274_0,@object
 .LCPI274_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI274_0, 16
+	.type	.LCPI274_1,@object
+.LCPI274_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI274_0, 16
+	.size	.LCPI274_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end274, nop
@@ -44287,33 +45229,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB274_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2775:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2776:                              # EH_LABEL
@@ -44338,46 +45280,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E9_M_invokeERKSt9_A
 .LBB274_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI274_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI274_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI274_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI274_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB274_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB274_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB274_10
 # %bb.9:
 .Ltmp2777:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2778:                              # EH_LABEL
 .LBB274_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -44385,11 +45366,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB274_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2780:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -44401,13 +45382,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB274_14:
 .Ltmp2782:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB274_16
 # %bb.15:
 .Ltmp2783:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2784:                              # EH_LABEL
@@ -44496,11 +45477,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_90E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI276_0,@object
 .LCPI276_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI276_0, 16
+	.type	.LCPI276_1,@object
+.LCPI276_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI276_0, 16
+	.size	.LCPI276_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end276, nop
@@ -44522,33 +45510,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB276_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2786:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2787:                              # EH_LABEL
@@ -44573,46 +45561,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E9_M_invokeERKSt9_A
 .LBB276_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI276_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI276_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI276_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI276_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB276_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB276_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB276_10
 # %bb.9:
 .Ltmp2788:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2789:                              # EH_LABEL
 .LBB276_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -44620,11 +45647,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB276_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2791:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -44636,13 +45663,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB276_14:
 .Ltmp2793:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB276_16
 # %bb.15:
 .Ltmp2794:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2795:                              # EH_LABEL
@@ -44731,11 +45758,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_91E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI278_0,@object
 .LCPI278_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI278_0, 16
+	.type	.LCPI278_1,@object
+.LCPI278_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI278_0, 16
+	.size	.LCPI278_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end278, nop
@@ -44757,33 +45791,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB278_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2797:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2798:                              # EH_LABEL
@@ -44808,46 +45842,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E9_M_invokeERKSt9_A
 .LBB278_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI278_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI278_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI278_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI278_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB278_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB278_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB278_10
 # %bb.9:
 .Ltmp2799:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2800:                              # EH_LABEL
 .LBB278_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -44855,11 +45928,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB278_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2802:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -44871,13 +45944,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB278_14:
 .Ltmp2804:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB278_16
 # %bb.15:
 .Ltmp2805:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2806:                              # EH_LABEL
@@ -44966,11 +46039,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_92E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI280_0,@object
 .LCPI280_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI280_0, 16
+	.type	.LCPI280_1,@object
+.LCPI280_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI280_0, 16
+	.size	.LCPI280_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end280, nop
@@ -44992,33 +46072,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB280_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2808:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2809:                              # EH_LABEL
@@ -45043,46 +46123,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E9_M_invokeERKSt9_A
 .LBB280_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI280_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI280_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI280_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI280_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB280_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB280_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB280_10
 # %bb.9:
 .Ltmp2810:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2811:                              # EH_LABEL
 .LBB280_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -45090,11 +46209,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB280_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2813:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -45106,13 +46225,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB280_14:
 .Ltmp2815:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB280_16
 # %bb.15:
 .Ltmp2816:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2817:                              # EH_LABEL
@@ -45201,11 +46320,18 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_93E10_M_managerERSt9_
 	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_94E9_M_invokeERKSt9_Any_dataOS3_
 	.type	.LCPI282_0,@object
 .LCPI282_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.size	.LCPI282_0, 16
+	.type	.LCPI282_1,@object
+.LCPI282_1:
 	.word	3                               # 0x3
 	.word	7                               # 0x7
 	.word	4294967295                      # 0xffffffff
 	.word	4294967295                      # 0xffffffff
-	.size	.LCPI282_0, 16
+	.size	.LCPI282_1, 16
 	.text
 	.p2align	2
 	.prefalign	5, .Lfunc_end282, nop
@@ -45227,33 +46353,33 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_94E9_M_invokeERKSt9_A
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 4208
+	addi.d	$sp, $sp, -144
+	.cfi_def_cfa_offset 4224
 	ld.d	$a3, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 48
+	st.d	$zero, $sp, 64
 	vrepli.b	$vr1, 0
-	vst	$vr1, $sp, 32
-	st.d	$a3, $sp, 56
+	vst	$vr1, $sp, 48
+	st.d	$a3, $sp, 72
 	beqz	$a0, .LBB282_11
 # %bb.1:
 	vld	$vr0, $a1, 0
-	vst	$vr0, $sp, 32
-	st.d	$a0, $sp, 48
-	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48
+	st.d	$a0, $sp, 64
+	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr1, $a1, 16
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$s0, $sp, $a0
-	stptr.d	$s0, $sp, 4168
-	addi.d	$s1, $sp, 64
-	stptr.d	$s1, $sp, 4160
+	stptr.d	$s0, $sp, 4184
+	addi.d	$s1, $sp, 80
+	stptr.d	$s1, $sp, 4176
 .Ltmp2819:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 48
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 72
+	ori	$a1, $a1, 88
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 64
+	ori	$a2, $a2, 80
 	add.d	$a2, $sp, $a2
 	jirl	$ra, $a3, 0
 .Ltmp2820:                              # EH_LABEL
@@ -45278,46 +46404,85 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_94E9_M_invokeERKSt9_A
 .LBB282_6:
 	pcalau12i	$a0, %pc_hi20(.LCPI282_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI282_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI282_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI282_1)
 	move	$a0, $zero
-	ori	$a1, $zero, 2112
+	ori	$a1, $zero, 2128
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 2048
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr14, $sp, 32                  # 16-byte Folded Reload
+	vori.b	$vr15, $vr14, 0
 	.p2align	4, , 16
 .LBB282_7:                              # =>This Inner Loop Header: Depth=1
 	add.d	$a3, $a1, $a0
-	vldx	$vr1, $a0, $a1
-	vld	$vr2, $a3, 16
-	vpackev.w	$vr3, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vpackod.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
-	vilvh.w	$vr4, $vr2, $vr1
-	vadd.w	$vr3, $vr3, $vr4
+	vldx	$vr2, $a0, $a1
+	vld	$vr3, $a3, 32
+	vld	$vr4, $a3, 48
+	vld	$vr5, $a3, 16
+	vori.b	$vr6, $vr0, 0
+	vshuf.w	$vr6, $vr4, $vr3
+	vpackev.w	$vr7, $vr5, $vr2
+	vpermi.w	$vr6, $vr7, 228
+	vpackod.w	$vr7, $vr5, $vr2
+	vilvl.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr8, $vr7, 228
+	vilvh.w	$vr7, $vr5, $vr2
+	vpackev.w	$vr9, $vr4, $vr3
+	vpermi.w	$vr9, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr5, $vr2
+	vld	$vr2, $a3, 64
+	vld	$vr5, $a3, 96
+	vld	$vr10, $a3, 112
+	vld	$vr11, $a3, 80
+	vpackod.w	$vr3, $vr4, $vr3
+	vpermi.w	$vr3, $vr7, 228
 	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr2, $vr1
-	addi.d	$a0, $a0, 32
-	vadd.w	$vr4, $vr3, $vr4
+	vshuf.w	$vr4, $vr10, $vr5
+	vpackev.w	$vr7, $vr11, $vr2
+	vpermi.w	$vr4, $vr7, 228
+	vpackod.w	$vr7, $vr11, $vr2
+	vilvl.w	$vr12, $vr10, $vr5
+	vpermi.w	$vr12, $vr7, 228
+	vilvh.w	$vr7, $vr11, $vr2
+	vpackev.w	$vr13, $vr10, $vr5
+	vpermi.w	$vr13, $vr7, 228
+	vori.b	$vr7, $vr1, 0
+	vshuf.w	$vr7, $vr11, $vr2
+	vpackod.w	$vr2, $vr10, $vr5
+	vpermi.w	$vr2, $vr7, 228
+	vadd.w	$vr5, $vr6, $vr14
+	vadd.w	$vr4, $vr4, $vr15
+	vadd.w	$vr5, $vr5, $vr8
+	vadd.w	$vr4, $vr4, $vr12
+	vadd.w	$vr5, $vr5, $vr9
+	vadd.w	$vr4, $vr4, $vr13
+	vadd.w	$vr14, $vr5, $vr3
+	addi.d	$a0, $a0, 128
+	vadd.w	$vr15, $vr4, $vr2
 	bne	$a0, $a2, .LBB282_7
 # %bb.8:
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
-	ld.d	$a3, $sp, 48
+	vst	$vr15, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr14, $sp, 32                  # 16-byte Folded Spill
+	ld.d	$a3, $sp, 64
 	beqz	$a3, .LBB282_10
 # %bb.9:
 .Ltmp2821:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2822:                              # EH_LABEL
 .LBB282_10:
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	add.d	$a0, $a1, $a0
+	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vadd.w	$vr0, $vr1, $vr0
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 160
 	ld.d	$s1, $sp, 2000                  # 8-byte Folded Reload
 	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
@@ -45325,11 +46490,11 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_94E9_M_invokeERKSt9_A
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB282_11:
-	ori	$a0, $zero, 2112
+	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	stptr.d	$a0, $sp, 4168
-	addi.d	$a0, $sp, 64
-	stptr.d	$a0, $sp, 4160
+	stptr.d	$a0, $sp, 4184
+	addi.d	$a0, $sp, 80
+	stptr.d	$a0, $sp, 4176
 .Ltmp2824:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
@@ -45341,13 +46506,13 @@ _ZNSt17_Function_handlerIFiSt8functionIFvPiS1_EEEZ4mainE4$_94E9_M_invokeERKSt9_A
 	jirl	$ra, $ra, 0
 .LBB282_14:
 .Ltmp2826:                              # EH_LABEL
-	ld.d	$a3, $sp, 48
+	ld.d	$a3, $sp, 64
 	move	$fp, $a0
 	beqz	$a3, .LBB282_16
 # %bb.15:
 .Ltmp2827:                              # EH_LABEL
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $sp, 32
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp2828:                              # EH_LABEL

@@ -494,27 +494,94 @@ _ZNK15btCylinderShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_Z
 	.type	_ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	blez	$a3, .LBB9_13
+	blez	$a3, .LBB9_12
 # %bb.1:
 	ori	$a4, $zero, 4
-	bgeu	$a3, $a4, .LBB9_8
+	bltu	$a4, $a3, .LBB9_3
 # %bb.2:
 	move	$a4, $zero
+	b	.LBB9_7
 .LBB9_3:
+	addi.d	$a4, $a0, 40
+	alsl.d	$a5, $a3, $a2, 4
+	addi.d	$a6, $a0, 48
+	sltu	$a6, $a2, $a6
+	sltu	$a4, $a4, $a5
+	and	$a6, $a6, $a4
+	move	$a4, $zero
+	bnez	$a6, .LBB9_7
+# %bb.4:
+	alsl.d	$a6, $a3, $a1, 4
+	addi.d	$a6, $a6, -4
+	sltu	$a6, $a2, $a6
+	sltu	$a5, $a1, $a5
+	and	$a5, $a6, $a5
+	bnez	$a5, .LBB9_7
+# %bb.5:
+	addi.w	$a4, $zero, -2
+	vld	$vr0, $a0, 40
+	vld	$vr1, $a0, 44
+	or	$a4, $a3, $a4
+	add.d	$a4, $a4, $a3
+	vreplvei.w	$vr0, $vr0, 0
+	vreplvei.w	$vr1, $vr1, 0
+	vbitrevi.w	$vr2, $vr1, 31
+	vrepli.b	$vr3, 0
+	move	$a5, $a2
+	move	$a6, $a4
+	move	$a7, $a1
+	.p2align	4, , 16
+.LBB9_6:                                # =>This Inner Loop Header: Depth=1
+	vld	$vr4, $a7, 0
+	vld	$vr5, $a7, 16
+	vpackev.w	$vr6, $vr5, $vr4
+	vreplvei.w	$vr4, $vr4, 2
+	vextrins.w	$vr4, $vr5, 18
+	vextrins.w	$vr4, $vr0, 32
+	vextrins.w	$vr4, $vr0, 48
+	vfmul.s	$vr5, $vr4, $vr4
+	fld.s	$fa7, $a7, 4
+	fld.s	$ft0, $a7, 20
+	vfmadd.s	$vr5, $vr6, $vr6, $vr5
+	vfcmp.cune.s	$vr9, $vr5, $vr3
+	vilvl.w	$vr10, $vr9, $vr9
+	vextrins.w	$vr7, $vr8, 16
+	vfcmp.clt.s	$vr7, $vr7, $vr3
+	vbitsel.v	$vr7, $vr1, $vr2, $vr7
+	vfsqrt.s	$vr5, $vr5
+	vfdiv.s	$vr5, $vr0, $vr5
+	vfmul.s	$vr6, $vr6, $vr5
+	vfmul.s	$vr4, $vr4, $vr5
+	vilvl.w	$vr4, $vr3, $vr4
+	vand.v	$vr4, $vr10, $vr4
+	vbitsel.v	$vr5, $vr0, $vr6, $vr9
+	vshuf4i.w	$vr6, $vr7, 16
+	vslli.d	$vr6, $vr6, 32
+	vilvl.w	$vr5, $vr3, $vr5
+	vor.v	$vr5, $vr6, $vr5
+	vpackev.d	$vr6, $vr4, $vr5
+	vpackod.d	$vr4, $vr4, $vr5
+	vst	$vr4, $a5, 16
+	vst	$vr6, $a5, 0
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB9_6
+.LBB9_7:
 	sub.d	$a3, $a3, $a4
 	alsl.d	$a2, $a4, $a2, 4
 	addi.d	$a2, $a2, 8
 	alsl.d	$a1, $a4, $a1, 4
 	addi.d	$a1, $a1, 4
 	movgr2fr.w	$fa0, $zero
-	b	.LBB9_6
+	b	.LBB9_10
 	.p2align	4, , 16
-.LBB9_4:                                #   in Loop: Header=BB9_6 Depth=1
+.LBB9_8:                                #   in Loop: Header=BB9_10 Depth=1
 	fld.s	$fa4, $a1, 0
 	move	$a4, $zero
 	fcmp.clt.s	$fcc0, $fa4, $fa0
 	fsel	$fa2, $fa2, $fa3, $fcc0
-.LBB9_5:                                #   in Loop: Header=BB9_6 Depth=1
+.LBB9_9:                                #   in Loop: Header=BB9_10 Depth=1
 	movfr2gr.s	$a5, $fa1
 	movfr2gr.s	$a6, $fa2
 	bstrins.d	$a5, $a6, 63, 32
@@ -523,8 +590,8 @@ _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVe
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 16
 	addi.d	$a1, $a1, 16
-	beqz	$a3, .LBB9_13
-.LBB9_6:                                # =>This Inner Loop Header: Depth=1
+	beqz	$a3, .LBB9_12
+.LBB9_10:                               # =>This Inner Loop Header: Depth=1
 	fld.s	$fa4, $a1, 4
 	fld.s	$fa5, $a1, -4
 	fld.s	$fa1, $a0, 40
@@ -533,8 +600,8 @@ _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVe
 	fmadd.s	$fa6, $fa5, $fa5, $fa3
 	fcmp.ceq.s	$fcc0, $fa6, $fa0
 	fneg.s	$fa3, $fa2
-	bcnez	$fcc0, .LBB9_4
-# %bb.7:                                #   in Loop: Header=BB9_6 Depth=1
+	bcnez	$fcc0, .LBB9_8
+# %bb.11:                               #   in Loop: Header=BB9_10 Depth=1
 	fld.s	$fa7, $a1, 0
 	fsqrt.s	$fa6, $fa6
 	fdiv.s	$fa6, $fa1, $fa6
@@ -544,76 +611,8 @@ _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVe
 	fmul.s	$fa3, $fa4, $fa6
 	movfr2gr.s	$a4, $fa3
 	bstrpick.d	$a4, $a4, 31, 0
-	b	.LBB9_5
-.LBB9_8:
-	addi.d	$a4, $a0, 40
-	alsl.d	$a5, $a3, $a2, 4
-	addi.d	$a6, $a0, 48
-	sltu	$a6, $a2, $a6
-	sltu	$a4, $a4, $a5
-	and	$a6, $a6, $a4
-	move	$a4, $zero
-	bnez	$a6, .LBB9_3
-# %bb.9:
-	alsl.d	$a6, $a3, $a1, 4
-	addi.d	$a6, $a6, -4
-	sltu	$a6, $a2, $a6
-	sltu	$a5, $a1, $a5
-	and	$a5, $a6, $a5
-	bnez	$a5, .LBB9_3
-# %bb.10:
-	vld	$vr0, $a0, 40
-	vld	$vr1, $a0, 44
-	bstrpick.d	$a4, $a3, 30, 1
-	slli.d	$a4, $a4, 1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr1, 0
-	vbitrevi.w	$vr2, $vr1, 31
-	addi.d	$a5, $a2, 16
-	addi.d	$a6, $a1, 16
-	vrepli.b	$vr3, 0
-	move	$a7, $a4
-	.p2align	4, , 16
-.LBB9_11:                               # =>This Inner Loop Header: Depth=1
-	fld.s	$fa4, $a6, -16
-	fld.s	$fa5, $a6, 0
-	fld.s	$fa6, $a6, -8
-	fld.s	$fa7, $a6, 8
-	vextrins.w	$vr4, $vr5, 16
-	vextrins.w	$vr6, $vr7, 16
-	vextrins.w	$vr6, $vr0, 32
-	vextrins.w	$vr6, $vr0, 48
-	vfmul.s	$vr5, $vr6, $vr6
-	fld.s	$fa7, $a6, -12
-	fld.s	$ft0, $a6, 4
-	vfmadd.s	$vr5, $vr4, $vr4, $vr5
-	vfcmp.cune.s	$vr9, $vr5, $vr3
-	vilvl.w	$vr10, $vr9, $vr9
-	vextrins.w	$vr7, $vr8, 16
-	vfcmp.clt.s	$vr7, $vr7, $vr3
-	vbitsel.v	$vr7, $vr1, $vr2, $vr7
-	vfsqrt.s	$vr5, $vr5
-	vfdiv.s	$vr5, $vr0, $vr5
-	vfmul.s	$vr4, $vr4, $vr5
-	vfmul.s	$vr5, $vr6, $vr5
-	vilvl.w	$vr5, $vr3, $vr5
-	vand.v	$vr5, $vr10, $vr5
-	vbitsel.v	$vr4, $vr0, $vr4, $vr9
-	vshuf4i.w	$vr6, $vr7, 16
-	vslli.d	$vr6, $vr6, 32
-	vilvl.w	$vr4, $vr3, $vr4
-	vor.v	$vr4, $vr6, $vr4
-	vpackev.d	$vr6, $vr5, $vr4
-	vst	$vr6, $a5, -16
-	vpackod.d	$vr4, $vr5, $vr4
-	vst	$vr4, $a5, 0
-	addi.d	$a7, $a7, -2
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB9_11
-# %bb.12:
-	bne	$a4, $a3, .LBB9_3
-.LBB9_13:
+	b	.LBB9_9
+.LBB9_12:
 	ret
 .Lfunc_end9:
 	.size	_ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i, .Lfunc_end9-_ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
@@ -624,27 +623,91 @@ _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVe
 	.type	_ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	blez	$a3, .LBB10_13
+	blez	$a3, .LBB10_12
 # %bb.1:
 	ori	$a4, $zero, 4
-	bgeu	$a3, $a4, .LBB10_8
+	bltu	$a4, $a3, .LBB10_3
 # %bb.2:
 	move	$a4, $zero
+	b	.LBB10_7
 .LBB10_3:
+	addi.d	$a4, $a0, 40
+	alsl.d	$a5, $a3, $a2, 4
+	addi.d	$a6, $a0, 52
+	sltu	$a6, $a2, $a6
+	sltu	$a4, $a4, $a5
+	and	$a6, $a6, $a4
+	move	$a4, $zero
+	bnez	$a6, .LBB10_7
+# %bb.4:
+	alsl.d	$a6, $a3, $a1, 4
+	addi.d	$a6, $a6, -4
+	sltu	$a6, $a2, $a6
+	sltu	$a5, $a1, $a5
+	and	$a5, $a6, $a5
+	bnez	$a5, .LBB10_7
+# %bb.5:
+	addi.w	$a4, $zero, -2
+	vld	$vr0, $a0, 40
+	vld	$vr1, $a0, 48
+	or	$a4, $a3, $a4
+	add.d	$a4, $a4, $a3
+	vreplvei.w	$vr0, $vr0, 0
+	vreplvei.w	$vr1, $vr1, 0
+	vbitrevi.w	$vr2, $vr1, 31
+	vrepli.b	$vr3, 0
+	move	$a5, $a2
+	move	$a6, $a4
+	move	$a7, $a1
+	.p2align	4, , 16
+.LBB10_6:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr4, $a7, 0
+	vld	$vr5, $a7, 16
+	vpackev.w	$vr6, $vr5, $vr4
+	vpackod.w	$vr4, $vr5, $vr4
+	vfmul.s	$vr5, $vr4, $vr4
+	fld.s	$fa7, $a7, 8
+	fld.s	$ft0, $a7, 24
+	vfmadd.s	$vr5, $vr6, $vr6, $vr5
+	vfcmp.cune.s	$vr9, $vr5, $vr3
+	vilvl.w	$vr10, $vr9, $vr9
+	vextrins.w	$vr7, $vr8, 16
+	vfcmp.clt.s	$vr7, $vr7, $vr3
+	vbitsel.v	$vr7, $vr1, $vr2, $vr7
+	vfsqrt.s	$vr5, $vr5
+	vfdiv.s	$vr5, $vr0, $vr5
+	vfmul.s	$vr6, $vr6, $vr5
+	vfmul.s	$vr4, $vr4, $vr5
+	vshuf4i.w	$vr4, $vr4, 16
+	vslli.d	$vr4, $vr4, 32
+	vand.v	$vr4, $vr10, $vr4
+	vbitsel.v	$vr5, $vr0, $vr6, $vr9
+	vilvl.w	$vr5, $vr3, $vr5
+	vor.v	$vr4, $vr4, $vr5
+	vilvl.w	$vr5, $vr3, $vr7
+	vpackev.d	$vr6, $vr5, $vr4
+	vpackod.d	$vr4, $vr5, $vr4
+	vst	$vr4, $a5, 16
+	vst	$vr6, $a5, 0
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB10_6
+.LBB10_7:
 	sub.d	$a3, $a3, $a4
 	slli.d	$a4, $a4, 4
 	addi.d	$a4, $a4, 8
 	add.d	$a2, $a2, $a4
 	add.d	$a1, $a1, $a4
 	movgr2fr.w	$fa0, $zero
-	b	.LBB10_6
+	b	.LBB10_10
 	.p2align	4, , 16
-.LBB10_4:                               #   in Loop: Header=BB10_6 Depth=1
+.LBB10_8:                               #   in Loop: Header=BB10_10 Depth=1
 	fld.s	$fa4, $a1, 0
 	move	$a4, $zero
 	fcmp.clt.s	$fcc0, $fa4, $fa0
 	fsel	$fa2, $fa2, $fa3, $fcc0
-.LBB10_5:                               #   in Loop: Header=BB10_6 Depth=1
+.LBB10_9:                               #   in Loop: Header=BB10_10 Depth=1
 	movfr2gr.s	$a5, $fa1
 	bstrpick.d	$a5, $a5, 31, 0
 	or	$a4, $a4, $a5
@@ -655,8 +718,8 @@ _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 16
 	addi.d	$a1, $a1, 16
-	beqz	$a3, .LBB10_13
-.LBB10_6:                               # =>This Inner Loop Header: Depth=1
+	beqz	$a3, .LBB10_12
+.LBB10_10:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa4, $a1, -4
 	fld.s	$fa5, $a1, -8
 	fld.s	$fa1, $a0, 40
@@ -665,8 +728,8 @@ _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	fmadd.s	$fa6, $fa5, $fa5, $fa3
 	fcmp.ceq.s	$fcc0, $fa6, $fa0
 	fneg.s	$fa3, $fa2
-	bcnez	$fcc0, .LBB10_4
-# %bb.7:                                #   in Loop: Header=BB10_6 Depth=1
+	bcnez	$fcc0, .LBB10_8
+# %bb.11:                               #   in Loop: Header=BB10_10 Depth=1
 	fld.s	$fa7, $a1, 0
 	fsqrt.s	$fa6, $fa6
 	fdiv.s	$fa6, $fa1, $fa6
@@ -676,76 +739,8 @@ _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	fmul.s	$fa3, $fa4, $fa6
 	movfr2gr.s	$a4, $fa3
 	slli.d	$a4, $a4, 32
-	b	.LBB10_5
-.LBB10_8:
-	addi.d	$a4, $a0, 40
-	alsl.d	$a5, $a3, $a2, 4
-	addi.d	$a6, $a0, 52
-	sltu	$a6, $a2, $a6
-	sltu	$a4, $a4, $a5
-	and	$a6, $a6, $a4
-	move	$a4, $zero
-	bnez	$a6, .LBB10_3
-# %bb.9:
-	alsl.d	$a6, $a3, $a1, 4
-	addi.d	$a6, $a6, -4
-	sltu	$a6, $a2, $a6
-	sltu	$a5, $a1, $a5
-	and	$a5, $a6, $a5
-	bnez	$a5, .LBB10_3
-# %bb.10:
-	vld	$vr0, $a0, 40
-	vld	$vr1, $a0, 48
-	bstrpick.d	$a4, $a3, 30, 1
-	slli.d	$a4, $a4, 1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr1, 0
-	vbitrevi.w	$vr2, $vr1, 31
-	addi.d	$a5, $a2, 16
-	addi.d	$a6, $a1, 16
-	vrepli.b	$vr3, 0
-	move	$a7, $a4
-	.p2align	4, , 16
-.LBB10_11:                              # =>This Inner Loop Header: Depth=1
-	fld.s	$fa4, $a6, -16
-	fld.s	$fa5, $a6, 0
-	fld.s	$fa6, $a6, -12
-	fld.s	$fa7, $a6, 4
-	vextrins.w	$vr4, $vr5, 16
-	vextrins.w	$vr6, $vr7, 16
-	vfmul.s	$vr5, $vr6, $vr6
-	fld.s	$fa7, $a6, -8
-	fld.s	$ft0, $a6, 8
-	vfmadd.s	$vr5, $vr4, $vr4, $vr5
-	vfcmp.cune.s	$vr9, $vr5, $vr3
-	vilvl.w	$vr10, $vr9, $vr9
-	vextrins.w	$vr7, $vr8, 16
-	vfcmp.clt.s	$vr7, $vr7, $vr3
-	vbitsel.v	$vr7, $vr1, $vr2, $vr7
-	vfsqrt.s	$vr5, $vr5
-	vfdiv.s	$vr5, $vr0, $vr5
-	vfmul.s	$vr4, $vr4, $vr5
-	vfmul.s	$vr5, $vr6, $vr5
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vand.v	$vr5, $vr10, $vr5
-	vbitsel.v	$vr4, $vr0, $vr4, $vr9
-	vilvl.w	$vr4, $vr3, $vr4
-	vor.v	$vr4, $vr5, $vr4
-	vpickve2gr.d	$t0, $vr7, 0
-	srli.d	$t1, $t0, 32
-	bstrpick.d	$t0, $t0, 31, 0
-	vstelm.d	$vr4, $a5, -16, 0
-	vstelm.d	$vr4, $a5, 0, 1
-	st.d	$t0, $a5, -8
-	st.d	$t1, $a5, 8
-	addi.d	$a7, $a7, -2
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB10_11
-# %bb.12:
-	bne	$a4, $a3, .LBB10_3
-.LBB10_13:
+	b	.LBB10_9
+.LBB10_12:
 	ret
 .Lfunc_end10:
 	.size	_ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i, .Lfunc_end10-_ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
@@ -756,26 +751,93 @@ _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	.type	_ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	blez	$a3, .LBB11_13
+	blez	$a3, .LBB11_12
 # %bb.1:
 	ori	$a4, $zero, 4
-	bgeu	$a3, $a4, .LBB11_8
+	bltu	$a4, $a3, .LBB11_3
 # %bb.2:
 	move	$a4, $zero
+	b	.LBB11_7
 .LBB11_3:
+	addi.d	$a4, $a0, 40
+	alsl.d	$a5, $a3, $a2, 4
+	addi.d	$a6, $a0, 48
+	sltu	$a6, $a2, $a6
+	sltu	$a4, $a4, $a5
+	and	$a6, $a6, $a4
+	move	$a4, $zero
+	bnez	$a6, .LBB11_7
+# %bb.4:
+	alsl.d	$a6, $a3, $a1, 4
+	addi.d	$a6, $a6, -4
+	sltu	$a6, $a2, $a6
+	sltu	$a5, $a1, $a5
+	and	$a5, $a6, $a5
+	bnez	$a5, .LBB11_7
+# %bb.5:
+	addi.w	$a4, $zero, -2
+	vld	$vr0, $a0, 44
+	vld	$vr1, $a0, 40
+	or	$a4, $a3, $a4
+	add.d	$a4, $a4, $a3
+	vreplvei.w	$vr0, $vr0, 0
+	vreplvei.w	$vr1, $vr1, 0
+	vbitrevi.w	$vr2, $vr1, 31
+	vrepli.b	$vr3, 0
+	move	$a5, $a2
+	move	$a6, $a4
+	move	$a7, $a1
+	.p2align	4, , 16
+.LBB11_6:                               # =>This Inner Loop Header: Depth=1
+	vld	$vr4, $a7, 4
+	vld	$vr5, $a7, 20
+	vpackev.w	$vr6, $vr5, $vr4
+	vreplvei.w	$vr4, $vr4, 1
+	vextrins.w	$vr4, $vr5, 17
+	vextrins.w	$vr4, $vr0, 32
+	vextrins.w	$vr4, $vr0, 48
+	vfmul.s	$vr5, $vr4, $vr4
+	fld.s	$fa7, $a7, 0
+	fld.s	$ft0, $a7, 16
+	vfmadd.s	$vr5, $vr6, $vr6, $vr5
+	vfcmp.cune.s	$vr9, $vr5, $vr3
+	vilvl.w	$vr10, $vr9, $vr9
+	vextrins.w	$vr7, $vr8, 16
+	vfcmp.clt.s	$vr7, $vr7, $vr3
+	vbitsel.v	$vr7, $vr1, $vr2, $vr7
+	vfsqrt.s	$vr5, $vr5
+	vfdiv.s	$vr5, $vr0, $vr5
+	vfmul.s	$vr6, $vr6, $vr5
+	vfmul.s	$vr4, $vr4, $vr5
+	vilvl.w	$vr4, $vr3, $vr4
+	vand.v	$vr4, $vr10, $vr4
+	vbitsel.v	$vr5, $vr0, $vr6, $vr9
+	vshuf4i.w	$vr5, $vr5, 16
+	vslli.d	$vr5, $vr5, 32
+	vilvl.w	$vr6, $vr3, $vr7
+	vor.v	$vr5, $vr5, $vr6
+	vpackev.d	$vr6, $vr4, $vr5
+	vpackod.d	$vr4, $vr4, $vr5
+	vst	$vr4, $a5, 16
+	vst	$vr6, $a5, 0
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, -2
+	addi.d	$a5, $a5, 32
+	bnez	$a6, .LBB11_6
+.LBB11_7:
 	sub.d	$a3, $a3, $a4
 	alsl.d	$a2, $a4, $a2, 4
 	addi.d	$a2, $a2, 8
 	alsl.d	$a1, $a4, $a1, 4
 	movgr2fr.w	$fa0, $zero
-	b	.LBB11_6
+	b	.LBB11_10
 	.p2align	4, , 16
-.LBB11_4:                               #   in Loop: Header=BB11_6 Depth=1
+.LBB11_8:                               #   in Loop: Header=BB11_10 Depth=1
 	fld.s	$fa4, $a1, 0
 	move	$a4, $zero
 	fcmp.clt.s	$fcc0, $fa4, $fa0
 	fsel	$fa2, $fa2, $fa3, $fcc0
-.LBB11_5:                               #   in Loop: Header=BB11_6 Depth=1
+.LBB11_9:                               #   in Loop: Header=BB11_10 Depth=1
 	movfr2gr.s	$a5, $fa2
 	movfr2gr.s	$a6, $fa1
 	bstrins.d	$a5, $a6, 63, 32
@@ -784,8 +846,8 @@ _ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 16
 	addi.d	$a1, $a1, 16
-	beqz	$a3, .LBB11_13
-.LBB11_6:                               # =>This Inner Loop Header: Depth=1
+	beqz	$a3, .LBB11_12
+.LBB11_10:                              # =>This Inner Loop Header: Depth=1
 	fld.s	$fa4, $a1, 8
 	fld.s	$fa5, $a1, 4
 	fld.s	$fa1, $a0, 44
@@ -794,8 +856,8 @@ _ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	fmadd.s	$fa6, $fa5, $fa5, $fa3
 	fcmp.ceq.s	$fcc0, $fa6, $fa0
 	fneg.s	$fa3, $fa2
-	bcnez	$fcc0, .LBB11_4
-# %bb.7:                                #   in Loop: Header=BB11_6 Depth=1
+	bcnez	$fcc0, .LBB11_8
+# %bb.11:                               #   in Loop: Header=BB11_10 Depth=1
 	fld.s	$fa7, $a1, 0
 	fsqrt.s	$fa6, $fa6
 	fdiv.s	$fa6, $fa1, $fa6
@@ -805,76 +867,8 @@ _ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	fmul.s	$fa3, $fa4, $fa6
 	movfr2gr.s	$a4, $fa3
 	bstrpick.d	$a4, $a4, 31, 0
-	b	.LBB11_5
-.LBB11_8:
-	addi.d	$a4, $a0, 40
-	alsl.d	$a5, $a3, $a2, 4
-	addi.d	$a6, $a0, 48
-	sltu	$a6, $a2, $a6
-	sltu	$a4, $a4, $a5
-	and	$a6, $a6, $a4
-	move	$a4, $zero
-	bnez	$a6, .LBB11_3
-# %bb.9:
-	alsl.d	$a6, $a3, $a1, 4
-	addi.d	$a6, $a6, -4
-	sltu	$a6, $a2, $a6
-	sltu	$a5, $a1, $a5
-	and	$a5, $a6, $a5
-	bnez	$a5, .LBB11_3
-# %bb.10:
-	vld	$vr0, $a0, 44
-	vld	$vr1, $a0, 40
-	bstrpick.d	$a4, $a3, 30, 1
-	slli.d	$a4, $a4, 1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr1, 0
-	vbitrevi.w	$vr2, $vr1, 31
-	addi.d	$a5, $a1, 16
-	addi.d	$a6, $a2, 16
-	vrepli.b	$vr3, 0
-	move	$a7, $a4
-	.p2align	4, , 16
-.LBB11_11:                              # =>This Inner Loop Header: Depth=1
-	fld.s	$fa4, $a5, -12
-	fld.s	$fa5, $a5, 4
-	fld.s	$fa6, $a5, -8
-	fld.s	$fa7, $a5, 8
-	vextrins.w	$vr4, $vr5, 16
-	vextrins.w	$vr6, $vr7, 16
-	vextrins.w	$vr6, $vr0, 32
-	vextrins.w	$vr6, $vr0, 48
-	vfmul.s	$vr5, $vr6, $vr6
-	fld.s	$fa7, $a5, -16
-	fld.s	$ft0, $a5, 0
-	vfmadd.s	$vr5, $vr4, $vr4, $vr5
-	vfcmp.cune.s	$vr9, $vr5, $vr3
-	vilvl.w	$vr10, $vr9, $vr9
-	vextrins.w	$vr7, $vr8, 16
-	vfcmp.clt.s	$vr7, $vr7, $vr3
-	vbitsel.v	$vr7, $vr1, $vr2, $vr7
-	vfsqrt.s	$vr5, $vr5
-	vfdiv.s	$vr5, $vr0, $vr5
-	vfmul.s	$vr4, $vr4, $vr5
-	vfmul.s	$vr5, $vr6, $vr5
-	vilvl.w	$vr5, $vr3, $vr5
-	vand.v	$vr5, $vr10, $vr5
-	vbitsel.v	$vr4, $vr0, $vr4, $vr9
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vilvl.w	$vr6, $vr3, $vr7
-	vor.v	$vr4, $vr4, $vr6
-	vpackev.d	$vr6, $vr5, $vr4
-	vst	$vr6, $a6, -16
-	vpackod.d	$vr4, $vr5, $vr4
-	vst	$vr4, $a6, 0
-	addi.d	$a7, $a7, -2
-	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB11_11
-# %bb.12:
-	bne	$a4, $a3, .LBB11_3
-.LBB11_13:
+	b	.LBB11_9
+.LBB11_12:
 	ret
 .Lfunc_end11:
 	.size	_ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i, .Lfunc_end11-_ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i

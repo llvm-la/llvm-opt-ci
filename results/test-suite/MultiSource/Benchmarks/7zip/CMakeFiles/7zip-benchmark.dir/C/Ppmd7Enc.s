@@ -217,7 +217,67 @@ Ppmd7z_RangeEnc_FlushData:              # @Ppmd7z_RangeEnc_FlushData
 .Lfunc_end1:
 	.size	Ppmd7z_RangeEnc_FlushData, .Lfunc_end1-Ppmd7z_RangeEnc_FlushData
                                         # -- End function
-	.globl	Ppmd7_EncodeSymbol              # -- Begin function Ppmd7_EncodeSymbol
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function Ppmd7_EncodeSymbol
+	.type	.LCPI2_0,@object
+.LCPI2_0:
+	.byte	1                               # 0x1
+	.byte	7                               # 0x7
+	.byte	13                              # 0xd
+	.byte	19                              # 0x13
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.size	.LCPI2_0, 16
+	.type	.LCPI2_1,@object
+.LCPI2_1:
+	.byte	0                               # 0x0
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	6                               # 0x6
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+	.size	.LCPI2_1, 16
+	.type	.LCPI2_2,@object
+.LCPI2_2:
+	.byte	12                              # 0xc
+	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.size	.LCPI2_2, 16
+	.text
+	.globl	Ppmd7_EncodeSymbol
 	.p2align	2
 	.prefalign	5, .Lfunc_end2, nop
 	.type	Ppmd7_EncodeSymbol,@function
@@ -625,7 +685,7 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	pcaddu18i	$ra, %call36(Ppmd7_UpdateBin)
 	jirl	$ra, $ra, 0
 	bne	$s1, $s2, .LBB2_65
-	b	.LBB2_101
+	b	.LBB2_100
 .LBB2_44:
 	ld.hu	$a2, $s3, 0
 	ld.bu	$s5, $s4, 0
@@ -648,7 +708,7 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	stx.b	$zero, $s5, $s3
 	st.w	$zero, $fp, 32
 	bne	$s1, $s2, .LBB2_65
-	b	.LBB2_101
+	b	.LBB2_100
 .LBB2_46:
 	ori	$a0, $zero, 16
 	bstrpick.d	$t5, $s6, 31, 0
@@ -911,8 +971,9 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	bnez	$a0, .LBB2_64
 	b	.LBB2_59
 .LBB2_65:
-	addi.d	$s5, $sp, 56
-	ori	$s6, $zero, 255
+	addi.w	$s5, $zero, -6
+	addi.d	$s6, $sp, 56
+	ori	$s7, $zero, 255
 .LBB2_66:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_67 Depth 2
                                         #     Child Loop BB2_70 Depth 2
@@ -948,25 +1009,26 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	add.d	$s3, $a2, $a3
 	addi.d	$a0, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 0
-	addi.d	$a0, $a0, 1
-	sub.d	$a1, $zero, $a1
+	addi.d	$a2, $a0, 1
+	slli.d	$a3, $a0, 2
+	alsl.d	$a0, $a0, $a3, 1
+	sub.d	$a3, $s5, $a0
 	.p2align	4, , 16
 .LBB2_70:                               #   Parent Loop BB2_66 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a2, $s3, 0
-	beq	$s1, $a2, .LBB2_82
+	ld.bu	$a0, $s3, 0
+	beq	$s1, $a0, .LBB2_82
 # %bb.71:                               #   in Loop: Header=BB2_70 Depth=2
-	ld.bu	$a3, $s3, 1
-	ldx.bu	$a4, $a2, $s5
-	and	$a3, $a4, $a3
-	add.w	$s4, $s4, $a3
-	stx.b	$zero, $a2, $s5
+	ld.bu	$a4, $s3, 1
+	ldx.bu	$a5, $a0, $s6
+	and	$a4, $a5, $a4
+	add.w	$s4, $s4, $a4
+	stx.b	$zero, $a0, $s6
 	addi.d	$s3, $s3, 6
-	bstrpick.d	$a1, $a1, 31, 0
-	addi.d	$a1, $a1, 1
-	slli.d	$a2, $a1, 31
-	addi.d	$a0, $a0, -1
-	bgez	$a2, .LBB2_70
+	addi.w	$a1, $a1, -1
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 6
+	bnez	$a1, .LBB2_70
 # %bb.72:                               #   in Loop: Header=BB2_66 Depth=1
 	ld.w	$a2, $sp, 52
 	ld.w	$a0, $s0, 8
@@ -1003,7 +1065,7 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	slli.d	$a0, $a0, 8
 	srli.d	$a2, $a1, 24
 	st.w	$a0, $s0, 8
-	bne	$a2, $s6, .LBB2_77
+	bne	$a2, $s7, .LBB2_77
 # %bb.76:                               #   in Loop: Header=BB2_75 Depth=2
 	ld.d	$a2, $s0, 16
 	addi.d	$a2, $a2, 1
@@ -1046,65 +1108,113 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	b	.LBB2_66
 .LBB2_81:
 	st.w	$a0, $fp, 24
-	b	.LBB2_101
+	b	.LBB2_100
 .LBB2_82:
-	ori	$a2, $zero, 2
-	bgeu	$a0, $a2, .LBB2_84
+	ori	$a5, $zero, 9
+	move	$a0, $s3
+	move	$a4, $s4
+	bltu	$a2, $a5, .LBB2_86
 # %bb.83:
-	sub.d	$a1, $zero, $a1
-	move	$a2, $s3
-	move	$a3, $s4
-	b	.LBB2_87
-.LBB2_84:
-	move	$a3, $zero
-	addi.d	$a5, $s3, 7
-	move	$a4, $a0
-	bstrins.d	$a4, $zero, 0, 0
-	srli.d	$a2, $a0, 1
-	slli.d	$a6, $a2, 3
-	alsl.d	$a2, $a2, $a6, 2
-	add.d	$a2, $s3, $a2
-	add.d	$a1, $a4, $a1
-	sub.d	$a1, $zero, $a1
-	addi.d	$a6, $sp, 56
-	move	$t0, $a4
-	move	$a7, $s4
+	andi	$a0, $a2, 7
+	sltui	$a1, $a0, 1
+	masknez	$a0, $a0, $a1
+	ori	$a4, $zero, 8
+	maskeqz	$a1, $a4, $a1
+	or	$a1, $a1, $a0
+	mul.d	$a0, $a1, $s5
+	sub.d	$a0, $a0, $a3
+	vrepli.b	$vr0, 0
+	add.d	$a0, $s3, $a0
+	vori.b	$vr1, $vr0, 0
+	pcalau12i	$a3, %pc_hi20(.LCPI2_0)
+	vld	$vr2, $a3, %pc_lo12(.LCPI2_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI2_1)
+	vld	$vr3, $a3, %pc_lo12(.LCPI2_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI2_2)
+	vld	$vr4, $a3, %pc_lo12(.LCPI2_2)
+	vinsgr2vr.w	$vr1, $s4, 0
+	sub.d	$a2, $a1, $a2
+	addi.d	$a3, $sp, 56
+	move	$a4, $s3
+	vori.b	$vr5, $vr0, 0
 	.p2align	4, , 16
-.LBB2_85:                               # =>This Inner Loop Header: Depth=1
-	ld.bu	$t1, $a5, -7
-	ld.bu	$t2, $a5, -1
-	ld.bu	$t3, $a5, -6
-	ld.bu	$t4, $a5, 0
-	ldx.bu	$t1, $t1, $a6
-	ldx.bu	$t2, $t2, $a6
-	and	$t1, $t1, $t3
-	and	$t2, $t2, $t4
-	add.d	$a7, $a7, $t1
-	add.d	$a3, $a3, $t2
-	addi.d	$t0, $t0, -2
-	addi.d	$a5, $a5, 12
-	bnez	$t0, .LBB2_85
-# %bb.86:
-	add.d	$a3, $a3, $a7
-	beq	$a0, $a4, .LBB2_89
-.LBB2_87:
-	addi.d	$a0, $a2, 1
+.LBB2_84:                               # =>This Inner Loop Header: Depth=1
+	ld.w	$a5, $a4, 16
+	vld	$vr6, $a4, 0
+	ld.w	$a6, $a4, 40
+	vld	$vr7, $a4, 24
+	vinsgr2vr.w	$vr8, $a5, 0
+	vshuf.b	$vr9, $vr8, $vr6, $vr2
+	vinsgr2vr.w	$vr10, $a6, 0
+	vshuf.b	$vr11, $vr10, $vr7, $vr2
+	vshuf.b	$vr12, $vr0, $vr6, $vr3
+	vshuf.b	$vr6, $vr8, $vr6, $vr4
+	vilvl.b	$vr6, $vr0, $vr6
+	vilvl.h	$vr6, $vr0, $vr6
+	vilvl.w	$vr6, $vr0, $vr6
+	vshuf.b	$vr8, $vr0, $vr7, $vr3
+	vshuf.b	$vr7, $vr10, $vr7, $vr4
+	vilvl.b	$vr7, $vr0, $vr7
+	vilvl.h	$vr7, $vr0, $vr7
+	vilvl.w	$vr7, $vr0, $vr7
+	vpickve2gr.d	$a5, $vr12, 0
+	vpickve2gr.d	$a6, $vr12, 1
+	vpickve2gr.d	$a7, $vr6, 0
+	vpickve2gr.d	$t0, $vr6, 1
+	vpickve2gr.d	$t1, $vr8, 0
+	vpickve2gr.d	$t2, $vr8, 1
+	vpickve2gr.d	$t3, $vr7, 0
+	vpickve2gr.d	$t4, $vr7, 1
+	ldx.b	$a5, $a5, $a3
+	ldx.b	$a6, $a6, $a3
+	ldx.b	$a7, $a7, $a3
+	ldx.b	$t0, $t0, $a3
+	vinsgr2vr.b	$vr6, $a5, 0
+	vinsgr2vr.b	$vr6, $a6, 1
+	vinsgr2vr.b	$vr6, $a7, 2
+	vinsgr2vr.b	$vr6, $t0, 3
+	ldx.b	$a5, $t1, $a3
+	ldx.b	$a6, $t2, $a3
+	ldx.b	$a7, $t3, $a3
+	ldx.b	$t0, $t4, $a3
+	vinsgr2vr.b	$vr7, $a5, 0
+	vinsgr2vr.b	$vr7, $a6, 1
+	vinsgr2vr.b	$vr7, $a7, 2
+	vinsgr2vr.b	$vr7, $t0, 3
+	vand.v	$vr6, $vr6, $vr9
+	vand.v	$vr7, $vr7, $vr11
+	vilvl.b	$vr6, $vr0, $vr6
+	vilvl.h	$vr6, $vr0, $vr6
+	vilvl.b	$vr7, $vr0, $vr7
+	vilvl.h	$vr7, $vr0, $vr7
+	vadd.w	$vr1, $vr1, $vr6
+	vadd.w	$vr5, $vr5, $vr7
+	addi.d	$a2, $a2, 8
+	addi.d	$a4, $a4, 48
+	bnez	$a2, .LBB2_84
+# %bb.85:
+	vadd.w	$vr0, $vr5, $vr1
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a4, $vr0, 0
+.LBB2_86:
+	addi.d	$a0, $a0, 1
 	addi.d	$a2, $sp, 56
 	.p2align	4, , 16
-.LBB2_88:                               # =>This Inner Loop Header: Depth=1
-	ld.bu	$a4, $a0, -1
+.LBB2_87:                               # =>This Inner Loop Header: Depth=1
+	ld.bu	$a3, $a0, -1
 	ld.bu	$a5, $a0, 0
-	ldx.bu	$a4, $a4, $a2
-	and	$a4, $a4, $a5
-	add.d	$a3, $a3, $a4
+	ldx.bu	$a3, $a3, $a2
+	and	$a3, $a3, $a5
+	add.d	$a4, $a4, $a3
 	addi.w	$a1, $a1, -1
 	addi.d	$a0, $a0, 6
-	bnez	$a1, .LBB2_88
-.LBB2_89:
+	bnez	$a1, .LBB2_87
+# %bb.88:
 	ld.w	$a0, $sp, 52
 	ld.w	$a1, $s0, 8
 	ld.bu	$a2, $s3, 1
-	add.w	$a0, $a0, $a3
+	add.w	$a0, $a0, $a4
 	ld.d	$a3, $s0, 0
 	div.wu	$a0, $a1, $a0
 	mul.d	$a1, $a0, $s4
@@ -1114,37 +1224,37 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	mul.d	$a0, $a0, $a2
 	bstrpick.d	$a2, $a0, 31, 24
 	st.w	$a0, $s0, 8
-	bnez	$a2, .LBB2_97
-# %bb.90:
+	bnez	$a2, .LBB2_96
+# %bb.89:
 	ori	$s1, $zero, 255
-	b	.LBB2_93
+	b	.LBB2_92
 	.p2align	4, , 16
-.LBB2_91:                               #   in Loop: Header=BB2_93 Depth=1
+.LBB2_90:                               #   in Loop: Header=BB2_92 Depth=1
 	ld.d	$a1, $s0, 0
 	ld.w	$a0, $s0, 8
 	srli.d	$a2, $a1, 24
 	st.b	$a2, $s0, 12
 	ori	$a2, $zero, 1
-.LBB2_92:                               #   in Loop: Header=BB2_93 Depth=1
+.LBB2_91:                               #   in Loop: Header=BB2_92 Depth=1
 	st.d	$a2, $s0, 16
 	slli.d	$a1, $a1, 8
 	bstrpick.d	$a1, $a1, 31, 8
 	slli.d	$a1, $a1, 8
 	bstrpick.d	$a2, $a0, 31, 24
 	st.d	$a1, $s0, 0
-	bnez	$a2, .LBB2_97
-.LBB2_93:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_96 Depth 2
+	bnez	$a2, .LBB2_96
+.LBB2_92:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB2_95 Depth 2
 	slli.d	$a0, $a0, 8
 	srli.d	$a2, $a1, 24
 	st.w	$a0, $s0, 8
-	bne	$a2, $s1, .LBB2_95
-# %bb.94:                               #   in Loop: Header=BB2_93 Depth=1
+	bne	$a2, $s1, .LBB2_94
+# %bb.93:                               #   in Loop: Header=BB2_92 Depth=1
 	ld.d	$a2, $s0, 16
 	addi.d	$a2, $a2, 1
-	b	.LBB2_92
+	b	.LBB2_91
 	.p2align	4, , 16
-.LBB2_95:                               #   in Loop: Header=BB2_93 Depth=1
+.LBB2_94:                               #   in Loop: Header=BB2_92 Depth=1
 	ld.d	$a0, $s0, 24
 	ld.b	$a2, $s0, 12
 	ld.d	$a3, $a0, 0
@@ -1155,9 +1265,9 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	ld.d	$a0, $s0, 16
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s0, 16
-	beqz	$a0, .LBB2_91
+	beqz	$a0, .LBB2_90
 	.p2align	4, , 16
-.LBB2_96:                               #   Parent Loop BB2_93 Depth=1
+.LBB2_95:                               #   Parent Loop BB2_92 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s0, 24
 	ld.b	$a1, $s0, 4
@@ -1168,19 +1278,19 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	ld.d	$a0, $s0, 16
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s0, 16
-	bnez	$a0, .LBB2_96
-	b	.LBB2_91
-.LBB2_97:
+	bnez	$a0, .LBB2_95
+	b	.LBB2_90
+.LBB2_96:
 	ld.bu	$a0, $s2, 2
 	ori	$a1, $zero, 6
-	bltu	$a1, $a0, .LBB2_100
-# %bb.98:
+	bltu	$a1, $a0, .LBB2_99
+# %bb.97:
 	ld.b	$a1, $s2, 3
 	addi.d	$a1, $a1, -1
 	andi	$a2, $a1, 255
 	st.b	$a1, $s2, 3
-	bnez	$a2, .LBB2_100
-# %bb.99:
+	bnez	$a2, .LBB2_99
+# %bb.98:
 	ld.h	$a1, $s2, 0
 	slli.d	$a1, $a1, 1
 	st.h	$a1, $s2, 0
@@ -1189,12 +1299,12 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	ori	$a1, $zero, 3
 	sll.w	$a0, $a1, $a0
 	st.b	$a0, $s2, 3
-.LBB2_100:
+.LBB2_99:
 	st.d	$s3, $fp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(Ppmd7_Update2)
 	jirl	$ra, $ra, 0
-.LBB2_101:
+.LBB2_100:
 	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload

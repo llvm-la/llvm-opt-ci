@@ -9,16 +9,16 @@ buster:                                 # @buster
 	pcalau12i	$a0, %got_pc_hi20(A)
 	ld.d	$a0, $a0, %got_pc_lo12(A)
 	ld.d	$a0, $a0, 0
-	ld.w	$a4, $a0, 0
+	ld.w	$a1, $a0, 0
 	lu12i.w	$a2, 244140
-	blez	$a4, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:
-	addi.d	$a1, $a4, 1
-	ori	$a5, $zero, 8
-	bstrpick.d	$a3, $a1, 31, 0
-	bgeu	$a4, $a5, .LBB0_4
+	addi.d	$a3, $a1, 1
+	ori	$a4, $zero, 9
+	bstrpick.d	$a3, $a3, 31, 0
+	bgeu	$a1, $a4, .LBB0_4
 # %bb.2:
-	ori	$a5, $zero, 1
+	ori	$a4, $zero, 1
 	ori	$a1, $a2, 2560
 	b	.LBB0_7
 .LBB0_3:
@@ -28,39 +28,37 @@ buster:                                 # @buster
 	move	$a5, $a6
 	b	.LBB0_20
 .LBB0_4:
-	bstrpick.d	$a1, $a4, 30, 3
-	slli.d	$a6, $a1, 3
-	srli.d	$a1, $a4, 3
-	ori	$a5, $zero, 1
-	bstrins.d	$a5, $a1, 30, 3
-	ori	$a1, $a2, 2560
-	vreplgr2vr.w	$vr0, $a1
-	addi.d	$a1, $a0, 36
-	move	$a7, $a6
+	andi	$a4, $a1, 7
+	sltui	$a5, $a4, 1
+	masknez	$a4, $a4, $a5
+	ori	$a6, $zero, 8
+	maskeqz	$a5, $a6, $a5
+	or	$a4, $a5, $a4
+	sub.d	$a1, $a1, $a4
+	addi.d	$a4, $a1, 1
+	ori	$a5, $a2, 2560
+	vreplgr2vr.w	$vr0, $a5
+	addi.d	$a5, $a0, 44
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a1, -24
-	ld.w	$t1, $a1, -16
-	ld.w	$t2, $a1, -8
-	ld.w	$t3, $a1, 0
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $t1, 1
-	vinsgr2vr.w	$vr2, $t2, 2
-	vinsgr2vr.w	$vr2, $t3, 3
-	ld.w	$t0, $a1, 8
-	ld.w	$t1, $a1, 16
-	ld.w	$t2, $a1, 24
-	ld.w	$t3, $a1, 32
-	vinsgr2vr.w	$vr3, $t0, 0
-	vinsgr2vr.w	$vr3, $t1, 1
-	vinsgr2vr.w	$vr3, $t2, 2
-	vinsgr2vr.w	$vr3, $t3, 3
+	vld	$vr2, $a5, -32
+	ld.d	$a6, $a5, -16
+	ld.w	$a7, $a5, -8
+	vextrins.w	$vr2, $vr2, 18
+	vinsgr2vr.w	$vr2, $a6, 2
+	vld	$vr3, $a5, 0
+	ld.d	$a6, $a5, 16
+	ld.w	$t0, $a5, 24
+	vinsgr2vr.w	$vr2, $a7, 3
+	vextrins.w	$vr3, $vr3, 18
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $t0, 3
 	vmin.w	$vr0, $vr2, $vr0
 	vmin.w	$vr1, $vr3, $vr1
-	addi.d	$a7, $a7, -8
-	addi.d	$a1, $a1, 64
-	bnez	$a7, .LBB0_5
+	addi.d	$a1, $a1, -8
+	addi.d	$a5, $a5, 64
+	bnez	$a1, .LBB0_5
 # %bb.6:
 	vmin.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -68,22 +66,21 @@ buster:                                 # @buster
 	vbsrl.v	$vr1, $vr0, 4
 	vmin.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a1, $vr0, 0
-	beq	$a6, $a4, .LBB0_9
 .LBB0_7:
-	alsl.d	$a4, $a5, $a0, 3
-	addi.d	$a4, $a4, 4
-	sub.d	$a5, $a3, $a5
+	alsl.d	$a5, $a4, $a0, 3
+	addi.d	$a5, $a5, 4
+	sub.d	$a4, $a3, $a4
 	.p2align	4, , 16
 .LBB0_8:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a4, 0
+	ld.w	$a6, $a5, 0
 	slt	$a7, $a6, $a1
 	masknez	$a1, $a1, $a7
 	maskeqz	$a6, $a6, $a7
 	or	$a1, $a6, $a1
-	addi.d	$a5, $a5, -1
-	addi.d	$a4, $a4, 8
-	bnez	$a5, .LBB0_8
-.LBB0_9:
+	addi.d	$a4, $a4, -1
+	addi.d	$a5, $a5, 8
+	bnez	$a4, .LBB0_8
+# %bb.9:
 	addi.d	$a5, $a0, 12
 	addi.d	$a6, $a3, -1
 	ori	$a7, $zero, 1

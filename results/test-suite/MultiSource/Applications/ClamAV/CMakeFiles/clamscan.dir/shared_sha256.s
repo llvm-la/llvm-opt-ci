@@ -214,105 +214,156 @@ sha256_block:                           # @sha256_block
 .Lfunc_end2:
 	.size	sha256_block, .Lfunc_end2-sha256_block
                                         # -- End function
-	.globl	sha256_final                    # -- Begin function sha256_final
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function sha256_final
+	.type	.LCPI3_0,@object
+.LCPI3_0:
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+	.size	.LCPI3_0, 16
+	.type	.LCPI3_1,@object
+.LCPI3_1:
+	.byte	2                               # 0x2
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	6                               # 0x6
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	10                              # 0xa
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	14                              # 0xe
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+	.size	.LCPI3_1, 16
+	.text
+	.globl	sha256_final
 	.p2align	2
 	.prefalign	5, .Lfunc_end3, nop
 	.type	sha256_final,@function
 sha256_final:                           # @sha256_final
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
 	move	$fp, $a0
-	ld.wu	$a2, $a0, 104
-	addi.d	$a1, $a0, 40
+	ld.wu	$a1, $a0, 104
+	addi.d	$a2, $a0, 40
 	ori	$a3, $zero, 128
-	addi.w	$a0, $a2, 1
+	addi.w	$a0, $a1, 1
 	andi	$a4, $a0, 3
-	stx.b	$a3, $a1, $a2
+	stx.b	$a3, $a2, $a1
 	beqz	$a4, .LBB3_2
 	.p2align	4, , 16
 .LBB3_1:                                # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a2, $a0, 31, 0
+	bstrpick.d	$a1, $a0, 31, 0
 	addi.w	$a0, $a0, 1
 	andi	$a3, $a0, 3
-	stx.b	$zero, $a1, $a2
+	stx.b	$zero, $a2, $a1
 	bnez	$a3, .LBB3_1
 .LBB3_2:
 	bstrpick.d	$a1, $a0, 31, 2
 	addi.w	$a1, $a1, 0
 	beqz	$a0, .LBB3_15
 # %bb.3:
-	ori	$a2, $zero, 1
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a1, $a3
-	or	$a2, $a3, $a2
-	ori	$a3, $zero, 8
-	bstrpick.d	$a2, $a2, 31, 0
-	bgeu	$a0, $a3, .LBB3_5
+	ori	$a3, $zero, 1
+	sltu	$a4, $a3, $a1
+	masknez	$a3, $a3, $a4
+	maskeqz	$a4, $a1, $a4
+	or	$a3, $a4, $a3
+	bstrpick.d	$a3, $a3, 31, 0
+	ori	$a4, $zero, 16
+	vrepli.b	$vr5, 0
+	bgeu	$a0, $a4, .LBB3_5
 # %bb.4:
-	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB3_8
 .LBB3_5:
-	bstrpick.d	$a3, $a2, 29, 1
-	slli.d	$a3, $a3, 1
-	addi.d	$a4, $fp, 47
-	addi.d	$a5, $sp, 20
-	move	$a6, $a3
+	pcalau12i	$a4, %pc_hi20(.LCPI3_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI3_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI3_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI3_1)
+	bstrpick.d	$a4, $a3, 29, 2
+	slli.d	$a4, $a4, 2
+	addi.d	$a5, $sp, 32
+	move	$a6, $a4
 	.p2align	4, , 16
 .LBB3_6:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a7, $a4, -7
-	ld.w	$t0, $a4, -3
-	revb.2w	$a7, $a7
-	revb.2w	$t0, $t0
-	st.w	$a7, $a5, -4
-	st.w	$t0, $a5, 0
-	addi.d	$a4, $a4, 8
-	addi.d	$a6, $a6, -2
-	addi.d	$a5, $a5, 8
+	vld	$vr2, $a2, 0
+	vshuf.b	$vr3, $vr5, $vr2, $vr0
+	vslli.w	$vr4, $vr2, 16
+	vslli.w	$vr3, $vr3, 8
+	vor.v	$vr3, $vr3, $vr4
+	vshuf.b	$vr4, $vr5, $vr2, $vr1
+	vor.v	$vr3, $vr3, $vr4
+	vslli.w	$vr3, $vr3, 8
+	vsrli.w	$vr2, $vr2, 24
+	vor.v	$vr2, $vr3, $vr2
+	vst	$vr2, $a5, 0
+	addi.d	$a6, $a6, -4
+	addi.d	$a5, $a5, 16
+	addi.d	$a2, $a2, 16
 	bnez	$a6, .LBB3_6
 # %bb.7:
-	beq	$a3, $a2, .LBB3_10
+	beq	$a4, $a3, .LBB3_10
 .LBB3_8:
-	addi.d	$a4, $sp, 16
-	alsl.d	$a4, $a3, $a4, 2
-	sub.d	$a2, $a2, $a3
-	alsl.d	$a3, $a3, $fp, 2
-	addi.d	$a3, $a3, 43
+	addi.d	$a2, $sp, 32
+	alsl.d	$a2, $a4, $a2, 2
+	sub.d	$a3, $a3, $a4
+	alsl.d	$a4, $a4, $fp, 2
+	addi.d	$a4, $a4, 43
 	.p2align	4, , 16
 .LBB3_9:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -3
+	ld.w	$a5, $a4, -3
 	revb.2w	$a5, $a5
-	st.w	$a5, $a4, 0
+	st.w	$a5, $a2, 0
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 4
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 4
-	bnez	$a2, .LBB3_9
+	bnez	$a3, .LBB3_9
 .LBB3_10:
 	ori	$a2, $zero, 56
 	bgeu	$a2, $a0, .LBB3_14
 # %bb.11:
+	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
 	ori	$a1, $zero, 63
 	bltu	$a1, $a0, .LBB3_13
 # %bb.12:
-	st.w	$zero, $sp, 76
+	st.w	$zero, $sp, 92
 .LBB3_13:
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 32
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(sha256_transform)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 64
-	vrepli.b	$vr0, 0
+	st.d	$zero, $sp, 80
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 64
 	vst	$vr0, $sp, 48
 	vst	$vr0, $sp, 32
-	vst	$vr0, $sp, 16
 	b	.LBB3_16
 .LBB3_14:
 	beq	$a0, $a2, .LBB3_16
 .LBB3_15:
 	andi	$a0, $a0, 60
-	addi.d	$a2, $sp, 16
+	addi.d	$a2, $sp, 32
 	add.d	$a0, $a2, $a0
 	ori	$a2, $zero, 13
 	sub.d	$a1, $a2, $a1
@@ -330,18 +381,18 @@ sha256_final:                           # @sha256_final
 	slli.d	$a1, $a1, 9
 	ld.w	$a3, $fp, 104
 	or	$a1, $a1, $a2
-	st.w	$a1, $sp, 72
+	st.w	$a1, $sp, 88
 	slli.d	$a0, $a0, 9
 	slli.d	$a1, $a3, 3
 	or	$a0, $a1, $a0
-	st.w	$a0, $sp, 76
-	addi.d	$a1, $sp, 16
+	st.w	$a0, $sp, 92
+	addi.d	$a1, $sp, 32
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(sha256_transform)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end3:
 	.size	sha256_final, .Lfunc_end3-sha256_final

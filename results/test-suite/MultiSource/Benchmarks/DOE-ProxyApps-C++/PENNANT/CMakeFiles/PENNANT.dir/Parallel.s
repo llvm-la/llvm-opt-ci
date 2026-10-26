@@ -111,21 +111,67 @@ _ZN8Parallel7gathervI7double2EEvPKT_iPS2_PKi: # @_ZN8Parallel7gathervI7double2EE
 	pcalau12i	$a3, %pc_hi20(_ZN8Parallel5numpeE)
 	ld.w	$a3, $a3, %pc_lo12(_ZN8Parallel5numpeE)
 	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB8_4
+	bne	$a3, $a4, .LBB8_5
 # %bb.1:
-	beqz	$a1, .LBB8_4
+	beqz	$a1, .LBB8_5
 # %bb.2:
-	slli.d	$a1, $a1, 4
+	slli.d	$a4, $a1, 4
+	addi.d	$a3, $a4, -16
+	ori	$a5, $zero, 144
+	alsl.d	$a1, $a1, $a0, 4
+	bgeu	$a3, $a5, .LBB8_6
+.LBB8_3:
+	move	$a3, $a2
+	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_3:                                # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a0, 0
-	vst	$vr0, $a2, 0
-	addi.d	$a2, $a2, 16
-	addi.d	$a1, $a1, -16
-	addi.d	$a0, $a0, 16
-	bnez	$a1, .LBB8_3
-.LBB8_4:
+.LBB8_4:                                # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a4, 0
+	vst	$vr0, $a3, 0
+	addi.d	$a4, $a4, 16
+	addi.d	$a3, $a3, 16
+	bne	$a4, $a1, .LBB8_4
+.LBB8_5:
 	ret
+.LBB8_6:
+	addi.d	$a5, $a4, -8
+	add.d	$a6, $a2, $a5
+	add.d	$a5, $a0, $a5
+	sltu	$a5, $a2, $a5
+	sltu	$a6, $a0, $a6
+	and	$a5, $a5, $a6
+	bnez	$a5, .LBB8_3
+# %bb.7:
+	addi.d	$a5, $a2, 8
+	add.d	$a4, $a2, $a4
+	addi.d	$a6, $a0, 8
+	sltu	$a5, $a5, $a1
+	sltu	$a4, $a6, $a4
+	and	$a4, $a5, $a4
+	bnez	$a4, .LBB8_3
+# %bb.8:
+	srli.d	$a3, $a3, 4
+	addi.d	$a5, $a3, 1
+	bstrpick.d	$a3, $a5, 60, 1
+	slli.d	$a6, $a3, 1
+	slli.d	$a4, $a3, 5
+	add.d	$a3, $a2, $a4
+	add.d	$a4, $a0, $a4
+	addi.d	$a2, $a2, 16
+	addi.d	$a0, $a0, 16
+	move	$a7, $a6
+	.p2align	4, , 16
+.LBB8_9:                                # =>This Inner Loop Header: Depth=1
+	vld	$vr0, $a0, -16
+	vld	$vr1, $a0, 0
+	vst	$vr0, $a2, -16
+	vst	$vr1, $a2, 0
+	addi.d	$a7, $a7, -2
+	addi.d	$a2, $a2, 32
+	addi.d	$a0, $a0, 32
+	bnez	$a7, .LBB8_9
+# %bb.10:
+	bne	$a5, $a6, .LBB8_4
+	b	.LBB8_5
 .Lfunc_end8:
 	.size	_ZN8Parallel7gathervI7double2EEvPKT_iPS2_PKi, .Lfunc_end8-_ZN8Parallel7gathervI7double2EEvPKT_iPS2_PKi
                                         # -- End function

@@ -98743,23 +98743,21 @@ sqlite3IndexAffinityStr:                # @sqlite3IndexAffinityStr
 	.type	sqlite3ValueFromExpr,@function
 sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 32                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
 	move	$fp, $a4
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 8
 	beqz	$a1, .LBB482_6
 # %bb.1:
 	move	$s1, $a2
@@ -98852,13 +98850,13 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	b	.LBB482_56
 .LBB482_19:
 	ld.d	$a1, $a1, 16
-	addi.d	$a4, $sp, 24
+	addi.d	$a4, $sp, 8
 	move	$a0, $s3
 	move	$a2, $s1
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(sqlite3ValueFromExpr)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 24
+	ld.d	$s0, $sp, 8
 	bnez	$a0, .LBB482_7
 # %bb.20:
 	ld.d	$a1, $s0, 0
@@ -99095,13 +99093,13 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	bstrins.d	$a3, $zero, 0, 0
 	add.d	$a3, $s5, $a3
 	addi.d	$a3, $a3, 4
+	addi.d	$a4, $s5, 2
 	bgeu	$s1, $a3, .LBB482_78
 # %bb.64:
-	addi.d	$a3, $s5, 2
 	srli.d	$a2, $a2, 1
 	add.d	$a2, $s1, $a2
 	addi.d	$a2, $a2, 1
-	bgeu	$a3, $a2, .LBB482_78
+	bgeu	$a4, $a2, .LBB482_78
 .LBB482_65:
 	move	$a2, $zero
 .LBB482_66:
@@ -99170,7 +99168,7 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	or	$a2, $a3, $a2
 	addi.d	$a2, $a2, -1
 	srli.d	$a2, $a2, 1
-	addi.d	$t2, $a2, 1
+	addi.d	$a3, $a2, 1
 	ori	$a2, $zero, 31
 	vrepli.w	$vr0, -48
 	vrepli.w	$vr1, 9
@@ -99184,131 +99182,68 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	move	$a1, $zero
 	b	.LBB482_84
 .LBB482_80:
-	andi	$a1, $t2, 12
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
-	bstrpick.d	$a2, $t2, 62, 4
+	andi	$a5, $a3, 12
+	bstrpick.d	$a2, $a3, 62, 4
 	slli.d	$a1, $a2, 4
 	slli.d	$a2, $a2, 5
-	addi.d	$a5, $s5, 16
 	move	$a6, $a1
 	move	$a7, $s1
 .LBB482_81:                             # =>This Inner Loop Header: Depth=1
-	ld.b	$t0, $a5, -14
-	ld.b	$t1, $a5, -12
-	ld.b	$t2, $a5, -10
-	ld.b	$t3, $a5, -8
-	ld.b	$t4, $a5, -6
-	ld.b	$t5, $a5, -4
-	ld.b	$t6, $a5, -2
-	ld.b	$t7, $a5, 0
-	ld.b	$t8, $a5, 2
-	ld.b	$s3, $a5, 4
-	ld.b	$s6, $a5, 6
-	ld.b	$s7, $a5, 8
-	ld.b	$s8, $a5, 10
-	ld.b	$ra, $a5, 12
-	ld.b	$a4, $a5, 14
-	ld.b	$a3, $a5, 16
-	vinsgr2vr.b	$vr7, $t0, 0
-	vinsgr2vr.b	$vr7, $t1, 1
-	vinsgr2vr.b	$vr7, $t2, 2
-	vinsgr2vr.b	$vr7, $t3, 3
-	vinsgr2vr.b	$vr7, $t4, 4
-	vinsgr2vr.b	$vr7, $t5, 5
-	vinsgr2vr.b	$vr7, $t6, 6
-	vinsgr2vr.b	$vr7, $t7, 7
-	vinsgr2vr.b	$vr7, $t8, 8
-	vinsgr2vr.b	$vr7, $s3, 9
-	vinsgr2vr.b	$vr7, $s6, 10
-	vinsgr2vr.b	$vr7, $s7, 11
-	vinsgr2vr.b	$vr7, $s8, 12
-	vinsgr2vr.b	$vr7, $ra, 13
-	vinsgr2vr.b	$vr7, $a4, 14
-	vinsgr2vr.b	$vr7, $a3, 15
-	vslti.b	$vr8, $vr7, 0
-	vilvl.b	$vr9, $vr8, $vr7
-	vslti.h	$vr10, $vr9, 0
-	vilvh.h	$vr11, $vr10, $vr9
-	vilvl.h	$vr9, $vr10, $vr9
-	vilvh.b	$vr7, $vr8, $vr7
-	vslti.h	$vr8, $vr7, 0
-	vilvh.h	$vr10, $vr8, $vr7
-	vilvl.h	$vr7, $vr8, $vr7
-	vadd.w	$vr8, $vr7, $vr0
-	vadd.w	$vr12, $vr10, $vr0
-	vadd.w	$vr13, $vr9, $vr0
-	vadd.w	$vr14, $vr11, $vr0
-	vslt.wu	$vr15, $vr1, $vr14
-	vslt.wu	$vr16, $vr1, $vr13
-	vslt.wu	$vr17, $vr1, $vr12
-	vslt.wu	$vr18, $vr1, $vr8
-	vadd.w	$vr19, $vr7, $vr2
-	vadd.w	$vr20, $vr10, $vr2
-	vadd.w	$vr21, $vr9, $vr2
-	vadd.w	$vr22, $vr11, $vr2
+	vld	$vr7, $a4, 0
+	vld	$vr8, $a4, 16
+	vpickev.b	$vr9, $vr8, $vr7
+	vpickod.b	$vr7, $vr8, $vr7
+	vslti.b	$vr8, $vr9, 0
+	vilvl.b	$vr10, $vr8, $vr9
+	vslti.h	$vr11, $vr10, 0
+	vilvh.h	$vr12, $vr11, $vr10
+	vilvl.h	$vr10, $vr11, $vr10
+	vilvh.b	$vr8, $vr8, $vr9
+	vslti.h	$vr9, $vr8, 0
+	vilvh.h	$vr11, $vr9, $vr8
+	vilvl.h	$vr8, $vr9, $vr8
+	vadd.w	$vr9, $vr8, $vr0
+	vadd.w	$vr13, $vr11, $vr0
+	vadd.w	$vr14, $vr10, $vr0
+	vadd.w	$vr15, $vr12, $vr0
+	vslt.wu	$vr16, $vr1, $vr15
+	vslt.wu	$vr17, $vr1, $vr14
+	vslt.wu	$vr18, $vr1, $vr13
+	vslt.wu	$vr19, $vr1, $vr9
+	vadd.w	$vr20, $vr8, $vr2
+	vadd.w	$vr21, $vr11, $vr2
+	vadd.w	$vr22, $vr10, $vr2
+	vadd.w	$vr23, $vr12, $vr2
+	vslti.wu	$vr23, $vr23, 6
 	vslti.wu	$vr22, $vr22, 6
 	vslti.wu	$vr21, $vr21, 6
 	vslti.wu	$vr20, $vr20, 6
-	vslti.wu	$vr19, $vr19, 6
-	vbitsel.v	$vr19, $vr4, $vr3, $vr19
 	vbitsel.v	$vr20, $vr4, $vr3, $vr20
 	vbitsel.v	$vr21, $vr4, $vr3, $vr21
 	vbitsel.v	$vr22, $vr4, $vr3, $vr22
-	vadd.w	$vr11, $vr22, $vr11
-	vadd.w	$vr9, $vr21, $vr9
-	vadd.w	$vr10, $vr20, $vr10
-	vadd.w	$vr7, $vr19, $vr7
-	vbitsel.v	$vr18, $vr8, $vr7, $vr18
-	vbitsel.v	$vr10, $vr12, $vr10, $vr17
-	vbitsel.v	$vr8, $vr13, $vr9, $vr16
-	vbitsel.v	$vr7, $vr14, $vr11, $vr15
-	vslli.w	$vr7, $vr7, 4
+	vbitsel.v	$vr23, $vr4, $vr3, $vr23
+	vadd.w	$vr12, $vr23, $vr12
+	vadd.w	$vr10, $vr22, $vr10
+	vadd.w	$vr11, $vr21, $vr11
+	vadd.w	$vr8, $vr20, $vr8
+	vbitsel.v	$vr8, $vr9, $vr8, $vr19
+	vbitsel.v	$vr9, $vr13, $vr11, $vr18
+	vbitsel.v	$vr10, $vr14, $vr10, $vr17
+	vbitsel.v	$vr11, $vr15, $vr12, $vr16
+	vslli.w	$vr11, $vr11, 4
+	vslli.w	$vr10, $vr10, 4
+	vslli.w	$vr9, $vr9, 4
 	vslli.w	$vr8, $vr8, 4
-	vslli.w	$vr9, $vr10, 4
-	vslli.w	$vr10, $vr18, 4
-	ld.b	$a3, $a5, -13
-	ld.b	$a4, $a5, -11
-	ld.b	$t0, $a5, -9
-	ld.b	$t1, $a5, -7
-	ld.b	$t2, $a5, -5
-	ld.b	$t3, $a5, -3
-	ld.b	$t4, $a5, -1
-	ld.b	$t5, $a5, 1
-	ld.b	$t6, $a5, 3
-	ld.b	$t7, $a5, 5
-	ld.b	$t8, $a5, 7
-	ld.b	$s3, $a5, 9
-	ld.b	$s6, $a5, 11
-	ld.b	$s7, $a5, 13
-	ld.b	$s8, $a5, 15
-	ld.b	$ra, $a5, 17
-	vinsgr2vr.b	$vr11, $a3, 0
-	vinsgr2vr.b	$vr11, $a4, 1
-	vinsgr2vr.b	$vr11, $t0, 2
-	vinsgr2vr.b	$vr11, $t1, 3
-	vinsgr2vr.b	$vr11, $t2, 4
-	vinsgr2vr.b	$vr11, $t3, 5
-	vinsgr2vr.b	$vr11, $t4, 6
-	vinsgr2vr.b	$vr11, $t5, 7
-	vinsgr2vr.b	$vr11, $t6, 8
-	vinsgr2vr.b	$vr11, $t7, 9
-	vinsgr2vr.b	$vr11, $t8, 10
-	vinsgr2vr.b	$vr11, $s3, 11
-	vinsgr2vr.b	$vr11, $s6, 12
-	vinsgr2vr.b	$vr11, $s7, 13
-	vinsgr2vr.b	$vr11, $s8, 14
-	vinsgr2vr.b	$vr11, $ra, 15
-	vslti.b	$vr12, $vr11, 0
-	vilvh.b	$vr13, $vr12, $vr11
+	vslti.b	$vr12, $vr7, 0
+	vilvh.b	$vr13, $vr12, $vr7
 	vslti.h	$vr14, $vr13, 0
 	vilvl.h	$vr15, $vr14, $vr13
 	vilvh.h	$vr13, $vr14, $vr13
-	vilvl.b	$vr11, $vr12, $vr11
-	vslti.h	$vr12, $vr11, 0
-	vilvl.h	$vr14, $vr12, $vr11
-	vilvh.h	$vr11, $vr12, $vr11
-	vadd.w	$vr12, $vr11, $vr0
+	vilvl.b	$vr7, $vr12, $vr7
+	vslti.h	$vr12, $vr7, 0
+	vilvl.h	$vr14, $vr12, $vr7
+	vilvh.h	$vr7, $vr12, $vr7
+	vadd.w	$vr12, $vr7, $vr0
 	vadd.w	$vr16, $vr14, $vr0
 	vadd.w	$vr17, $vr13, $vr0
 	vadd.w	$vr18, $vr15, $vr0
@@ -99316,7 +99251,7 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	vslt.wu	$vr20, $vr1, $vr17
 	vslt.wu	$vr21, $vr1, $vr16
 	vslt.wu	$vr22, $vr1, $vr12
-	vadd.w	$vr23, $vr11, $vr2
+	vadd.w	$vr23, $vr7, $vr2
 	vadd.w	$vr24, $vr14, $vr2
 	vadd.w	$vr25, $vr13, $vr2
 	vadd.w	$vr26, $vr15, $vr2
@@ -99331,49 +99266,47 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	vadd.w	$vr15, $vr26, $vr15
 	vadd.w	$vr13, $vr25, $vr13
 	vadd.w	$vr14, $vr24, $vr14
-	vadd.w	$vr11, $vr23, $vr11
-	vbitsel.v	$vr11, $vr12, $vr11, $vr22
+	vadd.w	$vr7, $vr23, $vr7
+	vbitsel.v	$vr7, $vr12, $vr7, $vr22
 	vbitsel.v	$vr12, $vr16, $vr14, $vr21
 	vbitsel.v	$vr13, $vr17, $vr13, $vr20
 	vbitsel.v	$vr14, $vr18, $vr15, $vr19
-	vor.v	$vr10, $vr14, $vr10
+	vor.v	$vr8, $vr14, $vr8
 	vor.v	$vr9, $vr13, $vr9
-	vor.v	$vr8, $vr12, $vr8
-	vor.v	$vr7, $vr11, $vr7
-	vpickev.h	$vr7, $vr7, $vr8
-	vpickev.h	$vr8, $vr9, $vr10
+	vor.v	$vr10, $vr12, $vr10
+	vor.v	$vr7, $vr7, $vr11
+	vpickev.h	$vr7, $vr7, $vr10
+	vpickev.h	$vr8, $vr9, $vr8
 	vpickev.b	$vr7, $vr8, $vr7
 	vst	$vr7, $a7, 0
 	addi.d	$a7, $a7, 16
 	addi.d	$a6, $a6, -16
-	addi.d	$a5, $a5, 32
+	addi.d	$a4, $a4, 32
 	bnez	$a6, .LBB482_81
 # %bb.82:
-	ld.d	$t2, $sp, 16                    # 8-byte Folded Reload
-	beq	$t2, $a1, .LBB482_87
+	beq	$a3, $a1, .LBB482_87
 # %bb.83:
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	beqz	$a3, .LBB482_66
+	beqz	$a5, .LBB482_66
 .LBB482_84:
-	move	$a3, $a1
-	bstrpick.d	$a2, $t2, 62, 2
+	move	$a6, $a1
+	bstrpick.d	$a2, $a3, 62, 2
 	slli.d	$a1, $a2, 2
 	slli.d	$a2, $a2, 3
-	add.d	$a4, $s1, $a3
+	add.d	$a4, $s1, $a6
 	pcalau12i	$a5, %pc_hi20(.LCPI482_0)
 	vld	$vr7, $a5, %pc_lo12(.LCPI482_0)
-	sub.d	$a5, $a3, $a1
-	alsl.d	$a3, $a3, $s5, 1
-	addi.d	$a6, $a3, 4
+	sub.d	$a5, $a6, $a1
+	alsl.d	$a6, $a6, $s5, 1
+	addi.d	$a6, $a6, 4
 .LBB482_85:                             # =>This Inner Loop Header: Depth=1
-	ld.b	$a3, $a6, -2
-	ld.b	$a7, $a6, 0
-	ld.b	$t0, $a6, 2
-	ld.b	$t1, $a6, 4
-	vinsgr2vr.b	$vr8, $a3, 0
-	vinsgr2vr.b	$vr8, $a7, 4
-	vinsgr2vr.b	$vr8, $t0, 8
-	vinsgr2vr.b	$vr8, $t1, 12
+	ld.b	$a7, $a6, -2
+	ld.b	$t0, $a6, 0
+	ld.b	$t1, $a6, 2
+	ld.b	$t2, $a6, 4
+	vinsgr2vr.b	$vr8, $a7, 0
+	vinsgr2vr.b	$vr8, $t0, 4
+	vinsgr2vr.b	$vr8, $t1, 8
+	vinsgr2vr.b	$vr8, $t2, 12
 	vslli.w	$vr8, $vr8, 24
 	vsrai.w	$vr8, $vr8, 24
 	vadd.w	$vr9, $vr8, $vr0
@@ -99384,14 +99317,14 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	vadd.w	$vr8, $vr11, $vr8
 	vbitsel.v	$vr8, $vr9, $vr8, $vr10
 	vslli.w	$vr8, $vr8, 4
-	ld.b	$a3, $a6, -1
-	ld.b	$a7, $a6, 1
-	ld.b	$t0, $a6, 3
-	ld.b	$t1, $a6, 5
-	vinsgr2vr.b	$vr9, $a3, 0
-	vinsgr2vr.b	$vr9, $a7, 4
-	vinsgr2vr.b	$vr9, $t0, 8
-	vinsgr2vr.b	$vr9, $t1, 12
+	ld.b	$a7, $a6, -1
+	ld.b	$t0, $a6, 1
+	ld.b	$t1, $a6, 3
+	ld.b	$t2, $a6, 5
+	vinsgr2vr.b	$vr9, $a7, 0
+	vinsgr2vr.b	$vr9, $t0, 4
+	vinsgr2vr.b	$vr9, $t1, 8
+	vinsgr2vr.b	$vr9, $t2, 12
 	vslli.w	$vr9, $vr9, 24
 	vsrai.w	$vr9, $vr9, 24
 	vadd.w	$vr10, $vr9, $vr0
@@ -99409,7 +99342,7 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	addi.d	$a6, $a6, 8
 	bnez	$a5, .LBB482_85
 # %bb.86:
-	bne	$t2, $a1, .LBB482_66
+	bne	$a3, $a1, .LBB482_66
 .LBB482_87:
 	bstrpick.d	$a0, $a1, 30, 0
 .LBB482_88:
@@ -99449,21 +99382,19 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	st.h	$a1, $s0, 38
 .LBB482_95:
 	st.d	$s0, $fp, 0
-	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB482_96:
 	sltui	$a0, $s2, 4
@@ -99558,17 +99489,11 @@ sqlite3ValueFromExpr:                   # @sqlite3ValueFromExpr
 	.type	sqlite3HexToBlob,@function
 sqlite3HexToBlob:                       # @sqlite3HexToBlob
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 24                   # 8-byte Folded Spill
@@ -99636,126 +99561,66 @@ sqlite3HexToBlob:                       # @sqlite3HexToBlob
 	move	$a3, $a2
 	bstrins.d	$a3, $zero, 3, 0
 	slli.d	$a1, $a3, 1
-	addi.d	$a5, $fp, 15
+	move	$a5, $fp
 	move	$a6, $a3
 	move	$a7, $a0
 	.p2align	4, , 16
 .LBB483_13:                             # =>This Inner Loop Header: Depth=1
-	ld.b	$t0, $a5, -15
-	ld.b	$t1, $a5, -13
-	ld.b	$t2, $a5, -11
-	ld.b	$t3, $a5, -9
-	ld.b	$t4, $a5, -7
-	ld.b	$t5, $a5, -5
-	ld.b	$t6, $a5, -3
-	ld.b	$t7, $a5, -1
-	ld.b	$t8, $a5, 1
-	ld.b	$s1, $a5, 3
-	ld.b	$s2, $a5, 5
-	ld.b	$s3, $a5, 7
-	ld.b	$s4, $a5, 9
-	ld.b	$s5, $a5, 11
-	ld.b	$s6, $a5, 13
-	ld.b	$s7, $a5, 15
-	vinsgr2vr.b	$vr8, $t0, 0
-	vinsgr2vr.b	$vr8, $t1, 1
-	vinsgr2vr.b	$vr8, $t2, 2
-	vinsgr2vr.b	$vr8, $t3, 3
-	vinsgr2vr.b	$vr8, $t4, 4
-	vinsgr2vr.b	$vr8, $t5, 5
-	vinsgr2vr.b	$vr8, $t6, 6
-	vinsgr2vr.b	$vr8, $t7, 7
-	vinsgr2vr.b	$vr8, $t8, 8
-	vinsgr2vr.b	$vr8, $s1, 9
-	vinsgr2vr.b	$vr8, $s2, 10
-	vinsgr2vr.b	$vr8, $s3, 11
-	vinsgr2vr.b	$vr8, $s4, 12
-	vinsgr2vr.b	$vr8, $s5, 13
-	vinsgr2vr.b	$vr8, $s6, 14
-	vinsgr2vr.b	$vr8, $s7, 15
-	vslti.b	$vr9, $vr8, 0
-	vilvl.b	$vr10, $vr9, $vr8
-	vslti.h	$vr11, $vr10, 0
-	vilvh.h	$vr12, $vr11, $vr10
-	vilvl.h	$vr10, $vr11, $vr10
-	vilvh.b	$vr8, $vr9, $vr8
-	vslti.h	$vr9, $vr8, 0
-	vilvh.h	$vr11, $vr9, $vr8
-	vilvl.h	$vr8, $vr9, $vr8
-	vadd.w	$vr9, $vr8, $vr0
-	vadd.w	$vr13, $vr11, $vr0
-	vadd.w	$vr14, $vr10, $vr0
-	vadd.w	$vr15, $vr12, $vr0
-	vslt.wu	$vr16, $vr1, $vr15
-	vslt.wu	$vr17, $vr1, $vr14
-	vslt.wu	$vr18, $vr1, $vr13
-	vslt.wu	$vr19, $vr1, $vr9
-	vadd.w	$vr20, $vr8, $vr2
-	vadd.w	$vr21, $vr11, $vr2
-	vadd.w	$vr22, $vr10, $vr2
-	vadd.w	$vr23, $vr12, $vr2
+	vld	$vr8, $a5, 0
+	vld	$vr9, $a5, 16
+	vpickev.b	$vr10, $vr9, $vr8
+	vpickod.b	$vr8, $vr9, $vr8
+	vslti.b	$vr9, $vr10, 0
+	vilvl.b	$vr11, $vr9, $vr10
+	vslti.h	$vr12, $vr11, 0
+	vilvh.h	$vr13, $vr12, $vr11
+	vilvl.h	$vr11, $vr12, $vr11
+	vilvh.b	$vr9, $vr9, $vr10
+	vslti.h	$vr10, $vr9, 0
+	vilvh.h	$vr12, $vr10, $vr9
+	vilvl.h	$vr9, $vr10, $vr9
+	vadd.w	$vr10, $vr9, $vr0
+	vadd.w	$vr14, $vr12, $vr0
+	vadd.w	$vr15, $vr11, $vr0
+	vadd.w	$vr16, $vr13, $vr0
+	vslt.wu	$vr17, $vr1, $vr16
+	vslt.wu	$vr18, $vr1, $vr15
+	vslt.wu	$vr19, $vr1, $vr14
+	vslt.wu	$vr20, $vr1, $vr10
+	vadd.w	$vr21, $vr9, $vr2
+	vadd.w	$vr22, $vr12, $vr2
+	vadd.w	$vr23, $vr11, $vr2
+	vadd.w	$vr24, $vr13, $vr2
+	vslt.wu	$vr24, $vr24, $vr3
 	vslt.wu	$vr23, $vr23, $vr3
 	vslt.wu	$vr22, $vr22, $vr3
 	vslt.wu	$vr21, $vr21, $vr3
-	vslt.wu	$vr20, $vr20, $vr3
-	vbitsel.v	$vr20, $vr5, $vr4, $vr20
 	vbitsel.v	$vr21, $vr5, $vr4, $vr21
 	vbitsel.v	$vr22, $vr5, $vr4, $vr22
 	vbitsel.v	$vr23, $vr5, $vr4, $vr23
-	vadd.w	$vr12, $vr23, $vr12
-	vadd.w	$vr10, $vr22, $vr10
-	vadd.w	$vr11, $vr21, $vr11
-	vadd.w	$vr8, $vr20, $vr8
-	vbitsel.v	$vr19, $vr9, $vr8, $vr19
-	vbitsel.v	$vr11, $vr13, $vr11, $vr18
-	vbitsel.v	$vr9, $vr14, $vr10, $vr17
-	vbitsel.v	$vr8, $vr15, $vr12, $vr16
-	vslli.w	$vr8, $vr8, 4
+	vbitsel.v	$vr24, $vr5, $vr4, $vr24
+	vadd.w	$vr13, $vr24, $vr13
+	vadd.w	$vr11, $vr23, $vr11
+	vadd.w	$vr12, $vr22, $vr12
+	vadd.w	$vr9, $vr21, $vr9
+	vbitsel.v	$vr9, $vr10, $vr9, $vr20
+	vbitsel.v	$vr10, $vr14, $vr12, $vr19
+	vbitsel.v	$vr11, $vr15, $vr11, $vr18
+	vbitsel.v	$vr12, $vr16, $vr13, $vr17
+	vslli.w	$vr12, $vr12, 4
+	vslli.w	$vr11, $vr11, 4
+	vslli.w	$vr10, $vr10, 4
 	vslli.w	$vr9, $vr9, 4
-	vslli.w	$vr10, $vr11, 4
-	vslli.w	$vr11, $vr19, 4
-	ld.b	$t0, $a5, -14
-	ld.b	$t1, $a5, -12
-	ld.b	$t2, $a5, -10
-	ld.b	$t3, $a5, -8
-	ld.b	$t4, $a5, -6
-	ld.b	$t5, $a5, -4
-	ld.b	$t6, $a5, -2
-	ld.b	$t7, $a5, 0
-	ld.b	$t8, $a5, 2
-	ld.b	$s1, $a5, 4
-	ld.b	$s2, $a5, 6
-	ld.b	$s3, $a5, 8
-	ld.b	$s4, $a5, 10
-	ld.b	$s5, $a5, 12
-	ld.b	$s6, $a5, 14
-	ld.b	$s7, $a5, 16
-	vinsgr2vr.b	$vr12, $t0, 0
-	vinsgr2vr.b	$vr12, $t1, 1
-	vinsgr2vr.b	$vr12, $t2, 2
-	vinsgr2vr.b	$vr12, $t3, 3
-	vinsgr2vr.b	$vr12, $t4, 4
-	vinsgr2vr.b	$vr12, $t5, 5
-	vinsgr2vr.b	$vr12, $t6, 6
-	vinsgr2vr.b	$vr12, $t7, 7
-	vinsgr2vr.b	$vr12, $t8, 8
-	vinsgr2vr.b	$vr12, $s1, 9
-	vinsgr2vr.b	$vr12, $s2, 10
-	vinsgr2vr.b	$vr12, $s3, 11
-	vinsgr2vr.b	$vr12, $s4, 12
-	vinsgr2vr.b	$vr12, $s5, 13
-	vinsgr2vr.b	$vr12, $s6, 14
-	vinsgr2vr.b	$vr12, $s7, 15
-	vslti.b	$vr13, $vr12, 0
-	vilvh.b	$vr14, $vr13, $vr12
+	vslti.b	$vr13, $vr8, 0
+	vilvh.b	$vr14, $vr13, $vr8
 	vslti.h	$vr15, $vr14, 0
 	vilvl.h	$vr16, $vr15, $vr14
 	vilvh.h	$vr14, $vr15, $vr14
-	vilvl.b	$vr12, $vr13, $vr12
-	vslti.h	$vr13, $vr12, 0
-	vilvl.h	$vr15, $vr13, $vr12
-	vilvh.h	$vr12, $vr13, $vr12
-	vadd.w	$vr13, $vr12, $vr0
+	vilvl.b	$vr8, $vr13, $vr8
+	vslti.h	$vr13, $vr8, 0
+	vilvl.h	$vr15, $vr13, $vr8
+	vilvh.h	$vr8, $vr13, $vr8
+	vadd.w	$vr13, $vr8, $vr0
 	vadd.w	$vr17, $vr15, $vr0
 	vadd.w	$vr18, $vr14, $vr0
 	vadd.w	$vr19, $vr16, $vr0
@@ -99763,7 +99628,7 @@ sqlite3HexToBlob:                       # @sqlite3HexToBlob
 	vslt.wu	$vr21, $vr1, $vr18
 	vslt.wu	$vr22, $vr1, $vr17
 	vslt.wu	$vr23, $vr1, $vr13
-	vadd.w	$vr24, $vr12, $vr2
+	vadd.w	$vr24, $vr8, $vr2
 	vadd.w	$vr25, $vr15, $vr2
 	vadd.w	$vr26, $vr14, $vr2
 	vadd.w	$vr27, $vr16, $vr2
@@ -99778,17 +99643,17 @@ sqlite3HexToBlob:                       # @sqlite3HexToBlob
 	vadd.w	$vr16, $vr27, $vr16
 	vadd.w	$vr14, $vr26, $vr14
 	vadd.w	$vr15, $vr25, $vr15
-	vadd.w	$vr12, $vr24, $vr12
-	vbitsel.v	$vr12, $vr13, $vr12, $vr23
+	vadd.w	$vr8, $vr24, $vr8
+	vbitsel.v	$vr8, $vr13, $vr8, $vr23
 	vbitsel.v	$vr13, $vr17, $vr15, $vr22
 	vbitsel.v	$vr14, $vr18, $vr14, $vr21
 	vbitsel.v	$vr15, $vr19, $vr16, $vr20
-	vor.v	$vr11, $vr15, $vr11
+	vor.v	$vr9, $vr15, $vr9
 	vor.v	$vr10, $vr14, $vr10
-	vor.v	$vr9, $vr13, $vr9
-	vor.v	$vr8, $vr12, $vr8
-	vpickev.h	$vr8, $vr8, $vr9
-	vpickev.h	$vr9, $vr10, $vr11
+	vor.v	$vr11, $vr13, $vr11
+	vor.v	$vr8, $vr8, $vr12
+	vpickev.h	$vr8, $vr8, $vr11
+	vpickev.h	$vr9, $vr10, $vr9
 	vpickev.b	$vr8, $vr9, $vr8
 	vst	$vr8, $a7, 0
 	addi.d	$a7, $a7, 16
@@ -99864,17 +99729,11 @@ sqlite3HexToBlob:                       # @sqlite3HexToBlob
 	fld.d	$fs2, $sp, 24                   # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB483_22:
 	addi.w	$a2, $s0, -1

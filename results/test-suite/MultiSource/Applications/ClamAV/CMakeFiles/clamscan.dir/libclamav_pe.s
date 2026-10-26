@@ -5758,7 +5758,7 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a1, $a1, 4095
 	add.w	$a1, $a2, $a1
 	lu12i.w	$a2, -524288
-	ori	$a2, $a2, 19
+	ori	$a2, $a2, 15
 	bstrpick.d	$a0, $a0, 31, 0
 	bgeu	$a1, $a2, .LBB0_903
 # %bb.874:

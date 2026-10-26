@@ -2775,7 +2775,6 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	addi.d	$sp, $sp, 2032
 	ret
 .LBB22_44:
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZGVZN9benchmark8internal18GetNullLogInstanceEvE8null_log)
 	ld.b	$a0, $a0, %pc_lo12(_ZGVZN9benchmark8internal18GetNullLogInstanceEvE8null_log)
 	dbar	20
@@ -2787,25 +2786,26 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	ld.d	$s1, $sp, 104
 	ori	$s2, $zero, 1
 	slt	$fp, $s2, $a0
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	beq	$s5, $s1, .LBB22_59
 # %bb.46:
-	move	$s4, $zero
+	move	$s3, $zero
 	ori	$s0, $zero, 10
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1552
 	add.d	$s6, $sp, $a0
 	ori	$s7, $zero, 1
+	ori	$s8, $zero, 192
 	lu12i.w	$a0, -349526
 	ori	$a0, $a0, 2731
 	lu32i.d	$a0, -349526
-	lu52i.d	$s8, $a0, -1366
-	ori	$s2, $zero, 144
+	lu52i.d	$s2, $a0, -1366
 	b	.LBB22_48
 	.p2align	4, , 16
 .LBB22_47:                              #   in Loop: Header=BB22_48 Depth=1
-	sltu	$a1, $s3, $s0
-	masknez	$a2, $s3, $a1
+	sltu	$a1, $s4, $s0
+	masknez	$a2, $s4, $a1
 	maskeqz	$a1, $s0, $a1
 	or	$s0, $a1, $a2
 	slt	$a0, $s7, $a0
@@ -2825,7 +2825,7 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 .Ltmp85:                                # EH_LABEL
 # %bb.49:                               #   in Loop: Header=BB22_48 Depth=1
 	ldptr.d	$a0, $sp, 5632
-	ldptr.d	$s3, $sp, 5640
+	ldptr.d	$s4, $sp, 5640
 	beq	$a0, $s6, .LBB22_51
 # %bb.50:                               #   in Loop: Header=BB22_48 Depth=1
 	ldptr.d	$a1, $sp, 5648
@@ -2834,67 +2834,70 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	jirl	$ra, $ra, 0
 .LBB22_51:                              #   in Loop: Header=BB22_48 Depth=1
 	ld.d	$a0, $s5, 360
-	ld.d	$a5, $a0, 0
+	ld.d	$a4, $a0, 0
 	ld.d	$a1, $a0, 8
 	ld.w	$a0, $s5, 368
-	beq	$a5, $a1, .LBB22_47
+	beq	$a4, $a1, .LBB22_47
 # %bb.52:                               #   in Loop: Header=BB22_48 Depth=1
-	sub.d	$a2, $a1, $a5
+	sub.d	$a2, $a1, $a4
 	addi.d	$a2, $a2, -48
-	bgeu	$a2, $s2, .LBB22_54
+	bgeu	$a2, $s8, .LBB22_54
 # %bb.53:                               #   in Loop: Header=BB22_48 Depth=1
-	move	$a2, $a5
+	move	$a2, $a4
 	b	.LBB22_57
 	.p2align	4, , 16
 .LBB22_54:                              #   in Loop: Header=BB22_48 Depth=1
-	mulh.du	$a2, $a2, $s8
+	mulh.du	$a2, $a2, $s2
 	srli.d	$a2, $a2, 5
-	addi.d	$a3, $a2, 1
-	bstrpick.d	$a2, $a3, 59, 2
-	slli.d	$a4, $a2, 2
-	slli.d	$a6, $a2, 6
-	slli.d	$a2, $a2, 7
-	add.d	$a2, $a2, $a6
-	add.d	$a2, $a5, $a2
-	vreplgr2vr.d	$vr0, $s4
-	addi.d	$a5, $a5, 104
-	move	$a6, $a4
+	addi.d	$a2, $a2, 1
+	andi	$a3, $a2, 3
+	sltui	$a5, $a3, 1
+	masknez	$a3, $a3, $a5
+	ori	$a6, $zero, 4
+	maskeqz	$a5, $a6, $a5
+	or	$a3, $a5, $a3
+	sub.d	$a3, $a2, $a3
+	slli.d	$a2, $a3, 5
+	alsl.d	$a2, $a3, $a2, 4
+	add.d	$a2, $a4, $a2
+	vreplgr2vr.d	$vr0, $s3
+	addi.d	$a4, $a4, 104
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB22_55:                              #   Parent Loop BB22_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a7, $a5, -96
-	ld.d	$t0, $a5, -48
-	ld.d	$t1, $a5, 0
-	ld.d	$t2, $a5, 48
-	vinsgr2vr.d	$vr2, $a7, 0
-	vinsgr2vr.d	$vr2, $t0, 1
-	vinsgr2vr.d	$vr3, $t1, 0
-	vinsgr2vr.d	$vr3, $t2, 1
+	ld.d	$a5, $a4, -96
+	ld.d	$a6, $a4, -48
+	ld.d	$a7, $a4, 0
+	ld.d	$t0, $a4, 48
+	vinsgr2vr.d	$vr2, $a5, 0
+	vinsgr2vr.d	$vr2, $a6, 1
+	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t0, 1
 	vmax.du	$vr0, $vr0, $vr2
 	vmax.du	$vr1, $vr1, $vr3
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 192
-	bnez	$a6, .LBB22_55
+	addi.d	$a3, $a3, -4
+	addi.d	$a4, $a4, 192
+	bnez	$a3, .LBB22_55
 # %bb.56:                               #   in Loop: Header=BB22_48 Depth=1
 	vmax.du	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
-	vpickve2gr.d	$s4, $vr0, 0
-	beq	$a3, $a4, .LBB22_47
+	vpickve2gr.d	$s3, $vr0, 0
 	.p2align	4, , 16
 .LBB22_57:                              #   Parent Loop BB22_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a3, $a2, 8
-	sltu	$a4, $a3, $s4
+	sltu	$a4, $a3, $s3
 	masknez	$a3, $a3, $a4
-	maskeqz	$a4, $s4, $a4
+	maskeqz	$a4, $s3, $a4
 	addi.d	$a2, $a2, 48
-	or	$s4, $a4, $a3
+	or	$s3, $a4, $a3
 	bne	$a2, $a1, .LBB22_57
 	b	.LBB22_47
 .LBB22_58:
-	addi.d	$s2, $s4, 1
+	addi.d	$s2, $s3, 1
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB22_60
 .LBB22_59:
@@ -2904,7 +2907,6 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 3160
 	add.d	$a0, $sp, $a0
-	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN9benchmark17BenchmarkReporter7ContextC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp88:                                # EH_LABEL
@@ -2995,9 +2997,6 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	pcaddu18i	$ra, %call36(_ZN9benchmark8internal23PerfCountersMeasurementC1ERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EE)
 	jirl	$ra, $ra, 0
 .Ltmp105:                               # EH_LABEL
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 3120
-	add.d	$s4, $sp, $a0
 # %bb.73:
 	ldptr.d	$a0, $sp, 5632
 	ldptr.d	$fp, $sp, 5640
@@ -3083,10 +3082,14 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	ld.w	$a2, $s7, 264
 	ldptr.d	$a3, $sp, 11320
 	stptr.w	$a2, $sp, 10636
-	move	$a1, $s4
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 3120
+	add.d	$a1, $sp, $a0
 	beqz	$a3, .LBB22_92
 # %bb.88:                               #   in Loop: Header=BB22_86 Depth=1
-	move	$a0, $s4
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 3120
+	add.d	$a0, $sp, $a0
 	.p2align	4, , 16
 .LBB22_89:                              #   Parent Loop BB22_86 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -3101,8 +3104,11 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	or	$a0, $a5, $a4
 	bnez	$a3, .LBB22_89
 # %bb.90:                               #   in Loop: Header=BB22_86 Depth=1
-	move	$a1, $s4
-	beq	$a0, $s4, .LBB22_92
+	lu12i.w	$a1, 2
+	ori	$a1, $a1, 3120
+	add.d	$a3, $sp, $a1
+	move	$a1, $a3
+	beq	$a0, $a3, .LBB22_92
 # %bb.91:                               #   in Loop: Header=BB22_86 Depth=1
 	or	$a1, $a5, $a4
 	ld.w	$a3, $a1, 32

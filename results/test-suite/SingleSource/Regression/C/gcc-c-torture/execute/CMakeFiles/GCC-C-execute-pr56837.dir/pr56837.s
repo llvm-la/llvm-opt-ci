@@ -36,40 +36,22 @@ main:                                   # @main
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
 	lu12i.w	$a2, 2
-	ori	$a3, $a2, 8
-	ori	$a4, $a2, 16
-	ori	$a5, $a2, 24
-	ori	$a6, $a2, 4
-	ori	$a7, $a2, 12
-	ori	$t0, $a2, 20
-	ori	$t1, $a2, 28
+	ori	$a3, $a2, 16
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	add.d	$t2, $a1, $a0
-	ldx.w	$t3, $t2, $a2
-	ldx.w	$t4, $t2, $a3
-	ldx.w	$t5, $t2, $a4
-	ldx.w	$t6, $t2, $a5
-	vinsgr2vr.w	$vr0, $t3, 0
-	vinsgr2vr.w	$vr0, $t4, 1
-	vinsgr2vr.w	$vr0, $t5, 2
-	vinsgr2vr.w	$vr0, $t6, 3
-	ldx.w	$t3, $t2, $a6
-	ldx.w	$t4, $t2, $a7
-	ldx.w	$t5, $t2, $t0
-	ldx.w	$t2, $t2, $t1
-	vinsgr2vr.w	$vr1, $t3, 0
-	vinsgr2vr.w	$vr1, $t4, 1
-	vinsgr2vr.w	$vr1, $t5, 2
-	vinsgr2vr.w	$vr1, $t2, 3
-	vseqi.w	$vr0, $vr0, -1
-	vxori.b	$vr0, $vr0, 255
-	vseqi.w	$vr1, $vr1, 0
-	vorn.v	$vr0, $vr0, $vr1
+	add.d	$a4, $a1, $a0
+	vldx	$vr0, $a4, $a2
+	vldx	$vr1, $a4, $a3
+	vpickev.w	$vr2, $vr1, $vr0
+	vpickod.w	$vr0, $vr1, $vr0
+	vseqi.w	$vr1, $vr2, -1
+	vxori.b	$vr1, $vr1, 255
+	vseqi.w	$vr0, $vr0, 0
+	vorn.v	$vr0, $vr1, $vr0
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
-	vpickve2gr.hu	$t2, $vr0, 0
-	bnez	$t2, .LBB1_4
+	vpickve2gr.hu	$a4, $vr0, 0
+	bnez	$a4, .LBB1_4
 # %bb.2:                                #   in Loop: Header=BB1_1 Depth=1
 	addi.d	$a0, $a0, 32
 	bnez	$a0, .LBB1_1

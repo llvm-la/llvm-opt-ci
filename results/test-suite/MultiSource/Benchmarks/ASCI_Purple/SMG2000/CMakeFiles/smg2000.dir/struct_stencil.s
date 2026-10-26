@@ -1,6 +1,15 @@
 	.file	"struct_stencil.c"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function hypre_StructStencilCreate
+	.type	.LCPI0_0,@object
+.LCPI0_0:
+	.word	1                               # 0x1
+	.word	4                               # 0x4
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.size	.LCPI0_0, 16
 	.text
-	.globl	hypre_StructStencilCreate       # -- Begin function hypre_StructStencilCreate
+	.globl	hypre_StructStencilCreate
 	.p2align	2
 	.prefalign	5, .Lfunc_end0, nop
 	.type	hypre_StructStencilCreate,@function
@@ -35,78 +44,54 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	b	.LBB0_9
 .LBB0_4:
 	bstrpick.d	$a1, $fp, 30, 3
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
 	slli.d	$a1, $a1, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a2, $s0, 48
-	move	$a3, $a1
-	vori.b	$vr1, $vr0, 0
+	vrepli.b	$vr1, 0
+	move	$a2, $a1
+	move	$a3, $s0
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, -48
-	ld.w	$a5, $a2, -36
-	ld.w	$a6, $a2, -24
-	ld.w	$a7, $a2, -12
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 0
-	ld.w	$a5, $a2, 12
-	ld.w	$a6, $a2, 24
-	ld.w	$a7, $a2, 36
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
+	vld	$vr3, $a3, 16
+	vld	$vr4, $a3, 0
+	vld	$vr5, $a3, 32
+	vld	$vr6, $a3, 64
+	vld	$vr7, $a3, 48
+	vld	$vr8, $a3, 80
+	vsigncov.w	$vr5, $vr5, $vr5
 	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -44
-	ld.w	$a5, $a2, -32
-	ld.w	$a6, $a2, -20
-	ld.w	$a7, $a2, -8
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 4
-	ld.w	$a5, $a2, 16
-	ld.w	$a6, $a2, 28
-	ld.w	$a7, $a2, 40
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -40
-	ld.w	$a5, $a2, -28
-	ld.w	$a6, $a2, -16
-	ld.w	$a7, $a2, -4
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 8
-	ld.w	$a5, $a2, 20
-	ld.w	$a6, $a2, 32
-	ld.w	$a7, $a2, 44
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 96
-	bnez	$a3, .LBB0_5
+	vsigncov.w	$vr4, $vr4, $vr4
+	vori.b	$vr9, $vr3, 0
+	vpermi.w	$vr9, $vr4, 44
+	vextrins.w	$vr9, $vr5, 49
+	vsigncov.w	$vr8, $vr8, $vr8
+	vsigncov.w	$vr6, $vr6, $vr6
+	vsigncov.w	$vr7, $vr7, $vr7
+	vori.b	$vr10, $vr6, 0
+	vpermi.w	$vr10, $vr7, 44
+	vextrins.w	$vr10, $vr8, 49
+	vmax.wu	$vr1, $vr9, $vr1
+	vmax.wu	$vr2, $vr10, $vr2
+	vori.b	$vr9, $vr0, 0
+	vshuf.w	$vr9, $vr3, $vr4
+	vextrins.w	$vr9, $vr5, 50
+	vori.b	$vr10, $vr0, 0
+	vshuf.w	$vr10, $vr6, $vr7
+	vextrins.w	$vr10, $vr8, 50
+	vmax.wu	$vr1, $vr9, $vr1
+	vmax.wu	$vr2, $vr10, $vr2
+	vextrins.w	$vr3, $vr4, 2
+	vpermi.w	$vr5, $vr3, 196
+	vextrins.w	$vr6, $vr7, 2
+	vpermi.w	$vr8, $vr6, 196
+	vmax.wu	$vr1, $vr5, $vr1
+	vmax.wu	$vr2, $vr8, $vr2
+	addi.d	$a2, $a2, -8
+	addi.d	$a3, $a3, 96
+	bnez	$a2, .LBB0_5
 # %bb.6:
-	vmax.wu	$vr0, $vr0, $vr1
+	vmax.wu	$vr0, $vr1, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.wu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
@@ -245,7 +230,17 @@ hypre_StructStencilElementRank:         # @hypre_StructStencilElementRank
 .Lfunc_end3:
 	.size	hypre_StructStencilElementRank, .Lfunc_end3-hypre_StructStencilElementRank
                                         # -- End function
-	.globl	hypre_StructStencilSymmetrize   # -- Begin function hypre_StructStencilSymmetrize
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function hypre_StructStencilSymmetrize
+	.type	.LCPI4_0,@object
+.LCPI4_0:
+	.word	1                               # 0x1
+	.word	4                               # 0x4
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.size	.LCPI4_0, 16
+	.text
+	.globl	hypre_StructStencilSymmetrize
 	.p2align	2
 	.prefalign	5, .Lfunc_end4, nop
 	.type	hypre_StructStencilSymmetrize,@function
@@ -407,78 +402,54 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	b	.LBB4_26
 .LBB4_21:
 	bstrpick.d	$a1, $s5, 30, 3
+	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI4_0)
 	slli.d	$a1, $a1, 3
-	vrepli.b	$vr0, 0
-	addi.d	$a2, $s2, 48
-	move	$a3, $a1
-	vori.b	$vr1, $vr0, 0
+	vrepli.b	$vr1, 0
+	move	$a2, $a1
+	move	$a3, $s2
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB4_22:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, -48
-	ld.w	$a5, $a2, -36
-	ld.w	$a6, $a2, -24
-	ld.w	$a7, $a2, -12
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 0
-	ld.w	$a5, $a2, 12
-	ld.w	$a6, $a2, 24
-	ld.w	$a7, $a2, 36
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
+	vld	$vr3, $a3, 16
+	vld	$vr4, $a3, 0
+	vld	$vr5, $a3, 32
+	vld	$vr6, $a3, 64
+	vld	$vr7, $a3, 48
+	vld	$vr8, $a3, 80
+	vsigncov.w	$vr5, $vr5, $vr5
 	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -44
-	ld.w	$a5, $a2, -32
-	ld.w	$a6, $a2, -20
-	ld.w	$a7, $a2, -8
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 4
-	ld.w	$a5, $a2, 16
-	ld.w	$a6, $a2, 28
-	ld.w	$a7, $a2, 40
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	ld.w	$a4, $a2, -40
-	ld.w	$a5, $a2, -28
-	ld.w	$a6, $a2, -16
-	ld.w	$a7, $a2, -4
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $a5, 1
-	vinsgr2vr.w	$vr2, $a6, 2
-	vinsgr2vr.w	$vr2, $a7, 3
-	ld.w	$a4, $a2, 8
-	ld.w	$a5, $a2, 20
-	ld.w	$a6, $a2, 32
-	ld.w	$a7, $a2, 44
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
-	vsigncov.w	$vr2, $vr2, $vr2
-	vsigncov.w	$vr3, $vr3, $vr3
-	vmax.wu	$vr0, $vr2, $vr0
-	vmax.wu	$vr1, $vr3, $vr1
-	addi.d	$a3, $a3, -8
-	addi.d	$a2, $a2, 96
-	bnez	$a3, .LBB4_22
+	vsigncov.w	$vr4, $vr4, $vr4
+	vori.b	$vr9, $vr3, 0
+	vpermi.w	$vr9, $vr4, 44
+	vextrins.w	$vr9, $vr5, 49
+	vsigncov.w	$vr8, $vr8, $vr8
+	vsigncov.w	$vr6, $vr6, $vr6
+	vsigncov.w	$vr7, $vr7, $vr7
+	vori.b	$vr10, $vr6, 0
+	vpermi.w	$vr10, $vr7, 44
+	vextrins.w	$vr10, $vr8, 49
+	vmax.wu	$vr1, $vr9, $vr1
+	vmax.wu	$vr2, $vr10, $vr2
+	vori.b	$vr9, $vr0, 0
+	vshuf.w	$vr9, $vr3, $vr4
+	vextrins.w	$vr9, $vr5, 50
+	vori.b	$vr10, $vr0, 0
+	vshuf.w	$vr10, $vr6, $vr7
+	vextrins.w	$vr10, $vr8, 50
+	vmax.wu	$vr1, $vr9, $vr1
+	vmax.wu	$vr2, $vr10, $vr2
+	vextrins.w	$vr3, $vr4, 2
+	vpermi.w	$vr5, $vr3, 196
+	vextrins.w	$vr6, $vr7, 2
+	vpermi.w	$vr8, $vr6, 196
+	vmax.wu	$vr1, $vr5, $vr1
+	vmax.wu	$vr2, $vr8, $vr2
+	addi.d	$a2, $a2, -8
+	addi.d	$a3, $a3, 96
+	bnez	$a2, .LBB4_22
 # %bb.23:
-	vmax.wu	$vr0, $vr0, $vr1
+	vmax.wu	$vr0, $vr1, $vr2
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.wu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4

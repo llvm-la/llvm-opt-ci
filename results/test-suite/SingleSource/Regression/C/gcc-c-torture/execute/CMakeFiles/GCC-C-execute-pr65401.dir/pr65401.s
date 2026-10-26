@@ -10,117 +10,36 @@ foo:                                    # @foo
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function bar
-	.type	.LCPI1_0,@object
-.LCPI1_0:
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
-	.size	.LCPI1_0, 16
-	.type	.LCPI1_1,@object
-.LCPI1_1:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.size	.LCPI1_1, 16
-	.type	.LCPI1_2,@object
-.LCPI1_2:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.size	.LCPI1_2, 16
-	.type	.LCPI1_3,@object
-.LCPI1_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI1_3, 16
-	.text
-	.globl	bar
+	.globl	bar                             # -- Begin function bar
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
 	.type	bar,@function
 bar:                                    # @bar
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
-	vld	$vr2, $a1, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
-	vld	$vr3, $a1, %pc_lo12(.LCPI1_3)
-	move	$a1, $zero
-	vrepli.b	$vr4, 0
-	ori	$a2, $zero, 128
-	.p2align	4, , 16
-.LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	vslli.d	$vr5, $vr0, 1
-	vslli.d	$vr6, $vr1, 1
-	vslli.d	$vr7, $vr2, 1
-	vslli.d	$vr8, $vr3, 1
-	vpickve2gr.d	$a3, $vr8, 0
-	add.d	$a4, $a0, $a3
-	vpickve2gr.d	$a5, $vr8, 1
-	add.d	$a6, $a0, $a5
-	vpickve2gr.d	$a7, $vr7, 0
-	add.d	$t0, $a0, $a7
-	vpickve2gr.d	$t1, $vr7, 1
-	add.d	$t2, $a0, $t1
-	vpickve2gr.d	$t3, $vr6, 0
-	add.d	$t4, $a0, $t3
-	vpickve2gr.d	$t5, $vr6, 1
-	add.d	$t6, $a0, $t5
-	vpickve2gr.d	$t7, $vr5, 0
-	add.d	$t8, $a0, $t7
-	vpickve2gr.d	$fp, $vr5, 1
-	add.d	$s0, $a0, $fp
-	ldx.b	$a3, $a0, $a3
-	ldx.b	$a5, $a0, $a5
-	ldx.b	$a7, $a0, $a7
-	ldx.b	$t1, $a0, $t1
-	ldx.b	$t3, $a0, $t3
-	ldx.b	$t5, $a0, $t5
-	ldx.b	$t7, $a0, $t7
-	ldx.b	$fp, $a0, $fp
-	vinsgr2vr.b	$vr5, $a3, 0
-	vinsgr2vr.b	$vr5, $a5, 2
-	vinsgr2vr.b	$vr5, $a7, 4
-	vinsgr2vr.b	$vr5, $t1, 6
-	vinsgr2vr.b	$vr5, $t3, 8
-	vinsgr2vr.b	$vr5, $t5, 10
-	vinsgr2vr.b	$vr5, $t7, 12
-	vinsgr2vr.b	$vr5, $fp, 14
-	vslli.h	$vr5, $vr5, 8
-	ld.b	$a3, $a4, 1
-	ld.b	$a4, $a6, 1
-	ld.b	$a5, $t0, 1
-	ld.b	$a6, $t2, 1
-	ld.b	$a7, $t4, 1
-	ld.b	$t0, $t6, 1
-	ld.b	$t1, $t8, 1
-	ld.b	$t2, $s0, 1
-	vori.b	$vr6, $vr4, 0
-	vinsgr2vr.b	$vr6, $a3, 0
-	vinsgr2vr.b	$vr6, $a4, 2
-	vinsgr2vr.b	$vr6, $a5, 4
-	vinsgr2vr.b	$vr6, $a6, 6
-	vinsgr2vr.b	$vr6, $a7, 8
-	vinsgr2vr.b	$vr6, $t0, 10
-	vinsgr2vr.b	$vr6, $t1, 12
-	vinsgr2vr.b	$vr6, $t2, 14
-	vor.v	$vr5, $vr5, $vr6
-	vstx	$vr5, $a0, $a1
-	vaddi.du	$vr3, $vr3, 8
-	vaddi.du	$vr2, $vr2, 8
-	vaddi.du	$vr1, $vr1, 8
-	addi.d	$a1, $a1, 16
-	vaddi.du	$vr0, $vr0, 8
-	bne	$a1, $a2, .LBB1_1
-# %bb.2:
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vshuf4i.b	$vr0, $vr0, 177
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a0, 32
+	vshuf4i.b	$vr1, $vr1, 177
+	vst	$vr1, $a0, 16
+	vld	$vr1, $a0, 48
+	vshuf4i.b	$vr0, $vr0, 177
+	vst	$vr0, $a0, 32
+	vld	$vr0, $a0, 64
+	vshuf4i.b	$vr1, $vr1, 177
+	vst	$vr1, $a0, 48
+	vld	$vr1, $a0, 80
+	vshuf4i.b	$vr0, $vr0, 177
+	vst	$vr0, $a0, 64
+	vld	$vr0, $a0, 96
+	vshuf4i.b	$vr1, $vr1, 177
+	vld	$vr2, $a0, 112
+	vst	$vr1, $a0, 80
+	vshuf4i.b	$vr0, $vr0, 177
+	vst	$vr0, $a0, 96
+	vshuf4i.b	$vr0, $vr2, 177
+	vst	$vr0, $a0, 112
 	ret
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar

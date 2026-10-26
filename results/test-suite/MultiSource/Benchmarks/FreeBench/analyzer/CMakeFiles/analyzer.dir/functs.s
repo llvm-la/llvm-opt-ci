@@ -345,14 +345,19 @@ specul_time_o:                          # @specul_time_o
 	bnez	$a1, .LBB3_22
 .LBB3_23:
 	ld.d	$s5, $a0, 40
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 5
 	bgeu	$s3, $a1, .LBB3_25
 # %bb.24:
 	move	$a1, $zero
 	b	.LBB3_28
 .LBB3_25:
-	bstrpick.d	$a1, $s3, 30, 2
-	slli.d	$a1, $a1, 2
+	andi	$a1, $s3, 3
+	sltui	$a2, $a1, 1
+	masknez	$a1, $a1, $a2
+	ori	$a3, $zero, 4
+	maskeqz	$a2, $a3, $a2
+	or	$a1, $a2, $a1
+	sub.d	$a1, $s3, $a1
 	vreplgr2vr.d	$vr0, $s5
 	addi.d	$a2, $a0, 152
 	move	$a3, $a1
@@ -377,7 +382,6 @@ specul_time_o:                          # @specul_time_o
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$s5, $vr0, 0
-	beq	$a1, $s3, .LBB3_30
 .LBB3_28:
 	ori	$a2, $zero, 56
 	mul.d	$a2, $a1, $a2
@@ -835,14 +839,19 @@ specul_time_r:                          # @specul_time_r
 	bnez	$a1, .LBB4_43
 .LBB4_44:
 	ld.d	$a1, $s5, 40
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 5
 	bgeu	$s4, $a2, .LBB4_46
 # %bb.45:
 	move	$a2, $zero
 	b	.LBB4_49
 .LBB4_46:
-	bstrpick.d	$a2, $s4, 30, 2
-	slli.d	$a2, $a2, 2
+	andi	$a2, $s4, 3
+	sltui	$a3, $a2, 1
+	masknez	$a2, $a2, $a3
+	ori	$a4, $zero, 4
+	maskeqz	$a3, $a4, $a3
+	or	$a2, $a3, $a2
+	sub.d	$a2, $s4, $a2
 	vreplgr2vr.d	$vr0, $a1
 	addi.d	$a1, $s5, 152
 	move	$a3, $a2
@@ -867,7 +876,6 @@ specul_time_r:                          # @specul_time_r
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
-	beq	$a2, $s4, .LBB4_78
 .LBB4_49:
 	ori	$a3, $zero, 56
 	mul.d	$a3, $a2, $a3
@@ -1004,14 +1012,19 @@ specul_time_r:                          # @specul_time_r
 	bnez	$a1, .LBB4_70
 .LBB4_71:
 	ld.d	$a1, $s5, 40
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 5
 	bgeu	$s4, $a2, .LBB4_73
 # %bb.72:
 	move	$a2, $zero
 	b	.LBB4_76
 .LBB4_73:
-	bstrpick.d	$a2, $s4, 30, 2
-	slli.d	$a2, $a2, 2
+	andi	$a2, $s4, 3
+	sltui	$a3, $a2, 1
+	masknez	$a2, $a2, $a3
+	ori	$a4, $zero, 4
+	maskeqz	$a3, $a4, $a3
+	or	$a2, $a3, $a2
+	sub.d	$a2, $s4, $a2
 	vreplgr2vr.d	$vr0, $a1
 	addi.d	$a1, $s5, 152
 	move	$a3, $a2
@@ -1036,7 +1049,6 @@ specul_time_r:                          # @specul_time_r
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.du	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
-	beq	$a2, $s4, .LBB4_78
 .LBB4_76:
 	ori	$a3, $zero, 56
 	mul.d	$a3, $a2, $a3

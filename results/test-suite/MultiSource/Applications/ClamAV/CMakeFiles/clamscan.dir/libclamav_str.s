@@ -877,15 +877,10 @@ cli_str2hex:                            # @cli_str2hex
 	.type	cli_utf16toascii,@function
 cli_utf16toascii:                       # @cli_utf16toascii
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ori	$a2, $zero, 1
 	bltu	$a2, $a1, .LBB4_2
 # %bb.1:
@@ -937,15 +932,10 @@ cli_utf16toascii:                       # @cli_utf16toascii
 .LBB4_9:
 	move	$a0, $zero
 .LBB4_10:
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB4_11:
 	ori	$a3, $zero, 30
@@ -958,43 +948,13 @@ cli_utf16toascii:                       # @cli_utf16toascii
 	slli.d	$a2, $a3, 3
 	slli.d	$a3, $a3, 4
 	alsl.d	$a5, $a4, $fp, 1
-	addi.d	$a5, $a5, 7
 	.p2align	4, , 16
 .LBB4_14:                               # =>This Inner Loop Header: Depth=1
-	ld.b	$a6, $a5, -6
-	ld.b	$a7, $a5, -4
-	ld.b	$t0, $a5, -2
-	ld.b	$t1, $a5, 0
-	ld.b	$t2, $a5, 2
-	ld.b	$t3, $a5, 4
-	ld.b	$t4, $a5, 6
-	ld.b	$t5, $a5, 8
-	vinsgr2vr.b	$vr0, $a6, 0
-	vinsgr2vr.b	$vr0, $a7, 1
-	vinsgr2vr.b	$vr0, $t0, 2
-	vinsgr2vr.b	$vr0, $t1, 3
-	vinsgr2vr.b	$vr0, $t2, 4
-	vinsgr2vr.b	$vr0, $t3, 5
-	vinsgr2vr.b	$vr0, $t4, 6
-	vinsgr2vr.b	$vr0, $t5, 7
+	vld	$vr0, $a5, 0
+	vpickev.b	$vr1, $vr0, $vr0
+	vpickod.b	$vr0, $vr0, $vr0
 	vslli.b	$vr0, $vr0, 4
 	add.d	$a6, $a0, $a4
-	ld.b	$a7, $a5, -7
-	ld.b	$t0, $a5, -5
-	ld.b	$t1, $a5, -3
-	ld.b	$t2, $a5, -1
-	ld.b	$t3, $a5, 1
-	ld.b	$t4, $a5, 3
-	ld.b	$t5, $a5, 5
-	ld.b	$t6, $a5, 7
-	vinsgr2vr.b	$vr1, $a7, 0
-	vinsgr2vr.b	$vr1, $t0, 1
-	vinsgr2vr.b	$vr1, $t1, 2
-	vinsgr2vr.b	$vr1, $t2, 3
-	vinsgr2vr.b	$vr1, $t3, 4
-	vinsgr2vr.b	$vr1, $t4, 5
-	vinsgr2vr.b	$vr1, $t5, 6
-	vinsgr2vr.b	$vr1, $t6, 7
 	vadd.b	$vr0, $vr1, $vr0
 	vstelm.d	$vr0, $a6, 0, 0
 	addi.d	$a4, $a4, 8
@@ -1009,75 +969,15 @@ cli_utf16toascii:                       # @cli_utf16toascii
 	bstrpick.d	$a3, $a1, 30, 4
 	slli.d	$a2, $a3, 4
 	slli.d	$a3, $a3, 5
-	addi.d	$a6, $fp, 15
+	move	$a6, $fp
 	.p2align	4, , 16
 .LBB4_17:                               # =>This Inner Loop Header: Depth=1
-	ld.b	$a7, $a6, -14
-	ld.b	$t0, $a6, -12
-	ld.b	$t1, $a6, -10
-	ld.b	$t2, $a6, -8
-	ld.b	$t3, $a6, -6
-	ld.b	$t4, $a6, -4
-	ld.b	$t5, $a6, -2
-	ld.b	$t6, $a6, 0
-	ld.b	$t7, $a6, 2
-	ld.b	$t8, $a6, 4
-	ld.b	$s0, $a6, 6
-	ld.b	$s1, $a6, 8
-	ld.b	$s2, $a6, 10
-	ld.b	$s3, $a6, 12
-	ld.b	$s4, $a6, 14
-	ld.b	$s5, $a6, 16
-	vinsgr2vr.b	$vr0, $a7, 0
-	vinsgr2vr.b	$vr0, $t0, 1
-	vinsgr2vr.b	$vr0, $t1, 2
-	vinsgr2vr.b	$vr0, $t2, 3
-	vinsgr2vr.b	$vr0, $t3, 4
-	vinsgr2vr.b	$vr0, $t4, 5
-	vinsgr2vr.b	$vr0, $t5, 6
-	vinsgr2vr.b	$vr0, $t6, 7
-	vinsgr2vr.b	$vr0, $t7, 8
-	vinsgr2vr.b	$vr0, $t8, 9
-	vinsgr2vr.b	$vr0, $s0, 10
-	vinsgr2vr.b	$vr0, $s1, 11
-	vinsgr2vr.b	$vr0, $s2, 12
-	vinsgr2vr.b	$vr0, $s3, 13
-	vinsgr2vr.b	$vr0, $s4, 14
-	vinsgr2vr.b	$vr0, $s5, 15
+	vld	$vr0, $a6, 0
+	vld	$vr1, $a6, 16
+	vpickev.b	$vr2, $vr1, $vr0
+	vpickod.b	$vr0, $vr1, $vr0
 	vslli.b	$vr0, $vr0, 4
-	ld.b	$a7, $a6, -15
-	ld.b	$t0, $a6, -13
-	ld.b	$t1, $a6, -11
-	ld.b	$t2, $a6, -9
-	ld.b	$t3, $a6, -7
-	ld.b	$t4, $a6, -5
-	ld.b	$t5, $a6, -3
-	ld.b	$t6, $a6, -1
-	ld.b	$t7, $a6, 1
-	ld.b	$t8, $a6, 3
-	ld.b	$s0, $a6, 5
-	ld.b	$s1, $a6, 7
-	ld.b	$s2, $a6, 9
-	ld.b	$s3, $a6, 11
-	ld.b	$s4, $a6, 13
-	ld.b	$s5, $a6, 15
-	vinsgr2vr.b	$vr1, $a7, 0
-	vinsgr2vr.b	$vr1, $t0, 1
-	vinsgr2vr.b	$vr1, $t1, 2
-	vinsgr2vr.b	$vr1, $t2, 3
-	vinsgr2vr.b	$vr1, $t3, 4
-	vinsgr2vr.b	$vr1, $t4, 5
-	vinsgr2vr.b	$vr1, $t5, 6
-	vinsgr2vr.b	$vr1, $t6, 7
-	vinsgr2vr.b	$vr1, $t7, 8
-	vinsgr2vr.b	$vr1, $t8, 9
-	vinsgr2vr.b	$vr1, $s0, 10
-	vinsgr2vr.b	$vr1, $s1, 11
-	vinsgr2vr.b	$vr1, $s2, 12
-	vinsgr2vr.b	$vr1, $s3, 13
-	vinsgr2vr.b	$vr1, $s4, 14
-	vinsgr2vr.b	$vr1, $s5, 15
-	vadd.b	$vr0, $vr1, $vr0
+	vadd.b	$vr0, $vr2, $vr0
 	vstx	$vr0, $a0, $a5
 	addi.d	$a5, $a5, 16
 	addi.d	$a6, $a6, 32

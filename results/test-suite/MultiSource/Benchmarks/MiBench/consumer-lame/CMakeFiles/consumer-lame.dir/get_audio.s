@@ -386,30 +386,7 @@ lame_readframe:                         # @lame_readframe
 .Lfunc_end7:
 	.size	lame_readframe, .Lfunc_end7-lame_readframe
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function get_audio
-	.type	.LCPI8_0,@object
-.LCPI8_0:
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
-	.size	.LCPI8_0, 16
-	.type	.LCPI8_1,@object
-.LCPI8_1:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.size	.LCPI8_1, 16
-	.type	.LCPI8_2,@object
-.LCPI8_2:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.size	.LCPI8_2, 16
-	.type	.LCPI8_3,@object
-.LCPI8_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.size	.LCPI8_3, 16
-	.text
-	.globl	get_audio
+	.globl	get_audio                       # -- Begin function get_audio
 	.p2align	2
 	.prefalign	5, .Lfunc_end8, nop
 	.type	get_audio,@function
@@ -423,11 +400,8 @@ get_audio:                              # @get_audio
 	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -624
+	addi.d	$sp, $sp, -592
 	ld.d	$a2, $a0, 168
 	move	$fp, $a1
 	pcalau12i	$s0, %pc_hi20(get_audio.num_samples_read)
@@ -480,7 +454,7 @@ get_audio:                              # @get_audio
 	ld.w	$s2, $a0, 8
 	mul.w	$a2, $s3, $s2
 	mul.w	$a3, $a1, $s2
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(read_samples_pcm)
 	jirl	$ra, $ra, 0
 	div.w	$a0, $a0, $s2
@@ -513,7 +487,7 @@ get_audio:                              # @get_audio
 # %bb.13:
 	bstrpick.d	$a1, $a2, 30, 6
 	slli.d	$a1, $a1, 6
-	addi.d	$a3, $sp, 16
+	addi.d	$a3, $sp, 8
 	vrepli.b	$vr0, 0
 	ori	$a4, $zero, 2304
 	move	$a5, $fp
@@ -531,7 +505,7 @@ get_audio:                              # @get_audio
 	beq	$a1, $a2, .LBB8_23
 .LBB8_16:
 	mul.d	$a3, $a1, $s2
-	addi.d	$a4, $sp, 16
+	addi.d	$a4, $sp, 8
 	alsl.d	$a3, $a3, $a4, 1
 	slli.d	$a4, $s2, 1
 	alsl.d	$a5, $a1, $fp, 1
@@ -548,87 +522,28 @@ get_audio:                              # @get_audio
 	bnez	$a1, .LBB8_17
 	b	.LBB8_23
 .LBB8_18:
-	pcalau12i	$a2, %pc_hi20(.LCPI8_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI8_0)
-	pcalau12i	$a2, %pc_hi20(.LCPI8_1)
-	vld	$vr1, $a2, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a2, %pc_hi20(.LCPI8_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI8_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI8_3)
-	vld	$vr3, $a2, %pc_lo12(.LCPI8_3)
 	bstrpick.d	$a2, $a1, 30, 6
 	slli.d	$a2, $a2, 6
-	addi.d	$a3, $sp, 16
+	addi.d	$a3, $sp, 8
 	ori	$a4, $zero, 2304
 	move	$a5, $fp
 	move	$a6, $a2
 	.p2align	4, , 16
 .LBB8_19:                               # =>This Inner Loop Header: Depth=1
-	vslli.d	$vr4, $vr0, 2
-	vslli.d	$vr5, $vr1, 2
-	vslli.d	$vr6, $vr2, 2
-	vslli.d	$vr7, $vr3, 2
-	vpickve2gr.d	$a7, $vr7, 0
-	add.d	$t0, $a3, $a7
-	vpickve2gr.d	$t1, $vr7, 1
-	add.d	$t2, $a3, $t1
-	vpickve2gr.d	$t3, $vr6, 0
-	add.d	$t4, $a3, $t3
-	vpickve2gr.d	$t5, $vr6, 1
-	add.d	$t6, $a3, $t5
-	vpickve2gr.d	$t7, $vr5, 0
-	add.d	$t8, $a3, $t7
-	vpickve2gr.d	$s2, $vr5, 1
-	add.d	$s3, $a3, $s2
-	vpickve2gr.d	$s4, $vr4, 0
-	add.d	$s5, $a3, $s4
-	vpickve2gr.d	$s6, $vr4, 1
-	add.d	$s7, $a3, $s6
-	ldx.h	$a7, $a7, $a3
-	ldx.h	$t1, $t1, $a3
-	ldx.h	$t3, $t3, $a3
-	ldx.h	$t5, $t5, $a3
-	ldx.h	$t7, $t7, $a3
-	ldx.h	$s2, $s2, $a3
-	ldx.h	$s4, $s4, $a3
-	ldx.h	$s6, $s6, $a3
-	vinsgr2vr.h	$vr4, $a7, 0
-	vinsgr2vr.h	$vr4, $t1, 1
-	vinsgr2vr.h	$vr4, $t3, 2
-	vinsgr2vr.h	$vr4, $t5, 3
-	vinsgr2vr.h	$vr4, $t7, 4
-	vinsgr2vr.h	$vr4, $s2, 5
-	vinsgr2vr.h	$vr4, $s4, 6
-	vinsgr2vr.h	$vr4, $s6, 7
-	vst	$vr4, $a5, 0
-	ld.h	$a7, $t0, 2
-	ld.h	$t0, $t2, 2
-	ld.h	$t1, $t4, 2
-	ld.h	$t2, $t6, 2
-	ld.h	$t3, $t8, 2
-	ld.h	$t4, $s3, 2
-	ld.h	$t5, $s5, 2
-	ld.h	$t6, $s7, 2
-	vinsgr2vr.h	$vr4, $a7, 0
-	vinsgr2vr.h	$vr4, $t0, 1
-	vinsgr2vr.h	$vr4, $t1, 2
-	vinsgr2vr.h	$vr4, $t2, 3
-	vinsgr2vr.h	$vr4, $t3, 4
-	vinsgr2vr.h	$vr4, $t4, 5
-	vinsgr2vr.h	$vr4, $t5, 6
-	vinsgr2vr.h	$vr4, $t6, 7
-	vstx	$vr4, $a5, $a4
-	vaddi.du	$vr3, $vr3, 8
-	vaddi.du	$vr2, $vr2, 8
-	vaddi.du	$vr1, $vr1, 8
-	vaddi.du	$vr0, $vr0, 8
+	vld	$vr0, $a3, 0
+	vld	$vr1, $a3, 16
+	vpickev.h	$vr2, $vr1, $vr0
+	vpickod.h	$vr0, $vr1, $vr0
+	vst	$vr2, $a5, 0
+	vstx	$vr0, $a5, $a4
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 16
+	addi.d	$a3, $a3, 32
 	bnez	$a6, .LBB8_19
 # %bb.20:
 	beq	$a2, $a1, .LBB8_23
 .LBB8_21:
-	addi.d	$a3, $sp, 16
+	addi.d	$a3, $sp, 8
 	alsl.d	$a3, $a2, $a3, 2
 	addi.d	$a3, $a3, 2
 	alsl.d	$a4, $a2, $fp, 1
@@ -655,10 +570,7 @@ get_audio:                              # @get_audio
 	st.d	$a1, $s0, %pc_lo12(get_audio.num_samples_read)
 .LBB8_25:
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 640
-	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 608
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
