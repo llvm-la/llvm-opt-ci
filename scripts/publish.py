@@ -15,7 +15,6 @@ DRY_RUN=1 时只产出本地 results/ 与报告，跳过一切 git/gh 写操作�
 """
 
 import os
-import shutil
 import subprocess
 import sys
 import time
@@ -28,6 +27,7 @@ if _SCRIPTS not in sys.path:
 import asmcompare  # noqa: E402
 import baseref  # noqa: E402
 import report as report_mod  # noqa: E402
+import resultbranch  # noqa: E402
 
 BOT_NAME = "github-actions[bot]"
 BOT_EMAIL = "41898282+github-actions[bot]@users.noreply.github.com"
@@ -74,6 +74,19 @@ def _render_issue_comment(rd: dict, author: str, build_time: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _write_rendered(results_dir: str, rd: dict, author: str, build_time: str) -> tuple[str, str]:
+    """写展示层渲染物（issue 评论 + PR body）。注意：必须在分支发布之后调用——
+    发布会把 results/ 整树重写两次，先写后清的顺序曾让这两个文件在
+    被工作流读取前就消失。"""
+    comment_path = os.path.join(results_dir, "issue_comment.md")
+    with open(comment_path, "w") as f:
+        f.write(_render_issue_comment(rd, author, build_time))
+    pr_body_path = os.path.join(results_dir, "pr_body.md")
+    with open(pr_body_path, "w") as f:
+        f.write(report_mod.render_markdown(rd))
+    return comment_path, pr_body_path
+
+
 def _run(cmd: list[str], cwd: str, **kw) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, cwd=cwd, check=True, **kw)
 
@@ -84,30 +97,25 @@ def _push_branches(
 ):
     """把产物发布为两个分支（base → opt），PR diff 即优化前后差异。
 
-    每个分支的 results/ 含该侧汇编（扁平 <suite>/<path>）+ report.md。
+    resultbranch 的 CI adapter：分支摆放与 force push 在这里，写树 + 提交
+    在共享实现里。每个分支的 results/ 含该侧汇编（扁平 <suite>/<path>）
+    + report.md。
     """
-    def stage_and_commit(side: str, title_prefix: str):
-        if os.path.exists(results_dir):
-            shutil.rmtree(results_dir)
-        os.makedirs(results_dir, exist_ok=True)
-        for rel, base_abs, opt_abs in entries:
-            src = base_abs if side == "base" else opt_abs
-            dst = os.path.join(results_dir, rel)
-            os.makedirs(os.path.dirname(dst), exist_ok=True)
-            shutil.copy2(src, dst)
-        shutil.copy2(md_path, os.path.join(results_dir, "report.md"))
-        _run(["git", "add", "-A", "results"], workspace)
-        _run(["git", "commit", "-q", "--allow-empty",
-              "-m", f"{title_prefix}: LLVM PR #{pr_id} ({flag}) {commit_hash[:8]}"],
-             workspace)
+    def push(branch: str):
+        _run(["git", "push", "--force", "--set-upstream", "origin", branch], workspace)
+
+    def message(side: str) -> str:
+        return f"{side}: LLVM PR #{pr_id} ({flag}) {commit_hash[:8]}"
 
     _run(["git", "checkout", "-B", base_branch], workspace)
-    stage_and_commit("base", "base")
-    _run(["git", "push", "--force", "--set-upstream", "origin", base_branch], workspace)
+    resultbranch.commit_side(workspace, results_dir, entries, "base",
+                             message("base"), {"report.md": md_path})
+    push(base_branch)
 
     _run(["git", "checkout", "-B", opt_branch], workspace)
-    stage_and_commit("opt", "opt")
-    _run(["git", "push", "--force", "--set-upstream", "origin", opt_branch], workspace)
+    resultbranch.commit_side(workspace, results_dir, entries, "opt",
+                             message("opt"), {"report.md": md_path})
+    push(opt_branch)
 
 
 def _find_existing_pr(workspace: str, base_branch: str, head_branch: str) -> str | None:
@@ -164,12 +172,6 @@ def run() -> None:
     )
     json_path, md_path = report_mod.write(results_dir, rd)
 
-    with open(os.path.join(results_dir, "issue_comment.md"), "w") as f:
-        f.write(_render_issue_comment(rd, author, build_time))
-    pr_body_path = os.path.join(results_dir, "pr_body.md")
-    with open(pr_body_path, "w") as f:
-        f.write(report_mod.render_markdown(rd))
-
     s = rd["summary"]
     print(f"Reports generated: {s['files_changed']} files differ, "
           f"+{_fmt(s['added'])} / -{_fmt(s['removed'])} lines "
@@ -177,6 +179,7 @@ def run() -> None:
     print(f"Results: {json_path}")
 
     if dry_run:
+        _write_rendered(results_dir, rd, author, build_time)
         print("DRY_RUN=1 — skipping branch/PR publishing.")
         return
 
@@ -184,6 +187,7 @@ def run() -> None:
     _run(["git", "config", "user.email", BOT_EMAIL], workspace)
 
     if status != "diff":
+        _write_rendered(results_dir, rd, author, build_time)
         print("No differences found — PR skipped, issue comment posted.")
         return
 
@@ -193,6 +197,9 @@ def run() -> None:
 
     _push_branches(workspace, results_dir, entries, md_path,
                    base_branch, opt_branch, pr_id, commit_hash, flag)
+
+    # 展示层渲染物最后写：_push_branches 会整树重写 results/。
+    comment_path, pr_body_path = _write_rendered(results_dir, rd, author, build_time)
 
     _run(["git", "checkout", base_branch], workspace)
     existing_pr = _find_existing_pr(workspace, base_branch, opt_branch)

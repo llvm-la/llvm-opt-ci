@@ -4,3 +4,6 @@ repos/*
 build/
 
 __pycache__/
+
+# run 产物（自动生成，见 README）
+results/

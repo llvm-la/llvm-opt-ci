@@ -56,3 +56,35 @@ base/opt SHA、已完成步骤及耗时。断点续跑、缓存失效、`status`
 `scripts/asmcompare.py`。目录级汇编对比的唯一实现：输入 base/opt 两个目录，
 输出结构化 `Comparison`（每文件 ±行数）。基于 `git diff --no-index --numstat -z`。
 任何其他代码不得 shell 出 `diff` 或解析 diff 文本。
+
+### runstate
+`scripts/runstate.py`。Run State 的唯一实现，深模块：存取（key=value 读写）
++ 有效性（步骤标记是否仍成立：构建时的 commit 判据、换参作废）+ 恢复
+（续跑时补齐 opt_branch / commit_sha / merge_base）。保持纯净：git 查询由
+调用方注入，步骤执行归 steprunner。调用方不得自行手写作废/恢复逻辑。
+
+### steprunner
+`scripts/steprunner.py`。数据驱动的步骤编排器：跳过缓存命中、计时、进度
+一行一步。缓存策略不在这里（is_done / mark_done 由调用方注入）。
+
+### suitebuild
+`scripts/suitebuild.py`。Suite 构建 + ASM Artifact 归位的唯一实现
+（`build/asm/<phase>/<suite>/`，只收 `.s`）：取代旧 `scripts/Makefile`。
+env 契约与工具依赖（原隐含依赖 fd + rsync）都是内部细节；本地与 CI
+共用同一 CLI。Suite 插件点不变：`repos/` 下放源码 + `scripts/build-<suite>.sh`
+提供构建脚本；套件名 → 克隆目录名的映射（test-suite → llvm-test-suite，
+其余同名）由 SUITE_SRC_DIRS 单点维护。
+
+### resultbranch
+`scripts/resultbranch.py`。Result Branch 的唯一实现：写单侧汇编树 +
+提交（extra_files 先快照再重写，源文件允许在 results/ 内）。分支摆放与
+收尾是调用方的 adapter：本地（opt-pr-cov，checkout -B 后切回）与 CI
+（publish.py，force push origin）。
+
+### report
+`scripts/report.py`。Report Contract 的唯一实现：report.json 组装 +
+report.md 渲染 + 规范 results/ 布局写出。纯函数。
+
+### baseref
+`scripts/baseref.py`。「给定 opt 侧，base 是哪个 commit」的唯一答案
+（merge-base，upstream/main → origin/main → main 回退）。本地与 CI 共用。

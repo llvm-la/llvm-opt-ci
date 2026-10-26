@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Build llvm-test-suite. Called by Makefile.
-# Env: BUILD_DIR (output dir), FLAG (compile flags), TS_SRC_DIR, BUILD_LLVM_DIR, TS_SRC_DIR
+# Build llvm-test-suite. Called by suitebuild.py (scripts/suitebuild.py).
+# Env: BUILD_DIR (output dir), FLAG (compile flags), TS_SRC_DIR, BUILD_LLVM_DIR
 
 set -e
 

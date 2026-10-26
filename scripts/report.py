@@ -136,12 +136,16 @@ def write_diff_files(results_dir: str, entries: list[tuple[str, str, str]]) -> N
 
     entries: [(带 suite 前缀的相对路径, base 绝对路径, opt 绝对路径)]，
     与 asmcompare.compare_suites 的返回一致。rel 同时是 files[].path 的约定。
+    新增/删除文件只有一侧存在：缺失的一侧跳过（report.json 的 files[]
+    仍完整记录 ±行数）。
     """
     if os.path.exists(results_dir):
         shutil.rmtree(results_dir)
     os.makedirs(results_dir)
     for rel, base_abs, opt_abs in entries:
         for src, side in ((base_abs, "base"), (opt_abs, "opt")):
+            if not os.path.exists(src):
+                continue  # 对侧删除/新增的文件
             dst = os.path.join(results_dir, side, rel)
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             shutil.copy2(src, dst)

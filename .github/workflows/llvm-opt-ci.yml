@@ -21,7 +21,6 @@ env:
   TS_SRC_DIR:             ${{ github.workspace }}/repos/llvm-test-suite
   BUILDS_DIR:             ${{ github.workspace }}/build
   BUILD_LLVM_DIR:         ${{ github.workspace }}/build/build-llvm
-  BUILD_TS_DIR:           ${{ github.workspace }}/build/build-test-suite
   RESULTS_DIR:            ${{ github.workspace }}/results
 
 
@@ -65,92 +64,28 @@ jobs:
           GH_ISSUE_BODY: ${{ github.event_name == 'issue_comment' && github.event.comment.body || github.event.issue.body }}
         run: python3 scripts/parse_request.py
 
-  without-pr:
+  # 同一 Phase 实现调用两次：base 先（建出 base 侧 + fetch PR 分支），
+  # opt 后（切回 PR 分支）——串行共享同一自建 runner 工作区。
+  phase-base:
     needs: configure
-    runs-on: [self-hosted, llvm-ci]
-    outputs:
-      BUILD_TIME_BASE: ${{ steps.timing.outputs.duration }}
-    steps:
-      - name: Checkout PR branch without pull commits
-        id: checkout
-        run: |
-          PR_BRANCH=pr-${{ needs.configure.outputs.PR_ID }}-$(date +%s)
-          cd ${LLVM_SRC_DIR}
-          git fetch origin pull/${{ needs.configure.outputs.PR_ID }}/head:${PR_BRANCH}
-          git checkout ${PR_BRANCH}
-          # merge-base against the true mainline (upstream/main, falling back
-          # to origin/main). The old `git rev-list main.. --count` + HEAD~N
-          # heuristic silently picked a wrong base for PRs with merge commits
-          # or when the fork's main was behind.
-          BASE_SHA=$(python3 scripts/baseref.py --llvm-dir . --opt-branch "${PR_BRANCH}")
-          git checkout ${BASE_SHA}
+    uses: ./.github/workflows/llvm-phase.yml
+    with:
+      phase: base
+      pr_id: ${{ needs.configure.outputs.PR_ID }}
+      flag: ${{ needs.configure.outputs.FLAG }}
+      tests: ${{ needs.configure.outputs.TESTS }}
 
-      - name: Build LLVM
-        id: build
-        run: |
-          START=$(date +%s)
-          sh scripts/build-llvm.sh
-          END=$(date +%s)
-          echo "duration=$(( END - START ))" >> "$GITHUB_OUTPUT"
-
-      - name: Build test suites
-        id: timing
-        env:
-          FLAG: ${{ needs.configure.outputs.FLAG }}
-        run: |
-          START=$(date +%s)
-          cd ${WORKSPACE}
-          BUILD_DIR="${BUILDS_DIR}/base" \
-          ASM_DIR="${BUILDS_DIR}" \
-          make -f scripts/Makefile \
-            SUITES="${{ needs.configure.outputs.TESTS }}" \
-            PHASE=base build copy-asm
-          END=$(date +%s)
-          TOTAL=$(( END - START + ${{ steps.build.outputs.duration }} ))
-          MINUTES=$(( TOTAL / 60 ))
-          SECONDS=$(( TOTAL % 60 ))
-          printf "duration=%dm %ds\n" "$MINUTES" "$SECONDS" >> "$GITHUB_OUTPUT"
-
-  with-pr:
-    needs: [without-pr, configure]
-    runs-on: [self-hosted, llvm-ci]
-    outputs:
-      BUILD_TIME_OPT: ${{ steps.timing.outputs.duration }}
-    steps:
-      - name: Checkout PR branch with pull commits
-        run: |
-          cd ${LLVM_SRC_DIR}
-          git switch -
-          git log -1
-
-      - name: Build LLVM
-        id: build
-        run: |
-          START=$(date +%s)
-          sh scripts/build-llvm.sh
-          END=$(date +%s)
-          echo "duration=$(( END - START ))" >> "$GITHUB_OUTPUT"
-
-      - name: Build test suites
-        id: timing
-        env:
-          FLAG: ${{ needs.configure.outputs.FLAG }}
-        run: |
-          START=$(date +%s)
-          cd ${WORKSPACE}
-          BUILD_DIR="${BUILDS_DIR}/opt" \
-          ASM_DIR="${BUILDS_DIR}" \
-          make -f scripts/Makefile \
-            SUITES="${{ needs.configure.outputs.TESTS }}" \
-            PHASE=opt build copy-asm
-          END=$(date +%s)
-          TOTAL=$(( END - START + ${{ steps.build.outputs.duration }} ))
-          MINUTES=$(( TOTAL / 60 ))
-          SECONDS=$(( TOTAL % 60 ))
-          printf "duration=%dm %ds\n" "$MINUTES" "$SECONDS" >> "$GITHUB_OUTPUT"
+  phase-opt:
+    needs: [configure, phase-base]
+    uses: ./.github/workflows/llvm-phase.yml
+    with:
+      phase: opt
+      pr_id: ${{ needs.configure.outputs.PR_ID }}
+      flag: ${{ needs.configure.outputs.FLAG }}
+      tests: ${{ needs.configure.outputs.TESTS }}
 
   results:
-    needs: [with-pr, without-pr, configure]
+    needs: [configure, phase-base, phase-opt]
     runs-on: [self-hosted, llvm-ci]
     steps:
       - name: Generate App token
@@ -169,7 +104,7 @@ jobs:
           PR_ID: ${{ needs.configure.outputs.PR_ID }}
           TESTS: ${{ needs.configure.outputs.TESTS }}
           COMMIT_HASH: ${{ needs.configure.outputs.COMMIT_HASH }}
-          BUILD_TIME: "${{ needs.without-pr.outputs.BUILD_TIME_BASE }} / ${{ needs.with-pr.outputs.BUILD_TIME_OPT }}"
+          BUILD_TIME: "${{ needs.phase-base.outputs.build_time }} / ${{ needs.phase-opt.outputs.build_time }}"
         run: python3 scripts/publish.py
 
       - name: Comment on issue
@@ -178,8 +113,8 @@ jobs:
         run: gh issue comment ${{ github.event.issue.number }} --body-file results/issue_comment.md
 
   on-failure:
-    needs: [configure, without-pr, with-pr, results]
-    if: always() && (needs.without-pr.result == 'failure' || needs.with-pr.result == 'failure' || needs.results.result == 'failure')
+    needs: [configure, phase-base, phase-opt, results]
+    if: always() && (needs.phase-base.result == 'failure' || needs.phase-opt.result == 'failure' || needs.results.result == 'failure')
     runs-on: [self-hosted, llvm-ci]
     steps:
       - name: Generate App token

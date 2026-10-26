@@ -1,0 +1,84 @@
+# 一个 Phase（base|opt）的构建：checkout 目标 commit → build LLVM → build suite → 归位 asm。
+# 被 llvm-opt-ci.yml 按 Phase 调用两次（base 先、opt 后，串行共享同一工作区）；
+# Phase 的实现只写一遍——修改构建步骤时不再需要记得改两处。
+name: Build Phase
+
+on:
+  workflow_call:
+    inputs:
+      phase:
+        description: 'base 或 opt'
+        required: true
+        type: string
+      pr_id:
+        description: 'LLVM PR 编号'
+        required: true
+        type: string
+      flag:
+        description: '编译 flag'
+        required: false
+        type: string
+        default: ''
+      tests:
+        description: '逗号分隔的 suite 列表'
+        required: true
+        type: string
+    outputs:
+      build_time:
+        description: '该 Phase 的 LLVM + suite 构建总耗时'
+        value: ${{ jobs.phase.outputs.build_time }}
+
+env:
+  WORKSPACE:      ${{ github.workspace }}
+  LLVM_SRC_DIR:   ${{ github.workspace }}/repos/llvm-project
+  TS_SRC_DIR:     ${{ github.workspace }}/repos/llvm-test-suite
+  BUILDS_DIR:     ${{ github.workspace }}/build
+  BUILD_LLVM_DIR: ${{ github.workspace }}/build/build-llvm
+
+jobs:
+  phase:
+    runs-on: [self-hosted, llvm-ci]
+    outputs:
+      build_time: ${{ steps.timing.outputs.duration }}
+    steps:
+      - name: Checkout ${{ inputs.phase }} commit
+        run: |
+          cd ${LLVM_SRC_DIR}
+          if [ "${{ inputs.phase }}" = "base" ]; then
+            # base 侧：fetch PR 分支，checkout 真正主线的 merge-base
+            # （baseref：upstream/main → origin/main → main，拒绝旧的
+            # rev-list 计数启发式——它对含 merge commit 的 PR 会指错基准）。
+            PR_BRANCH=pr-${{ inputs.pr_id }}-$(date +%s)
+            git fetch origin pull/${{ inputs.pr_id }}/head:${PR_BRANCH}
+            git checkout ${PR_BRANCH}
+            BASE_SHA=$(python3 scripts/baseref.py --llvm-dir . --opt-branch "${PR_BRANCH}")
+            git checkout ${BASE_SHA}
+          else
+            # opt 侧：切回 base 侧 fetch 时的 PR 分支
+            git switch -
+            git log -1
+          fi
+
+      - name: Build LLVM
+        id: llvm
+        run: |
+          START=$(date +%s)
+          sh scripts/build-llvm.sh
+          END=$(date +%s)
+          echo "llvm_seconds=$(( END - START ))" >> "$GITHUB_OUTPUT"
+
+      - name: Build test suites
+        id: timing
+        run: |
+          START=$(date +%s)
+          cd ${WORKSPACE}
+          python3 scripts/suitebuild.py \
+            --phase ${{ inputs.phase }} \
+            --suites "${{ inputs.tests }}" \
+            --flag "${{ inputs.flag }}" \
+            --root "${WORKSPACE}"
+          END=$(date +%s)
+          TOTAL=$(( END - START + ${{ steps.llvm.outputs.llvm_seconds }} ))
+          MINUTES=$(( TOTAL / 60 ))
+          SECONDS=$(( TOTAL % 60 ))
+          printf "duration=%dm %ds\n" "$MINUTES" "$SECONDS" >> "$GITHUB_OUTPUT"

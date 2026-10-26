@@ -157,3 +157,23 @@ class TestWriteDiffFiles(unittest.TestCase):
             self.assertFalse(stale.exists())  # 旧内容被清空
             self.assertTrue((results / "base" / "test-suite" / "a.s").exists())
             self.assertTrue((results / "opt" / "test-suite" / "sub" / "b.s").exists())
+
+    def test_deleted_or_added_file_skips_missing_side(self):
+        # 补丁删除测试 → 只有 base 侧存在；新增测试 → 只有 opt 侧存在。
+        # 旧实现对缺失一侧直接 copy2 会崩。
+        with tempfile.TemporaryDirectory() as td:
+            src = Path(td) / "src"
+            for p in ("base/gone.s", "opt/new.s"):
+                f = src / p
+                f.parent.mkdir(parents=True, exist_ok=True)
+                f.write_text("asm")
+            results = Path(td) / "results"
+            entries = [
+                ("test-suite/gone.s", str(src / "base/gone.s"), str(src / "opt/gone.s")),
+                ("test-suite/new.s", str(src / "base/new.s"), str(src / "opt/new.s")),
+            ]
+            report_mod.write_diff_files(str(results), entries)
+            self.assertTrue((results / "base" / "test-suite" / "gone.s").exists())
+            self.assertFalse((results / "opt" / "test-suite" / "gone.s").exists())
+            self.assertFalse((results / "base" / "test-suite" / "new.s").exists())
+            self.assertTrue((results / "opt" / "test-suite" / "new.s").exists())

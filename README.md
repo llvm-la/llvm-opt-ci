@@ -50,16 +50,16 @@ test=test-suite
 │     ├ sh scripts/fetch-upstream.sh (git pull)     │
 │     └ python3 scripts/parse_request.py            │
 │                                                 │
-│  2. without-pr (编译基准版本 base)                │
+│  2. phase-base (编译基准版本 base)                │
 │     ├ git fetch origin/pull/{id}/head            │
 │     ├ git checkout $(baseref) (merge-base，回到合并前) │
 │     ├ sh scripts/build-llvm.sh                   │
-│     └ make build copy-asm (编译测试套件+取 .s)    │
+│     └ suitebuild.py --phase base (编译+取 .s)     │
 │                                                 │
-│  3. with-pr (编译补丁版本 opt)                    │
+│  3. phase-opt (编译补丁版本 opt)                  │
 │     ├ git switch - (切回 PR 分支)                 │
 │     ├ sh scripts/build-llvm.sh                   │
-│     └ make build copy-asm                        │
+│     └ suitebuild.py --phase opt                  │
 │                                                 │
 │  4. results (对比 + 发布)                         │
 │     ├ python3 scripts/publish.py                  │
@@ -81,8 +81,9 @@ test=test-suite
 | `scripts/fetch-upstream.sh` | 拉取 llvm-project 和 llvm-test-suite 最新代码 |
 | `scripts/parse_request.py` | 解析 issue body，提取 PR 编号、编译标志、测试套件 |
 | `scripts/build-llvm.sh` | 编译 LLVM（cmake + ninja） |
-| `scripts/Makefile` | 编译测试套件并拷贝 .s 汇编文件 |
+| `scripts/suitebuild.py` | 编译 suite 并收集 .s 到 build/asm/（本地与 CI 共用，取代旧 Makefile） |
 | `scripts/baseref.py` | 统一 base-commit 解析（merge-base，本地与 CI 共用） |
+| `scripts/resultbranch.py` | Result Branch 唯一实现：两侧汇编 → 分支 2 commits（本地/CI 各一 adapter） |
 | `scripts/publish.py` | 对比产物 → 规范 results/ + 展示分支 + PR（与本地共用 asmcompare/report） |
 
 ### 结果查看
@@ -205,13 +206,14 @@ python3 -m unittest discover -s scripts/tests -v
 ├── scripts/
 │   ├── asmcompare.py             # 深模块：两个 asm 目录的结构化 diff
 │   ├── report.py                 # report.json 组装 + markdown 渲染（纯函数）
-│   ├── runstate.py               # run 状态持久化
+│   ├── runstate.py               # Run State：持久化 + 步骤有效性 + 续跑恢复
 │   ├── steprunner.py             # 数据驱动步骤编排器
+│   ├── suitebuild.py             # suite 构建 + .s 归位（取代 Makefile，本地/CI 共用）
+│   ├── resultbranch.py           # Result Branch 唯一实现（写树+提交）
 │   ├── baseref.py                # base-commit 解析（merge-base，本地/CI 共用）
 │   ├── build-llvm.sh             # 编译 LLVM
-│   ├── build-test-suite.sh       # 编译测试套件
+│   ├── build-test-suite.sh       # 编译测试套件（由 suitebuild.py 调用）
 │   ├── fetch-upstream.sh         # 拉取上游代码
-│   ├── Makefile                  # make 驱动编译+拷贝 asm
 │   ├── parse_request.py          # 解析 issue 参数 (CI 用)
 │   ├── publish.py                # CI 展示 adapter：产物 → 分支 + PR
 │   └── tests/                    # 单元测试 (unittest)

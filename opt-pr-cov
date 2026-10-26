@@ -25,8 +25,7 @@ AI-agent-friendly 本地对比工具。产物契约（见 README「本地开发�
 
 import argparse
 import json
-import os
-import shutil
+import shlex
 import subprocess
 import sys
 import time
@@ -41,6 +40,7 @@ if str(_SCRIPTS) not in sys.path:
 import asmcompare  # noqa: E402
 import baseref  # noqa: E402
 import report as report_mod  # noqa: E402
+import resultbranch  # noqa: E402
 import runstate  # noqa: E402
 from steprunner import (  # noqa: E402
     Progress, Runner, Step, StepFailure,
@@ -61,20 +61,6 @@ LOG_DIR = BUILD_DIR / "logs"
 SUBCOMMANDS = {"run", "status", "report"}
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
-
-
-def env_for_phase(phase: str, flag: str, suites: str) -> dict:
-    """Build env dict for Makefile-based test-suite build."""
-    e = os.environ.copy()
-    e.update(
-        BUILD_DIR=str(BUILD_DIR / phase),
-        ASM_DIR=str(BUILD_DIR),
-        BUILD_LLVM_DIR=str(BUILD_LLVM_DIR),
-        TS_SRC_DIR=str(TS_SRC),
-        LLVM_SRC_DIR=str(LLVM_SRC),
-        FLAG=flag,
-    )
-    return e
 
 
 def run(cmd: str, **kwargs):
@@ -99,10 +85,6 @@ def read_state() -> dict | None:
 
 def write_state(d: dict):
     runstate.write(str(STATE_DIR), d)
-
-
-def mark_step(step: str, **meta):
-    runstate.mark_step(str(STATE_DIR), step, **meta)
 
 
 def step_done(step: str) -> bool:
@@ -211,10 +193,9 @@ def _build_llvm(phase: str, verbose: bool):
 def _build_ts(phase: str, flag: str, suites: str, verbose: bool):
     check_logged(
         f"build-ts-{phase}",
-        f'cd "{ROOT}" && make -f scripts/Makefile '
-        f'SUITES="{suites}" PHASE={phase} build copy-asm',
+        f"python3 '{ROOT}/scripts/suitebuild.py' --phase {phase} "
+        f"--suites {shlex.quote(suites)} --flag {shlex.quote(flag)} --root '{ROOT}'",
         str(LOG_DIR / f"build-ts-{phase}.log"), verbose=verbose,
-        env=env_for_phase(phase, flag, suites),
     )
 
 
@@ -223,9 +204,8 @@ def publish_branch(
 ) -> str:
     """可选：把差异发布为工具仓库的一个分支（2 个 commit）。
 
-    entries: [(带 suite 前缀的相对路径, base 绝对路径, opt 绝对路径)]。
-    commit 1 = base 侧汇编（results/<path>），commit 2 = opt 侧替换。
-    完成后切回原分支；results/ 工作目录随后由 create_results 重建为规范布局。
+    resultbranch 的本地 adapter：只负责分支位置的摆放（checkout -B 自 main）
+    与收尾（切回原分支）；写树 + 提交的舞步在共享实现里。
     前置条件：调用方已检查工具仓库无 *已跟踪* 改动。
     """
     branch = state["branch"]
@@ -239,29 +219,18 @@ def publish_branch(
             f"Subject: {info.get('subject', 'unknown')}",
         ]
     )
+    title = "{{side}}: " + f"{label} ({args.flag}) {short}"
 
     r = run(f"cd '{ROOT}' && git branch --show-current", capture_output=True, text=True)
     orig_branch = r.stdout.strip()
 
-    def stage_and_commit(side: str, title_prefix: str):
-        if RESULTS_DIR.exists():
-            shutil.rmtree(RESULTS_DIR)
-        RESULTS_DIR.mkdir(parents=True)
-        for rel, base_abs, opt_abs in entries:
-            dst = RESULTS_DIR / rel
-            dst.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(base_abs if side == "base" else opt_abs, dst)
-        check(f"cd '{ROOT}' && git add -A results")
-        subprocess.run(
-            ["git", "-C", str(ROOT), "commit", "--allow-empty",
-             "-m", f"{title_prefix}: {label} ({args.flag}) {short}", "-m", desc],
-            check=True, stdout=subprocess.DEVNULL,
-        )
-
     check(f"cd '{ROOT}' && git checkout -B '{branch}' main")
     try:
-        stage_and_commit("base", "base")
-        stage_and_commit("opt", "opt")
+        for side in ("base", "opt"):
+            resultbranch.commit_side(
+                str(ROOT), str(RESULTS_DIR), entries, side,
+                [title.format(side=side), desc],
+            )
     finally:
         if orig_branch:
             run(f"cd '{ROOT}' && git checkout '{orig_branch}' 2>/dev/null || true")
@@ -278,6 +247,7 @@ def create_results(ctx: "RunContext") -> str:
     suites = [s.strip() for s in args.test.split(",") if s.strip()]
     entries, comparison = asmcompare.compare_suites(str(BUILD_DIR / "asm"), suites)
     status = "diff" if len(comparison) else "no_diff"
+    ctx.status = status  # 供 cmd_run 的 --fail-on-no-diff 判定
 
     # --publish-branch（可选，先于 results/ 规范布局写入；publish 会重建 results/）
     published = None
@@ -350,13 +320,6 @@ class RunContext:
     merge_base: str | None = None
     status: str | None = None
 
-    def invalidate(self, step_names: list[str]):
-        """作废步骤缓存标记（树位置漂移时由 checkout 步骤调用）。"""
-        s = read_state() or {}
-        for st in step_names:
-            s.pop(st, None)
-        write_state(s)
-
 
 def _step_fetch(ctx: RunContext) -> str:
     fetch_main(ctx.verbose)
@@ -378,65 +341,66 @@ def _step_merge_base(ctx: RunContext) -> str:
     return f"{ctx.merge_base[:8]}{note}"
 
 
-def _step_checkout_base(ctx: RunContext) -> str:
-    # checkout 强制把树摆到 merge_base，所以判定缓存有效性只看「上次构建
-    # 时的 commit 是否仍是本次要构建的 commit」（树在 checkout 前的位置
-    # 与构建内容无关 —— GitRestore 每轮结束都会把树还原到用户分支）。
-    check_logged("checkout-base", f"cd '{LLVM_SRC}' && git checkout {ctx.merge_base}",
-                 str(LOG_DIR / "checkout-base.log"), verbose=ctx.verbose)
-    if step_done("build-llvm-base") or step_done("build-ts-base"):
-        built_at = (read_state() or {}).get("built_base_at")
-        if built_at != ctx.merge_base:
-            ctx.invalidate(["build-llvm-base", "build-ts-base"])
-            return "source commit changed; base build cache invalidated"
-    return ""
+# ── Phase 步骤：一套实现，按 Phase 实例化 ──────────────────────────────
+# base/opt 各是一列（checkout → build-llvm → build-ts）；实现只写一遍，
+# 由工厂按 Phase 生成两个 Step。缓存失效规则在 runstate（Run State module）。
 
 
-def _step_checkout_opt(ctx: RunContext) -> str:
-    # 同 checkout-base：只对比「缓存构建时的 commit」。
-    check_logged("checkout-opt", f"cd '{LLVM_SRC}' && git checkout {ctx.opt_branch}",
-                 str(LOG_DIR / "checkout-opt.log"), verbose=ctx.verbose)
-    if step_done("build-llvm-opt") or step_done("build-ts-opt"):
-        built_at = (read_state() or {}).get("built_opt_at")
-        if built_at != ctx.commit_sha:
-            ctx.invalidate(["build-llvm-opt", "build-ts-opt"])
-            return "source commit changed; opt build cache invalidated"
-    return ""
+def _phase_target(ctx: RunContext, phase: str) -> str:
+    """本 phase 构建针对的 commit：base = merge-base，opt = PR/分支 commit。"""
+    return ctx.merge_base if phase == "base" else (ctx.commit_sha or "")
 
 
-def _step_build_llvm_base(ctx: RunContext) -> str:
-    _build_llvm("base", ctx.verbose)
-    runstate.set_meta(str(STATE_DIR), built_base_at=ctx.merge_base)  # 缓存有效性判据：构建时的 commit
-    return ""
+def _make_checkout_step(phase: str) -> Step:
+    """always：缓存标记无法证明工作树真的停在目标 commit。
+
+    搬完树后由 Run State 判定本 phase 的构建缓存是否仍有效；失效则立即
+    作废并备注原因（checkout 前的树位置与构建内容无关 —— GitRestore
+    每轮结束都会把树还原到用户分支）。
+    """
+
+    def step(ctx: RunContext) -> str:
+        target = _phase_target(ctx, phase)
+        check_logged(f"checkout-{phase}", f"cd '{LLVM_SRC}' && git checkout {target}",
+                     str(LOG_DIR / f"checkout-{phase}.log"), verbose=ctx.verbose)
+        stale = runstate.stale_builds(read_state() or {}, phase, target)
+        if stale:
+            runstate.clear_steps(str(STATE_DIR), stale)
+            return "source commit changed; build cache invalidated"
+        return ""
+
+    return Step(f"checkout-{phase}", step, always=True)
 
 
-def _step_build_ts_base(ctx: RunContext) -> str:
-    _build_ts("base", ctx.args.flag, ctx.args.test, ctx.verbose)
-    runstate.set_meta(str(STATE_DIR), built_base_at=ctx.merge_base)
-    return ""
+def _make_build_llvm_step(phase: str) -> Step:
+    def step(ctx: RunContext) -> str:
+        _build_llvm(phase, ctx.verbose)
+        _mark_built_at(ctx, phase)  # 缓存有效性判据：构建时的 commit
+        return ""
+    return Step(f"build-llvm-{phase}", step)
 
 
-def _step_build_llvm_opt(ctx: RunContext) -> str:
-    _build_llvm("opt", ctx.verbose)
-    runstate.set_meta(str(STATE_DIR), built_opt_at=ctx.commit_sha)
-    return ""
+def _make_build_ts_step(phase: str) -> Step:
+    def step(ctx: RunContext) -> str:
+        _build_ts(phase, ctx.args.flag, ctx.args.test, ctx.verbose)
+        _mark_built_at(ctx, phase)
+        return ""
+    return Step(f"build-ts-{phase}", step)
 
 
-def _step_build_ts_opt(ctx: RunContext) -> str:
-    _build_ts("opt", ctx.args.flag, ctx.args.test, ctx.verbose)
-    runstate.set_meta(str(STATE_DIR), built_opt_at=ctx.commit_sha)
-    return ""
+def _mark_built_at(ctx: RunContext, phase: str) -> None:
+    runstate.set_meta(str(STATE_DIR), **{f"built_{phase}_at": _phase_target(ctx, phase)})
 
 
 STEPS_DEF = [
     Step("fetch-remote", _step_fetch),
     Step("find-merge-base", _step_merge_base),
-    Step("checkout-base", _step_checkout_base, always=True),
-    Step("build-llvm-base", _step_build_llvm_base),
-    Step("build-ts-base", _step_build_ts_base),
-    Step("checkout-opt", _step_checkout_opt, always=True),
-    Step("build-llvm-opt", _step_build_llvm_opt),
-    Step("build-ts-opt", _step_build_ts_opt),
+    _make_checkout_step("base"),
+    _make_build_llvm_step("base"),
+    _make_build_ts_step("base"),
+    _make_checkout_step("opt"),
+    _make_build_llvm_step("opt"),
+    _make_build_ts_step("opt"),
     Step("create-results", lambda ctx: create_results(ctx)),
 ]
 STEPS = names(STEPS_DEF)
@@ -514,18 +478,17 @@ def cmd_run(argv: list[str]) -> int:
     write_state(state)
 
     if args.fresh:
+        # branch 变量是 Result Branch 名（--publish-branch 才用得上），
+        # 别在这里当主语；真正要发的分支在发布时会再报告
         if use_pr:
-            print(f"Fresh run on branch '{branch}' (PR #{pr_id})")
+            print(f"Fresh run on PR #{pr_id}")
         else:
-            print(f"Fresh run on branch '{branch}' (branch: {local_branch})")
+            print(f"Fresh run on branch '{local_branch}'")
         clear_steps()
 
     if args.from_step:
         todo = names_from(STEPS_DEF, args.from_step)
-        s = read_state() or {}
-        for st in todo:
-            s.pop(st, None)
-        write_state(s)
+        runstate.clear_steps(str(STATE_DIR), todo)
         print(f"[--from {args.from_step}] invalidating: {', '.join(todo)}")
 
     LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -541,25 +504,32 @@ def cmd_run(argv: list[str]) -> int:
     )
 
     # Restore context persisted by earlier runs (needed when steps are skipped).
+    # 恢复规则在 runstate.recover（可表驱动测试）；git 查询在此注入。
     state = read_state() or {}
+
+    def _sha_of(branch: str) -> str | None:
+        r = run(f"cd '{LLVM_SRC}' && git rev-parse {branch}", capture_output=True, text=True)
+        return r.stdout.strip() if r.returncode == 0 and r.stdout.strip() else None
+
+    def _base_of(branch: str) -> str:
+        sha, _ = baseref.resolve_base(str(LLVM_SRC), branch, args.base)
+        return sha
+
+    opt_branch_default = None
+    if state.get("fetch-remote") == "done" and not state.get("opt_branch"):
+        opt_branch_default = f"pr-{pr_id}-local" if use_pr else local_branch
+
+    state, err = runstate.recover(
+        state, opt_branch=opt_branch_default,
+        sha_of_branch=_sha_of, base_of_branch=_base_of,
+    )
+    if err:
+        print(f"Error: {err}", file=sys.stderr)
+        return 1
+    write_state(state)
     ctx.opt_branch = state.get("opt_branch")
     ctx.commit_sha = state.get("commit_sha")
     ctx.merge_base = state.get("merge_base")
-    if state.get("fetch-remote") == "done" and not ctx.opt_branch:
-        ctx.opt_branch = f"pr-{pr_id}-local" if use_pr else local_branch
-    if ctx.opt_branch and (not ctx.commit_sha or not ctx.merge_base):
-        if not ctx.commit_sha:
-            r = run(f"cd '{LLVM_SRC}' && git rev-parse {ctx.opt_branch}", capture_output=True, text=True)
-            ctx.commit_sha = r.stdout.strip() if r.returncode == 0 else None
-        if not ctx.merge_base:
-            try:
-                ctx.merge_base = resolve_base_commit(ctx.opt_branch, args.base)
-            except ValueError as e:
-                print(f"Error: {e}", file=sys.stderr)
-                return 1
-        if not ctx.commit_sha or not ctx.merge_base:
-            print("Error: cannot recover run context from state; use --fresh to re-run.", file=sys.stderr)
-            return 1
 
     exit_code = 0
     ident = f"pr={pr_id}" if use_pr else f"branch={local_branch}"
